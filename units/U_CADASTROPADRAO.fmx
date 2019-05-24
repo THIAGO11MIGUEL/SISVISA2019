@@ -1,0 +1,244 @@
+object frmCadastroPadrao: TfrmCadastroPadrao
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 509
+  ClientWidth = 820
+  Position = DesktopCenter
+  StyleBook = frmSISVISA.StyleBook1
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 820.000000000000000000
+    Size.Height = 509.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object TabControl1: TTabControl
+      Align = Client
+      Size.Width = 820.000000000000000000
+      Size.Height = 454.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 0
+      TabOrder = 0
+      TabPosition = PlatformDefault
+      Sizes = (
+        820s
+        405s
+        820s
+        405s)
+      object tabDados: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 410.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabDados'
+        ExplicitSize.cx = 71.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        object layoutDados: TLayout
+          Align = Client
+          Size.Width = 820.000000000000000000
+          Size.Height = 405.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object panelButtonDados: TPanel
+            Align = Right
+            Position.X = 740.000000000000000000
+            Position.Y = 55.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 350.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object btnInserir: TButton
+              Action = actInserir
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 3
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+            object btnAlterar: TButton
+              Action = actAlterar
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.Y = 60.000000000000000000
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 2
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+            object btnExcluir: TButton
+              Action = actExcluir
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.Y = 120.000000000000000000
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+            object btnImprimir: TButton
+              Action = actImprimir
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.Y = 180.000000000000000000
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+          end
+          object ToolBar2: TToolBar
+            Size.Width = 820.000000000000000000
+            Size.Height = 55.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object edtBuscaRegistro: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 0
+              Size.Width = 820.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+        end
+      end
+      object tabCadastro: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 410.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabCadastro'
+        ExplicitSize.cx = 85.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        object layoutCadastro: TLayout
+          Align = Client
+          Size.Width = 820.000000000000000000
+          Size.Height = 405.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object panelButtonsCad: TPanel
+            Align = Right
+            Position.X = 740.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 405.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            object btnSalvar: TButton
+              Action = actSalvar
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+            object btnVoltar: TButton
+              Action = actVoltar
+              Align = Bottom
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.Y = 345.000000000000000000
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+          end
+        end
+      end
+    end
+    object ToolBar1: TToolBar
+      Size.Width = 820.000000000000000000
+      Size.Height = 55.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object lblTitulo: TLabel
+        Align = Client
+        StyledSettings = [Family, Style, FontColor]
+        Margins.Left = 15.000000000000000000
+        Size.Width = 805.000000000000000000
+        Size.Height = 55.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        Text = 'lblTitulo'
+        TabOrder = 0
+      end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 752
+    Top = 376
+    object actInserir: TAction
+      Text = 'Inserir'
+      OnExecute = actInserirExecute
+    end
+    object actAlterar: TAction
+      Text = 'Alterar'
+      OnExecute = actAlterarExecute
+    end
+    object actExcluir: TAction
+      Text = 'Excluir'
+      OnExecute = actExcluirExecute
+    end
+    object actImprimir: TAction
+      Text = 'Imprimir'
+    end
+    object actSalvar: TAction
+      Text = 'Salvar'
+      OnExecute = actSalvarExecute
+    end
+    object actFechar: TAction
+      Text = 'Fechar'
+    end
+    object changeTabDados: TChangeTabAction
+      Category = 'Tab'
+      Tab = tabDados
+    end
+    object changeTabCadastro: TChangeTabAction
+      Category = 'Tab'
+      Tab = tabCadastro
+    end
+    object actVoltar: TAction
+      Text = 'Voltar'
+      OnExecute = actVoltarExecute
+    end
+    object actConectar: TAction
+      Text = 'Conectar'
+    end
+  end
+end

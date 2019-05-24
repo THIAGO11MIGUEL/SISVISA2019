@@ -1,0 +1,115 @@
+object frmConfiguracoesGerais: TfrmConfiguracoesGerais
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 525
+  ClientWidth = 740
+  StyleBook = frmSISVISA.StyleBook1
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object layoutMain: TLayout
+    Align = Client
+    Size.Width = 740.000000000000000000
+    Size.Height = 525.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object layoutClient: TLayout
+      Align = Client
+      Size.Width = 539.000000000000000000
+      Size.Height = 470.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+    end
+    object Rectangle1: TRectangle
+      Align = Left
+      Fill.Kind = None
+      Position.Y = 55.000000000000000000
+      Size.Width = 201.000000000000000000
+      Size.Height = 470.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object ListBox1: TListBox
+        Align = Client
+        Size.Width = 201.000000000000000000
+        Size.Height = 470.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        DisableFocusEffect = True
+        ItemHeight = 35.000000000000000000
+        DefaultItemStyles.ItemStyle = ''
+        DefaultItemStyles.GroupHeaderStyle = ''
+        DefaultItemStyles.GroupFooterStyle = ''
+        Viewport.Width = 201.000000000000000000
+        Viewport.Height = 438.000000000000000000
+        object lbxitBD: TListBoxItem
+          Size.Width = 201.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'BANCO DE DADOS'
+          OnClick = lbxitBDClick
+        end
+        object lbxitArtigos: TListBoxItem
+          Position.Y = 35.000000000000000000
+          Size.Width = 201.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'ARTIGOS'
+          OnClick = lbxitArtigosClick
+        end
+        object lbxitTipDenuncias: TListBoxItem
+          Position.Y = 70.000000000000000000
+          Size.Width = 201.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = 'TIPOS DE DEN'#218'NCIAS'
+        end
+        object lbxitTipReceitas: TListBoxItem
+          Position.Y = 105.000000000000000000
+          Size.Width = 201.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = 'TIPOS DE RECEITAS'
+        end
+        object lbxitUnidades: TListBoxItem
+          Position.Y = 140.000000000000000000
+          Size.Width = 201.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = 'UNIDADES'
+        end
+        object SearchBox1: TSearchBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Top
+          TabOrder = 0
+          Size.Width = 201.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+    end
+    object ToolBar1: TToolBar
+      Size.Width = 740.000000000000000000
+      Size.Height = 55.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object lblTitulo: TLabel
+        Align = Client
+        StyledSettings = [Family, Style, FontColor]
+        Margins.Left = 15.000000000000000000
+        Size.Width = 725.000000000000000000
+        Size.Height = 55.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        Text = 'CONFIGURA'#199#213'ES GERAIS DO SISTEMA'
+        TabOrder = 0
+      end
+    end
+  end
+end

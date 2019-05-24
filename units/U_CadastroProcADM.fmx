@@ -1,0 +1,316 @@
+inherited frmCadastroProcADM: TfrmCadastroProcADM
+  Caption = 'frmCadastroProcADM'
+  DesignerMasterStyle = 0
+  inherited Layout1: TLayout
+    TabOrder = 1
+    inherited TabControl1: TTabControl
+      TabIndex = 1
+      Sizes = (
+        820s
+        405s
+        820s
+        405s)
+      inherited tabDados: TTabItem
+        IsSelected = False
+        ExplicitSize.cx = 71.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        inherited layoutDados: TLayout
+          inherited lbxDados: TListBox
+            Viewport.Width = 730.000000000000000000
+            Viewport.Height = 363.000000000000000000
+          end
+        end
+      end
+      inherited tabCadastro: TTabItem
+        IsSelected = True
+        ExplicitSize.cx = 85.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        inherited layoutCadastro: TLayout
+          TabOrder = 1
+          inherited panelButtonsCad: TPanel
+            inherited btnVoltar: TButton
+              Visible = False
+            end
+          end
+        end
+        object ListBox2: TListBox
+          Align = Client
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Size.Width = 810.000000000000000000
+          Size.Height = 395.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          DisableFocusEffect = True
+          ItemHeight = 50.000000000000000000
+          DefaultItemStyles.ItemStyle = ''
+          DefaultItemStyles.GroupHeaderStyle = ''
+          DefaultItemStyles.GroupFooterStyle = ''
+          Viewport.Width = 810.000000000000000000
+          Viewport.Height = 395.000000000000000000
+          object ListBoxItem2: TListBoxItem
+            Padding.Top = 1.000000000000000000
+            Size.Width = 810.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object Layout2: TLayout
+              Align = Left
+              Position.Y = 1.000000000000000000
+              Size.Width = 145.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object Label1: TLabel
+                Align = Client
+                StyledSettings = [Family, Style]
+                Size.Width = 145.000000000000000000
+                Size.Height = 49.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Size = 13.000000000000000000
+                TextSettings.HorzAlign = Center
+                Text = 'INFRATOR'
+                TabOrder = 0
+              end
+            end
+            object edtInfrator: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 0
+              Size.Width = 665.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object ListBoxItem3: TListBoxItem
+            Padding.Top = 1.000000000000000000
+            Position.Y = 50.000000000000000000
+            Size.Width = 810.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object Layout3: TLayout
+              Align = Left
+              Position.Y = 1.000000000000000000
+              Size.Width = 145.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object Label8: TLabel
+                Align = Client
+                StyledSettings = [Family, Style]
+                Size.Width = 145.000000000000000000
+                Size.Height = 49.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Size = 13.000000000000000000
+                TextSettings.HorzAlign = Center
+                Text = 'CPF'
+                TabOrder = 0
+              end
+            end
+            object edtCPFInfrator: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 0
+              TextSettings.Font.Size = 16.000000000000000000
+              TextSettings.HorzAlign = Center
+              Size.Width = 665.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              TextPrompt = 'ESTE CAMPO S'#211' ACEITA N'#218'MEROS'
+              StyledSettings = [Family, Style, FontColor]
+            end
+          end
+          object ListBoxItem4: TListBoxItem
+            Padding.Top = 1.000000000000000000
+            Position.Y = 100.000000000000000000
+            Size.Width = 810.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Text = 'B'
+            object Layout4: TLayout
+              Align = Left
+              Position.Y = 1.000000000000000000
+              Size.Width = 145.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object Label9: TLabel
+                Align = Client
+                StyledSettings = [Family, Style]
+                Size.Width = 145.000000000000000000
+                Size.Height = 49.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Size = 13.000000000000000000
+                TextSettings.HorzAlign = Center
+                Text = 'DATA AUTUA'#199#195'O'
+                TabOrder = 0
+              end
+            end
+            object dtedtDataAutoInfracao: TDateEdit
+              Date = 43594.000000000000000000
+              Align = Client
+              Size.Width = 665.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              TextSettings.HorzAlign = Trailing
+            end
+          end
+          object ListBoxItem5: TListBoxItem
+            Padding.Top = 1.000000000000000000
+            Position.Y = 150.000000000000000000
+            Size.Width = 810.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            object Layout5: TLayout
+              Align = Left
+              Position.Y = 1.000000000000000000
+              Size.Width = 145.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object Label10: TLabel
+                Align = Client
+                StyledSettings = [Family, Style]
+                Size.Width = 145.000000000000000000
+                Size.Height = 49.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Size = 13.000000000000000000
+                TextSettings.HorzAlign = Center
+                Text = 'DATA'
+                TabOrder = 0
+              end
+            end
+            object dtedtDataProcesso: TDateEdit
+              Date = 43594.000000000000000000
+              Align = Client
+              Size.Width = 665.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              TextSettings.HorzAlign = Trailing
+            end
+          end
+          object ListBoxItem6: TListBoxItem
+            Padding.Top = 1.000000000000000000
+            Position.Y = 200.000000000000000000
+            Size.Width = 810.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 4
+            object Layout6: TLayout
+              Align = Left
+              Position.Y = 1.000000000000000000
+              Size.Width = 145.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object Label11: TLabel
+                Align = Client
+                StyledSettings = [Family, Style]
+                Size.Width = 145.000000000000000000
+                Size.Height = 49.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Size = 13.000000000000000000
+                TextSettings.HorzAlign = Center
+                Text = 'ENDERE'#199'O'
+                TabOrder = 0
+              end
+            end
+            object edtEndereco: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 0
+              Size.Width = 665.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object ListBoxItem7: TListBoxItem
+            Padding.Top = 1.000000000000000000
+            Position.Y = 250.000000000000000000
+            Size.Width = 810.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 5
+            object Layout7: TLayout
+              Align = Left
+              Position.Y = 1.000000000000000000
+              Size.Width = 145.000000000000000000
+              Size.Height = 49.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object Label12: TLabel
+                Align = Client
+                StyledSettings = [Family, Style]
+                Size.Width = 145.000000000000000000
+                Size.Height = 49.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Size = 13.000000000000000000
+                TextSettings.HorzAlign = Center
+                Text = 'ART. AUTUADO'
+                TabOrder = 0
+              end
+            end
+            object cbbArtigo: TComboBox
+              Align = Client
+              Size.Width = 665.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+            end
+          end
+          object ListBoxItem8: TListBoxItem
+            Padding.Top = 1.000000000000000000
+            Padding.Bottom = 1.000000000000000000
+            Position.Y = 300.000000000000000000
+            Size.Width = 810.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 6
+            object Layout8: TLayout
+              Align = Left
+              Position.Y = 1.000000000000000000
+              Size.Width = 145.000000000000000000
+              Size.Height = 48.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object Label13: TLabel
+                Align = Client
+                StyledSettings = [Family, Style]
+                Size.Width = 145.000000000000000000
+                Size.Height = 48.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Size = 13.000000000000000000
+                TextSettings.HorzAlign = Center
+                Text = 'N'#186' AUTO INFRA'#199#195'O'
+                TabOrder = 0
+              end
+            end
+            object edtNumAutoInfracao: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 0
+              TextSettings.Font.Size = 16.000000000000000000
+              Size.Width = 665.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              TextPrompt = 'ESTE CAMPO S'#211' ACEITA N'#218'MEROS'
+              StyledSettings = [Family, Style, FontColor]
+            end
+          end
+        end
+      end
+    end
+    inherited ToolBar1: TToolBar
+      inherited lblTitulo: TLabel
+        Text = 'LAN'#199'AMENTO DE PROCESSOS ADMINISTRATIVOS'
+      end
+    end
+  end
+end
