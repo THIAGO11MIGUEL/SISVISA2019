@@ -18,6 +18,7 @@ type
     procedure CDCaminho(lv: TListView; dsCaminho: TFDQuery; Tabela: string);
     procedure CDArtigo(lv: TListView; dsArtigo: TFDQuery; Tabela: string);
     function RetornaID(Tabela, value, campo1, campo2: string; dsCaminho: TFDQuery): Integer;
+	procedure tESTE;
   end;
 
 implementation
@@ -27,6 +28,11 @@ uses
   MultiDetailAppearanceU;
 
 { TUtilsView }
+procedure tUtilsView.tESTE;
+begin
+  showmessage('teste');
+end;
+
 
 procedure TUtilsView.Alterar(Tabela, Campos: string; ds: TFDQuery);
 var
