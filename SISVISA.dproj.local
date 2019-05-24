@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/04/22 08:22:25.000.868,=C:\Users\tcs20\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/05/09 11:31:20.000.136,=C:\Users\tcs20\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/05/09 11:33:03.000.703,D:\SOFTWARES\SISVISA 2019\units\U_SISVISA.fmx=C:\Users\tcs20\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2019/05/09 11:33:03.000.702,D:\SOFTWARES\SISVISA 2019\units\U_SISVISA.pas=C:\Users\tcs20\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/05/09 11:33:23.000.159,D:\SOFTWARES\SISVISA 2019\SISVISA.dproj=C:\Users\tcs20\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2019/05/09 11:33:51.000.079,=D:\SOFTWARES\SISVISA 2019\units\U_CADASTROPADRAO.pas</Transaction>
+    <Transaction>2019/05/09 11:33:51.000.139,=D:\SOFTWARES\SISVISA 2019\units\U_CadastroReceitas.pas</Transaction>
+    <Transaction>2019/05/09 11:33:51.000.266,=D:\SOFTWARES\SISVISA 2019\units\U_dmSISVISA.pas</Transaction>
+    <Transaction>2019/05/09 11:33:51.000.023,=D:\SOFTWARES\SISVISA 2019\units\U_CadastroDenuncias.pas</Transaction>
+    <Transaction>2019/05/09 12:51:28.000.694,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/09 12:51:56.000.927,D:\SOFTWARES\SISVISA 2019\units\U_CadastroProcADM.pas=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/09 12:51:56.000.927,D:\SOFTWARES\SISVISA 2019\units\U_CadastroProcADM.fmx=D:\SOFTWARES\SISVISA 2019\Unit1.fmx</Transaction>
+    <Transaction>2019/05/10 09:18:09.000.559,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/10 09:24:13.000.178,D:\SOFTWARES\SISVISA 2019\units\U_ConfigSISVISA.pas=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/10 09:24:13.000.178,D:\SOFTWARES\SISVISA 2019\units\U_ConfigSISVISA.fmx=D:\SOFTWARES\SISVISA 2019\Unit1.fmx</Transaction>
+    <Transaction>2019/05/10 10:28:22.000.463,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/14 12:38:48.000.712,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/14 12:39:15.000.513,D:\SOFTWARES\SISVISA 2019\units\U_MensagemPadrao.pas=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/14 12:39:15.000.513,D:\SOFTWARES\SISVISA 2019\units\U_MensagemPadrao.fmx=D:\SOFTWARES\SISVISA 2019\Unit1.fmx</Transaction>
+    <Transaction>2019/05/14 15:14:03.000.579,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/14 15:14:44.000.188,D:\SOFTWARES\SISVISA 2019\classes\Classes.Utils.View.pas=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/15 19:42:47.000.281,=C:\Users\tcs20\OneDrive\Área de Trabalho\svisa\fontes\classes\U_Receitas.pas</Transaction>
+    <Transaction>2019/05/15 21:25:19.000.205,C:\Users\tcs20\OneDrive\Área de Trabalho\svisa\fontes\classes\U_Receitas.pas=</Transaction>
+    <Transaction>2019/05/15 22:47:06.000.349,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/15 22:47:30.000.418,D:\SOFTWARES\SISVISA 2019\Unit1.pas=D:\SOFTWARES\SISVISA 2019\units\U_CadastroArtigos.pas</Transaction>
+    <Transaction>2019/05/15 22:47:30.000.418,D:\SOFTWARES\SISVISA 2019\Unit1.fmx=D:\SOFTWARES\SISVISA 2019\units\U_CadastroArtigos.fmx</Transaction>
+    <Transaction>2019/05/15 23:18:38.000.466,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/15 23:27:02.000.171,D:\SOFTWARES\SISVISA 2019\Unit1.fmx=D:\SOFTWARES\SISVISA 2019\units\U_Configuracoes.fmx</Transaction>
+    <Transaction>2019/05/15 23:27:02.000.171,D:\SOFTWARES\SISVISA 2019\Unit1.pas=D:\SOFTWARES\SISVISA 2019\units\U_Configuracoes.pas</Transaction>
+    <Transaction>2019/05/16 09:24:20.000.322,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/16 09:25:03.000.376,D:\SOFTWARES\SISVISA 2019\Unit1.fmx=D:\SOFTWARES\SISVISA 2019\units\U_CadastroBD.fmx</Transaction>
+    <Transaction>2019/05/16 09:25:03.000.376,D:\SOFTWARES\SISVISA 2019\Unit1.pas=D:\SOFTWARES\SISVISA 2019\units\U_CadastroBD.pas</Transaction>
+    <Transaction>2019/05/16 09:26:35.000.189,D:\SOFTWARES\SISVISA 2019\units\U_ConfigSISVISA.pas=</Transaction>
+    <Transaction>2019/05/18 21:11:38.000.564,=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/18 21:12:13.000.044,D:\SOFTWARES\SISVISA 2019\Unit1.pas=D:\SOFTWARES\SISVISA 2019\classes\SISVISA.Model.CaminhoBD.pas</Transaction>
+  </Transactions>
+</BorlandProject>
