@@ -17,8 +17,8 @@ type
     procedure Deletar(Tabela, Campos: string; ds: TFDQuery);
     procedure CDCaminho(lv: TListView; dsCaminho: TFDQuery; Tabela: string);
     procedure CDArtigo(lv: TListView; dsArtigo: TFDQuery; Tabela: string);
-    function RetornaID(Tabela, value, campo1, campo2: string; dsCaminho: TFDQuery): Integer;
-	procedure tESTE;
+    function RetornaID(Tabela, value, campo1, campo2: string;
+      ds: TFDQuery): Integer;
   end;
 
 implementation
@@ -28,11 +28,6 @@ uses
   MultiDetailAppearanceU;
 
 { TUtilsView }
-procedure tUtilsView.tESTE;
-begin
-  showmessage('teste');
-end;
-
 
 procedure TUtilsView.Alterar(Tabela, Campos: string; ds: TFDQuery);
 var
@@ -139,7 +134,10 @@ begin
         lvItem := lv.Items.Add;
         lvItem.Detail := dsArtigo.FieldByName('cod_artigo').AsString;
         lvItem.Text := IntToStr(dsArtigo.FieldByName('num_artigo').AsInteger);
-        lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
+        lvItem.Data[TMultiDetailAppearanceNames.Detail1] := { 'Parag. - ' +
+          dsArtigo.FieldByName('paragrafo').AsString + } 'Inciso: ' +
+          dsArtigo.FieldByName('inciso').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail2] :=
           dsArtigo.FieldByName('descricao').AsString;
         dsArtigo.Next;
       end;
@@ -233,18 +231,19 @@ begin
   end;
 end;
 
-function TUtilsView.RetornaID(Tabela, value, campo1, campo2: string; dsCaminho: TFDQuery): Integer;
+function TUtilsView.RetornaID(Tabela, value, campo1, campo2: string;
+  ds: TFDQuery): Integer;
 begin
-  dsCaminho := TFDQuery.Create(nil);
-  dsCaminho.Close;
-  dsCaminho.sql.Clear;
-  dsCaminho.Connection := dmSISVisa.FD_ConnSISVISA;
-  dsCaminho.sql.Add('select ' + campo1 +' from ' + Tabela +
-    ' where ' + campo2 + '= ' + value);
-  dsCaminho.Prepared := true;
-  dsCaminho.Open;
+  ds := TFDQuery.Create(nil);
+  ds.Close;
+  ds.sql.Clear;
+  ds.Connection := dmSISVisa.FD_ConnSISVISA;
+  ds.sql.Add('select ' + campo1 + ' from ' + Tabela + ' where ' + campo2 +
+    '= ' + value);
+  ds.Prepared := true;
+  ds.Open;
 
-  Result := dsCaminho.FieldByName(campo1).AsInteger;
+  Result := ds.FieldByName(campo1).AsInteger;
 end;
 
 end.

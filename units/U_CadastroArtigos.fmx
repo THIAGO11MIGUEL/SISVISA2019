@@ -13,8 +13,8 @@
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutDados: TLayout
           object ListView1: TListView
-            ItemAppearanceClassName = 'TListItemAppearance'
-            ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+            ItemAppearanceClassName = 'TMultiDetailItemAppearance'
+            ItemEditAppearanceClassName = 'TMultiDetailDeleteAppearance'
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
             Align = Client
@@ -194,5 +194,8 @@
         end
       end
     end
+  end
+  inherited ActionList1: TActionList
+    Top = 424
   end
 end

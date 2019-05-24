@@ -13,7 +13,8 @@ uses
   U_CadastroArtigos in 'units\U_CadastroArtigos.pas' {frmCadastroArtigos},
   U_Configuracoes in 'units\U_Configuracoes.pas' {frmConfiguracoesGerais},
   U_CadastroBD in 'units\U_CadastroBD.pas' {frmCadastroBD},
-  SISVISA.Model.CaminhoBD in 'classes\SISVISA.Model.CaminhoBD.pas';
+  SISVISA.Model.CaminhoBD in 'classes\SISVISA.Model.CaminhoBD.pas',
+  SISVISA.Model.Artigos in 'classes\SISVISA.Model.Artigos.pas';
 
 {$R *.res}
 

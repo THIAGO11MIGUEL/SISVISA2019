@@ -3,13 +3,13 @@ unit U_CadastroArtigos;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.SysUtils, System.Types, System.UITypes,
   System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   U_CADASTROPADRAO, FMX.TabControl, System.Actions, FMX.ActnList,
   FMX.Controls.Presentation, FMX.Edit, FMX.SearchBox, FMX.ListBox, FMX.Layouts,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  MultiDetailAppearanceU, FMX.ListView;
+  MultiDetailAppearanceU, FMX.ListView, System.Classes;
 
 type
   TfrmCadastroArtigos = class(TfrmCadastroPadrao)
@@ -37,7 +37,7 @@ type
     procedure actAlterarExecute(Sender: TObject);
     procedure actExcluirExecute(Sender: TObject);
   private
-    f1, f2, TABELA, FIELDS, VALORES, PARAG, INCISO, DESC: string;
+    f1, f2, TABELA, FIELDS, VALORES, PARAG, INCISO, NUM: string;
     lnIDArtigo, NUMARTIGO: integer;
     procedure LimparCampos;
   public
@@ -50,7 +50,8 @@ var
 implementation
 
 uses
-  U_dmSISVISA, FireDAC.Comp.Client, SISVISA.Model.CaminhoBD;
+  U_dmSISVISA, FireDAC.Comp.Client, SISVISA.Model.CaminhoBD,
+  SISVISA.Model.Artigos;
 
 {$R *.fmx}
 
@@ -59,12 +60,12 @@ var
   qry: TFDQuery;
 begin
   qry := dmSISVISA.FDqryCadastros;
-  FIELDS := 'num_artigo, paragrafo, inciso';
-  DESC := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDArtigo := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
-  //edtDescriçãoArtigo.Text := DESC;
-  edtArtigo.Text := TModelCaminhoDb.New.ReceberCaminhoBD()
-    .PreencherCaminho(lnIDArtigo);
+  FIELDS := 'descricao, paragrafo, inciso';
+  NUM := ListView1.Items[ListView1.Selected.Index].Text;
+  lnIDArtigo := FUtilsCAD.RetornaID(TABELA, QuotedStr(NUM), f1, f2, qry);
+  edtArtigo.Text := NUM;
+  edtDescriçãoArtigo.Text := TModelArtigos.New.ReceberArtigo.PreencherArtigo
+    (lnIDArtigo, FIELDS, edtParagrafo.Text, edtInciso.Text);
   inherited;
 end;
 
@@ -73,8 +74,8 @@ var
   qry: TFDQuery;
 begin
   qry := dmSISVISA.FDqryCadastros;
-  DESC := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDArtigo := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
+  NUM := ListView1.Items[ListView1.Selected.Index].Text;
+  lnIDArtigo := FUtilsCAD.RetornaID(TABELA, QuotedStr(NUM), f1, f2, qry);
   VALORES := ' WHERE cod_artigo = ' + IntToStr(lnIDArtigo);
   FUtilsCAD.Deletar(TABELA, VALORES, qry);
   inherited;
@@ -88,14 +89,14 @@ var
 begin
   qry := dmSISVISA.FDqryCadastros;
   FIELDS := (' (num_artigo, paragrafo, inciso, descricao)');
-  DESC := QuotedStr(edtDescriçãoArtigo.Text);
+  NUM := QuotedStr(edtDescriçãoArtigo.Text);
   PARAG := QuotedStr(edtParagrafo.Text);
   INCISO := QuotedStr(edtInciso.Text);
   NUMARTIGO := StrToInt(edtArtigo.Text);
 
   case Acao of
     tpInsert:
-      VALORES := IntToStr(NUMARTIGO) + ',' + PARAG + ',' + INCISO + ',' + DESC;
+      VALORES := IntToStr(NUMARTIGO) + ',' + PARAG + ',' + INCISO + ',' + NUM;
     tpUpdate:
       // VALORES := ' set num_ar = ' + DESC + ',caminho_bd = ' + CAMINHO +
       // ' where cod_caminhobd = ' + IntToStr(lnIDCaminho);
@@ -116,7 +117,7 @@ begin
 
   inherited;
   lblTitulo.Text := ARTIGO;
-end;
+  end;
 
 procedure TfrmCadastroArtigos.actVoltarExecute(Sender: TObject);
 begin
@@ -126,13 +127,13 @@ end;
 
 procedure TfrmCadastroArtigos.FormCreate(Sender: TObject);
 begin
- inherited;
+  inherited;
   f1 := 'cod_artigo';
   f2 := 'num_artigo';
   TABELA := 'ARTIGOS';
   FIELDS := '';
   VALORES := '';
-  DESC := '';
+  NUM := '';
   PARAG := '';
   INCISO := '';
   FUtilsCAD.CDArtigo(ListView1, dmSISVISA.FDqryCadastros, TABELA);
@@ -146,4 +147,4 @@ begin
   edtDescriçãoArtigo.Text := '';
 end;
 
-end.
+    end.
