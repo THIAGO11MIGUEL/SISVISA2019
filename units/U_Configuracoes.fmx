@@ -42,7 +42,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
         Viewport.Width = 201.000000000000000000
-        Viewport.Height = 438.000000000000000000
+        Viewport.Height = 470.000000000000000000
         object lbxitBD: TListBoxItem
           Size.Width = 201.000000000000000000
           Size.Height = 35.000000000000000000
@@ -67,6 +67,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
           Size.PlatformDefault = False
           TabOrder = 2
           Text = 'TIPOS DE DEN'#218'NCIAS'
+          OnClick = lbxitTipDenunciasClick
         end
         object lbxitTipReceitas: TListBoxItem
           Position.Y = 105.000000000000000000

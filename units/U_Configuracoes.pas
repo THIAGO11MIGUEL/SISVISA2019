@@ -24,11 +24,13 @@ type
     lbxitUnidades: TListBoxItem;
     procedure lbxitArtigosClick(Sender: TObject);
     procedure lbxitBDClick(Sender: TObject);
+    procedure lbxitTipDenunciasClick(Sender: TObject);
   private
     { Private declarations }
     const
     ARTIGO = 'ARTIGOS COD. SANITÁRIO';
     BANCO = 'BANCO DE DADOS';
+    TIPDEN = 'TIPOS DE DENÚNCIAS';
   public
     { Public declarations }
   end;
@@ -39,7 +41,7 @@ var
 implementation
 
 uses
-  U_CadastroArtigos, U_SISVISA, U_CadastroBD;
+  U_CadastroArtigos, U_SISVISA, U_CadastroBD, U_CadastroTipoDenuncia;
 
 {$R *.fmx}
 
@@ -53,6 +55,17 @@ begin
    Self.layoutClient.RemoveObject(0);
    Self.layoutClient.AddObject(FormBD.Layout1);
    FormBD.lblTitulo.Text := BANCO;
+end;
+
+procedure TfrmConfiguracoesGerais.lbxitTipDenunciasClick(Sender: TObject);
+var FormTipDen: TfrmCadastroTipoDenuncia;
+begin
+  if not ASsigned(FormTipDen) then
+      FormTipDen := TfrmCadastroTipoDenuncia.Create(Self);
+
+  layoutClient.RemoveObject(0);
+  layoutClient.AddObject(FormTipDen.Layout1);
+  formTipDen.lblTitulo.text := TIPDEN;
 end;
 
 procedure TfrmConfiguracoesGerais.lbxitArtigosClick(Sender: TObject);

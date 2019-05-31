@@ -3,13 +3,13 @@ unit SISVISA.Model.Artigos;
 interface
 
 uses
-  FireDAC.Comp.Client, FMX.ListView.Appearances, System.Classes;
+  FireDAC.Comp.Client, FMX.ListView.Appearances, System.Classes, FMX.Edit;
 
 type
   iModelArtigos = interface
     ['{EF50123E-EF1A-434B-993B-9377BA38289F}']
     function ReceberArtigo: iModelArtigos;
-    function PreencherArtigo(value: integer; f, p, i: string): string;
+    function PreencherArtigo(value: integer; f: string; p, i: TEdit): string;
   end;
 
   TModelArtigos = class(TInterfacedObject, iModelArtigos)
@@ -29,7 +29,7 @@ type
     property inciso: string read Finciso write Setinciso;
 
     function ReceberArtigo: iModelArtigos;
-    function PreencherArtigo(value: integer; f, p, i: string): string;
+    function PreencherArtigo(value: integer; f: string; p, i: TEdit): string;
 
   end;
 
@@ -57,7 +57,7 @@ begin
   Result := Self.create;
 end;
 
-function TModelArtigos.PreencherArtigo(value: integer; f, p, i: string): string;
+function TModelArtigos.PreencherArtigo(value: integer; f: string; p, i: TEdit): string;
 var
   qry: TFDQuery;
 begin
@@ -73,15 +73,15 @@ begin
     qry.Open();
 
     FArtigo := qry.FieldByName('descricao').AsString;
-   { parag := qry.FieldByName('paragrafo').AsString;
-    inciso := qry.FieldByName('inciso').AsString;}
+    parag := qry.FieldByName('paragrafo').AsString;
+    inciso := qry.FieldByName('inciso').AsString;
   finally
     qry.destroy;
   end;
 
   Result := FArtigo;
-//  p := parag;
-//  i := inciso;
+  p.Text := parag;
+  i.Text := inciso;
 end;
 
 function TModelArtigos.ReceberArtigo: iModelArtigos;

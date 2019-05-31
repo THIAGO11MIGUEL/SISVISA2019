@@ -17,6 +17,7 @@ type
     procedure Deletar(Tabela, Campos: string; ds: TFDQuery);
     procedure CDCaminho(lv: TListView; dsCaminho: TFDQuery; Tabela: string);
     procedure CDArtigo(lv: TListView; dsArtigo: TFDQuery; Tabela: string);
+    procedure CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery; Tabela: string);
     function RetornaID(Tabela, value, campo1, campo2: string;
       ds: TFDQuery): Integer;
   end;
@@ -106,6 +107,44 @@ begin
     on E: Exception do
       raise Exception.Create('Não há Dados para Listar!!!');
   end;
+
+end;
+
+procedure TUtilsView.CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery; Tabela: string);
+var
+  lvItem: TListViewItem;
+begin
+  dsTipDenuncia := TFDQuery.Create(nil);
+  dsTipDenuncia.Close;
+  dsTipDenuncia.sql.Clear;
+  dsTipDenuncia.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsTipDenuncia.sql.Add('select * from ' + Tabela);
+  dsTipDenuncia.Prepared := true;
+  dsTipDenuncia.Open;
+
+  try
+
+    if dsTipDenuncia.RecordCount > 0 then
+    begin
+
+      lv.Items.Clear;
+      lv.BeginUpdate;
+      while not dsTipDenuncia.Eof do
+      begin
+        lvItem := lv.Items.Add;
+        lvItem.Detail := dsTipDenuncia.FieldByName('cod_tipdenuncia').AsString;
+        lvItem.Text := dsTipDenuncia.FieldByName('descricao').AsString;
+        dsTipDenuncia.Next;
+      end;
+
+      lv.EndUpdate;
+    end;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
 
 end;
 

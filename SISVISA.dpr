@@ -14,7 +14,8 @@ uses
   U_Configuracoes in 'units\U_Configuracoes.pas' {frmConfiguracoesGerais},
   U_CadastroBD in 'units\U_CadastroBD.pas' {frmCadastroBD},
   SISVISA.Model.CaminhoBD in 'classes\SISVISA.Model.CaminhoBD.pas',
-  SISVISA.Model.Artigos in 'classes\SISVISA.Model.Artigos.pas';
+  SISVISA.Model.Artigos in 'classes\SISVISA.Model.Artigos.pas',
+  U_CadastroTipoDenuncia in 'units\U_CadastroTipoDenuncia.pas' {frmCadastroTipoDenuncia};
 
 {$R *.res}
 

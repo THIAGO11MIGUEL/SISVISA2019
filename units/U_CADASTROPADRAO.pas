@@ -9,7 +9,8 @@ uses
   FMX.ActnList, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts,
   FMX.ListBox, FMX.Edit, FMX.SearchBox, FMX.TabControl, U_MensagemPadrao,
   Classes.Utils.View, FMX.ListView.Types, FMX.ListView.Appearances,
-  FMX.ListView.Adapters.Base, FMX.ListView, MultiDetailAppearanceU;
+  FMX.ListView.Adapters.Base, FMX.ListView, MultiDetailAppearanceU,
+  FireDAC.Comp.Client;
 
 type
   tpOperacao = (tpInsert, tpUpdate);
@@ -63,7 +64,8 @@ type
   public
     { Public declarations }
     FUtilsCAD: TUtilsView;
-
+    TABELA: string;
+    qry: TFDQuery;
   const
     LBL = 'CONFIGURAÇÕES GERAIS DO SISTEMA';
     ARTIGO = 'ARTIGOS COD. SANITÁRIO';
@@ -71,7 +73,7 @@ type
     CADNOVO = ' -> INSERIR NOVO';
     CADALTERA = '-> ALTERAR REGISTRO';
   published
-     property Acao: tpOperacao read FAcao write SetAcao;
+    property Acao: tpOperacao read FAcao write SetAcao;
   end;
 
 var
@@ -81,7 +83,7 @@ implementation
 
 {$R *.fmx}
 
-uses U_SISVISA;
+uses U_SISVISA, U_dmSISVISA;
 
 procedure TfrmCadastroPadrao.actAlterarExecute(Sender: TObject);
 begin
@@ -92,7 +94,8 @@ end;
 
 procedure TfrmCadastroPadrao.actExcluirExecute(Sender: TObject);
 begin
-  fnc_ExibirMensagem('Exclusão de Cadastro', 'Excluido com Sucesso!!', tpExcluir);
+  fnc_ExibirMensagem('Exclusão de Cadastro', 'Excluido com Sucesso!!',
+    tpExcluir);
 end;
 
 procedure TfrmCadastroPadrao.actInserirExecute(Sender: TObject);
@@ -107,14 +110,16 @@ procedure TfrmCadastroPadrao.actSalvarExecute(Sender: TObject);
 begin
   case Acao of
     tpInsert:
-    begin
-      fnc_ExibirMensagem('Inserir Registro Novo', 'Salvo com Sucesso!!!', tpSalvo);
-    end;
+      begin
+        fnc_ExibirMensagem('Inserir Registro Novo',
+          'Salvo com Sucesso!!!', tpSalvo);
+      end;
 
     tpUpdate:
-    begin
-       fnc_ExibirMensagem('Atualizar Registro', 'Salvo com Sucesso!!!', tpSalvo);
-    end;
+      begin
+        fnc_ExibirMensagem('Atualizar Registro',
+          'Salvo com Sucesso!!!', tpSalvo);
+      end;
   end;
 
   changeTabDados.ExecuteTarget(Self);
@@ -137,6 +142,7 @@ end;
 procedure TfrmCadastroPadrao.FormCreate(Sender: TObject);
 begin
   FUtilsCAD := TUtilsView.Create;
+  qry := dmSISVISA.FDqryCadastros;
   fnc_GerenciaForms;
   TabControl1.TabIndex := 0;
   TabControl1.TabPosition := TTabPosition.None;

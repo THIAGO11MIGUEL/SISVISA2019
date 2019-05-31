@@ -56,24 +56,18 @@ uses
 {$R *.fmx}
 
 procedure TfrmCadastroArtigos.actAlterarExecute(Sender: TObject);
-var
-  qry: TFDQuery;
 begin
-  qry := dmSISVISA.FDqryCadastros;
   FIELDS := 'descricao, paragrafo, inciso';
   NUM := ListView1.Items[ListView1.Selected.Index].Text;
   lnIDArtigo := FUtilsCAD.RetornaID(TABELA, QuotedStr(NUM), f1, f2, qry);
   edtArtigo.Text := NUM;
   edtDescriçãoArtigo.Text := TModelArtigos.New.ReceberArtigo.PreencherArtigo
-    (lnIDArtigo, FIELDS, edtParagrafo.Text, edtInciso.Text);
+    (lnIDArtigo, FIELDS, edtParagrafo, edtInciso);
   inherited;
 end;
 
 procedure TfrmCadastroArtigos.actExcluirExecute(Sender: TObject);
-var
-  qry: TFDQuery;
 begin
-  qry := dmSISVISA.FDqryCadastros;
   NUM := ListView1.Items[ListView1.Selected.Index].Text;
   lnIDArtigo := FUtilsCAD.RetornaID(TABELA, QuotedStr(NUM), f1, f2, qry);
   VALORES := ' WHERE cod_artigo = ' + IntToStr(lnIDArtigo);
@@ -84,10 +78,7 @@ begin
 end;
 
 procedure TfrmCadastroArtigos.actSalvarExecute(Sender: TObject);
-var
-  qry: TFDQuery;
 begin
-  qry := dmSISVISA.FDqryCadastros;
   FIELDS := (' (num_artigo, paragrafo, inciso, descricao)');
   NUM := QuotedStr(edtDescriçãoArtigo.Text);
   PARAG := QuotedStr(edtParagrafo.Text);
@@ -98,8 +89,9 @@ begin
     tpInsert:
       VALORES := IntToStr(NUMARTIGO) + ',' + PARAG + ',' + INCISO + ',' + NUM;
     tpUpdate:
-      // VALORES := ' set num_ar = ' + DESC + ',caminho_bd = ' + CAMINHO +
-      // ' where cod_caminhobd = ' + IntToStr(lnIDCaminho);
+      VALORES := ' set num_artigo = ' + IntToStr(NUMARTIGO) + ', paragrafo =' + PARAG +
+        ', inciso = ' + INCISO + ',' + 'descricao = ' + NUM +
+        ' where (cod_artigo = ' + IntToStr(lnIDArtigo) + ')';
   end;
 
   if lnIDArtigo <> 0 then
@@ -117,7 +109,7 @@ begin
 
   inherited;
   lblTitulo.Text := ARTIGO;
-  end;
+end;
 
 procedure TfrmCadastroArtigos.actVoltarExecute(Sender: TObject);
 begin
@@ -136,7 +128,7 @@ begin
   NUM := '';
   PARAG := '';
   INCISO := '';
-  FUtilsCAD.CDArtigo(ListView1, dmSISVISA.FDqryCadastros, TABELA);
+  FUtilsCAD.CDArtigo(ListView1, qry, TABELA);
 end;
 
 procedure TfrmCadastroArtigos.LimparCampos;
@@ -147,4 +139,4 @@ begin
   edtDescriçãoArtigo.Text := '';
 end;
 
-    end.
+end.

@@ -76,7 +76,7 @@ implementation
 {$R *.fmx}
 
 uses U_CadastroDenuncias, U_CadastroReceitas, U_CadastroProcADM,
-  U_Configuracoes;
+  U_Configuracoes, U_CadastroTipoDenuncia;
 
 procedure TfrmSISVISA.FormKeyDown(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);

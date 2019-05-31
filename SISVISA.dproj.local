@@ -6,13 +6,13 @@
     <Transaction>2019/05/09 12:51:56.000.927,D:\SOFTWARES\SISVISA 2019\Unit1.fmx=D:\SOFTWARES\SISVISA 2019\units\U_CadastroProcADM.fmx</Transaction>
     <Transaction>2019/05/10 09:24:13.000.178,D:\SOFTWARES\SISVISA 2019\Unit1.fmx=D:\SOFTWARES\SISVISA 2019\units\U_ConfigSISVISA.fmx</Transaction>
     <Transaction>2019/05/14 12:39:15.000.513,D:\SOFTWARES\SISVISA 2019\Unit1.fmx=D:\SOFTWARES\SISVISA 2019\units\U_MensagemPadrao.fmx</Transaction>
-    <Transaction>2019/05/15 22:47:30.000.418,D:\SOFTWARES\SISVISA 2019\units\U_CadastroArtigos.fmx=D:\SOFTWARES\SISVISA 2019\Unit1.fmx</Transaction>
     <Transaction>2019/05/15 22:47:30.000.418,D:\SOFTWARES\SISVISA 2019\units\U_CadastroArtigos.pas=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
+    <Transaction>2019/05/15 22:47:30.000.418,D:\SOFTWARES\SISVISA 2019\units\U_CadastroArtigos.fmx=D:\SOFTWARES\SISVISA 2019\Unit1.fmx</Transaction>
     <Transaction>2019/05/15 23:27:02.000.171,D:\SOFTWARES\SISVISA 2019\units\U_Configuracoes.fmx=D:\SOFTWARES\SISVISA 2019\Unit1.fmx</Transaction>
     <Transaction>2019/05/15 23:27:02.000.171,D:\SOFTWARES\SISVISA 2019\units\U_Configuracoes.pas=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
     <Transaction>2019/05/16 09:25:03.000.376,D:\SOFTWARES\SISVISA 2019\units\U_CadastroBD.fmx=D:\SOFTWARES\SISVISA 2019\Unit1.fmx</Transaction>
     <Transaction>2019/05/16 09:25:03.000.376,D:\SOFTWARES\SISVISA 2019\units\U_CadastroBD.pas=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
     <Transaction>2019/05/18 21:12:13.000.044,D:\SOFTWARES\SISVISA 2019\classes\SISVISA.Model.CaminhoBD.pas=D:\SOFTWARES\SISVISA 2019\Unit1.pas</Transaction>
-    <Transaction>2019/05/24 13:08:54.218,=D:\SOFTWARES\SISVISA 2019\trunk\Unit1.pas</Transaction>
+    <Transaction>2019/05/27 15:38:47.000.710,D:\SOFTWARES\SISVISA 2019\trunk\Unit1.fmx=D:\SOFTWARES\SISVISA 2019\trunk\units\U_CadastroTipoDenuncia.fmx</Transaction>
   </Transactions>
 </BorlandProject>

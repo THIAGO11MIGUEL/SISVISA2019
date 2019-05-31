@@ -56,10 +56,7 @@ implementation
 uses U_dmSISVISA, SISVISA.Model.CaminhoBD, U_SISVISA, FireDAC.Comp.Client;
 
 procedure TfrmCadastroBD.actAlterarExecute(Sender: TObject);
-var
-  qry: TFDQuery;
 begin
-  qry := dmSISVISA.FDqryCadastros;
   FIELDS := 'caminho_bd';
   DESC := ListView1.Items[ListView1.Selected.Index].Text;
   lnIDCaminho := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
@@ -76,10 +73,7 @@ begin
 end;
 
 procedure TfrmCadastroBD.actExcluirExecute(Sender: TObject);
-var
-  qry: TFDQuery;
 begin
-  qry := dmSISVISA.FDqryCadastros;
   DESC := ListView1.Items[ListView1.Selected.Index].Text;
   lnIDCaminho := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
   VALORES := ' WHERE cod_caminhobd = ' + IntToStr(lnIDCaminho);
@@ -89,10 +83,7 @@ begin
 end;
 
 procedure TfrmCadastroBD.actSalvarExecute(Sender: TObject);
-var
-  qry: TFDQuery;
 begin
-  qry := dmSISVISA.FDqryCadastros;
   FIELDS := (' (descricao, caminho_bd)');
   DESC := QuotedStr(edtDescricaoBanco.Text);
   CAMINHO := QuotedStr(edtCaminhoBanco.Text);
@@ -134,7 +125,7 @@ begin
   VALORES := '';
   DESC := '';
   CAMINHO := '';
-  FUtilsCAD.CDCaminho(ListView1, dmSISVISA.FDqryCadastros, TABELA);
+  FUtilsCAD.CDCaminho(ListView1, qry, TABELA);
 end;
 
 procedure TfrmCadastroBD.LimparCampos;
@@ -145,15 +136,13 @@ end;
 
 procedure TfrmCadastroBD.ListView1ItemClick(const Sender: TObject;
   const AItem: TListViewItem);
-var
-  qry: TFDQuery;
 begin
   qry := dmSISVISA.FDqryCadastros;
   DESC := ListView1.Items[ListView1.Selected.Index].Text;
-  lnidCaminho := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
+  lnIDCaminho := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
   inherited;
   edtCaminhoBDConectar.Text := TModelCaminhoDb.New.ReceberCaminhoBD()
-    .PreencherCaminho(lnidcaminho);
+    .PreencherCaminho(lnIDCaminho);
 end;
 
 end.

@@ -3,12 +3,14 @@
   DesignerMasterStyle = 0
   inherited Layout1: TLayout
     inherited TabControl1: TTabControl
+      TabIndex = 0
       Sizes = (
         820s
         405s
         820s
         405s)
       inherited tabDados: TTabItem
+        IsSelected = True
         ExplicitSize.cx = 71.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutDados: TLayout
@@ -22,10 +24,15 @@
             Size.Height = 350.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
+            ItemAppearanceObjects.ItemObjects.MultiDetail1.Font.Size = 13.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail2.Font.Size = 13.000000000000000000
+            ItemAppearanceObjects.HeaderObjects.Text.Font.Size = 15.000000000000000000
+            OnDblClick = actAlterarExecute
           end
         end
       end
       inherited tabCadastro: TTabItem
+        IsSelected = False
         ExplicitSize.cx = 85.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutCadastro: TLayout
