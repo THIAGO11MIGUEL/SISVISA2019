@@ -20,6 +20,7 @@ type
     procedure CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery; Tabela: string);
     function RetornaID(Tabela, value, campo1, campo2: string;
       ds: TFDQuery): Integer;
+    function ValidarReceita: Boolean;
   end;
 
 implementation
@@ -283,6 +284,11 @@ begin
   ds.Open;
 
   Result := ds.FieldByName(campo1).AsInteger;
+end;
+
+function TUtilsView.ValidarReceita: Boolean;
+begin
+  Result := true;
 end;
 
 end.
