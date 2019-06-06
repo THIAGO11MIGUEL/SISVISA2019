@@ -160,6 +160,7 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
                 Size.Height = 32.000000000000000000
                 Size.PlatformDefault = False
                 StyledSettings = [Family, Style, FontColor]
+                OnClick = actAddDenunciaExecute
               end
             end
             object ListBoxItem2: TListBoxItem
@@ -301,10 +302,12 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
                 Touch.InteractiveGestures = [LongTap, DoubleTap]
                 Align = Client
                 TabOrder = 1
+                TextSettings.Font.Size = 15.000000000000000000
                 TextSettings.HorzAlign = Center
                 Size.Width = 650.000000000000000000
                 Size.Height = 32.000000000000000000
                 Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
                 OnClick = edtProcedClick
               end
             end
@@ -619,6 +622,8 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
         StyleLookup = ''
         TabOrder = 0
         Text = 'tabProcedimento'
+        ExplicitSize.cx = 281.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
         object Layout2: TLayout
           Align = Client
           Size.Width = 843.000000000000000000

@@ -166,8 +166,8 @@ begin
     FUtilsCAD.Incluir(TABATEND, CAMPOS, VALORES, qry);
     fnc_ExibirMensagem(ATEND, 'DENÚNCIA ATENDIDA COM SUCESSO!!!', tpBaixar);
     LimparCampos;
-  end;
-  if edtPrazo.Text = '' then
+  end
+  else
      fnc_ExibirMensagem(ATEND, 'CAMPO PRAZO PRECISA RECEBER UM VALOR', tpExcluir);
 end;
 
