@@ -98,6 +98,7 @@ inherited frmCadastroTipoDenuncia: TfrmCadastroTipoDenuncia
                   Touch.InteractiveGestures = [LongTap, DoubleTap]
                   Align = Client
                   TabOrder = 1
+                  TextSettings.HorzAlign = Center
                   Size.Width = 594.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False

@@ -18448,12 +18448,12 @@ object frmSISVISA: TfrmSISVISA
         DefaultItemStyles.ItemStyle = ''
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
-        Viewport.Width = 250.000000000000000000
+        Viewport.Width = 242.000000000000000000
         Viewport.Height = 431.000000000000000000
         object ListBoxGroupHeader2: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Size.Width = 250.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 10
@@ -18464,7 +18464,7 @@ object frmSISVISA: TfrmSISVISA
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
           Position.Y = 35.000000000000000000
-          Size.Width = 250.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -18474,7 +18474,7 @@ object frmSISVISA: TfrmSISVISA
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 70.000000000000000000
-          Size.Width = 250.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -18485,7 +18485,7 @@ object frmSISVISA: TfrmSISVISA
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 105.000000000000000000
-          Size.Width = 250.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
@@ -18496,18 +18496,39 @@ object frmSISVISA: TfrmSISVISA
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 140.000000000000000000
-          Size.Width = 250.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
           Text = 'Processos Administrativos'
           OnClick = ListBoxItem3Click
         end
+        object ListBoxGroupHeader6: TListBoxGroupHeader
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Other]
+          Position.Y = 175.000000000000000000
+          Size.Width = 242.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 11
+          Text = 'ATENDER DEN'#218'NCIA'
+          OnClick = ListBoxGroupHeader6Click
+        end
+        object ListBoxGroupHeader7: TListBoxGroupHeader
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Other]
+          Position.Y = 210.000000000000000000
+          Size.Width = 242.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 12
+          Text = 'BAIXAR RECEITAS'
+        end
         object ListBoxGroupHeader4: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 175.000000000000000000
-          Size.Width = 250.000000000000000000
+          Position.Y = 245.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 5
@@ -18516,8 +18537,8 @@ object frmSISVISA: TfrmSISVISA
         object ListBoxItem7: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 210.000000000000000000
-          Size.Width = 250.000000000000000000
+          Position.Y = 280.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 7
@@ -18526,8 +18547,8 @@ object frmSISVISA: TfrmSISVISA
         object ListBoxItem8: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 245.000000000000000000
-          Size.Width = 250.000000000000000000
+          Position.Y = 315.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 8
@@ -18536,8 +18557,8 @@ object frmSISVISA: TfrmSISVISA
         object ListBoxItem9: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 280.000000000000000000
-          Size.Width = 250.000000000000000000
+          Position.Y = 350.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 9
@@ -18546,8 +18567,8 @@ object frmSISVISA: TfrmSISVISA
         object ListBoxGroupHeader5: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 315.000000000000000000
-          Size.Width = 250.000000000000000000
+          Position.Y = 385.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 6
@@ -18557,8 +18578,8 @@ object frmSISVISA: TfrmSISVISA
         object ListBoxGroupHeader3: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 350.000000000000000000
-          Size.Width = 250.000000000000000000
+          Position.Y = 420.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
@@ -18568,7 +18589,7 @@ object frmSISVISA: TfrmSISVISA
         object StatusBar1: TStatusBar
           Position.Y = 412.000000000000000000
           ShowSizeGrip = True
-          Size.Width = 250.000000000000000000
+          Size.Width = 242.000000000000000000
           Size.Height = 19.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2

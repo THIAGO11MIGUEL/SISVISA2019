@@ -9,7 +9,6 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
     inherited TabControl1: TTabControl
       Size.Width = 808.000000000000000000
       Size.Height = 515.000000000000000000
-      TabIndex = 2
       Sizes = (
         808s
         466s
@@ -32,24 +31,48 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
             Size.Width = 808.000000000000000000
             inherited edtBuscaRegistro: TEdit
               Size.Width = 808.000000000000000000
-              Size.Height = 32.000000000000000000
             end
           end
-          object ListView1: TListView
-            ItemAppearanceClassName = 'TListItemAppearance'
-            ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
-            HeaderAppearanceClassName = 'TListHeaderObjects'
-            FooterAppearanceClassName = 'TListHeaderObjects'
+          object lytDadosDenuncias: TLayout
             Align = Client
             Size.Width = 728.000000000000000000
             Size.Height = 411.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
+            object lytHistDenuncias: TLayout
+              Align = Client
+              Size.Width = 399.000000000000000000
+              Size.Height = 411.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object lvwHistoricoDenuncia: TListView
+                ItemAppearanceClassName = 'TMultiDetailItemAppearance'
+                ItemEditAppearanceClassName = 'TMultiDetailDeleteAppearance'
+                HeaderAppearanceClassName = 'TListHeaderObjects'
+                FooterAppearanceClassName = 'TListHeaderObjects'
+                Align = Client
+                Size.Width = 399.000000000000000000
+                Size.Height = 411.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+              end
+            end
+            object lvwDadosDenuncia: TListView
+              ItemAppearanceClassName = 'TListItemAppearance'
+              ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+              HeaderAppearanceClassName = 'TListHeaderObjects'
+              FooterAppearanceClassName = 'TListHeaderObjects'
+              Align = Left
+              Size.Width = 329.000000000000000000
+              Size.Height = 411.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              OnItemClick = lvwDadosDenunciaItemClick
+            end
           end
         end
       end
       inherited tabCadastro: TTabItem
-        IsSelected = False
         Size.Width = 269.000000000000000000
         ExplicitSize.cx = 85.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
@@ -125,12 +148,14 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   end
                 end
                 object dtedtDataDenuncia: TDateEdit
-                  Date = 43594.000000000000000000
+                  Date = 43616.000000000000000000
                   Align = Client
                   Size.Width = 573.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
+                  StyleLookup = 'dateeditstyle'
                   TabOrder = 0
+                  TextSettings.HorzAlign = Center
                 end
               end
               object ListBoxItem3: TListBoxItem
@@ -163,6 +188,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   Touch.InteractiveGestures = [LongTap, DoubleTap]
                   Align = Client
                   TabOrder = 0
+                  TextSettings.HorzAlign = Center
                   Size.Width = 573.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
@@ -215,6 +241,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   Touch.InteractiveGestures = [LongTap, DoubleTap]
                   Align = Client
                   TabOrder = 1
+                  TextSettings.HorzAlign = Center
                   Size.Width = 573.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
@@ -268,7 +295,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
         CustomIcon = <
           item
           end>
-        IsSelected = True
+        IsSelected = False
         Size.Width = 270.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
@@ -327,6 +354,8 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
     end
   end
   inherited ActionList1: TActionList
+    Left = 744
+    Top = 280
     object changeTabTipDenuncia: TChangeTabAction
       Category = 'Tab'
       Tab = tabTipDenuncia
@@ -341,10 +370,14 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
     end
   end
   object ClientDataSet1: TClientDataSet
+    PersistDataPacket.Data = {
+      290000009619E0BD010000001800000001000000000003000000290006434F44
+      49474F04000100000000000000}
+    Active = True
     Aggregates = <>
     Params = <>
-    Left = 760
-    Top = 272
+    Left = 752
+    Top = 352
     object ClientDataSet1CODIGO: TIntegerField
       FieldName = 'CODIGO'
     end

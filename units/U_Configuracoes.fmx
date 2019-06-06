@@ -17,7 +17,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
     TabOrder = 0
     object layoutClient: TLayout
       Align = Client
-      Size.Width = 539.000000000000000000
+      Size.Width = 515.000000000000000000
       Size.Height = 470.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -26,13 +26,13 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
       Align = Left
       Fill.Kind = None
       Position.Y = 55.000000000000000000
-      Size.Width = 201.000000000000000000
+      Size.Width = 225.000000000000000000
       Size.Height = 470.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
       object ListBox1: TListBox
         Align = Client
-        Size.Width = 201.000000000000000000
+        Size.Width = 225.000000000000000000
         Size.Height = 470.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -41,10 +41,12 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
         DefaultItemStyles.ItemStyle = ''
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
-        Viewport.Width = 201.000000000000000000
-        Viewport.Height = 470.000000000000000000
+        Viewport.Width = 225.000000000000000000
+        Viewport.Height = 438.000000000000000000
         object lbxitBD: TListBoxItem
-          Size.Width = 201.000000000000000000
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
+          Size.Width = 225.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -52,8 +54,10 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
           OnClick = lbxitBDClick
         end
         object lbxitArtigos: TListBoxItem
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 35.000000000000000000
-          Size.Width = 201.000000000000000000
+          Size.Width = 225.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -61,25 +65,42 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
           OnClick = lbxitArtigosClick
         end
         object lbxitTipDenuncias: TListBoxItem
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 70.000000000000000000
-          Size.Width = 201.000000000000000000
+          Size.Width = 225.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
           Text = 'TIPOS DE DEN'#218'NCIAS'
           OnClick = lbxitTipDenunciasClick
         end
-        object lbxitTipReceitas: TListBoxItem
+        object ListBoxItem1: TListBoxItem
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 105.000000000000000000
-          Size.Width = 201.000000000000000000
+          Size.Width = 225.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = 'PROCEDIMENTO DE DEN'#218'NCIAS'
+          OnClick = ListBoxItem1Click
+        end
+        object lbxitTipReceitas: TListBoxItem
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
+          Position.Y = 140.000000000000000000
+          Size.Width = 225.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
           Text = 'TIPOS DE RECEITAS'
         end
         object lbxitUnidades: TListBoxItem
-          Position.Y = 140.000000000000000000
-          Size.Width = 201.000000000000000000
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
+          Position.Y = 175.000000000000000000
+          Size.Width = 225.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
@@ -89,7 +110,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Top
           TabOrder = 0
-          Size.Width = 201.000000000000000000
+          Size.Width = 225.000000000000000000
           Size.Height = 32.000000000000000000
           Size.PlatformDefault = False
         end

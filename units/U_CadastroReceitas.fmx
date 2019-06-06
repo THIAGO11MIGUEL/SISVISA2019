@@ -6,7 +6,6 @@
     Size.Height = 476.000000000000000000
     inherited TabControl1: TTabControl
       Size.Height = 421.000000000000000000
-      TabIndex = 1
       Sizes = (
         820s
         372s
@@ -15,25 +14,23 @@
       inherited tabDados: TTabItem
         TextSettings.Font.Size = 16.000000000000000000
         StyledSettings = [Family, Style, FontColor]
-        IsSelected = False
         ExplicitSize.cx = 69.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutDados: TLayout
           Size.Height = 372.000000000000000000
-          inherited lbxDados: TListBox
-            Size.Height = 362.000000000000000000
-            Viewport.Width = 730.000000000000000000
-            Viewport.Height = 330.000000000000000000
-          end
           inherited panelButtonDados: TPanel
-            Size.Height = 372.000000000000000000
+            Size.Height = 317.000000000000000000
+          end
+          inherited ToolBar2: TToolBar
+            inherited edtBuscaRegistro: TEdit
+              Size.Height = 32.000000000000000000
+            end
           end
         end
       end
       inherited tabCadastro: TTabItem
         TextSettings.Font.Size = 16.000000000000000000
         StyledSettings = [Family, Style, FontColor]
-        IsSelected = True
         ExplicitSize.cx = 69.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutCadastro: TLayout

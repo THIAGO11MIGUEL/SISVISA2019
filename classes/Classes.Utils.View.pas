@@ -17,7 +17,12 @@ type
     procedure Deletar(Tabela, Campos: string; ds: TFDQuery);
     procedure CDCaminho(lv: TListView; dsCaminho: TFDQuery; Tabela: string);
     procedure CDArtigo(lv: TListView; dsArtigo: TFDQuery; Tabela: string);
-    procedure CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery; Tabela: string);
+    procedure CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery;
+      Tabela: string);
+    procedure CDProcedDenuncia(lv: TListView; dsProcedDenuncia: TFDQuery; Tabela: string);
+    procedure CDDenuncia(lv: TListView; dsDenuncia: TFDQuery; Tabela: string);
+    procedure CDDenunciaDet(lv: TListView; dsDenunciaDet: TFDQuery;
+      Tabela, codden: string);
     function RetornaID(Tabela, value, campo1, campo2: string;
       ds: TFDQuery): Integer;
     function ValidarReceita: Boolean;
@@ -111,7 +116,125 @@ begin
 
 end;
 
-procedure TUtilsView.CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery; Tabela: string);
+procedure TUtilsView.CDDenuncia(lv: TListView; dsDenuncia: TFDQuery;
+  Tabela: string);
+var
+  lvItem: TListViewItem;
+begin
+  dsDenuncia := TFDQuery.Create(nil);
+  dsDenuncia.Close;
+  dsDenuncia.sql.Clear;
+  dsDenuncia.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsDenuncia.sql.Add('select * from ' + Tabela);
+  dsDenuncia.Prepared := true;
+  dsDenuncia.Open;
+
+  try
+
+    if dsDenuncia.RecordCount > 0 then
+    begin
+
+      lv.Items.Clear;
+      lv.BeginUpdate;
+      while not dsDenuncia.Eof do
+      begin
+        lvItem := lv.Items.Add;
+        lvItem.Detail := dsDenuncia.FieldByName('cod_denuncia').AsString;
+        lvItem.Text := dsDenuncia.FieldByName('endereco').AsString;
+        dsDenuncia.Next;
+      end;
+
+      lv.EndUpdate;
+    end;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
+end;
+
+procedure TUtilsView.CDDenunciaDet(lv: TListView; dsDenunciaDet: TFDQuery;
+  Tabela, codden: string);
+var
+  lvItem: TListViewItem;
+begin
+  dsDenunciaDet := TFDQuery.Create(nil);
+  dsDenunciaDet.Close;
+  dsDenunciaDet.sql.Clear;
+  dsDenunciaDet.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsDenunciaDet.sql.Add('select * from ' + Tabela + ' where codigo_denuncia = '
+    + codden);
+  dsDenunciaDet.Prepared := true;
+  dsDenunciaDet.Open;
+
+  try
+    if dsDenunciaDet.RecordCount <> 0 then
+    begin
+      lv.Items.Clear;
+      lv.BeginUpdate;
+      while not dsDenunciaDet.Eof do
+      begin
+        lvItem := lv.Items.Add;
+        lvItem.Detail := dsDenunciaDet.FieldByName('codigo_detalhe').AsString;
+        lvItem.Text := dsDenunciaDet.FieldByName('tipdenuncia').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
+           dsDenunciaDet.FieldByName('datalanc').AsString;
+        dsDenunciaDet.Next;
+      end;
+
+      lv.EndUpdate;
+    end
+    else
+      lv.Items.Clear;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
+end;
+
+procedure TUtilsView.CDProcedDenuncia(lv: TListView; dsProcedDenuncia: TFDQuery;
+  Tabela: string);
+var
+  lvItem: TListViewItem;
+begin
+  dsProcedDenuncia := TFDQuery.Create(nil);
+  dsProcedDenuncia.Close;
+  dsProcedDenuncia.sql.Clear;
+  dsProcedDenuncia.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsProcedDenuncia.sql.Add('select * from ' + Tabela);
+  dsProcedDenuncia.Prepared := true;
+  dsProcedDenuncia.Open;
+
+  try
+
+    if dsProcedDenuncia.RecordCount > 0 then
+    begin
+
+      lv.Items.Clear;
+      lv.BeginUpdate;
+      while not dsProcedDenuncia.Eof do
+      begin
+        lvItem := lv.Items.Add;
+        lvItem.Detail := dsProcedDenuncia.FieldByName('cod_proced').AsString;
+        lvItem.Text := dsProcedDenuncia.FieldByName('descricao').AsString;
+        dsProcedDenuncia.Next;
+      end;
+
+      lv.EndUpdate;
+    end;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
+end;
+
+procedure TUtilsView.CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery;
+  Tabela: string);
 var
   lvItem: TListViewItem;
 begin
@@ -145,7 +268,6 @@ begin
     on E: Exception do
       raise Exception.Create('Não há Dados para Listar!!!');
   end;
-
 
 end;
 
@@ -238,7 +360,6 @@ begin
   sql := '';
   sql := sql + 'insert into ' + Tabela;
   sql := sql + Campos;
-  // sql := sql + ' (descricao, caminho_bd)';
   sql := sql + ' values ';
   sql := sql + '(' + Valores + ')';
 
@@ -260,9 +381,8 @@ begin
       // fecha e abre o data set para exibição dos dados
     except
       on E: Exception do
-        raise Exception.Create
-          ('Houve um erro ao Inserir dados de (CAMINHO DO BANCO). " ' +
-          E.Message + #13 + UnitName + '.InserirDados."');
+        raise Exception.Create('Houve um erro ao Inserir dados de (' + Tabela +
+          '). " ' + E.Message + #13 + UnitName + '.InserirDados."');
     end;
 
   finally
@@ -279,7 +399,7 @@ begin
   ds.sql.Clear;
   ds.Connection := dmSISVisa.FD_ConnSISVISA;
   ds.sql.Add('select ' + campo1 + ' from ' + Tabela + ' where ' + campo2 +
-    '= ' + value);
+    ' = ' + value);
   ds.Prepared := true;
   ds.Open;
 

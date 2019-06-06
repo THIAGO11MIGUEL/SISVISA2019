@@ -15,7 +15,10 @@ uses
   U_CadastroBD in 'units\U_CadastroBD.pas' {frmCadastroBD},
   SISVISA.Model.CaminhoBD in 'classes\SISVISA.Model.CaminhoBD.pas',
   SISVISA.Model.Artigos in 'classes\SISVISA.Model.Artigos.pas',
-  U_CadastroTipoDenuncia in 'units\U_CadastroTipoDenuncia.pas' {frmCadastroTipoDenuncia};
+  U_CadastroTipoDenuncia in 'units\U_CadastroTipoDenuncia.pas' {frmCadastroTipoDenuncia},
+  U_AtenderDenuncia in 'units\U_AtenderDenuncia.pas' {frmAtenderDenuncias},
+  SISVISA.Model.Denuncias in 'classes\SISVISA.Model.Denuncias.pas',
+  U_CadastroProcedDenuncia in 'units\U_CadastroProcedDenuncia.pas' {frmCadastroProcedDenuncia};
 
 {$R *.res}
 

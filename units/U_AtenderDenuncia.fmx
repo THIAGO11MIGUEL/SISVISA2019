@@ -1,0 +1,689 @@
+object frmAtenderDenuncias: TfrmAtenderDenuncias
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 517
+  ClientWidth = 843
+  Position = DesktopCenter
+  StyleBook = frmSISVISA.StyleBook1
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 843.000000000000000000
+    Size.Height = 517.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object TabControl1: TTabControl
+      Align = Client
+      Size.Width = 843.000000000000000000
+      Size.Height = 462.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 0
+      TabOrder = 0
+      TabPosition = PlatformDefault
+      Sizes = (
+        843s
+        413s
+        843s
+        413s
+        843s
+        413s)
+      object tabAtenderDenuncias: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 281.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabAtenderDenuncias'
+        ExplicitSize.cx = 71.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        object layoutDados: TLayout
+          Align = Client
+          Size.Width = 843.000000000000000000
+          Size.Height = 413.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object panelButtonDados: TPanel
+            Align = Right
+            Position.X = 763.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 413.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object btnAddDenuncia: TButton
+              Action = actAddDenuncia
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.X = 20.000000000000000000
+              Size.Width = 40.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'addtoolbutton'
+              TabOrder = 2
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+            object btnAtender: TButton
+              Action = actAtendeDenuncia
+              Align = Bottom
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.X = 20.000000000000000000
+              Position.Y = 373.000000000000000000
+              Size.Width = 40.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'playtoolbutton'
+              TabOrder = 1
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+            object btnRemoveDenuncia: TButton
+              Action = actRemoveDenuncia
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.X = 20.000000000000000000
+              Position.Y = 40.000000000000000000
+              Size.Width = 40.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'deleteitembutton'
+              TabOrder = 0
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+          end
+          object ListBox1: TListBox
+            Align = Client
+            Size.Width = 763.000000000000000000
+            Size.Height = 413.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            DisableFocusEffect = True
+            ItemHeight = 30.000000000000000000
+            DefaultItemStyles.ItemStyle = ''
+            DefaultItemStyles.GroupHeaderStyle = ''
+            DefaultItemStyles.GroupFooterStyle = ''
+            Viewport.Width = 763.000000000000000000
+            Viewport.Height = 413.000000000000000000
+            object ListBoxGroupHeader1: TListBoxGroupHeader
+              Size.Width = 763.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = 'ATENDIMENTO DE DENUNCIA'
+            end
+            object ListBoxItem1: TListBoxItem
+              Position.Y = 30.000000000000000000
+              Size.Width = 763.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object lytEndereco: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Label1: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'ENDERE'#199'O'
+                  TabOrder = 0
+                end
+              end
+              object edtEnderecoDenuncia: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 6
+                ReadOnly = True
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+                Size.Width = 650.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+              end
+            end
+            object ListBoxItem2: TListBoxItem
+              Position.Y = 60.000000000000000000
+              Size.Width = 763.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 2
+              object lytTipo: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Label2: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'DEN'#218'NCIA'
+                  TabOrder = 0
+                end
+              end
+              object edtTipoDenuncia: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 6
+                ReadOnly = True
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+                Size.Width = 650.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+              end
+            end
+            object ListBoxItem3: TListBoxItem
+              Position.Y = 90.000000000000000000
+              Size.Width = 763.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 3
+              object lytDataLanc: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Label3: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'DATA LANC.'
+                  TabOrder = 0
+                end
+              end
+              object dtedtDtLanc: TDateEdit
+                Date = 43620.000000000000000000
+                Align = Left
+                Position.X = 113.000000000000000000
+                ReadOnly = True
+                Size.Width = 168.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+                TabOrder = 8
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+              end
+              object dtedtDTAtend: TDateEdit
+                Date = 43620.000000000000000000
+                Align = Right
+                Position.X = 595.000000000000000000
+                ReadOnly = True
+                Size.Width = 168.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+                TabOrder = 7
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+              end
+              object lytDTAtend: TLayout
+                Align = Right
+                Position.X = 499.000000000000000000
+                Size.Width = 96.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 2
+                object Label6: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 96.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'DATA ATEND.'
+                  TabOrder = 0
+                end
+              end
+            end
+            object ListBoxItem4: TListBoxItem
+              Position.Y = 120.000000000000000000
+              Size.Width = 763.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 4
+              object lytProcedimento: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Label4: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'PROCED.'
+                  TabOrder = 0
+                end
+              end
+              object edtProced: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 1
+                TextSettings.HorzAlign = Center
+                Size.Width = 650.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                OnClick = edtProcedClick
+              end
+            end
+            object ListBoxItem5: TListBoxItem
+              Position.Y = 150.000000000000000000
+              Size.Width = 763.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 5
+              object lytPrazo: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 3
+                object Label5: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'PRAZO'
+                  TabOrder = 0
+                end
+              end
+              object edtPrazo: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Left
+                TabOrder = 6
+                TextSettings.HorzAlign = Center
+                Position.X = 113.000000000000000000
+                Size.Width = 72.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+              end
+              object lytNumInfracao: TLayout
+                Align = Left
+                Position.X = 392.000000000000000000
+                Size.Width = 96.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                object Label7: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 96.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'N'#186' AUTO'
+                  TabOrder = 0
+                end
+              end
+              object edtNumAutoInfracao: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Left
+                TabOrder = 5
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+                Position.X = 488.000000000000000000
+                Size.Width = 65.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+              end
+              object lytArtigo: TLayout
+                Align = Left
+                Position.X = 553.000000000000000000
+                Size.Width = 96.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Label8: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 96.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'N'#186' ARTIGO'
+                  TabOrder = 0
+                end
+              end
+              object edtNumArtigo: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 4
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+                Size.Width = 114.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+              end
+              object dtedtFimPrazo: TDateEdit
+                Date = 43620.000000000000000000
+                Align = Left
+                Position.X = 281.000000000000000000
+                ReadOnly = True
+                Size.Width = 111.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+                TabOrder = 8
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+              end
+              object lytDataFinalPrazo: TLayout
+                Align = Left
+                Position.X = 185.000000000000000000
+                Size.Width = 96.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 2
+                object Label9: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 96.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'FIM PRAZO'
+                  TabOrder = 0
+                end
+              end
+            end
+            object ListBoxItem6: TListBoxItem
+              Position.Y = 180.000000000000000000
+              Size.Width = 763.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 6
+              object lytDescArtigo: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Label10: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'ARTIGO'
+                  TabOrder = 0
+                end
+              end
+              object edtArtigo: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 6
+                ReadOnly = True
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+                Size.Width = 650.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+              end
+            end
+            object ListBoxItem7: TListBoxItem
+              Position.Y = 210.000000000000000000
+              Size.Width = 763.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 7
+              object Layout3: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Label11: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 30.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  TextSettings.HorzAlign = Center
+                  Text = 'OBS'
+                  TabOrder = 0
+                end
+              end
+              object edtOBS: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 5
+                TextSettings.Font.Size = 15.000000000000000000
+                TextSettings.HorzAlign = Center
+                Size.Width = 650.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+              end
+            end
+          end
+        end
+      end
+      object tabListaDenuncias: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 281.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabListaDenuncias'
+        ExplicitSize.cx = 85.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        object layoutCadastro: TLayout
+          Align = Client
+          Size.Width = 843.000000000000000000
+          Size.Height = 413.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object panelButtonsCad: TPanel
+            Align = Right
+            Position.X = 763.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 413.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            object btnVoltar: TButton
+              Action = actVoltar
+              Align = Bottom
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.X = 20.000000000000000000
+              Position.Y = 373.000000000000000000
+              Size.Width = 40.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'arrowlefttoolbutton'
+              TabOrder = 0
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+          end
+          object lytDadosDenuncias: TLayout
+            Align = Client
+            Size.Width = 763.000000000000000000
+            Size.Height = 413.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            object lvwDenuncias: TListView
+              ItemAppearanceClassName = 'TListItemAppearance'
+              ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+              HeaderAppearanceClassName = 'TListHeaderObjects'
+              FooterAppearanceClassName = 'TListHeaderObjects'
+              Align = Left
+              Size.Width = 305.000000000000000000
+              Size.Height = 413.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              OnItemClick = lvwDenunciasItemClick
+            end
+            object lytHistoricoDenuncias: TLayout
+              Align = Client
+              Size.Width = 458.000000000000000000
+              Size.Height = 413.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object lvwDadosDenuncia: TListView
+                ItemAppearanceClassName = 'TMultiDetailItemAppearance'
+                ItemEditAppearanceClassName = 'TMultiDetailDeleteAppearance'
+                HeaderAppearanceClassName = 'TListHeaderObjects'
+                FooterAppearanceClassName = 'TListHeaderObjects'
+                Align = Client
+                Size.Width = 458.000000000000000000
+                Size.Height = 413.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                ItemAppearanceObjects.ItemObjects.MultiDetail1.Font.Size = 13.000000000000000000
+                ItemAppearanceObjects.ItemObjects.MultiDetail2.Font.Size = 13.000000000000000000
+                ItemAppearanceObjects.ItemObjects.MultiDetail3.Font.Size = 13.000000000000000000
+                ItemAppearanceObjects.ItemEditObjects.MultiDetail1.Font.Size = 13.000000000000000000
+                ItemAppearanceObjects.ItemEditObjects.MultiDetail2.Font.Size = 13.000000000000000000
+                ItemAppearanceObjects.ItemEditObjects.MultiDetail3.Font.Size = 13.000000000000000000
+                ItemAppearanceObjects.HeaderObjects.Text.Font.Size = 13.000000000000000000
+                ItemAppearanceObjects.FooterObjects.Text.Font.Size = 13.000000000000000000
+                OnItemClick = lvwDadosDenunciaItemClick
+              end
+            end
+          end
+        end
+      end
+      object tabProcedimento: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 281.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabProcedimento'
+        object Layout2: TLayout
+          Align = Client
+          Size.Width = 843.000000000000000000
+          Size.Height = 413.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object lvwListaProced: TListView
+            ItemAppearanceClassName = 'TListItemAppearance'
+            ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+            HeaderAppearanceClassName = 'TListHeaderObjects'
+            FooterAppearanceClassName = 'TListHeaderObjects'
+            Align = Client
+            Size.Width = 843.000000000000000000
+            Size.Height = 413.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            OnItemClick = lvwListaProcedItemClick
+          end
+        end
+      end
+    end
+    object ToolBar1: TToolBar
+      Size.Width = 843.000000000000000000
+      Size.Height = 55.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object lblTitulo: TLabel
+        Align = Client
+        StyledSettings = [Family, Style, FontColor]
+        Margins.Left = 15.000000000000000000
+        Size.Width = 828.000000000000000000
+        Size.Height = 55.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        Text = 'ATENDIMENTO A DENUNCIAS'
+        TabOrder = 0
+      end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 787
+    Top = 304
+    object actAddDenuncia: TAction
+      OnExecute = actAddDenunciaExecute
+    end
+    object actRemoveDenuncia: TAction
+    end
+    object actAtendeDenuncia: TAction
+      AutoCheck = True
+      OnExecute = actAtendeDenunciaExecute
+    end
+    object changeTabDenuncias: TChangeTabAction
+      Category = 'Tab'
+      Tab = tabListaDenuncias
+    end
+    object actVoltar: TAction
+      OnExecute = actVoltarExecute
+    end
+    object changeTabAtender: TChangeTabAction
+      Category = 'Tab'
+      Tab = tabAtenderDenuncias
+    end
+    object changeTabProced: TChangeTabAction
+      Category = 'Tab'
+      Tab = tabProcedimento
+    end
+  end
+end

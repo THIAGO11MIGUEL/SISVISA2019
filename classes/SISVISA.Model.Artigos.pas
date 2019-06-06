@@ -36,7 +36,7 @@ type
 implementation
 
 uses
-  U_dmSISVISA, System.SysUtils, U_CadastroArtigos;
+  U_dmSISVISA, System.SysUtils;
 
 { TModelCaminhoDb }
 

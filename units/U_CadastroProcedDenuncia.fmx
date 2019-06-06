@@ -1,0 +1,100 @@
+inherited frmCadastroProcedDenuncia: TfrmCadastroProcedDenuncia
+  Caption = 'frmCadastroPadrao1'
+  DesignerMasterStyle = 0
+  inherited Layout1: TLayout
+    inherited TabControl1: TTabControl
+      TabIndex = 0
+      Sizes = (
+        820s
+        405s
+        820s
+        405s)
+      inherited tabDados: TTabItem
+        IsSelected = True
+        ExplicitSize.cx = 71.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        inherited layoutDados: TLayout
+          inherited panelButtonDados: TPanel
+            inherited btnImprimir: TButton
+              Visible = False
+            end
+          end
+          object lvwDadosProcedDenuncia: TListView
+            ItemAppearanceClassName = 'TListItemAppearance'
+            ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+            HeaderAppearanceClassName = 'TListHeaderObjects'
+            FooterAppearanceClassName = 'TListHeaderObjects'
+            Align = Client
+            Size.Width = 740.000000000000000000
+            Size.Height = 350.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+          end
+        end
+      end
+      inherited tabCadastro: TTabItem
+        IsSelected = False
+        ExplicitSize.cx = 85.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        inherited layoutCadastro: TLayout
+          object lbxProcedDenuncia: TListBox
+            Align = Client
+            Size.Width = 740.000000000000000000
+            Size.Height = 405.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            DisableFocusEffect = True
+            ItemHeight = 50.000000000000000000
+            DefaultItemStyles.ItemStyle = ''
+            DefaultItemStyles.GroupHeaderStyle = ''
+            DefaultItemStyles.GroupFooterStyle = ''
+            Viewport.Width = 740.000000000000000000
+            Viewport.Height = 405.000000000000000000
+            object ListBoxItem1: TListBoxItem
+              Size.Width = 740.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object Layout2: TLayout
+                Align = Left
+                Size.Width = 137.000000000000000000
+                Size.Height = 50.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object Label1: TLabel
+                  Align = Client
+                  StyledSettings = [Family]
+                  Size.Width = 137.000000000000000000
+                  Size.Height = 50.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.HorzAlign = Center
+                  Text = 'PROCEDIMENTO'
+                  TabOrder = 0
+                end
+              end
+              object edtProcedDenuncia: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 1
+                TextSettings.HorzAlign = Center
+                Size.Width = 603.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+              end
+            end
+          end
+        end
+      end
+    end
+    inherited ToolBar1: TToolBar
+      inherited lblTitulo: TLabel
+        Text = 'CADASTRO DE PROCEDIMENTO EM DEN'#218'NCIA'
+      end
+    end
+  end
+  inherited ActionList1: TActionList
+    Left = 760
+    Top = 424
+  end
+end

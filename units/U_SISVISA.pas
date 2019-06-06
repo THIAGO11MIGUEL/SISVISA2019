@@ -42,6 +42,8 @@ type
     Label3: TLabel;
     layoutMensagem: TLayout;
     Timer2: TTimer;
+    ListBoxGroupHeader6: TListBoxGroupHeader;
+    ListBoxGroupHeader7: TListBoxGroupHeader;
     procedure ToolbarCloseButtonClick(Sender: TObject);
     procedure FormGesture(Sender: TObject;
       const EventInfo: TGestureEventInfo; var Handled: Boolean);
@@ -55,6 +57,7 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
+    procedure ListBoxGroupHeader6Click(Sender: TObject);
   private
     FGestureOrigin: TPointF;
     FGestureInProgress: Boolean;
@@ -76,7 +79,7 @@ implementation
 {$R *.fmx}
 
 uses U_CadastroDenuncias, U_CadastroReceitas, U_CadastroProcADM,
-  U_Configuracoes, U_CadastroTipoDenuncia;
+  U_Configuracoes, U_CadastroTipoDenuncia, U_AtenderDenuncia;
 
 procedure TfrmSISVISA.FormKeyDown(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
@@ -100,6 +103,15 @@ begin
   Self.layoutPrincipal.AddObject(FormConfig.layoutMain);
 end;
 
+procedure TfrmSISVISA.ListBoxGroupHeader6Click(Sender: TObject);
+var FormAtender: TfrmAtenderDenuncias;
+begin
+  if not Assigned(FormAtender) then
+     FormAtender := TfrmAtenderDenuncias.Create(Self);
+  Self.layoutPrincipal.RemoveObject(0);
+  Self.layoutPrincipal.AddObject(FormAtender.Layout1);
+end;
+
 procedure TfrmSISVISA.ListBoxItem1Click(Sender: TObject);
 var
   FormReceitas :  TfrmCadastroReceitas;
@@ -119,6 +131,7 @@ begin
 
    Self.layoutPrincipal.RemoveObject(0);
    Self.layoutPrincipal.AddObject(FormDenuncias.Layout1);
+   FormDenuncias.lytHistDenuncias.Visible := False;
 end;
 
 

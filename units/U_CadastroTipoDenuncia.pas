@@ -46,7 +46,7 @@ uses
 procedure TfrmCadastroTipoDenuncia.actAlterarExecute(Sender: TObject);
 begin
   TIPO := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDTpDenun := FUtilsCAD.RetornaID(TABELA, QuotedStr(TIPO), f1, f2, qry);
+  lnIDTpDenun := FUtilsCAD.RetornaID(TABTIPDEN, QuotedStr(TIPO), F1TBTPDEN, F2TBTPDEN, qry);
   edtTipoDenuncia.Text := TIPO;
   inherited;
 end;
@@ -54,11 +54,11 @@ end;
 procedure TfrmCadastroTipoDenuncia.actExcluirExecute(Sender: TObject);
 begin
   TIPO := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDTpDenun := FUtilsCAD.RetornaID(TABELA, QuotedStr(TIPO), f1, f2, qry);
+  lnIDTpDenun := FUtilsCAD.RetornaID(TABTIPDEN, QuotedStr(TIPO), F1TBTPDEN, F2TBTPDEN, qry);
   VALORES := ' WHERE cod_tipdenuncia = ' + IntToStr(lnIDTpDenun);
   FUtilsCAD.Deletar(TABELA, VALORES, qry);
   inherited;
-  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABELA);
+  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABTIPDEN);
 end;
 
 procedure TfrmCadastroTipoDenuncia.actSalvarExecute(Sender: TObject);
@@ -67,34 +67,28 @@ begin
   TIPO := QuotedStr(edtTipoDenuncia.Text);
   case Acao of
     tpInsert:
-      VALORES := TIPO;
+      begin
+        VALORES := TIPO;
+        FUtilsCAD.Incluir(TABTIPDEN, FIELDS, VALORES, qry);
+      end;
     tpUpdate:
-      VALORES := ' set descricao = ' + TIPO + ' where cod_tipdenuncia = ' +
-        IntToStr(lnIDTpDenun);
+      begin
+        VALORES := ' set descricao = ' + TIPO + ' where cod_tipdenuncia = ' +
+          IntToStr(lnIDTpDenun);
+        FUtilsCAD.Alterar(TABTIPDEN, VALORES, qry);
+      end;
   end;
 
-  if lnIDTpDenun <> 0 then
-  begin
-    FUtilsCAD.Alterar(TABELA, VALORES, qry);
-  end
-  else
-  begin
-    FUtilsCAD.Incluir(TABELA, FIELDS, VALORES, qry);
-  end;
   inherited;
-  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABELA);
+  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABTIPDEN);
   lblTitulo.Text := BD;
   LimparCampos;
 end;
 
 procedure TfrmCadastroTipoDenuncia.FormCreate(Sender: TObject);
 begin
-  TABELA := 'TIPODENUNCIA';
-  TIPO := '';
-  VALORES := '';
-  f1 := 'cod_tipdenuncia';
-  f2 := 'descricao';
-  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABELA);
+  LimparCampos;
+  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABTIPDEN);
   inherited;
 end;
 
