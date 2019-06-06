@@ -3,7 +3,8 @@ unit Classes.Utils.View;
 interface
 
 uses
-  FireDAC.Comp.Client, FMX.ListBox, FMX.ListView;
+  FireDAC.Comp.Client, FMX.ListBox, FMX.ListView, FMX.Forms, FMX.DateTimeCtrls,
+  U_MensagemPadrao, FMX.Edit;
 
 type
   TUtilsView = class
@@ -12,6 +13,7 @@ type
   published
 
   public
+    function VerificaProced(valor, prazo: TEdit): Boolean;
     procedure Incluir(Tabela, Campos, Valores: string; ds: TFDQuery);
     procedure Alterar(Tabela, Campos: string; ds: TFDQuery);
     procedure Deletar(Tabela, Campos: string; ds: TFDQuery);
@@ -32,7 +34,7 @@ implementation
 
 uses
   FMX.Dialogs, U_dmSISVISA, System.SysUtils, FMX.ListView.Appearances,
-  MultiDetailAppearanceU;
+  MultiDetailAppearanceU, U_SISVISA, Classes.Utils.Consts;
 
 { TUtilsView }
 
@@ -409,6 +411,17 @@ end;
 function TUtilsView.ValidarReceita: Boolean;
 begin
   Result := true;
+end;
+
+function TUtilsView.VerificaProced(valor, prazo: TEdit): Boolean;
+var vlr : string;
+begin
+  vlr := valor.Text;
+  if (vlr = NOTIFICACAO) or (vlr = AUTOINFRACAO) then
+    if not (prazo.Text = '') then
+        Result := False
+    else
+      Result := True;
 end;
 
 end.

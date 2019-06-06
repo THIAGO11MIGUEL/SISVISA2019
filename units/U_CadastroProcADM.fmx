@@ -4,25 +4,23 @@ inherited frmCadastroProcADM: TfrmCadastroProcADM
   inherited Layout1: TLayout
     TabOrder = 1
     inherited TabControl1: TTabControl
-      TabIndex = 1
       Sizes = (
         820s
         405s
         820s
         405s)
       inherited tabDados: TTabItem
-        IsSelected = False
         ExplicitSize.cx = 71.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutDados: TLayout
-          inherited lbxDados: TListBox
-            Viewport.Width = 730.000000000000000000
-            Viewport.Height = 363.000000000000000000
+          inherited ToolBar2: TToolBar
+            inherited edtBuscaRegistro: TEdit
+              Size.Height = 32.000000000000000000
+            end
           end
         end
       end
       inherited tabCadastro: TTabItem
-        IsSelected = True
         ExplicitSize.cx = 85.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutCadastro: TLayout
