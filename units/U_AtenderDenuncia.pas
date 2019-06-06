@@ -109,7 +109,7 @@ type
     procedure LimparCampos;
 
   const
-    ATEND = 'ATENDIMENTO A DENÚNCIAS';
+    ATENDERDENUNCIAS_ATEND = 'ATENDIMENTO A DENÚNCIAS';
     LISTA = ' - LISTA DE DENUNCIAS ';
     PROCED = ' - LISTA DE PROCEDIMENTOS EM DENÚNCIA';
     TABDEN = 'DENUNCIAS';
@@ -164,17 +164,17 @@ begin
       QuotedStr(IntToStr(num_infracao)) + ', ' + QuotedStr(IntToStr(lnIDProced))
       + ', ' + obs;
     FUtilsCAD.Incluir(TABATEND, CAMPOS, VALORES, qry);
-    fnc_ExibirMensagem(ATEND, 'DENÚNCIA ATENDIDA COM SUCESSO!!!', tpBaixar);
+    fnc_ExibirMensagem(ATENDERDENUNCIAS_ATEND, 'DENÚNCIA ATENDIDA COM SUCESSO!!!', tpBaixar);
     LimparCampos;
   end
   else
-     fnc_ExibirMensagem(ATEND, 'CAMPO PRAZO PRECISA RECEBER UM VALOR', tpExcluir);
+     fnc_ExibirMensagem(ATENDERDENUNCIAS_ATEND, 'CAMPO PRAZO PRECISA RECEBER UM VALOR', tpExcluir);
 end;
 
 procedure TfrmAtenderDenuncias.actVoltarExecute(Sender: TObject);
 begin
   changeTabAtender.ExecuteTarget(Self);
-  lblTitulo.Text := ATEND;
+  lblTitulo.Text := ATENDERDENUNCIAS_ATEND;
 end;
 
 procedure TfrmAtenderDenuncias.edtProcedClick(Sender: TObject);
@@ -250,12 +250,13 @@ procedure TfrmAtenderDenuncias.lvwDadosDenunciaItemClick(const Sender: TObject;
 var
   f: string;
 begin
-  DADO := lvwDenuncias.Items[lvwDenuncias.Selected.Index].Text;
-  lnIDDen := FUtilsCAD.RetornaID(TABDEN, QuotedStr(DADO), fd1, fd2, qry);
-  lnIDTip := FUtilsCAD.RetornaID(TABTIP,
-    QuotedStr(lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.Index].Text),
-    ft1, ft2, qry);
-  valor := 'codigo_tipodenuncia = ' + IntToStr(lnIDTip) +
+
+   DADO := lvwDenuncias.Items[lvwDenuncias.Selected.Index].Text;
+   lnIDDen := FUtilsCAD.RetornaID(TABDEN, QuotedStr(DADO), fd1, fd2, qry);
+   lnIDTip := FUtilsCAD.RetornaID(TABTIP,
+      QuotedStr(lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.Index].Text),
+           ft1, ft2, qry);
+   valor := 'codigo_tipodenuncia = ' + IntToStr(lnIDTip) +
     ' and codigo_denuncia ';
   lnIDDet := FUtilsCAD.RetornaID(VIEWDEN, IntToStr(lnIDDen), 'codigo_detalhe',
     valor, qry);
@@ -270,7 +271,6 @@ begin
   DADO := lvwDenuncias.Items[lvwDenuncias.Selected.Index].Text;
   lnIDDen := FUtilsCAD.RetornaID(TABDEN, QuotedStr(DADO), fd1, fd2, qry);
   FUtilsCAD.CDDenunciaDet(lvwDadosDenuncia, qry, VIEWDEN, IntToStr(lnIDDen));
-
 end;
 
 end.

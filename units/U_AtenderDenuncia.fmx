@@ -65,7 +65,9 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
               Enabled = True
               StyledSettings = [Family, Style, FontColor]
               ImageIndex = -1
+              Margins.Top = 10.000000000000000000
               Position.X = 20.000000000000000000
+              Position.Y = 10.000000000000000000
               Size.Width = 40.000000000000000000
               Size.Height = 40.000000000000000000
               Size.PlatformDefault = False
@@ -79,12 +81,13 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
               Enabled = True
               StyledSettings = [Family, Style, FontColor]
               ImageIndex = -1
+              Margins.Bottom = 10.000000000000000000
               Position.X = 20.000000000000000000
-              Position.Y = 373.000000000000000000
+              Position.Y = 363.000000000000000000
               Size.Width = 40.000000000000000000
               Size.Height = 40.000000000000000000
               Size.PlatformDefault = False
-              StyleLookup = 'playtoolbutton'
+              StyleLookup = 'organizetoolbutton'
               TabOrder = 1
               TextSettings.Font.Size = 16.000000000000000000
             end
@@ -94,8 +97,9 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
               Enabled = True
               StyledSettings = [Family, Style, FontColor]
               ImageIndex = -1
+              Margins.Top = 10.000000000000000000
               Position.X = 20.000000000000000000
-              Position.Y = 40.000000000000000000
+              Position.Y = 60.000000000000000000
               Size.Width = 40.000000000000000000
               Size.Height = 40.000000000000000000
               Size.PlatformDefault = False
