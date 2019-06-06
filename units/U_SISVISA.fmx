@@ -18522,7 +18522,7 @@ object frmSISVISA: TfrmSISVISA
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 12
-          Text = 'BAIXAR RECEITAS'
+          Text = 'BAIXAR RECEITAS     *'
         end
         object ListBoxGroupHeader4: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
@@ -18532,7 +18532,7 @@ object frmSISVISA: TfrmSISVISA
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 5
-          Text = 'RELAT'#211'RIOS'
+          Text = 'RELAT'#211'RIOS   * '
         end
         object ListBoxItem7: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
@@ -18542,7 +18542,7 @@ object frmSISVISA: TfrmSISVISA
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 7
-          Text = 'Receitas'
+          Text = 'Receitas  *'
         end
         object ListBoxItem8: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
@@ -18552,7 +18552,7 @@ object frmSISVISA: TfrmSISVISA
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 8
-          Text = 'Den'#250'ncias'
+          Text = 'Den'#250'ncias * '
         end
         object ListBoxItem9: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
@@ -18562,7 +18562,7 @@ object frmSISVISA: TfrmSISVISA
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 9
-          Text = 'Processos Administrativos'
+          Text = ' Processos Administrativos   -** '
         end
         object ListBoxGroupHeader5: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
