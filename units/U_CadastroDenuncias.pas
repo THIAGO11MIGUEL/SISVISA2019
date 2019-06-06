@@ -166,22 +166,24 @@ begin
 end;
 
 procedure TfrmCadastroDenuncias.addTipDenuncia;
-var
-  tipo: string;
-  cod: Integer;
-  lbxi: TListBoxItem;
+//var
+  //tipo: string;
+  //cod: Integer;
+  //lbxi: TListBoxItem;
 begin
-  lbxi := TListBoxItem.Create(Self);
-  tipo := ListView2.Items[ListView2.Selected.Index].Text;
-  lbxi.Text := tipo;
-  cod := FUtilsCAD.RetornaID(TABTIPDEN, QuotedStr(tipo), F1TBTPDEN,
-    F2TBTPDEN, qry);
-  ClientDataSet1.Append;
-  ClientDataSet1.FieldByName('CODIGO').AsInteger := cod;
-  ClientDataSet1.Post;
-  ClientDataSet1.Close;
-  ClientDataSet1.Open;
-  lbxTipDenuncia.AddObject(lbxi);
+    {
+    lbxi := TListBoxItem.Create(Self);
+      tipo := ListView2.Items[ListView2.Selected.Index].Text;
+      lbxi.Text := tipo;
+      cod := FUtilsCAD.RetornaID(TABTIPDEN, QuotedStr(tipo), F1TBTPDEN,
+        F2TBTPDEN, qry);
+      ClientDataSet1.Append;
+      ClientDataSet1.FieldByName('CODIGO').AsInteger := cod;
+      ClientDataSet1.Post;
+      ClientDataSet1.Close;
+      ClientDataSet1.Open;
+      lbxTipDenuncia.AddObject(lbxi);
+  }
 end;
 
 procedure TfrmCadastroDenuncias.edtTipDenunciaClick(Sender: TObject);

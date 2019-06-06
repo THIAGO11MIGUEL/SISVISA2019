@@ -4,7 +4,7 @@ interface
 
 uses
   FireDAC.Comp.Client, FMX.ListBox, FMX.ListView, FMX.Forms, FMX.DateTimeCtrls,
-  U_MensagemPadrao, FMX.Edit;
+  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient;
 
 type
   TUtilsView = class
@@ -13,6 +13,7 @@ type
   published
 
   public
+    procedure AddDenuncia(lv: TListView; lb: TListBox; cds: TClientDataSet; ds: TFDQuery);
     function VerificaProced(valor, prazo: TEdit): Boolean;
     procedure Incluir(Tabela, Campos, Valores: string; ds: TFDQuery);
     procedure Alterar(Tabela, Campos: string; ds: TFDQuery);
@@ -37,6 +38,27 @@ uses
   MultiDetailAppearanceU, U_SISVISA, Classes.Utils.Consts;
 
 { TUtilsView }
+
+procedure TUtilsView.AddDenuncia(lv: TListView; lb: TListBox;
+  cds: TClientDataSet; ds: TFDQuery);
+var
+  tipo: string;
+  cod: Integer;
+  lbxi: TListBoxItem;
+begin
+  lbxi := TListBoxItem.Create(Self);
+  tipo := lv.Items[lv.Selected.Index].Text;
+  lbxi.Text := tipo;
+  cod := RetornaID(TAB_DEN_TIP, QuotedStr(tipo), TAB_TIP_F1,
+    TAB_TIP_F2, ds);
+  cds.Append;
+  cds.FieldByName('CODIGO').AsInteger := cod;
+  cds.Post;
+  cds.Close;
+  cds.Open;
+  lb.AddObject(lbxi);
+
+end;
 
 procedure TUtilsView.Alterar(Tabela, Campos: string; ds: TFDQuery);
 var

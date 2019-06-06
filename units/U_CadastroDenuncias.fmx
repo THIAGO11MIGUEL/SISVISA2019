@@ -31,6 +31,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
             Size.Width = 808.000000000000000000
             inherited edtBuscaRegistro: TEdit
               Size.Width = 808.000000000000000000
+              Size.Height = 32.000000000000000000
             end
           end
           object lytDadosDenuncias: TLayout
