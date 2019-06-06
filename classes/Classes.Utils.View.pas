@@ -13,8 +13,10 @@ type
   published
 
   public
+    procedure fnc_ExibirMensagem(Tit, MSG: String;
+  tpMSG: TTipMensagem);
     procedure AddDenuncia(lv: TListView; lb: TListBox; cds: TClientDataSet; ds: TFDQuery);
-    function VerificaProced(valor, prazo: TEdit): Boolean;
+    function VerificaProced(valor, prazo, infracao: TEdit): Boolean;
     procedure Incluir(Tabela, Campos, Valores: string; ds: TFDQuery);
     procedure Alterar(Tabela, Campos: string; ds: TFDQuery);
     procedure Deletar(Tabela, Campos: string; ds: TFDQuery);
@@ -46,7 +48,7 @@ var
   cod: Integer;
   lbxi: TListBoxItem;
 begin
-  lbxi := TListBoxItem.Create(Self);
+  lbxi := TListBoxItem.Create(nil);
   tipo := lv.Items[lv.Selected.Index].Text;
   lbxi.Text := tipo;
   cod := RetornaID(TAB_DEN_TIP, QuotedStr(tipo), TAB_TIP_F1,
@@ -415,6 +417,15 @@ begin
   end;
 end;
 
+procedure TUtilsView.fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);
+var
+  FormMensagem: TfrmMensagemPadrao;
+begin
+  FormMensagem := TfrmMensagemPadrao.Create(nil);
+  FormMensagem.fnc_AtualizarMensagem(Tit, MSG, tpMSG);
+  frmSISVISA.ExibirMensagem(FormMensagem.layoutMSG);;
+end;
+
 function TUtilsView.RetornaID(Tabela, value, campo1, campo2: string;
   ds: TFDQuery): Integer;
 begin
@@ -435,13 +446,16 @@ begin
   Result := true;
 end;
 
-function TUtilsView.VerificaProced(valor, prazo: TEdit): Boolean;
+function TUtilsView.VerificaProced(valor, prazo, infracao: TEdit): Boolean;
 var vlr : string;
 begin
   vlr := valor.Text;
   if (vlr = NOTIFICACAO) or (vlr = AUTOINFRACAO) then
     if not (prazo.Text = '') then
-        Result := False
+    begin
+        Result := False;
+        infracao.Text := IntToStr(0);
+    end
     else
       Result := True;
 end;

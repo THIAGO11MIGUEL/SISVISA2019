@@ -56,6 +56,7 @@ const
  //Outros
    LISTA : string = ' - LISTA DE DENUNCIAS ';
    PROCED : string = ' - LISTA DE PROCEDIMENTOS EM DENÚNCIA';
+   TIP: string = ' - TIPO DENUNCIA';
    AUTOINFRACAO : string = 'AUTO DE INFRAÇÃO';
    NOTIFICACAO : string='NOTIFICAÇÃO';
 

@@ -104,27 +104,12 @@ type
     DT, DTRET: TDate;
     qry: TFDQuery;
     procedure GerenciaForms;
-    procedure fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);
-    procedure VerificaProced;
     procedure LimparCampos;
 
   const
     ATENDERDENUNCIAS_ATEND = 'ATENDIMENTO A DENÚNCIAS';
     LISTA = ' - LISTA DE DENUNCIAS ';
     PROCED = ' - LISTA DE PROCEDIMENTOS EM DENÚNCIA';
-    TABDEN = 'DENUNCIAS';
-    TABTIP = 'TIPODENUNCIA';
-    TABPROCED = 'DENUNCIAS_PROCED';
-    TABATEND = 'DENUNCIAS_ATEND';
-    VIEWDEN = 'VW_DENUNCIAS';
-    FIELDS = ' codigo_detalhe, endereco, tipdenuncia, datalanc ';
-    ft1 = 'cod_tipdenuncia';
-    ft2 = 'descricao';
-    fd1 = 'cod_denuncia';
-    fd2 = 'endereco';
-    fp1 = 'cod_proced';
-    FTABATEND =
-      'cod_detalhe, data, prazo, data_ret, num_infracao, cod_proced, obs';
   public
     { Public declarations }
   end;
@@ -136,39 +121,43 @@ implementation
 
 {$R *.fmx}
 
-uses U_SISVISA, SISVISA.Model.Denuncias, U_dmSISVISA;
+uses U_SISVISA, SISVISA.Model.Denuncias, U_dmSISVISA, Classes.Utils.Consts;
 
 procedure TfrmAtenderDenuncias.actAddDenunciaExecute(Sender: TObject);
 begin
-  FUtilsCAD.CDDenuncia(lvwDenuncias, qry, TABDEN);
+  FUtilsCAD.CDDenuncia(lvwDenuncias, qry, TAB_DEN);
   changeTabDenuncias.ExecuteTarget(Self);
   lblTitulo.Text := lblTitulo.Text + LISTA;
 end;
 
 procedure TfrmAtenderDenuncias.actAtendeDenunciaExecute(Sender: TObject);
+var
+  rt: Boolean;
 begin
-  if not(edtPrazo.Text = '') then
-  begin
-    obs := QuotedStr(edtOBS.Text);
-    prazo := StrToInt(edtPrazo.Text);
-    VerificaProced;
-    num_infracao := StrToInt(edtNumAutoInfracao.Text);
-    DT := dtedtDTAtend.Date;
-    DTRET := dtedtFimPrazo.Date;
+  rt := FUtilsCAD.VerificaProced(edtProced, edtPrazo, edtNumAutoInfracao);
+  case rt of
+    true:
+      FUtilsCAD.fnc_ExibirMensagem(MSG_ATEND, MSG_ATEND_PRAZO, tpExcluir);
+    false:
+      begin
+        obs := QuotedStr(edtOBS.Text);
+        prazo := StrToInt(edtPrazo.Text);
+        num_infracao := StrToInt(edtNumAutoInfracao.Text);
+        DT := dtedtDTAtend.Date;
+        DTRET := dtedtFimPrazo.Date;
 
-    CAMPOS := '(' + FTABATEND + ')';
-    VALORES := QuotedStr(IntToStr(lnIDDet)) + ', ' +
-      QuotedStr(FormatDateTime('DD.MM.YYYY', DT)) + ', ' +
-      QuotedStr(IntToStr(prazo)) + ', ' +
-      QuotedStr(FormatDateTime('DD.MM.YYYY', DTRET)) + ', ' +
-      QuotedStr(IntToStr(num_infracao)) + ', ' + QuotedStr(IntToStr(lnIDProced))
-      + ', ' + obs;
-    FUtilsCAD.Incluir(TABATEND, CAMPOS, VALORES, qry);
-    fnc_ExibirMensagem(ATENDERDENUNCIAS_ATEND, 'DENÚNCIA ATENDIDA COM SUCESSO!!!', tpBaixar);
-    LimparCampos;
-  end
-  else
-     fnc_ExibirMensagem(ATENDERDENUNCIAS_ATEND, 'CAMPO PRAZO PRECISA RECEBER UM VALOR', tpExcluir);
+        VALORES := QuotedStr(IntToStr(lnIDDet)) + ', ' +
+          QuotedStr(FormatDateTime('DD.MM.YYYY', DT)) + ', ' +
+          QuotedStr(IntToStr(prazo)) + ', ' +
+          QuotedStr(FormatDateTime('DD.MM.YYYY', DTRET)) + ', ' +
+          QuotedStr(IntToStr(num_infracao)) + ', ' +
+          QuotedStr(IntToStr(lnIDProced)) + ', ' + obs;
+        FUtilsCAD.Incluir(TAB_DEN_AT, FD_TAB_AT, VALORES, qry);
+        FUtilsCAD.fnc_ExibirMensagem(MSG_ATEND, MSG_ATEND_SUCESSO, tpBaixar);
+        LimparCampos;
+      end;
+  end;
+
 end;
 
 procedure TfrmAtenderDenuncias.actVoltarExecute(Sender: TObject);
@@ -179,20 +168,9 @@ end;
 
 procedure TfrmAtenderDenuncias.edtProcedClick(Sender: TObject);
 begin
-  FUtilsCAD.CDProcedDenuncia(lvwListaProced, qry, TABPROCED);
+  FUtilsCAD.CDProcedDenuncia(lvwListaProced, qry, TAB_DEN_PROCED);
   changeTabProced.ExecuteTarget(Self);
   lblTitulo.Text := lblTitulo.Text + PROCED;
-end;
-
-procedure TfrmAtenderDenuncias.fnc_ExibirMensagem(Tit, MSG: String;
-  tpMSG: TTipMensagem);
-var
-  FormMensagem: TfrmMensagemPadrao;
-begin
-  FormMensagem := TfrmMensagemPadrao.Create(Self);
-  FormMensagem.fnc_AtualizarMensagem(Tit, MSG, tpMSG);
-  frmSISVISA.ExibirMensagem(FormMensagem.layoutMSG);
-
 end;
 
 procedure TfrmAtenderDenuncias.FormCreate(Sender: TObject);
@@ -233,35 +211,28 @@ procedure TfrmAtenderDenuncias.lvwListaProcedItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
   DADO := lvwListaProced.Items[lvwListaProced.Selected.Index].Text;
-  lnIDProced := FUtilsCAD.RetornaID(TABPROCED, QuotedStr(DADO), fp1, ft2, qry);
+  lnIDProced := FUtilsCAD.RetornaID(TAB_DEN_PROCED, QuotedStr(DADO), TAB_PROC_F1, TAB_PROC_F2, qry);
   edtProced.Text := DADO;
   actVoltarExecute(Self);
-end;
-
-procedure TfrmAtenderDenuncias.VerificaProced;
-begin
-  if not(edtTipoDenuncia.Text = 'AUTO DE INFRAÇÃO') then
-    edtNumAutoInfracao.Text := IntToStr(0);
-  edtNumAutoInfracao.Enabled := False;
 end;
 
 procedure TfrmAtenderDenuncias.lvwDadosDenunciaItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 var
-  f: string;
+  tip: string;
 begin
 
-   DADO := lvwDenuncias.Items[lvwDenuncias.Selected.Index].Text;
-   lnIDDen := FUtilsCAD.RetornaID(TABDEN, QuotedStr(DADO), fd1, fd2, qry);
-   lnIDTip := FUtilsCAD.RetornaID(TABTIP,
-      QuotedStr(lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.Index].Text),
-           ft1, ft2, qry);
-   valor := 'codigo_tipodenuncia = ' + IntToStr(lnIDTip) +
-    ' and codigo_denuncia ';
-  lnIDDet := FUtilsCAD.RetornaID(VIEWDEN, IntToStr(lnIDDen), 'codigo_detalhe',
+  DADO := lvwDenuncias.Items[lvwDenuncias.Selected.Index].Text;
+  tip := QuotedStr(lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.
+    Index].Text);
+  lnIDDen := FUtilsCAD.RetornaID(TAB_DEN, QuotedStr(DADO), TAB_DEN_F1,
+    TAB_DEN_F2, qry);
+  lnIDTip := FUtilsCAD.RetornaID(TAB_DEN_TIP, tip, TAB_TIP_F1, TAB_TIP_F2, qry);
+  valor := VW_DEN_F4 + ' = ' + IntToStr(lnIDTip) + ' and ' + VW_DEN_F2;
+  lnIDDet := FUtilsCAD.RetornaID(TAB_VWDEN, IntToStr(lnIDDen), VW_DEN_F1,
     valor, qry);
   edtEnderecoDenuncia.Text := TModelDenuncias.New.ReceberDenuncia.
-    PreencherDenuncia(lnIDDen, lnIDTip, FIELDS, edtTipoDenuncia, dtedtDtLanc);
+    PreencherDenuncia(lnIDDen, lnIDTip, FD_VWDEN, edtTipoDenuncia, dtedtDtLanc);
   actVoltarExecute(Self);
 end;
 
@@ -269,8 +240,9 @@ procedure TfrmAtenderDenuncias.lvwDenunciasItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
   DADO := lvwDenuncias.Items[lvwDenuncias.Selected.Index].Text;
-  lnIDDen := FUtilsCAD.RetornaID(TABDEN, QuotedStr(DADO), fd1, fd2, qry);
-  FUtilsCAD.CDDenunciaDet(lvwDadosDenuncia, qry, VIEWDEN, IntToStr(lnIDDen));
+  lnIDDen := FUtilsCAD.RetornaID(TAB_DEN, QuotedStr(DADO), TAB_DEN_F1,
+    TAB_DEN_F2, qry);
+  FUtilsCAD.CDDenunciaDet(lvwDadosDenuncia, qry, TAB_VWDEN, IntToStr(lnIDDen));
 end;
 
 end.
