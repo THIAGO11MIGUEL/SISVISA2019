@@ -59,40 +59,12 @@ type
     FAcao: tpOperacao;
     { Private declarations }
     procedure fnc_GerenciaForms;
-    procedure fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);
     procedure SetAcao(const Value: tpOperacao);
   public
     { Public declarations }
     FUtilsCAD: TUtilsView;
-    TABELA, FIELDS, VALORES: string;
+    FIELDS, VALORES: string;
     qry: TFDQuery;
-  const
-    TABDEN = 'DENUNCIAS';
-    TABDENDET = 'DENUNCIAS_DETALHE';
-    TABTIPDEN = 'TIPODENUNCIA';
-    TABATENDDEN = 'DENUNCIAS_ATEND';
-    TABPROCEDDEN = 'DENUNCIAS_PROCED';
-    VIEWDEN = 'VW_DENUNCIAS';
-    LBL = 'CONFIGURAÇÕES GERAIS DO SISTEMA';
-    ARTIGO = 'ARTIGOS COD. SANITÁRIO';
-    BD = 'BANCO DE DADOS';
-    DEN = 'CADASTRO DE DENUNCIAS';
-    PROCED = 'CADASTRO DE PROCEDIMENTO EM DENÚNCIAS';
-    CADNOVO = ' -> INSERIR NOVO';
-    CADALTERA = '-> ALTERAR REGISTRO';
-    F1TBDEN = 'COD_DENUNCIA';
-    F2TBDEN = 'ENDERECO';
-    F1TBTPDEN = 'COD_TIPDENUNCIA';
-    F2TBTPDEN = 'DESCRICAO';
-    F1TBDET = 'COD_DETALHE';
-    F4TBDET = 'DATA';
-    F5TBDET = 'OBS';
-    F1TBPRODEN = 'COD_PROCED';
-    F2TBPRODEN = 'DESCRICAO';
-    F1TBATDEN = 'COD_ATEND';
-    F4TBATDEN = 'PRAZO';
-    F5TBATDEN = 'DATA_RET';
-    F6TBATDEN = 'NUM_INFRACAO';
   published
     property Acao: tpOperacao read FAcao write SetAcao;
   end;
@@ -104,7 +76,7 @@ implementation
 
 {$R *.fmx}
 
-uses U_SISVISA, U_dmSISVISA;
+uses U_SISVISA, U_dmSISVISA, Classes.Utils.Consts;
 
 procedure TfrmCadastroPadrao.actAlterarExecute(Sender: TObject);
 begin
@@ -115,8 +87,7 @@ end;
 
 procedure TfrmCadastroPadrao.actExcluirExecute(Sender: TObject);
 begin
-  fnc_ExibirMensagem('Exclusão de Cadastro', 'Excluido com Sucesso!!',
-    tpExcluir);
+  FUtilsCAD.fnc_ExibirMensagem(MSG_EXCLUIR, MSG_eXCLUIDO, tpExcluir);
 end;
 
 procedure TfrmCadastroPadrao.actInserirExecute(Sender: TObject);
@@ -124,7 +95,6 @@ begin
   Self.Acao := tpInsert;
   changeTabCadastro.ExecuteTarget(Self);
   lblTitulo.Text := lblTitulo.Text + CADNOVO;
-  // fnc_ExibirMensagem('Cadastro Novo', 'Voce entrou no Cadastro', tpBaixar);
 end;
 
 procedure TfrmCadastroPadrao.actSalvarExecute(Sender: TObject);
@@ -132,14 +102,12 @@ begin
   case Acao of
     tpInsert:
       begin
-        fnc_ExibirMensagem('Inserir Registro Novo',
-          'Salvo com Sucesso!!!', tpSalvo);
+        FUtilsCAD.fnc_ExibirMensagem(MSG_INSERIR, MSG_SUCESSO, tpSalvo);
       end;
 
     tpUpdate:
       begin
-        fnc_ExibirMensagem('Atualizar Registro',
-          'Salvo com Sucesso!!!', tpSalvo);
+        FUtilsCAD.fnc_ExibirMensagem(MSG_ALTERAR, MSG_SUCESSO, tpSalvo);
       end;
   end;
 
@@ -187,16 +155,6 @@ end;
 procedure TfrmCadastroPadrao.SetAcao(const Value: tpOperacao);
 begin
   FAcao := Value;
-end;
-
-procedure TfrmCadastroPadrao.fnc_ExibirMensagem(Tit, MSG: String;
-  tpMSG: TTipMensagem);
-var
-  FormMensagem: TfrmMensagemPadrao;
-begin
-  FormMensagem := TfrmMensagemPadrao.Create(Self);
-  FormMensagem.fnc_AtualizarMensagem(Tit, MSG, tpMSG);
-  frmSISVISA.ExibirMensagem(FormMensagem.layoutMSG);
 end;
 
 end.

@@ -28,7 +28,7 @@ type
     Panel1: TPanel;
     edtCaminhoBDConectar: TEdit;
     Button1: TButton;
-    ListView1: TListView;
+    lvwCaminhoBD: TListView;
     procedure actSalvarExecute(Sender: TObject);
     procedure actVoltarExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -37,9 +37,10 @@ type
       const AItem: TListViewItem);
     procedure actAlterarExecute(Sender: TObject);
     procedure actExcluirExecute(Sender: TObject);
+    procedure actInserirExecute(Sender: TObject);
   private
     { Private declarations }
-    f1, f2, TABELA, FIELDS, VALORES, DESC, CAMINHO: string;
+    VALORES, DESC, CAMINHO: string;
     lnIDCaminho: integer;
     procedure LimparCampos;
   public
@@ -53,13 +54,14 @@ implementation
 
 {$R *.fmx}
 
-uses U_dmSISVISA, SISVISA.Model.CaminhoBD, U_SISVISA, FireDAC.Comp.Client;
+uses U_dmSISVISA, SISVISA.Model.CaminhoBD, U_SISVISA, FireDAC.Comp.Client,
+  Classes.Utils.Consts;
 
 procedure TfrmCadastroBD.actAlterarExecute(Sender: TObject);
 begin
-  FIELDS := 'caminho_bd';
-  DESC := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDCaminho := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
+  DESC := QuotedStr(lvwCaminhoBD.Items[lvwCaminhoBD.Selected.Index].Text);
+  lnIDCaminho := FUtilsCAD.RetornaID(TAB_CAMINHO, DESC, TAB_CAM_F1,
+    TAB_CAM_F2, qry);
   edtDescricaoBanco.Text := DESC;
   edtCaminhoBanco.Text := TModelCaminhoDb.New.ReceberCaminhoBD()
     .PreencherCaminho(lnIDCaminho);
@@ -74,37 +76,43 @@ end;
 
 procedure TfrmCadastroBD.actExcluirExecute(Sender: TObject);
 begin
-  DESC := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDCaminho := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
-  VALORES := ' WHERE cod_caminhobd = ' + IntToStr(lnIDCaminho);
-  FUtilsCAD.Deletar(TABELA, VALORES, qry);
+  DESC := QuotedStr(lvwCaminhoBD.Items[lvwCaminhoBD.Selected.Index].Text);
+  lnIDCaminho := FUtilsCAD.RetornaID(TAB_CAMINHO, DESC, TAB_CAM_F1,
+    TAB_CAM_F2, qry);
+  VALORES := ' WHERE ' + TAB_CAM_F1 + ' = ' + IntToStr(lnIDCaminho);
+  FUtilsCAD.Deletar(TAB_CAMINHO, VALORES, qry);
   inherited;
-  FUtilsCAD.CDCaminho(ListView1, qry, TABELA);
+  FUtilsCAD.CDCaminho(lvwCaminhoBD, qry, TAB_CAMINHO);
+end;
+
+procedure TfrmCadastroBD.actInserirExecute(Sender: TObject);
+begin
+  inherited;
+  LimparCampos;
 end;
 
 procedure TfrmCadastroBD.actSalvarExecute(Sender: TObject);
 begin
-  FIELDS := (' (descricao, caminho_bd)');
   DESC := QuotedStr(edtDescricaoBanco.Text);
   CAMINHO := QuotedStr(edtCaminhoBanco.Text);
   case Acao of
     tpInsert:
-      VALORES := DESC + ',' + CAMINHO;
+      begin
+        VALORES := DESC + ',' + CAMINHO;
+        FUtilsCAD.Incluir(TAB_CAMINHO, FD_TAB_CAMINHO, VALORES, qry);
+      end;
     tpUpdate:
-      VALORES := ' set descricao = ' + DESC + ',caminho_bd = ' + CAMINHO +
-        ' where cod_caminhobd = ' + IntToStr(lnIDCaminho);
+      begin
+        VALORES := ' set ' + TAB_CAM_F2 + ' = ' + DESC + ',' + TAB_CAM_F3 +
+          ' = ' + CAMINHO + ' where ' + TAB_CAM_F1 + ' = ' +
+          IntToStr(lnIDCaminho);
+        FUtilsCAD.Alterar(TAB_CAMINHO, VALORES, qry);
+      end;
+
   end;
 
-  if lnIDCaminho <> 0 then
-  begin
-    FUtilsCAD.Alterar(TABELA, VALORES, qry);
-  end
-  else
-  begin
-    FUtilsCAD.Incluir(TABELA, FIELDS, VALORES, qry);
-  end;
   inherited;
-  FUtilsCAD.CDCaminho(ListView1, qry, TABELA);
+  FUtilsCAD.CDCaminho(lvwCaminhoBD, qry, TAB_CAMINHO);
   lblTitulo.Text := BD;
   LimparCampos;
 end;
@@ -117,29 +125,24 @@ end;
 
 procedure TfrmCadastroBD.FormCreate(Sender: TObject);
 begin
+  FUtilsCAD.CDCaminho(lvwCaminhoBD, qry, TAB_CAMINHO);
   inherited;
-  f1 := 'cod_caminhobd';
-  f2 := 'descricao';
-  TABELA := 'CAMINHOBD';
-  FIELDS := '';
-  VALORES := '';
-  DESC := '';
-  CAMINHO := '';
-  FUtilsCAD.CDCaminho(ListView1, qry, TABELA);
 end;
 
 procedure TfrmCadastroBD.LimparCampos;
 begin
   edtCaminhoBanco.Text := '';
   edtDescricaoBanco.Text := '';
+  CAMINHO := '';
+  DESC := '';
 end;
 
 procedure TfrmCadastroBD.ListView1ItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
-  qry := dmSISVISA.FDqryCadastros;
-  DESC := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDCaminho := FUtilsCAD.RetornaID(TABELA, QuotedStr(DESC), f1, f2, qry);
+  DESC := QuotedStr(lvwCaminhoBD.Items[lvwCaminhoBD.Selected.Index].Text);
+  lnIDCaminho := FUtilsCAD.RetornaID(TAB_CAMINHO, (DESC), TAB_CAM_F1,
+    TAB_CAM_F2, qry);
   inherited;
   edtCaminhoBDConectar.Text := TModelCaminhoDb.New.ReceberCaminhoBD()
     .PreencherCaminho(lnIDCaminho);

@@ -14,11 +14,6 @@
         ExplicitSize.cx = 71.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutDados: TLayout
-          inherited ToolBar2: TToolBar
-            inherited edtBuscaRegistro: TEdit
-              Size.Height = 32.000000000000000000
-            end
-          end
           object ListView1: TListView
             ItemAppearanceClassName = 'TMultiDetailItemAppearance'
             ItemEditAppearanceClassName = 'TMultiDetailDeleteAppearance'

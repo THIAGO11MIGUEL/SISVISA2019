@@ -27,6 +27,7 @@ inherited frmCadastroTipoDenuncia: TfrmCadastroTipoDenuncia
             Size.Width = 827.000000000000000000
             inherited edtBuscaRegistro: TEdit
               Size.Width = 827.000000000000000000
+              Size.Height = 55.000000000000000000
             end
           end
           object ListView1: TListView

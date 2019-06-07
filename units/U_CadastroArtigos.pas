@@ -51,7 +51,7 @@ implementation
 
 uses
   U_dmSISVISA, FireDAC.Comp.Client, SISVISA.Model.CaminhoBD,
-  SISVISA.Model.Artigos;
+  SISVISA.Model.Artigos, Classes.Utils.Consts;
 
 {$R *.fmx}
 
@@ -79,7 +79,6 @@ end;
 
 procedure TfrmCadastroArtigos.actSalvarExecute(Sender: TObject);
 begin
-  FIELDS := (' (num_artigo, paragrafo, inciso, descricao)');
   NUM := QuotedStr(edtDescriçãoArtigo.Text);
   PARAG := QuotedStr(edtParagrafo.Text);
   INCISO := QuotedStr(edtInciso.Text);
@@ -87,28 +86,23 @@ begin
 
   case Acao of
     tpInsert:
+    begin
       VALORES := IntToStr(NUMARTIGO) + ',' + PARAG + ',' + INCISO + ',' + NUM;
+      FUtilsCAD.Incluir(TAB_ARTIGO, FD_TAB_ART, VALORES, qry);
+    end;
     tpUpdate:
-      VALORES := ' set num_artigo = ' + IntToStr(NUMARTIGO) + ', paragrafo =' + PARAG +
-        ', inciso = ' + INCISO + ',' + 'descricao = ' + NUM +
-        ' where (cod_artigo = ' + IntToStr(lnIDArtigo) + ')';
-  end;
+      begin
+        VALORES := ' set num_artigo = ' + IntToStr(NUMARTIGO) + ', paragrafo ='
+          + PARAG + ', inciso = ' + INCISO + ',' + 'descricao = ' + NUM +
+          ' where (cod_artigo = ' + IntToStr(lnIDArtigo) + ')';
 
-  if lnIDArtigo <> 0 then
-  begin
-    FUtilsCAD.Alterar(TABELA, VALORES, qry);
-  end
-  else
-  begin
-    FUtilsCAD.Incluir(TABELA, FIELDS, VALORES, qry);
+        FUtilsCAD.Alterar(TABELA, VALORES, qry);
+      end;
   end;
-
   FUtilsCAD.CDArtigo(ListView1, qry, TABELA);
-  lblTitulo.Text := BD;
-  LimparCampos;
-
-  inherited;
   lblTitulo.Text := ARTIGO;
+  LimparCampos;
+  inherited;
 end;
 
 procedure TfrmCadastroArtigos.actVoltarExecute(Sender: TObject);

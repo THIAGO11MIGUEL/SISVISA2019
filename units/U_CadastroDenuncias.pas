@@ -105,8 +105,8 @@ begin
       end;
     tpUpdate:
       begin
-        lnIDDenuncia := FUtilsCAD.RetornaID(TAB_DEN, ENDERECO, F1TBDEN,
-          F2TBDEN, qry);
+        lnIDDenuncia := FUtilsCAD.RetornaID(TAB_DEN, ENDERECO, TAB_DEN_F1,
+          TAB_DEN_F2, qry);
         FIELDS := ' set ' + TAB_DEN_F2 + ' = ' + ENDERECO + ' where ' + TAB_DEN_F1 +
           ' = ' + IntToStr(lnIDDenuncia);
         VALORES := FIELDS;
@@ -137,7 +137,7 @@ begin
     ClientDataSet1.Next;
   end;
 
-  FUtilsCAD.CDDenuncia(lvwDadosDenuncia, qry, TABDEN);
+  FUtilsCAD.CDDenuncia(lvwDadosDenuncia, qry, TAB_DEN);
   lblTitulo.Text := DEN;
   LimparCampos;
   inherited;
@@ -152,14 +152,14 @@ end;
 
 procedure TfrmCadastroDenuncias.edtTipDenunciaClick(Sender: TObject);
 begin
-  FUtilsCAD.CDTipDenuncia(ListView2, qry, TABTIPDEN);
+  FUtilsCAD.CDTipDenuncia(ListView2, qry, TAB_DEN_TIP);
   changeTabTipDenuncia.ExecuteTarget(Self);
   lblTitulo.Text := lblTitulo.Text + TIP;
 end;
 
 procedure TfrmCadastroDenuncias.FormCreate(Sender: TObject);
 begin
-  FUtilsCAD.CDDenuncia(lvwDadosDenuncia, qry, TABDEN);
+  FUtilsCAD.CDDenuncia(lvwDadosDenuncia, qry, TAB_DEN);
   inherited;
 end;
 
@@ -187,8 +187,8 @@ procedure TfrmCadastroDenuncias.lvwDadosDenunciaItemClick(const Sender: TObject;
 begin
   LimparCampos;
   ENDERECO := lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.Index].Text;
-  lnIDDenuncia := FUtilsCAD.RetornaID(TABDEN, QuotedStr(ENDERECO), F1TBDEN, F2TBDEN, qry);
-  FUtilsCAD.CDDenunciaDet(lvwHistoricoDenuncia, qry, VIEWDEN, IntToStr(lnIDDenuncia));
+  lnIDDenuncia := FUtilsCAD.RetornaID(TAB_DEN, QuotedStr(ENDERECO), TAB_DEN_F1, TAB_DEN_F2, qry);
+  FUtilsCAD.CDDenunciaDet(lvwHistoricoDenuncia, qry, TAB_VWDEN, IntToStr(lnIDDenuncia));
   lytHistDenuncias.Visible := True;
 end;
 

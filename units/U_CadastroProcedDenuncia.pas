@@ -23,6 +23,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure actAlterarExecute(Sender: TObject);
     procedure actExcluirExecute(Sender: TObject);
+    procedure actVoltarExecute(Sender: TObject);
   private
     { Private declarations }
     PROCE: string;
@@ -39,13 +40,16 @@ implementation
 
 {$R *.fmx}
 
+uses Classes.Utils.Consts;
+
 procedure TfrmCadastroProcedDenuncia.actAlterarExecute(Sender: TObject);
 begin
   PROCE := lvwDadosProcedDenuncia.Items[lvwDadosProcedDenuncia.Selected.
     Index].Text;
-  lnIDProcedDenun := FUtilsCAD.RetornaID(TABPROCEDDEN, QuotedStr(PROCE),
-    F1TBPRODEN, F2TBPRODEN, qry);
+  lnIDProcedDenun := FUtilsCAD.RetornaID(TAB_DEN_PROCED, QuotedStr(PROCE),
+    TAB_PROC_F1, TAB_PROC_F2, qry);
   edtProcedDenuncia.Text := PROCE;
+  lblTitulo.Text := PROC + CADALTERA;
   inherited;
 end;
 
@@ -53,42 +57,47 @@ procedure TfrmCadastroProcedDenuncia.actExcluirExecute(Sender: TObject);
 begin
   PROCE := lvwDadosProcedDenuncia.Items[lvwDadosProcedDenuncia.Selected.
     Index].Text;
-  lnIDProcedDenun := FUtilsCAD.RetornaID(TABPROCEDDEN, QuotedStr(PROCE),
-    F1TBPRODEN, F2TBPRODEN, qry);
-  VALORES := ' WHERE cod_proced = ' + IntToStr(lnIDProcedDenun);
-  FUtilsCAD.Deletar(TABPROCEDDEN, VALORES, qry);
+  lnIDProcedDenun := FUtilsCAD.RetornaID(TAB_DEN_PROCED, QuotedStr(PROCE),
+    TAB_PROC_F1, TAB_PROC_F2, qry);
+  VALORES := ' WHERE ' + TAB_PROC_F1 + ' = ' + IntToStr(lnIDProcedDenun);
+  FUtilsCAD.Deletar(TAB_DEN_PROCED, VALORES, qry);
   inherited;
-  FUtilsCAD.CDProcedDenuncia(lvwDadosProcedDenuncia, qry, TABPROCEDDEN);
+  FUtilsCAD.CDProcedDenuncia(lvwDadosProcedDenuncia, qry, TAB_DEN_PROCED);
 end;
 
 procedure TfrmCadastroProcedDenuncia.actSalvarExecute(Sender: TObject);
 begin
-  FIELDS := (' (descricao)');
   PROCE := QuotedStr(edtProcedDenuncia.Text);
   case Acao of
     tpInsert:
       begin
         VALORES := PROCE;
-        FUtilsCAD.Incluir(TABPROCEDDEN, FIELDS, VALORES, qry);
+        FUtilsCAD.Incluir(TAB_DEN_PROCED, FD_TAB_PROC, VALORES, qry);
       end;
     tpUpdate:
       begin
-        VALORES := ' set descricao = ' + PROCE + ' where cod_proced = ' +
-          IntToStr(lnIDProcedDenun);
-        FUtilsCAD.Alterar(TABPROCEDDEN, VALORES, qry);
+        VALORES := ' set ' + TAB_PROC_F2 + ' = ' + PROCE + ' where ' +
+          TAB_PROC_F1 + ' = ' + IntToStr(lnIDProcedDenun);
+        FUtilsCAD.ALTERAR(TAB_DEN_PROCED, VALORES, qry);
       end;
   end;
 
   inherited;
-  FUtilsCAD.CDProcedDenuncia(lvwDadosProcedDenuncia, qry, TABPROCEDDEN);
+  FUtilsCAD.CDProcedDenuncia(lvwDadosProcedDenuncia, qry, TAB_DEN_PROCED);
   lblTitulo.Text := PROCED;
   LimparCampos;
+end;
+
+procedure TfrmCadastroProcedDenuncia.actVoltarExecute(Sender: TObject);
+begin
+  inherited;
+  lblTitulo.Text := PROC;
 end;
 
 procedure TfrmCadastroProcedDenuncia.FormCreate(Sender: TObject);
 begin
   LimparCampos;
-  FUtilsCAD.CDProcedDenuncia(lvwDadosProcedDenuncia, qry, TABPROCEDDEN);
+  FUtilsCAD.CDProcedDenuncia(lvwDadosProcedDenuncia, qry, TAB_DEN_PROCED);
   inherited;
 end;
 

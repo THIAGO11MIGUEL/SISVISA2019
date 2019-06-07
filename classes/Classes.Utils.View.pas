@@ -13,9 +13,9 @@ type
   published
 
   public
-    procedure fnc_ExibirMensagem(Tit, MSG: String;
-  tpMSG: TTipMensagem);
-    procedure AddDenuncia(lv: TListView; lb: TListBox; cds: TClientDataSet; ds: TFDQuery);
+    procedure fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);
+    procedure AddDenuncia(lv: TListView; lb: TListBox; cds: TClientDataSet;
+      ds: TFDQuery);
     function VerificaProced(valor, prazo, infracao: TEdit): Boolean;
     procedure Incluir(Tabela, Campos, Valores: string; ds: TFDQuery);
     procedure Alterar(Tabela, Campos: string; ds: TFDQuery);
@@ -24,7 +24,8 @@ type
     procedure CDArtigo(lv: TListView; dsArtigo: TFDQuery; Tabela: string);
     procedure CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery;
       Tabela: string);
-    procedure CDProcedDenuncia(lv: TListView; dsProcedDenuncia: TFDQuery; Tabela: string);
+    procedure CDProcedDenuncia(lv: TListView; dsProcedDenuncia: TFDQuery;
+      Tabela: string);
     procedure CDDenuncia(lv: TListView; dsDenuncia: TFDQuery; Tabela: string);
     procedure CDDenunciaDet(lv: TListView; dsDenunciaDet: TFDQuery;
       Tabela, codden: string);
@@ -51,8 +52,7 @@ begin
   lbxi := TListBoxItem.Create(nil);
   tipo := lv.Items[lv.Selected.Index].Text;
   lbxi.Text := tipo;
-  cod := RetornaID(TAB_DEN_TIP, QuotedStr(tipo), TAB_TIP_F1,
-    TAB_TIP_F2, ds);
+  cod := RetornaID(TAB_DEN_TIP, QuotedStr(tipo), TAB_TIP_F1, TAB_TIP_F2, ds);
   cds.Append;
   cds.FieldByName('CODIGO').AsInteger := cod;
   cds.Post;
@@ -205,7 +205,7 @@ begin
         lvItem.Detail := dsDenunciaDet.FieldByName('codigo_detalhe').AsString;
         lvItem.Text := dsDenunciaDet.FieldByName('tipdenuncia').AsString;
         lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
-           dsDenunciaDet.FieldByName('datalanc').AsString;
+          dsDenunciaDet.FieldByName('datalanc').AsString;
         dsDenunciaDet.Next;
       end;
 
@@ -447,17 +447,18 @@ begin
 end;
 
 function TUtilsView.VerificaProced(valor, prazo, infracao: TEdit): Boolean;
-var vlr : string;
+var
+  vlr: string;
 begin
   vlr := valor.Text;
   if (vlr = NOTIFICACAO) or (vlr = AUTOINFRACAO) then
-    if not (prazo.Text = '') then
+    if not(prazo.Text = '') then
     begin
-        Result := False;
-        infracao.Text := IntToStr(0);
+      Result := False;
+      infracao.Text := IntToStr(0);
     end
     else
-      Result := True;
+      Result := true;
 end;
 
 end.

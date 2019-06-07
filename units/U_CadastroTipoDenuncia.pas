@@ -39,14 +39,15 @@ var
 implementation
 
 uses
-  FireDAC.Comp.Client, U_dmSISVISA, SISVISA.Model.CaminhoBD;
+  FireDAC.Comp.Client, U_dmSISVISA, SISVISA.Model.CaminhoBD,
+  Classes.Utils.Consts;
 
 {$R *.fmx}
 
 procedure TfrmCadastroTipoDenuncia.actAlterarExecute(Sender: TObject);
 begin
   TIPO := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDTpDenun := FUtilsCAD.RetornaID(TABTIPDEN, QuotedStr(TIPO), F1TBTPDEN, F2TBTPDEN, qry);
+  lnIDTpDenun := FUtilsCAD.RetornaID(TAB_DEN_TIP, QuotedStr(TIPO), TAB_TIP_F1, TAB_TIP_F2, qry);
   edtTipoDenuncia.Text := TIPO;
   inherited;
 end;
@@ -54,33 +55,32 @@ end;
 procedure TfrmCadastroTipoDenuncia.actExcluirExecute(Sender: TObject);
 begin
   TIPO := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDTpDenun := FUtilsCAD.RetornaID(TABTIPDEN, QuotedStr(TIPO), F1TBTPDEN, F2TBTPDEN, qry);
-  VALORES := ' WHERE cod_tipdenuncia = ' + IntToStr(lnIDTpDenun);
-  FUtilsCAD.Deletar(TABELA, VALORES, qry);
+  lnIDTpDenun := FUtilsCAD.RetornaID(TAB_DEN_TIP, QuotedStr(TIPO), TAB_TIP_F1, TAB_TIP_F2, qry);
+  VALORES := ' WHERE ' + TAB_TIP_F1 + ' = ' + IntToStr(lnIDTpDenun);
+  FUtilsCAD.Deletar(TAB_DEN_TIP, VALORES, qry);
   inherited;
-  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABTIPDEN);
+  FUtilsCAD.CDTipDenuncia(ListView1, qry, TAB_DEN_TIP);
 end;
 
 procedure TfrmCadastroTipoDenuncia.actSalvarExecute(Sender: TObject);
 begin
-  FIELDS := (' (descricao)');
   TIPO := QuotedStr(edtTipoDenuncia.Text);
   case Acao of
     tpInsert:
       begin
         VALORES := TIPO;
-        FUtilsCAD.Incluir(TABTIPDEN, FIELDS, VALORES, qry);
+        FUtilsCAD.Incluir(TAB_DEN_TIP, FD_TAB_TIP, VALORES, qry);
       end;
     tpUpdate:
       begin
-        VALORES := ' set descricao = ' + TIPO + ' where cod_tipdenuncia = ' +
+        VALORES := ' set ' +TAB_TIP_F2+ ' = ' +TIPO+ ' where ' +TAB_TIP_F1+ ' = ' +
           IntToStr(lnIDTpDenun);
-        FUtilsCAD.Alterar(TABTIPDEN, VALORES, qry);
+        FUtilsCAD.Alterar(TAB_DEN_TIP, VALORES, qry);
       end;
   end;
 
   inherited;
-  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABTIPDEN);
+  FUtilsCAD.CDTipDenuncia(ListView1, qry, TAB_DEN_TIP);
   lblTitulo.Text := BD;
   LimparCampos;
 end;
@@ -88,7 +88,7 @@ end;
 procedure TfrmCadastroTipoDenuncia.FormCreate(Sender: TObject);
 begin
   LimparCampos;
-  FUtilsCAD.CDTipDenuncia(ListView1, qry, TABTIPDEN);
+  FUtilsCAD.CDTipDenuncia(ListView1, qry, TAB_DEN_TIP);
   inherited;
 end;
 
