@@ -39,6 +39,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
             Size.Width = 823.000000000000000000
             inherited edtBuscaRegistro: TEdit
               Size.Width = 823.000000000000000000
+              Size.Height = 32.000000000000000000
             end
           end
           object lytDadosDenuncias: TLayout
@@ -53,7 +54,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
               Size.Height = 415.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
-              object lvwHistoricoDenuncia: TListView
+              object lvwDetalheDenuncia: TListView
                 ItemAppearanceClassName = 'TMultiDetailItemAppearance'
                 ItemEditAppearanceClassName = 'TMultiDetailDeleteAppearance'
                 HeaderAppearanceClassName = 'TListHeaderObjects'
@@ -63,6 +64,18 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                 Size.Height = 415.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
+                OnItemClick = lvwDetalheDenunciaItemClick
+              end
+              object lvwHist_Denuncias: TListView
+                ItemAppearanceClassName = 'TMultiDetailItemAppearance'
+                ItemEditAppearanceClassName = 'TMultiDetailDeleteAppearance'
+                HeaderAppearanceClassName = 'TListHeaderObjects'
+                FooterAppearanceClassName = 'TListHeaderObjects'
+                Align = Client
+                Size.Width = 231.000000000000000000
+                Size.Height = 415.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
               end
             end
             object lvwDadosDenuncia: TListView
@@ -363,8 +376,8 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
     end
   end
   inherited ActionList1: TActionList
-    Left = 744
-    Top = 280
+    Left = 768
+    Top = 424
     object changeTabTipDenuncia: TChangeTabAction
       Category = 'Tab'
       Tab = tabTipDenuncia
@@ -385,8 +398,8 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
     Active = True
     Aggregates = <>
     Params = <>
-    Left = 752
-    Top = 352
+    Left = 768
+    Top = 480
     object ClientDataSet1CODIGO: TIntegerField
       FieldName = 'CODIGO'
     end

@@ -29,6 +29,8 @@ type
     procedure CDDenuncia(lv: TListView; dsDenuncia: TFDQuery; Tabela: string);
     procedure CDDenunciaDet(lv: TListView; dsDenunciaDet: TFDQuery;
       Tabela, codden: string);
+    procedure CDDenunciaAtend(lv: TListView; dsDenunciaAtend: TFDQuery;
+      Tabela, coddet: string);
     function RetornaID(Tabela, value, campo1, campo2: string;
       ds: TFDQuery): Integer;
     function ValidarReceita: Boolean;
@@ -172,6 +174,52 @@ begin
 
       lv.EndUpdate;
     end;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
+end;
+
+procedure TUtilsView.CDDenunciaAtend(lv: TListView; dsDenunciaAtend: TFDQuery;
+  Tabela, coddet: string);
+var
+  lvItem: TListViewItem;
+begin
+  dsDenunciaAtend := TFDQuery.Create(nil);
+  dsDenunciaAtend.Close;
+  dsDenunciaAtend.sql.Clear;
+  dsDenunciaAtend.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsDenunciaAtend.sql.Add('select * from ' + Tabela + ' where codigo_detalhe = '
+    + coddet);
+  dsDenunciaAtend.Prepared := true;
+  dsDenunciaAtend.Open;
+
+  try
+    if dsDenunciaAtend.RecordCount <> 0 then
+    begin
+      lv.Items.Clear;
+      lv.BeginUpdate;
+      while not dsDenunciaAtend.Eof do
+      begin
+        lvItem := lv.Items.Add;
+        lvItem.Detail := dsDenunciaAtend.FieldByName
+          ('codigo_atendimento').AsString;
+        lvItem.Text := dsDenunciaAtend.FieldByName('DATA_ATEND').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
+        dsDenunciaAtend.FieldByName('PROCEDIMENTO').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail2] :=
+        dsDenunciaAtend.FieldByName('PRAZO').AsString + ' DIAS' + ' - ' +
+        dsDenunciaAtend.FieldByName('DATA_RETORNO').AsString;
+
+        dsDenunciaAtend.Next;
+      end;
+
+      lv.EndUpdate;
+    end
+    else
+      lv.Items.Clear;
 
   except
     on E: Exception do

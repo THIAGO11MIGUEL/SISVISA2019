@@ -2,7 +2,7 @@ object frmSISVISA: TfrmSISVISA
   Left = 0
   Top = 0
   Caption = 'BlankForm'
-  ClientHeight = 586
+  ClientHeight = 596
   ClientWidth = 872
   StyleBook = StyleBook1
   WindowState = wsMaximized
@@ -13694,7 +13694,7 @@ object frmSISVISA: TfrmSISVISA
   object Layout1: TLayout
     Align = Client
     Size.Width = 872.000000000000000000
-    Size.Height = 486.000000000000000000
+    Size.Height = 496.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object Image1: TImage
@@ -18399,14 +18399,14 @@ object frmSISVISA: TfrmSISVISA
       Align = Client
       MarginWrapMode = Center
       Size.Width = 622.000000000000000000
-      Size.Height = 486.000000000000000000
+      Size.Height = 496.000000000000000000
       Size.PlatformDefault = False
       WrapMode = Stretch
     end
     object layoutPrincipal: TLayout
       Align = Client
       Size.Width = 622.000000000000000000
-      Size.Height = 486.000000000000000000
+      Size.Height = 496.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
     end
@@ -18414,7 +18414,7 @@ object frmSISVISA: TfrmSISVISA
       Mode = Panel
       NavigationPaneOptions.CollapsedWidth = 250.000000000000000000
       Size.Width = 250.000000000000000000
-      Size.Height = 486.000000000000000000
+      Size.Height = 496.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
       object ToolBar2: TToolBar
@@ -18440,7 +18440,7 @@ object frmSISVISA: TfrmSISVISA
       object ListBox1: TListBox
         Align = Client
         Size.Width = 250.000000000000000000
-        Size.Height = 431.000000000000000000
+        Size.Height = 441.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
         DisableFocusEffect = True
@@ -18449,7 +18449,7 @@ object frmSISVISA: TfrmSISVISA
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
         Viewport.Width = 242.000000000000000000
-        Viewport.Height = 431.000000000000000000
+        Viewport.Height = 441.000000000000000000
         object ListBoxGroupHeader2: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
@@ -18587,7 +18587,7 @@ object frmSISVISA: TfrmSISVISA
           OnClick = ToolbarCloseButtonClick
         end
         object StatusBar1: TStatusBar
-          Position.Y = 412.000000000000000000
+          Position.Y = 422.000000000000000000
           ShowSizeGrip = True
           Size.Width = 242.000000000000000000
           Size.Height = 19.000000000000000000
@@ -18631,7 +18631,7 @@ object frmSISVISA: TfrmSISVISA
   end
   object layoutMensagem: TLayout
     Align = Bottom
-    Position.Y = 486.000000000000000000
+    Position.Y = 496.000000000000000000
     Size.Width = 872.000000000000000000
     Size.Height = 100.000000000000000000
     Size.PlatformDefault = False

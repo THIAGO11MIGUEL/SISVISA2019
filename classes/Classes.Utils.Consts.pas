@@ -11,6 +11,7 @@ const
   TAB_DEN_PROCED: string = 'DENUNCIAS_PROCED';
   TAB_DEN_TIP: string = 'TIPODENUNCIA';
   TAB_VWDEN: string = 'VW_DENUNCIAS';
+  TAB_VWHIST: string = 'VW_HISTORICO_DENUNCIA';
   TAB_CAMINHO: string = 'CAMINHOBD';
   TAB_ARTIGO: string = 'ARTIGOS';
   TAB_UNIDADE: string = 'UNIDADES';

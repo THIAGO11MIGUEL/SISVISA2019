@@ -48,7 +48,8 @@ type
     lytDadosDenuncias: TLayout;
     lytHistDenuncias: TLayout;
     lvwDadosDenuncia: TListView;
-    lvwHistoricoDenuncia: TListView;
+    lvwDetalheDenuncia: TListView;
+    lvwHist_Denuncias: TListView;
     procedure edtTipDenunciaClick(Sender: TObject);
     procedure actVoltarTabCadExecute(Sender: TObject);
     procedure ListView2ItemClick(const Sender: TObject;
@@ -58,6 +59,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure actInserirExecute(Sender: TObject);
     procedure lvwDadosDenunciaItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure lvwDetalheDenunciaItemClick(const Sender: TObject;
       const AItem: TListViewItem);
   private
     { Private declarations }
@@ -188,7 +191,17 @@ begin
   LimparCampos;
   ENDERECO := lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.Index].Text;
   lnIDDenuncia := FUtilsCAD.RetornaID(TAB_DEN, QuotedStr(ENDERECO), TAB_DEN_F1, TAB_DEN_F2, qry);
-  FUtilsCAD.CDDenunciaDet(lvwHistoricoDenuncia, qry, TAB_VWDEN, IntToStr(lnIDDenuncia));
+  FUtilsCAD.CDDenunciaDet(lvwDetalheDenuncia, qry, TAB_VWDEN, IntToStr(lnIDDenuncia));
+  lytHistDenuncias.Visible := True;
+end;
+
+procedure TfrmCadastroDenuncias.lvwDetalheDenunciaItemClick(
+  const Sender: TObject; const AItem: TListViewItem);
+begin
+  LimparCampos;
+  ENDERECO := lvwDetalheDenuncia.Items[lvwDetalheDenuncia.Selected.Index].Text;
+  cod_det := FUtilsCAD.RetornaID(TAB_VWDEN, QuotedStr(ENDERECO), 'codigo_detalhe', 'tipdenuncia', qry);
+  FUtilsCAD.CDDenunciaAtend(lvwHist_Denuncias, qry, TAB_VWHIST, IntToStr(cod_det));
   lytHistDenuncias.Visible := True;
 end;
 
