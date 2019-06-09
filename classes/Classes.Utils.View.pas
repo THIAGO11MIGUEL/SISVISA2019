@@ -191,7 +191,7 @@ begin
   dsDenunciaAtend.Close;
   dsDenunciaAtend.sql.Clear;
   dsDenunciaAtend.Connection := dmSISVisa.FD_ConnSISVISA;
-  dsDenunciaAtend.sql.Add('select * from ' + Tabela + ' where codigo_detalhe = '
+  dsDenunciaAtend.sql.Add('select * from ' + Tabela + ' where codigo_tipodenuncia = '
     + coddet);
   dsDenunciaAtend.Prepared := true;
   dsDenunciaAtend.Open;

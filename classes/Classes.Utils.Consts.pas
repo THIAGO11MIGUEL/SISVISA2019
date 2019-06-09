@@ -20,15 +20,18 @@ const
   TAB_BAIXA: string = 'BAIXA_RECEITUARIO';
 
   // Campos Individuais
+  //TABELA DENUNCIAS
   TAB_DEN_F1: string = 'COD_DENUNCIA';
   TAB_DEN_F2: string = 'ENDERECO';
-
+//-------------------------------------------------
+  //TABELA DENUNCIAS_DETALHE
   TAB_DET_F1: string = 'COD_DETALHE';
   TAB_DET_F2: STRING = 'COD_DENUNCIA';
   TAB_DET_F3: string = 'COD_TIPDENUNCIA';
   TAB_DET_F4: string = 'DATA';
   TAB_DET_F5: string = 'OBS';
-
+//-------------------------------------------------
+  //TABELA DENUNCIAS_ATEND
   TAB_AT_F1: string = 'COD_ATEND';
   TAB_AT_F2: string = 'COD_DETALHE';
   TAB_AT_F3: string = 'DATA';
@@ -37,13 +40,16 @@ const
   TAB_AT_F6: string = 'NUM_INFRACAO';
   TAB_AT_F7: string = 'COD_PROCED';
   TAB_AT_F8: string = 'OBS';
-
+//-------------------------------------------------
+  //TABELA DENUNCIAS_PROCED
   TAB_PROC_F1: string = 'COD_PROCED';
   TAB_PROC_F2: string = 'DESCRICAO';
-
+//-------------------------------------------------
+  //TABELA TIPODENUNCIA
   TAB_TIP_F1: string = 'COD_TIPDENUNCIA';
   TAB_TIP_F2: string = 'DESCRICAO';
-
+//-------------------------------------------------
+  //VIEW VW_DENUNCIAS
   VW_DEN_F1: string = 'CODIGO_DETALHE';
   VW_DEN_F2: string = 'CODIGO_DENUNCIA';
   VW_DEN_F3: string = 'ENDERECO';
@@ -51,17 +57,27 @@ const
   VW_DEN_F5: string = 'TIPDENUNCIA';
   VW_DEN_F6: string = 'DATA_LANC';
   VW_DEN_F7: string = 'OBS';
-
+//-------------------------------------------------
+  //VIEW VW_HISTORICO_DENUNCIA
+  VW_HIST_F1: string = 'CODIGO_ATENDIMENTO';
+  VW_HIST_F2: string = 'CODIGO_TIPODENUNCIA';
+  VW_HIST_F3: string = 'TIPDENUNCIA';
+  VW_HIST_F4: string = 'ENDERECO';
+  VW_HIST_F5: string = 'DATA_ATEND';
+  VW_HIST_F6: string = 'PRAZO';
+  VW_HIST_F7: string = 'DATA_RETORNO';
+  VW_HIST_F8: string = 'PROCEDIMENTO';
+//-------------------------------------------------
   TAB_CAM_F1: string = 'COD_CAMINHOBD';
   TAB_CAM_F2: string = 'DESCRICAO';
   TAB_CAM_F3: string = 'CAMINHO_BD';
-
+//-------------------------------------------------
   TAB_ART_F1: string = 'COD_ARTIGO';
   TAB_ART_F2: string = 'NUM_ARTIGO';
   TAB_ART_F3: string = 'PARAGRAFO';
   TAB_ART_F4: string = 'INCISO';
   TAB_ART_F5: string = 'DESCRICAO';
-
+//-------------------------------------------------
   // Fields
   FD_TAB_DEN: string = '(endereco)';
   FD_TAB_DET: string = '(cod_denuncia, cod_tipdenuncia, data, obs)';
@@ -69,7 +85,7 @@ const
     '(cod_detalhe, data, prazo, data_ret, num_infracao, cod_proced, obs)';
   FD_TAB_PROC: string = '(descricao)';
   FD_TAB_TIP: string = '(descricao)';
-  FD_VWDEN: string = '(codigo_detalhe, endereco, tipdenuncia, datalanc)';
+  FD_VWDEN: string = 'codigo_detalhe, endereco, tipdenuncia, datalanc';
   FD_TAB_CAMINHO: string = '(descricao, caminho_bd)';
   FD_TAB_ART : string = '(num_artigo, paragrafo, inciso, descricao)';
 

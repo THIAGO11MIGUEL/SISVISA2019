@@ -221,7 +221,6 @@ procedure TfrmAtenderDenuncias.lvwDadosDenunciaItemClick(const Sender: TObject;
 var
   tip: string;
 begin
-
   DADO := lvwDenuncias.Items[lvwDenuncias.Selected.Index].Text;
   tip := QuotedStr(lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.
     Index].Text);
