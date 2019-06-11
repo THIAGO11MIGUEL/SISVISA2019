@@ -1,4 +1,4 @@
-inherited frmCadastroProcedDenuncia: TfrmCadastroProcedDenuncia
+inherited frmCadastroTipReceita: TfrmCadastroTipReceita
   Caption = 'frmCadastroPadrao1'
   DesignerMasterStyle = 0
   inherited Layout1: TLayout
@@ -24,7 +24,7 @@ inherited frmCadastroProcedDenuncia: TfrmCadastroProcedDenuncia
               Size.Height = 32.000000000000000000
             end
           end
-          object lvwDadosProcedDenuncia: TListView
+          object lvwDadosTipReceitas: TListView
             ItemAppearanceClassName = 'TListItemAppearance'
             ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
             HeaderAppearanceClassName = 'TListHeaderObjects'
@@ -42,7 +42,7 @@ inherited frmCadastroProcedDenuncia: TfrmCadastroProcedDenuncia
         ExplicitSize.cx = 85.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutCadastro: TLayout
-          object lbxProcedDenuncia: TListBox
+          object lbxCadTipReceita: TListBox
             Align = Client
             Size.Width = 740.000000000000000000
             Size.Height = 405.000000000000000000
@@ -68,21 +68,20 @@ inherited frmCadastroProcedDenuncia: TfrmCadastroProcedDenuncia
                 TabOrder = 0
                 object Label1: TLabel
                   Align = Client
-                  StyledSettings = [Family]
+                  StyledSettings = [Family, Style]
                   Size.Width = 137.000000000000000000
                   Size.Height = 50.000000000000000000
                   Size.PlatformDefault = False
-                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.Font.Size = 18.000000000000000000
                   TextSettings.HorzAlign = Center
-                  Text = 'PROCEDIMENTO'
+                  Text = 'TIPO RECEITA'
                   TabOrder = 0
                 end
               end
-              object edtProcedDenuncia: TEdit
+              object edtTipReceita: TEdit
                 Touch.InteractiveGestures = [LongTap, DoubleTap]
                 Align = Client
                 TabOrder = 1
-                TextSettings.HorzAlign = Center
                 Size.Width = 603.000000000000000000
                 Size.Height = 32.000000000000000000
                 Size.PlatformDefault = False
@@ -94,12 +93,8 @@ inherited frmCadastroProcedDenuncia: TfrmCadastroProcedDenuncia
     end
     inherited ToolBar1: TToolBar
       inherited lblTitulo: TLabel
-        Text = 'CADASTRO DE PROCEDIMENTO EM DEN'#218'NCIA'
+        Text = 'TIPOS DE RECEITAS'
       end
     end
-  end
-  inherited ActionList1: TActionList
-    Left = 760
-    Top = 424
   end
 end

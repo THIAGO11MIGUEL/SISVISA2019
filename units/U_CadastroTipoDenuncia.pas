@@ -24,6 +24,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure actAlterarExecute(Sender: TObject);
     procedure actExcluirExecute(Sender: TObject);
+    procedure actVoltarExecute(Sender: TObject);
   private
     { Private declarations }
     f1, f2, FIELDS, TIPO, VALORES: string;
@@ -81,8 +82,14 @@ begin
 
   inherited;
   FUtilsCAD.CDTipDenuncia(ListView1, qry, TAB_DEN_TIP);
-  lblTitulo.Text := BD;
+  lblTitulo.Text := TIPDEN;
   LimparCampos;
+end;
+
+procedure TfrmCadastroTipoDenuncia.actVoltarExecute(Sender: TObject);
+begin
+  inherited;
+  lblTitulo.Text := TIPDEN;
 end;
 
 procedure TfrmCadastroTipoDenuncia.FormCreate(Sender: TObject);

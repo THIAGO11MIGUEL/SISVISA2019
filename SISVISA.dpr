@@ -19,7 +19,8 @@ uses
   U_AtenderDenuncia in 'units\U_AtenderDenuncia.pas' {frmAtenderDenuncias},
   SISVISA.Model.Denuncias in 'classes\SISVISA.Model.Denuncias.pas',
   U_CadastroProcedDenuncia in 'units\U_CadastroProcedDenuncia.pas' {frmCadastroProcedDenuncia},
-  Classes.Utils.Consts in 'classes\Classes.Utils.Consts.pas';
+  Classes.Utils.Consts in 'classes\Classes.Utils.Consts.pas',
+  U_CadastroTipoReceita in 'units\U_CadastroTipoReceita.pas' {frmCadastroTipReceita};
 
 {$R *.res}
 

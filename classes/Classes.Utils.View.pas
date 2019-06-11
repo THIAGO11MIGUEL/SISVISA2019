@@ -31,6 +31,12 @@ type
       Tabela, codden: string);
     procedure CDDenunciaAtend(lv: TListView; dsDenunciaAtend: TFDQuery;
       Tabela, coddet: string);
+    procedure CDTipReceita(lv: TListView; dsTipReceita: TFDQuery;
+      Tabela: string);
+    procedure CDUnidade(lv: TListView; dsUnidade: TFDQuery; Tabela: string);
+    procedure CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string);
+    procedure LancarReceita(c1, c2, c3, c4, c5: TEdit; c6: TDateEdit;
+      c7, c8: Integer; Tabela: string);
     function RetornaID(Tabela, value, campo1, campo2: string;
       ds: TFDQuery): Integer;
     function ValidarReceita: Boolean;
@@ -191,8 +197,8 @@ begin
   dsDenunciaAtend.Close;
   dsDenunciaAtend.sql.Clear;
   dsDenunciaAtend.Connection := dmSISVisa.FD_ConnSISVISA;
-  dsDenunciaAtend.sql.Add('select * from ' + Tabela + ' where codigo_tipodenuncia = '
-    + coddet);
+  dsDenunciaAtend.sql.Add('select * from ' + Tabela +
+    ' where codigo_tipodenuncia = ' + coddet);
   dsDenunciaAtend.Prepared := true;
   dsDenunciaAtend.Open;
 
@@ -208,10 +214,10 @@ begin
           ('codigo_atendimento').AsString;
         lvItem.Text := dsDenunciaAtend.FieldByName('DATA_ATEND').AsString;
         lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
-        dsDenunciaAtend.FieldByName('PROCEDIMENTO').AsString;
+          dsDenunciaAtend.FieldByName('PROCEDIMENTO').AsString;
         lvItem.Data[TMultiDetailAppearanceNames.Detail2] :=
-        dsDenunciaAtend.FieldByName('PRAZO').AsString + ' DIAS' + ' - ' +
-        dsDenunciaAtend.FieldByName('DATA_RETORNO').AsString;
+          dsDenunciaAtend.FieldByName('PRAZO').AsString + ' DIAS' + ' - ' +
+          dsDenunciaAtend.FieldByName('DATA_RETORNO').AsString;
 
         dsDenunciaAtend.Next;
       end;
@@ -307,6 +313,54 @@ begin
 
 end;
 
+procedure TUtilsView.CDReceita(lv: TListView; dsReceitas: TFDQuery;
+  Tabela: string);
+var
+  lvItem: TListViewItem;
+begin
+  dsReceitas := TFDQuery.Create(nil);
+  dsReceitas.Close;
+  dsReceitas.sql.Clear;
+  dsReceitas.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsReceitas.sql.Add('select * from ' + Tabela);
+  dsReceitas.Prepared := true;
+  dsReceitas.Open;
+
+  try
+
+    if dsReceitas.RecordCount > 0 then
+    begin
+
+      lv.Items.Clear;
+      lv.BeginUpdate;
+      while not dsReceitas.Eof do
+      begin
+        lvItem := lv.Items.Add;
+        lvItem.Detail := dsReceitas.FieldByName('cod_receita').AsString;
+        lvItem.Text := 'FOLHA INICIAL: ' + dsReceitas.FieldByName('num_inicial')
+          .AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName
+          ('num_final').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
+          'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail2] := 'Nº BLOCO: ' +
+          dsReceitas.FieldByName('num_bloco').AsString + '   QTD BLOCOS: ' +
+          INTTOSTR(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
+        lvItem.Data[TMultiDetailAppearanceNames.Detail3] := 'UNIDADE DE SAÚDE: '
+          + dsReceitas.FieldByName('UNIDADE').AsString + '   TIPO DE RECEITA: '
+          + dsReceitas.FieldByName('TIPO_RECEITA').AsString;
+        dsReceitas.Next;
+      end;
+
+      lv.EndUpdate;
+    end;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
+end;
+
 procedure TUtilsView.CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery;
   Tabela: string);
 var
@@ -345,6 +399,82 @@ begin
 
 end;
 
+procedure TUtilsView.CDTipReceita(lv: TListView; dsTipReceita: TFDQuery;
+  Tabela: string);
+var
+  lvItem: TListViewItem;
+begin
+  dsTipReceita := TFDQuery.Create(nil);
+  dsTipReceita.Close;
+  dsTipReceita.sql.Clear;
+  dsTipReceita.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsTipReceita.sql.Add('select * from ' + Tabela);
+  dsTipReceita.Prepared := true;
+  dsTipReceita.Open;
+
+  try
+
+    if dsTipReceita.RecordCount > 0 then
+    begin
+
+      lv.Items.Clear;
+      lv.BeginUpdate;
+      while not dsTipReceita.Eof do
+      begin
+        lvItem := lv.Items.Add;
+        lvItem.Detail := dsTipReceita.FieldByName('id_tipo_receita').AsString;
+        lvItem.Text := dsTipReceita.FieldByName('tipo_receita').AsString;
+        dsTipReceita.Next;
+      end;
+
+      lv.EndUpdate;
+    end;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
+end;
+
+procedure TUtilsView.CDUnidade(lv: TListView; dsUnidade: TFDQuery;
+  Tabela: string);
+var
+  lvItem: TListViewItem;
+begin
+  dsUnidade := TFDQuery.Create(nil);
+  dsUnidade.Close;
+  dsUnidade.sql.Clear;
+  dsUnidade.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsUnidade.sql.Add('select * from ' + Tabela);
+  dsUnidade.Prepared := true;
+  dsUnidade.Open;
+
+  try
+
+    if dsUnidade.RecordCount > 0 then
+    begin
+
+      lv.Items.Clear;
+      lv.BeginUpdate;
+      while not dsUnidade.Eof do
+      begin
+        lvItem := lv.Items.Add;
+        lvItem.Detail := dsUnidade.FieldByName('id_unidade_saude').AsString;
+        lvItem.Text := dsUnidade.FieldByName('unidade_saude').AsString;
+        dsUnidade.Next;
+      end;
+
+      lv.EndUpdate;
+    end;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
+end;
+
 procedure TUtilsView.CDArtigo(lv: TListView; dsArtigo: TFDQuery;
   Tabela: string);
 var
@@ -369,7 +499,7 @@ begin
       begin
         lvItem := lv.Items.Add;
         lvItem.Detail := dsArtigo.FieldByName('cod_artigo').AsString;
-        lvItem.Text := IntToStr(dsArtigo.FieldByName('num_artigo').AsInteger);
+        lvItem.Text := INTTOSTR(dsArtigo.FieldByName('num_artigo').AsInteger);
         lvItem.Data[TMultiDetailAppearanceNames.Detail1] := { 'Parag. - ' +
           dsArtigo.FieldByName('paragrafo').AsString + } 'Inciso: ' +
           dsArtigo.FieldByName('inciso').AsString;
@@ -465,6 +595,45 @@ begin
   end;
 end;
 
+procedure TUtilsView.LancarReceita(c1, c2, c3, c4, c5: TEdit; c6: TDateEdit;
+  c7, c8: Integer; Tabela: string);
+var
+  total_blocos, bloco_atual, bloco, folha_inicial, folha_final, folha_atual,
+    I: Integer;
+  data_lanc: TDate;
+  unidade, tipo, medico, respo, status, Campos: string;
+begin
+  total_blocos := StrToInt(c1.Text);
+  bloco := StrToInt(c2.Text);
+  folha_inicial := StrToInt(c3.Text);
+  status := (c4.Text);
+  data_lanc := c6.Date;
+  respo := c5.Text;
+
+  bloco_atual := 0;
+  folha_atual := folha_inicial;
+
+  for I := 1 to total_blocos do
+  begin
+    bloco_atual := bloco_atual + 1;
+
+    case c8 of
+     1: folha_atual := folha_atual + 49;
+     2: folha_atual := folha_atual + 99;
+    end;
+
+    Campos := c7 + ',' + medico + ',' + c8 + ',' + INTTOSTR(total_blocos) + ','
+      + INTTOSTR(bloco_atual) + ',' + INTTOSTR(folha_inicial) + ',' + IntToStr(folha_atual) + ',' +
+      FormatDateTime('dd.mm.yyyy', data_lanc) + ',' + status + ',' + respo;
+    Incluir(Tabela, FD_TAB_DEN);
+
+    case c8 of
+      1: folha_inicial := folha_inicial + 50;
+    end;
+  end;
+
+end;
+
 procedure TUtilsView.fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);
 var
   FormMensagem: TfrmMensagemPadrao;
@@ -503,7 +672,7 @@ begin
     if not(prazo.Text = '') then
     begin
       Result := False;
-      infracao.Text := IntToStr(0);
+      infracao.Text := INTTOSTR(0);
     end
     else
       Result := true;

@@ -6,12 +6,14 @@ inherited frmCadastroTipoDenuncia: TfrmCadastroTipoDenuncia
     Size.Width = 827.000000000000000000
     inherited TabControl1: TTabControl
       Size.Width = 827.000000000000000000
+      TabIndex = 0
       Sizes = (
         827s
         405s
         827s
         405s)
       inherited tabDados: TTabItem
+        IsSelected = True
         Size.Width = 413.000000000000000000
         ExplicitSize.cx = 71.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
@@ -20,14 +22,14 @@ inherited frmCadastroTipoDenuncia: TfrmCadastroTipoDenuncia
           inherited panelButtonDados: TPanel
             Position.X = 747.000000000000000000
             inherited btnImprimir: TButton
-              Visible = False
+              Enabled = False
             end
           end
           inherited ToolBar2: TToolBar
             Size.Width = 827.000000000000000000
             inherited edtBuscaRegistro: TEdit
               Size.Width = 827.000000000000000000
-              Size.Height = 55.000000000000000000
+              Size.Height = 32.000000000000000000
             end
           end
           object ListView1: TListView
@@ -45,6 +47,7 @@ inherited frmCadastroTipoDenuncia: TfrmCadastroTipoDenuncia
         end
       end
       inherited tabCadastro: TTabItem
+        IsSelected = False
         Size.Width = 414.000000000000000000
         ExplicitSize.cx = 85.000000000000000000
         ExplicitSize.cy = 23.000000000000000000

@@ -95,6 +95,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
           Size.PlatformDefault = False
           TabOrder = 3
           Text = 'TIPOS DE RECEITAS'
+          OnClick = lbxitTipReceitasClick
         end
         object lbxitUnidades: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000

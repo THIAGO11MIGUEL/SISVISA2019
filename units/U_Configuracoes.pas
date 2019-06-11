@@ -27,6 +27,7 @@ type
     procedure lbxitBDClick(Sender: TObject);
     procedure lbxitTipDenunciasClick(Sender: TObject);
     procedure ListBoxItem1Click(Sender: TObject);
+    procedure lbxitTipReceitasClick(Sender: TObject);
   private
     { Private declarations }
     const
@@ -44,7 +45,7 @@ implementation
 
 uses
   U_CadastroArtigos, U_SISVISA, U_CadastroBD, U_CadastroTipoDenuncia,
-  U_CadastroProcedDenuncia;
+  U_CadastroProcedDenuncia, U_CadastroTipoReceita;
 
 {$R *.fmx}
 
@@ -69,6 +70,16 @@ begin
   layoutClient.RemoveObject(0);
   layoutClient.AddObject(FormTipDen.Layout1);
   formTipDen.lblTitulo.text := TIPDEN;
+end;
+
+procedure TfrmConfiguracoesGerais.lbxitTipReceitasClick(Sender: TObject);
+var FormTipRec : TfrmCadastroTipReceita;
+begin
+   if not Assigned(FormTipRec) then
+      FormTipRec := TfrmCadastroTipReceita.Create(Self);
+
+   layoutClient.RemoveObject(0);
+   layoutClient.AddObject(FormTipRec.Layout1);
 end;
 
 procedure TfrmConfiguracoesGerais.ListBoxItem1Click(Sender: TObject);
