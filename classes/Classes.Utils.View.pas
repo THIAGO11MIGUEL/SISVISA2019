@@ -35,8 +35,10 @@ type
       Tabela: string);
     procedure CDUnidade(lv: TListView; dsUnidade: TFDQuery; Tabela: string);
     procedure CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string);
-    procedure LancarReceita(c1, c2, c3, c4, c5: TEdit; c6: TDateEdit;
-      c7, c8: Integer; Tabela: string);
+    procedure LancarReceita(dtlanc: TDateEdit;
+      unidade, tiporec, qtd, num_blocoinicial, folha_inicial,
+      folha_final: Integer; status, respo, Tabela: string; dsReceita: TFDQuery);
+    function CalculaFolhaFinal(ValorInicio, qtd, CodTipo: Integer): Integer;
     function RetornaID(Tabela, value, campo1, campo2: string;
       ds: TFDQuery): Integer;
     function ValidarReceita: Boolean;
@@ -475,6 +477,43 @@ begin
 
 end;
 
+function TUtilsView.CalculaFolhaFinal(ValorInicio, qtd,
+  CodTipo: Integer): Integer;
+var
+  valorfinal: Integer;
+begin
+
+  case CodTipo of
+    1:
+      case qtd of
+        1:
+          valorfinal := qtd * 49;
+        2:
+          valorfinal := (qtd * 49) + 1;
+        3:
+          valorfinal := (qtd * 49) + 2;
+        4:
+          valorfinal := (qtd * 49) + 3;
+        5:
+          valorfinal := (qtd * 49) + 4;
+        6:
+          valorfinal := (qtd * 49) + 5;
+        7:
+          valorfinal := (qtd * 49) + 6;
+        8:
+          valorfinal := (qtd * 49) + 7;
+        9:
+          valorfinal := (qtd * 49) + 8;
+        10:
+          valorfinal := (qtd * 49) + 9;
+      end;
+
+  end;
+
+  Result := valorfinal + ValorInicio;
+
+end;
+
 procedure TUtilsView.CDArtigo(lv: TListView; dsArtigo: TFDQuery;
   Tabela: string);
 var
@@ -545,9 +584,8 @@ begin
       // fecha e abre o data set para exibição dos dados
     except
       on E: Exception do
-        raise Exception.Create
-          ('Houve um erro ao Excluir dados de (CAMINHO DO BANCO). " ' +
-          E.Message + #13 + UnitName + '.ExcluirDados."');
+        raise Exception.Create('Houve um erro ao Excluir dados de (' + Tabela +
+          '). " ' + E.Message + #13 + UnitName + '.ExcluirDados."');
     end;
 
   finally
@@ -595,40 +633,72 @@ begin
   end;
 end;
 
-procedure TUtilsView.LancarReceita(c1, c2, c3, c4, c5: TEdit; c6: TDateEdit;
-  c7, c8: Integer; Tabela: string);
+procedure TUtilsView.LancarReceita(dtlanc: TDateEdit;
+  unidade, tiporec, qtd, num_blocoinicial, folha_inicial, folha_final: Integer;
+  status, respo, Tabela: string; dsReceita: TFDQuery);
 var
-  total_blocos, bloco_atual, bloco, folha_inicial, folha_final, folha_atual,
-    I: Integer;
-  data_lanc: TDate;
-  unidade, tipo, medico, respo, status, Campos: string;
+  totalblocos, blocoatual, bloco, finicial, ffinal, fatual: Integer;
+  datalanc: TDate;
+  medico, responsavel, st, Campos: string;
+  I: Integer;
 begin
-  total_blocos := StrToInt(c1.Text);
-  bloco := StrToInt(c2.Text);
-  folha_inicial := StrToInt(c3.Text);
-  status := (c4.Text);
-  data_lanc := c6.Date;
-  respo := c5.Text;
 
-  bloco_atual := 0;
-  folha_atual := folha_inicial;
+  totalblocos := qtd;
+  bloco := num_blocoinicial;
+  finicial := folha_inicial;
+  datalanc := dtlanc.Date;
+  medico := QuotedStr('TESTE');
+  responsavel := QuotedStr(respo);
+  st := QuotedStr(status);
 
-  for I := 1 to total_blocos do
+  fatual := finicial;
+  blocoatual := 0;
+
+  for I := 1 to totalblocos do
   begin
-    bloco_atual := bloco_atual + 1;
+    blocoatual := blocoatual + 1;
 
-    case c8 of
-     1: folha_atual := folha_atual + 49;
-     2: folha_atual := folha_atual + 99;
-    end;
+    if blocoatual <= totalblocos then
+    begin
+      case tiporec of
+        1:
+          begin
+           if blocoatual = 1 then
+              ffinal := fatual + 49;
 
-    Campos := c7 + ',' + medico + ',' + c8 + ',' + INTTOSTR(total_blocos) + ','
-      + INTTOSTR(bloco_atual) + ',' + INTTOSTR(folha_inicial) + ',' + IntToStr(folha_atual) + ',' +
-      FormatDateTime('dd.mm.yyyy', data_lanc) + ',' + status + ',' + respo;
-    Incluir(Tabela, FD_TAB_DEN);
+            Campos := QuotedStr(INTTOSTR(unidade)) + ', ' + medico + ', ' +
+              QuotedStr(INTTOSTR(tiporec)) + ', ' +
+              QuotedStr(INTTOSTR(totalblocos)) + ', ' +
+              QuotedStr(INTTOSTR(bloco)) + ', ' +
+              QuotedStr(INTTOSTR(finicial)) + ', ' + QuotedStr(INTTOSTR(ffinal))
+              + ', ' + QuotedStr(FormatDateTime('dd.mm.yyyy', datalanc)) + ', '
+              + st + ', ' + responsavel;
 
-    case c8 of
-      1: folha_inicial := folha_inicial + 50;
+
+            case blocoatual of
+              1, 2, 3, 4, 5, 6, 7, 8, 9, 10:
+              begin
+                finicial := finicial + 50;
+                ffinal:= ffinal + 50;
+              end;
+
+            end;
+          end;
+        2:
+          begin
+            ffinal := fatual + 99;
+
+            case blocoatual of
+              1, 2, 3, 4, 5, 6, 7, 8, 9, 10:
+              begin
+                finicial := finicial + 100;
+                ffinal:= ffinal + 100;
+              end;
+            end;
+          end;
+      end;
+     Incluir(Tabela, FD_TAB_CTRLREC, Campos, dsReceita);
+     bloco := bloco + 1;
     end;
   end;
 

@@ -3,7 +3,8 @@ unit U_CadastroReceitas;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   U_CADASTROPADRAO, System.Actions, FMX.ActnList, FMX.Controls.Presentation,
   FMX.Layouts, FMX.ListBox, FMX.Edit, FMX.SearchBox, FMX.TabControl,
@@ -74,6 +75,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure lvwDadosReceitasItemClick(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure edtFolhaInicialChange(Sender: TObject);
   private
     { Private declarations }
     lnIDTip, lnIDUnidade: integer;
@@ -98,8 +100,22 @@ end;
 
 procedure TfrmCadastroReceitas.actSalvarExecute(Sender: TObject);
 begin
-  FUtilsCAD.LancarReceita();
+  FUtilsCAD.LancarReceita(dtedtLancamentoReceitas, lnIDUnidade, lnIDTip,
+    StrToInt(edtQTDBlocos.Text), StrToInt(edtNumBlocoInicial.Text),
+    StrToInt(edtFolhaInicial.Text), StrToInt(edtFolhaFinal.Text),
+    edtStatusReceita.Text, edtResponsavel.Text, TAB_RECEITA, qry);
   inherited;
+  FUtilsCAD.CDReceita(lvwDadosReceitas, QRY, TAB_RECEITA);
+end;
+
+procedure TfrmCadastroReceitas.edtFolhaInicialChange(Sender: TObject);
+var qtd, vinicio: integer;
+begin
+
+  qtd := StrToInt(edtQTDBlocos.Text);
+  vinicio := StrToInt(edtFolhaInicial.Text);
+  edtFolhaFinal.Text := IntToStr(FUtilsCAD.CalculaFolhaFinal(vinicio, qtd, lnIDTip));
+
 end;
 
 procedure TfrmCadastroReceitas.edtTipoReceitaClick(Sender: TObject);
@@ -123,28 +139,34 @@ end;
 procedure TfrmCadastroReceitas.lvwDadosReceitasItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
- ShowMessage( Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index].Text, 16, 6));
- ShowMessage(Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index].Text, 38, 6));
+  ShowMessage(Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index]
+    .Text, 16, 6));
+  ShowMessage(Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index]
+    .Text, 38, 6));
 
 end;
 
-procedure TfrmCadastroReceitas.lvwDadosTipReceitaItemClick(
-  const Sender: TObject; const AItem: TListViewItem);
-VAR TIPO: string;
+procedure TfrmCadastroReceitas.lvwDadosTipReceitaItemClick
+  (const Sender: TObject; const AItem: TListViewItem);
+VAR
+  TIPO: string;
 begin
   TIPO := lvwDadosTipReceita.Items[lvwDadosTipReceita.Selected.Index].Text;
   edtTipoReceita.Text := TIPO;
-  lnIDTip := FUtilsCAD.RetornaID(TAB_TIPRECEITA, QuotedStr(TIPO), TAB_TPREC_F1, TAB_TPREC_F2, qry);
+  lnIDTip := FUtilsCAD.RetornaID(TAB_TIPRECEITA, QuotedStr(TIPO), TAB_TPREC_F1,
+    TAB_TPREC_F2, qry);
   changeTabCadastro.ExecuteTarget(Self);
 end;
 
 procedure TfrmCadastroReceitas.lvwDadosUnidadeItemClick(const Sender: TObject;
   const AItem: TListViewItem);
-VAR UNI: string;
+VAR
+  UNI: string;
 begin
   UNI := lvwDadosUnidade.Items[lvwDadosUnidade.Selected.Index].Text;
   edtUnidadeReceita.Text := UNI;
-  lnIDUnidade := FUtilsCAD.RetornaID(TAB_UNIDADE, QuotedStr(UNI), TAB_UNI_F1, TAB_UNI_F2, qry);
+  lnIDUnidade := FUtilsCAD.RetornaID(TAB_UNIDADE, QuotedStr(UNI), TAB_UNI_F1,
+    TAB_UNI_F2, qry);
   changeTabCadastro.ExecuteTarget(Self);
 end;
 

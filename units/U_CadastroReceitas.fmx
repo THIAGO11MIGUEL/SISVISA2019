@@ -303,6 +303,7 @@ inherited frmCadastroReceitas: TfrmCadastroReceitas
                 Size.PlatformDefault = False
                 TextPrompt = 'ESTE CAMPO S'#211' ACEITA N'#218'MEROS'
                 StyledSettings = [Family, Style, FontColor]
+                OnChange = edtFolhaInicialChange
               end
               object Layout9: TLayout
                 Align = Left

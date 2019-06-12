@@ -57,12 +57,24 @@ uses
 
 procedure TfrmCadastroArtigos.actAlterarExecute(Sender: TObject);
 begin
-  FIELDS := 'descricao, paragrafo, inciso';
-  NUM := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDArtigo := FUtilsCAD.RetornaID(TABELA, QuotedStr(NUM), f1, f2, qry);
-  edtArtigo.Text := NUM;
-  edtDescriçãoArtigo.Text := TModelArtigos.New.ReceberArtigo.PreencherArtigo
-    (lnIDArtigo, FIELDS, edtParagrafo, edtInciso);
+  NUMARTIGO := StrToInt(ListView1.Items[ListView1.Selected.Index].Text);
+  lnIDArtigo := FUtilsCAD.RetornaID(TAB_ARTIGO, IntToStr(NUMARTIGO), TAB_ART_F1, TAB_ART_F2, qry);
+  edtArtigo.Text := IntToStr(NUMARTIGO);
+  edtDescriçãoArtigo.Text := TModelArtigos.New
+                        .CodArtigo(lnIDArtigo)
+                        .Fields(TAB_ART_F5)
+                        .PreencherArtigo;
+
+  edtParagrafo.Text := TModelArtigos.New
+                        .CodArtigo(lnIDArtigo)
+                        .Fields(TAB_ART_F3)
+                        .PreencherArtigo;
+
+  edtInciso.Text := TModelArtigos.New
+                        .CodArtigo(lnIDArtigo)
+                        .Fields(TAB_ART_F4)
+                        .PreencherArtigo;
+
   inherited;
 end;
 

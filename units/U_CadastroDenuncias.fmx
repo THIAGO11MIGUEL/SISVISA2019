@@ -50,7 +50,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
             TabOrder = 2
             object lytHistDenuncias: TLayout
               Align = Client
-              Size.Width = 462.000000000000000000
+              Size.Width = 374.000000000000000000
               Size.Height = 415.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
@@ -72,7 +72,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                 HeaderAppearanceClassName = 'TListHeaderObjects'
                 FooterAppearanceClassName = 'TListHeaderObjects'
                 Align = Client
-                Size.Width = 231.000000000000000000
+                Size.Width = 143.000000000000000000
                 Size.Height = 415.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 1
@@ -84,7 +84,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
               HeaderAppearanceClassName = 'TListHeaderObjects'
               FooterAppearanceClassName = 'TListHeaderObjects'
               Align = Left
-              Size.Width = 281.000000000000000000
+              Size.Width = 369.000000000000000000
               Size.Height = 415.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
