@@ -4,7 +4,7 @@ interface
 
 uses
   FireDAC.Comp.Client, FMX.ListBox, FMX.ListView, FMX.Forms, FMX.DateTimeCtrls,
-  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient;
+  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient, FMX.Memo;
 
 type
   TUtilsView = class
@@ -30,7 +30,11 @@ type
     procedure CDDenunciaDet(lv: TListView; dsDenunciaDet: TFDQuery;
       Tabela, codden: string);
     procedure CDDenunciaAtend(lv: TListView; dsDenunciaAtend: TFDQuery;
-      Tabela, coddet: string);
+      Tabela, coddet: string); overload;
+
+    procedure CDDenunciaAtend(mmMemo: TMemo; dsDenunciaAtend: TFDQuery;
+      Tabela, coddet: string);  overload;
+
     procedure CDTipReceita(lv: TListView; dsTipReceita: TFDQuery;
       Tabela: string);
     procedure CDUnidade(lv: TListView; dsUnidade: TFDQuery; Tabela: string);
@@ -182,6 +186,49 @@ begin
 
       lv.EndUpdate;
     end;
+
+  except
+    on E: Exception do
+      raise Exception.Create('Não há Dados para Listar!!!');
+  end;
+
+end;
+
+procedure TUtilsView.CDDenunciaAtend(mmMemo: TMemo; dsDenunciaAtend: TFDQuery;
+  Tabela, coddet: string);
+begin
+  dsDenunciaAtend := TFDQuery.Create(nil);
+  dsDenunciaAtend.Close;
+  dsDenunciaAtend.sql.Clear;
+  dsDenunciaAtend.Connection := dmSISVisa.FD_ConnSISVISA;
+  dsDenunciaAtend.sql.Add('select * from ' + Tabela +
+    ' where codigo_tipodenuncia = ' + coddet);
+  dsDenunciaAtend.Prepared := true;
+  dsDenunciaAtend.Open;
+
+  try
+    if dsDenunciaAtend.RecordCount <> 0 then
+    begin
+      mmMemo.Lines.Clear;
+      mmMemo.BeginUpdate;
+
+      while not dsDenunciaAtend.Eof do
+      begin
+
+        mmMemo.Lines.Add( dsDenunciaAtend.FieldByName ('codigo_atendimento').AsString);
+        mmMemo.Lines.Add( dsDenunciaAtend.FieldByName('DATA_ATEND').AsString);
+        mmMemo.Lines.Add( dsDenunciaAtend.FieldByName('PROCEDIMENTO').AsString);
+        mmMemo.Lines.Add( dsDenunciaAtend.FieldByName('PRAZO').AsString
+         + ' DIAS' + ' - ' + dsDenunciaAtend.FieldByName('DATA_RETORNO').AsString
+         );
+
+         dsDenunciaAtend.Next;
+      end;
+
+      mmMemo.EndUpdate;
+    end
+    else
+      mmMemo.Lines.Clear;
 
   except
     on E: Exception do

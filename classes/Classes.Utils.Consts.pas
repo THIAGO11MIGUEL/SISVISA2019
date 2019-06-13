@@ -103,60 +103,38 @@ const
   FD_VWDEN: string = 'codigo_detalhe, endereco, tipdenuncia, datalanc';
   FD_TAB_CAMINHO: string = '(descricao, caminho_bd)';
   FD_TAB_ART: string = '(num_artigo, paragrafo, inciso, descricao)';
-  FD_TAB_CTRLREC: string = '(id_unidade, medico, id_tipo, qtd_blocos, num_bloco, num_inicial, num_final, data, status, responsavel)';
+  FD_TAB_CTRLREC
+    : string =
+    '(id_unidade, medico, id_tipo, qtd_blocos, num_bloco, num_inicial, num_final, data, status, responsavel)';
 
-// Mensagens
+  // Mensagens
   MSG_ATEND: string = 'ATENDIMENTO A DENÚNCIAS';
-MSG_ATEND_SUCESSO:
-string = 'DENÚNCIA ATENDIDA COM SUCESSO!!!';
-MSG_ATEND_PRAZO:
-string = 'CAMPO PRAZO PRECISA RECEBER UM VALOR';
-MSG_EXCLUIR:
-string = 'EXCLUSÃO DE CADASTRO';
-MSG_EXCLUIDO:
-string = 'EXCLUÍDO COM SUCESSO!!!';
-MSG_SUCESSO:
-string = 'SALVO COM SUCESSO!!!';
-MSG_INSERIR:
-string = 'INSERIR REGISTRO NOVO';
-MSG_ALTERAR:
-string = 'ATUALIZAR REGISTRO';
+  MSG_ATEND_SUCESSO: string = 'DENÚNCIA ATENDIDA COM SUCESSO!!!';
+  MSG_ATEND_PRAZO: string = 'CAMPO PRAZO PRECISA RECEBER UM VALOR';
+  MSG_EXCLUIR: string = 'EXCLUSÃO DE CADASTRO';
+  MSG_EXCLUIDO: string = 'EXCLUÍDO COM SUCESSO!!!';
+  MSG_SUCESSO: string = 'SALVO COM SUCESSO!!!';
+  MSG_INSERIR: string = 'INSERIR REGISTRO NOVO';
+  MSG_ALTERAR: string = 'ATUALIZAR REGISTRO';
 
-// Outros
-LISTA:
-string = ' - LISTA DE DENUNCIAS ';
-PROCED:
-string = ' - LISTA DE PROCEDIMENTOS EM DENÚNCIA';
-TIP:
-string = ' - TIPO DENUNCIA';
-AUTOINFRACAO:
-string = 'AUTO DE INFRAÇÃO';
-NOTIFICACAO:
-string = 'NOTIFICAÇÃO';
-LBL:
-string = 'CONFIGURAÇÕES GERAIS DO SISTEMA';
-ARTIGO:
-string = 'ARTIGOS COD. SANITÁRIO';
-BD:
-string = 'BANCO DE DADOS';
-DEN:
-string = 'CADASTRO DE DENUNCIAS';
-PROC:
-string = 'CADASTRO DE PROCEDIMENTO EM DENÚNCIAS';
-REC:
-string = 'LANÇAMENTO DE RECEITAS';
-TIPDEN:
-string = 'TIPOS DE DENÚNCIAS';
-TIPREC:
-string = 'TIPOS DE RECEITAS';
-CADNOVO:
-string = ' -> INSERIR NOVO';
-CADALTERA:
-string = '-> ALTERAR REGISTRO';
-ST_ABERTO:
-string = 'EM ABERTO';
-ST_BAIXADO:
-string = 'BAIXADO';
+  // Outros
+  LISTA: string = ' - LISTA DE DENUNCIAS ';
+  PROCED: string = ' - LISTA DE PROCEDIMENTOS EM DENÚNCIA';
+  TIP: string = ' - TIPO DENUNCIA';
+  AUTOINFRACAO: string = 'AUTO DE INFRAÇÃO';
+  NOTIFICACAO: string = 'NOTIFICAÇÃO';
+  LBL: string = 'CONFIGURAÇÕES GERAIS DO SISTEMA';
+  ARTIGO: string = 'ARTIGOS COD. SANITÁRIO';
+  BD: string = 'BANCO DE DADOS';
+  DEN: string = 'CADASTRO DE DENUNCIAS';
+  PROC: string = 'CADASTRO DE PROCEDIMENTO EM DENÚNCIAS';
+  REC: string = 'LANÇAMENTO DE RECEITAS';
+  TIPDEN: string = 'TIPOS DE DENÚNCIAS';
+  TIPREC: string = 'TIPOS DE RECEITAS';
+  CADNOVO: string = ' -> INSERIR NOVO';
+  CADALTERA: string = '-> ALTERAR REGISTRO';
+  ST_ABERTO: string = 'EM ABERTO';
+  ST_BAIXADO: string = 'BAIXADO';
 
 implementation
 
