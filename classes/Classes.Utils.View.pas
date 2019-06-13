@@ -390,13 +390,15 @@ begin
           .AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName
           ('num_final').AsString;
         lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
-          'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString;
-        lvItem.Data[TMultiDetailAppearanceNames.Detail2] := 'Nº BLOCO: ' +
-          dsReceitas.FieldByName('num_bloco').AsString + '   QTD BLOCOS: ' +
-          INTTOSTR(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
-        lvItem.Data[TMultiDetailAppearanceNames.Detail3] := 'UNIDADE DE SAÚDE: '
+          'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString
+          + '     Nº BLOCO: ' + IntToStr(dsReceitas.FieldByName('num_bloco')
+          .AsInteger) + '   QTD BLOCOS: ' +
+          IntToStr(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
+        lvItem.Data[TMultiDetailAppearanceNames.Detail2] := 'UNIDADE DE SAÚDE: '
           + dsReceitas.FieldByName('UNIDADE').AsString + '   TIPO DE RECEITA: '
           + dsReceitas.FieldByName('TIPO_RECEITA').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail3] := ' STATUS: ' +
+          dsReceitas.FieldByName('STATUS').AsString;
         dsReceitas.Next;
       end;
 
@@ -585,7 +587,7 @@ begin
       begin
         lvItem := lv.Items.Add;
         lvItem.Detail := dsArtigo.FieldByName('cod_artigo').AsString;
-        lvItem.Text := INTTOSTR(dsArtigo.FieldByName('num_artigo').AsInteger);
+        lvItem.Text := IntToStr(dsArtigo.FieldByName('num_artigo').AsInteger);
         lvItem.Data[TMultiDetailAppearanceNames.Detail1] := { 'Parag. - ' +
           dsArtigo.FieldByName('paragrafo').AsString + } 'Inciso: ' +
           dsArtigo.FieldByName('inciso').AsString;
@@ -710,24 +712,23 @@ begin
       case tiporec of
         1:
           begin
-           if blocoatual = 1 then
+            if blocoatual = 1 then
               ffinal := fatual + 49;
 
-            Campos := QuotedStr(INTTOSTR(unidade)) + ', ' + medico + ', ' +
-              QuotedStr(INTTOSTR(tiporec)) + ', ' +
-              QuotedStr(INTTOSTR(totalblocos)) + ', ' +
-              QuotedStr(INTTOSTR(bloco)) + ', ' +
-              QuotedStr(INTTOSTR(finicial)) + ', ' + QuotedStr(INTTOSTR(ffinal))
-              + ', ' + QuotedStr(FormatDateTime('dd.mm.yyyy', datalanc)) + ', '
-              + st + ', ' + responsavel;
-
+            Campos := QuotedStr(IntToStr(unidade)) + ', ' + medico + ', ' +
+              QuotedStr(IntToStr(tiporec)) + ', ' +
+              QuotedStr(IntToStr(totalblocos)) + ', ' +
+              QuotedStr(IntToStr(bloco)) + ', ' + QuotedStr(IntToStr(finicial))
+              + ', ' + QuotedStr(IntToStr(ffinal)) + ', ' +
+              QuotedStr(FormatDateTime('dd.mm.yyyy', datalanc)) + ', ' + st +
+              ', ' + responsavel;
 
             case blocoatual of
               1, 2, 3, 4, 5, 6, 7, 8, 9, 10:
-              begin
-                finicial := finicial + 50;
-                ffinal:= ffinal + 50;
-              end;
+                begin
+                  finicial := finicial + 50;
+                  ffinal := ffinal + 50;
+                end;
 
             end;
           end;
@@ -737,15 +738,15 @@ begin
 
             case blocoatual of
               1, 2, 3, 4, 5, 6, 7, 8, 9, 10:
-              begin
-                finicial := finicial + 100;
-                ffinal:= ffinal + 100;
-              end;
+                begin
+                  finicial := finicial + 100;
+                  ffinal := ffinal + 100;
+                end;
             end;
           end;
       end;
-     Incluir(Tabela, FD_TAB_CTRLREC, Campos, dsReceita);
-     bloco := bloco + 1;
+      Incluir(Tabela, FD_TAB_CTRLREC, Campos, dsReceita);
+      bloco := bloco + 1;
     end;
   end;
 
@@ -789,7 +790,7 @@ begin
     if not(prazo.Text = '') then
     begin
       Result := False;
-      infracao.Text := INTTOSTR(0);
+      infracao.Text := IntToStr(0);
     end
     else
       Result := true;

@@ -138,11 +138,15 @@ end;
 
 procedure TfrmCadastroReceitas.lvwDadosReceitasItemClick(const Sender: TObject;
   const AItem: TListViewItem);
-begin
-  ShowMessage(Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index]
-    .Text, 16, 6));
-  ShowMessage(Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index]
-    .Text, 38, 6));
+  var status: string;
+  begin
+  status := (Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index]
+              .Data[TMultiDetailAppearanceNames.Detail3].ToString, 10, 10));
+
+  if status = ST_ABERTO then
+     ShowMessage( 'aberto')
+  else
+      ShowMessage('baixado');
 
 end;
 
