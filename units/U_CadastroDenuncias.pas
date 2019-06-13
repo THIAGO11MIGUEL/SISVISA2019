@@ -10,7 +10,7 @@ uses
   FMX.Layouts, FMX.Edit, FMX.SearchBox, FMX.ListBox, FMX.TabControl,
   FMX.DateTimeCtrls, FMX.ListView.Types, FMX.ListView.Appearances,
   FMX.ListView.Adapters.Base, FMX.ListView, Data.DB, Datasnap.DBClient,
-  MultiDetailAppearanceU;
+  MultiDetailAppearanceU, FMX.ScrollBox, FMX.Memo;
 
 type
   TfrmCadastroDenuncias = class(TfrmCadastroPadrao)
@@ -50,6 +50,7 @@ type
     lvwDadosDenuncia: TListView;
     lvwDetalheDenuncia: TListView;
     lvwHist_Denuncias: TListView;
+    mmHistorico: TMemo;
     procedure edtTipDenunciaClick(Sender: TObject);
     procedure actVoltarTabCadExecute(Sender: TObject);
     procedure ListView2ItemClick(const Sender: TObject;
@@ -175,6 +176,9 @@ begin
   edtEnderecoDenuncia.Text := '';
   edtObs.Text := '';
   lbxTipDenuncia.Items.Clear;
+  lvwDetalheDenuncia.Items.Clear;
+  lvwHist_Denuncias.Items.Clear;
+  mmHistorico.Lines.Clear;
   dtedtDataDenuncia.Date := Now;
 end;
 
@@ -190,8 +194,16 @@ procedure TfrmCadastroDenuncias.lvwDadosDenunciaItemClick(const Sender: TObject;
 begin
   LimparCampos;
   ENDERECO := QuotedStr(lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.Index].Text);
-  lnIDDenuncia := FUtilsCAD.RetornaID(TAB_VWDEN, ENDERECO, VW_DEN_F2, VW_DEN_F3, qry);
+
+  lnIDDenuncia := FUtilsCAD
+                      .RetornaID(TAB_VWDEN,
+                                 ENDERECO,
+                                 VW_DEN_F2,
+                                 VW_DEN_F3,
+                                 qry);
+
   FUtilsCAD.CDDenunciaDet(lvwDetalheDenuncia, qry, TAB_VWDEN, IntToStr(lnIDDenuncia));
+
   lytHistDenuncias.Visible := True;
 end;
 
@@ -199,10 +211,17 @@ procedure TfrmCadastroDenuncias.lvwDetalheDenunciaItemClick(
   const Sender: TObject; const AItem: TListViewItem);
 begin
   //LimparCampos;
+{
   TIPO := QuotedStr(lvwDetalheDenuncia.Items[lvwDetalheDenuncia.Selected.Index].Text);
   COD_TIPO := FUtilsCAD.RetornaID(TAB_VWDEN, TIPO, VW_HIST_F2, VW_HIST_F3, qry);
   FIELDS := IntToStr(COD_TIPO) + ' and ' + VW_HIST_F4 + ' = ' + ENDERECO;
   FUtilsCAD.CDDenunciaAtend(lvwHist_Denuncias, qry, TAB_VWHIST, FIELDS);
+  lytHistDenuncias.Visible := True;
+ }
+  TIPO := QuotedStr(lvwDetalheDenuncia.Items[lvwDetalheDenuncia.Selected.Index].Text);
+  COD_TIPO := FUtilsCAD.RetornaID(TAB_VWDEN, TIPO, VW_HIST_F2, VW_HIST_F3, qry);
+  FIELDS := IntToStr(COD_TIPO) + ' and ' + VW_HIST_F4 + ' = ' + ENDERECO;
+  FUtilsCAD.CDDenunciaAtend(mmHistorico, qry, TAB_VWHIST, FIELDS);
   lytHistDenuncias.Visible := True;
 end;
 

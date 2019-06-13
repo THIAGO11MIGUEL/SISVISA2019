@@ -76,6 +76,27 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                 Size.Height = 415.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 1
+                ItemAppearance.ItemHeight = 90
+                ItemAppearanceObjects.ItemObjects.MultiDetail1.Width = 106.000000000000000000
+                ItemAppearanceObjects.ItemObjects.MultiDetail1.Height = 42.000000000000000000
+                ItemAppearanceObjects.ItemObjects.MultiDetail1.PlaceOffset.Y = -14.000000000000000000
+                ItemAppearanceObjects.ItemObjects.MultiDetail2.Height = 28.000000000000000000
+                ItemAppearanceObjects.ItemObjects.MultiDetail3.Width = 106.000000000000000000
+                ItemAppearanceObjects.ItemObjects.MultiDetail3.Height = 18.000000000000000000
+                ItemAppearanceObjects.ItemObjects.MultiDetail3.PlaceOffset.Y = -9.000000000000000000
+                ItemAppearanceObjects.ItemObjects.Accessory.Visible = False
+                ItemAppearanceObjects.ItemEditObjects.MultiDetail2.Height = 28.000000000000000000
+                object mmHistorico: TMemo
+                  Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+                  DataDetectorTypes = []
+                  Align = Client
+                  Size.Width = 143.000000000000000000
+                  Size.Height = 415.000000000000000000
+                  Size.PlatformDefault = False
+                  TabOrder = 0
+                  Viewport.Width = 143.000000000000000000
+                  Viewport.Height = 415.000000000000000000
+                end
               end
             end
             object lvwDadosDenuncia: TListView

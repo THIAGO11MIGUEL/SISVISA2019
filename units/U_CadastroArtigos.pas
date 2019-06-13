@@ -81,7 +81,9 @@ end;
 procedure TfrmCadastroArtigos.actExcluirExecute(Sender: TObject);
 begin
   NUM := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDArtigo := FUtilsCAD.RetornaID(TABELA, QuotedStr(NUM), f1, f2, qry);
+  lnIDArtigo := FUtilsCAD
+                     .RetornaID(TABELA, QuotedStr(NUM), f1, f2, qry);
+
   VALORES := ' WHERE cod_artigo = ' + IntToStr(lnIDArtigo);
   FUtilsCAD.Deletar(TABELA, VALORES, qry);
   inherited;

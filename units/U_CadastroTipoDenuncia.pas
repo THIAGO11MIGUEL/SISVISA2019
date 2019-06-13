@@ -48,7 +48,8 @@ uses
 procedure TfrmCadastroTipoDenuncia.actAlterarExecute(Sender: TObject);
 begin
   TIPO := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDTpDenun := FUtilsCAD.RetornaID(TAB_DEN_TIP, QuotedStr(TIPO), TAB_TIP_F1, TAB_TIP_F2, qry);
+  lnIDTpDenun := FUtilsCAD.RetornaID(TAB_DEN_TIP, QuotedStr(TIPO), TAB_TIP_F1,
+    TAB_TIP_F2, qry);
   edtTipoDenuncia.Text := TIPO;
   inherited;
 end;
@@ -56,7 +57,8 @@ end;
 procedure TfrmCadastroTipoDenuncia.actExcluirExecute(Sender: TObject);
 begin
   TIPO := ListView1.Items[ListView1.Selected.Index].Text;
-  lnIDTpDenun := FUtilsCAD.RetornaID(TAB_DEN_TIP, QuotedStr(TIPO), TAB_TIP_F1, TAB_TIP_F2, qry);
+  lnIDTpDenun := FUtilsCAD.RetornaID(TAB_DEN_TIP, QuotedStr(TIPO), TAB_TIP_F1,
+    TAB_TIP_F2, qry);
   VALORES := ' WHERE ' + TAB_TIP_F1 + ' = ' + IntToStr(lnIDTpDenun);
   FUtilsCAD.Deletar(TAB_DEN_TIP, VALORES, qry);
   inherited;
@@ -74,8 +76,8 @@ begin
       end;
     tpUpdate:
       begin
-        VALORES := ' set ' +TAB_TIP_F2+ ' = ' +TIPO+ ' where ' +TAB_TIP_F1+ ' = ' +
-          IntToStr(lnIDTpDenun);
+        VALORES := ' set ' + TAB_TIP_F2 + ' = ' + TIPO + ' where ' + TAB_TIP_F1
+          + ' = ' + IntToStr(lnIDTpDenun);
         FUtilsCAD.Alterar(TAB_DEN_TIP, VALORES, qry);
       end;
   end;

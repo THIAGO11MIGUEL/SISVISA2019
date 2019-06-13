@@ -18448,7 +18448,7 @@ object frmSISVISA: TfrmSISVISA
         DefaultItemStyles.ItemStyle = ''
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
-        Viewport.Width = 242.000000000000000000
+        Viewport.Width = 250.000000000000000000
         Viewport.Height = 441.000000000000000000
         object ListBoxGroupHeader2: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000

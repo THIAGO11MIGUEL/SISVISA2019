@@ -4,10 +4,11 @@ object dmSISVISA: TdmSISVISA
   Width = 521
   object FD_ConnSISVISA: TFDConnection
     Params.Strings = (
-      'Database=D:\SOFTWARES\SISVISA 2019\trunk\BD\SISVISA.FDB'
+      'Database=C:\Projetos\SISVISA 2019\trunk\BD\SISVISA.FDB'
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')
+    LoginPrompt = False
     Left = 56
     Top = 24
   end
