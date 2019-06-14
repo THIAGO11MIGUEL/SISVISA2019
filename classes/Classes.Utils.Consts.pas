@@ -98,6 +98,8 @@ const
   TAB_UNI_F5: string = 'TELEFONE';
   TAB_UNI_F6: string = 'MEDICO_RESPONSAVEL';
   // -------------------------------------------------
+  TAB_REC_F1: string = 'ID_C_RECEITUARIO';
+
   // Fields
   FD_TAB_DEN: string = '(endereco)';
   FD_TAB_DET: string = '(cod_denuncia, cod_tipdenuncia, data, obs)';
@@ -122,6 +124,7 @@ const
   MSG_SUCESSO: string = 'SALVO COM SUCESSO!!!';
   MSG_INSERIR: string = 'INSERIR REGISTRO NOVO';
   MSG_ALTERAR: string = 'ATUALIZAR REGISTRO';
+  MSG_BAIXADO: string = 'RECEITAS BAIXADAS COM SUCESSO';
 
   // Outros
   LISTA: string = ' - LISTA DE DENUNCIAS ';
@@ -141,6 +144,7 @@ const
   CADALTERA: string = '-> ALTERAR REGISTRO';
   ST_ABERTO: string = 'EM ABERTO';
   ST_BAIXADO: string = 'BAIXADO';
+  BAIXA: string = 'BAIXA DE RECEITUÁRIO';
 
 implementation
 

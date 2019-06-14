@@ -406,7 +406,9 @@ begin
       end;
 
       lv.EndUpdate;
-    end;
+
+
+    end
 
   except
     on E: Exception do
@@ -783,8 +785,6 @@ begin
     lvd.Items[lvd.Selected.Index].Data
     [TMultiDetailAppearanceNames.Detail3].ToString;
 
-  cdsReceita.Close;
-  cdsReceita.Open;
   cdsReceita.Insert;
   cdsReceita.FieldByName(VW_REC_F6).AsInteger := codReceita;
   cdsReceita.FieldByName(VW_REC_F10).AsInteger := numinicio;

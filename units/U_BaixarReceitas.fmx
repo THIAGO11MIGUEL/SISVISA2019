@@ -184,6 +184,7 @@ object frmBaixarReceitas: TfrmBaixarReceitas
                 Size.Height = 32.000000000000000000
                 Size.PlatformDefault = False
                 StyledSettings = [Family, Style, FontColor]
+                CharCase = ecUpperCase
               end
             end
             object ListBoxItem3: TListBoxItem
@@ -214,6 +215,7 @@ object frmBaixarReceitas: TfrmBaixarReceitas
                 Touch.InteractiveGestures = [LongTap, DoubleTap]
                 Align = Client
                 TabOrder = 2
+                ReadOnly = True
                 TextSettings.Font.Size = 16.000000000000000000
                 TextSettings.HorzAlign = Center
                 Size.Width = 609.000000000000000000
@@ -237,11 +239,11 @@ object frmBaixarReceitas: TfrmBaixarReceitas
               HeaderAppearanceClassName = 'TListHeaderObjects'
               FooterAppearanceClassName = 'TListHeaderObjects'
               Align = Bottom
-              Position.Y = 160.000000000000000000
+              Position.Y = 272.000000000000000000
               Size.Width = 722.000000000000000000
-              Size.Height = 271.000000000000000000
+              Size.Height = 159.000000000000000000
               Size.PlatformDefault = False
-              TabOrder = 0
+              TabOrder = 1
               ItemAppearanceObjects.ItemObjects.MultiDetail1.Font.Size = 15.000000000000000000
               ItemAppearanceObjects.ItemObjects.MultiDetail2.Font.Size = 15.000000000000000000
               ItemAppearanceObjects.ItemObjects.MultiDetail3.Font.Size = 15.000000000000000000
@@ -283,7 +285,10 @@ object frmBaixarReceitas: TfrmBaixarReceitas
             ItemAppearanceObjects.ItemObjects.MultiDetail1.Font.Size = 14.000000000000000000
             ItemAppearanceObjects.ItemObjects.MultiDetail2.Font.Size = 14.000000000000000000
             ItemAppearanceObjects.ItemObjects.MultiDetail3.Font.Size = 14.000000000000000000
-            OnItemClick = lvwDadosReceitasItemClick
+            ItemAppearanceObjects.HeaderObjects.Text.Font.Size = 16.000000000000000000
+            ItemAppearanceObjects.HeaderObjects.Text.Font.StyleExt = {00070000000000000004000000}
+            ItemAppearanceObjects.FooterObjects.Text.Font.Size = 16.000000000000000000
+            ItemAppearanceObjects.FooterObjects.Text.Font.StyleExt = {00070000000000000004000000}
           end
         end
       end
@@ -329,31 +334,21 @@ object frmBaixarReceitas: TfrmBaixarReceitas
     end
   end
   object cdsBaixaReceitas: TClientDataSet
-    PersistDataPacket.Data = {
-      2E0000009619E0BD0100000018000000010000000000030000002E000B434F44
-      5F5245434549544104000100000000000000}
-    Active = True
     Aggregates = <>
     Params = <>
-    Left = 576
+    Left = 568
     Top = 8
     object cdsBaixaReceitasCOD_RECEITA: TIntegerField
       FieldName = 'COD_RECEITA'
     end
     object cdsBaixaReceitasNUM_INICIAL: TIntegerField
-      FieldKind = fkCalculated
       FieldName = 'NUM_INICIAL'
-      Calculated = True
     end
     object cdsBaixaReceitasNUM_FINAL: TIntegerField
-      FieldKind = fkCalculated
       FieldName = 'NUM_FINAL'
-      Calculated = True
     end
     object cdsBaixaReceitasNUM_BLOCO: TIntegerField
-      FieldKind = fkCalculated
       FieldName = 'NUM_BLOCO'
-      Calculated = True
     end
   end
 end

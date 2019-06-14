@@ -3,14 +3,37 @@ unit U_BaixarReceitas;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
   System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
-  MultiDetailAppearanceU, FMX.ListBox, FMX.Layouts, FMX.ListView, FMX.StdCtrls,
-  FMX.Controls.Presentation, FMX.TabControl, FMX.Edit, FMX.DateTimeCtrls,
-  Data.DB, Datasnap.DBClient, System.Actions, FMX.ActnList, Classes.Utils.View,
-  FireDAC.Comp.Client;
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Graphics,
+  FMX.Dialogs,
+  FMX.ListView.Types,
+  FMX.ListView.Appearances,
+  FMX.ListView.Adapters.Base,
+  MultiDetailAppearanceU,
+  FMX.ListBox,
+  FMX.Layouts,
+  FMX.ListView,
+  FMX.StdCtrls,
+  FMX.Controls.Presentation,
+  FMX.TabControl,
+  FMX.Edit,
+  FMX.DateTimeCtrls,
+  Data.DB,
+  Datasnap.DBClient,
+  System.Actions,
+  FMX.ActnList,
+  Classes.Utils.View,
+  FireDAC.Comp.Client, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors,
+  Data.Bind.EngExt, Fmx.Bind.DBEngExt, FMX.Grid.Style, Fmx.Bind.Grid,
+  Data.Bind.Grid, FMX.ScrollBox, FMX.Grid, Data.Bind.Components,
+  Data.Bind.DBScope;
 
 type
   TfrmBaixarReceitas = class(TForm)
@@ -26,9 +49,7 @@ type
     layoutCadastro: TLayout;
     ToolBar1: TToolBar;
     lblTitulo: TLabel;
-    lvwDadosReceitas: TListView;
     ListBox1: TListBox;
-    lvwReceitasBaixa: TListView;
     ListBoxItem1: TListBoxItem;
     ListBoxItem2: TListBoxItem;
     ListBoxGroupHeader1: TListBoxGroupHeader;
@@ -46,13 +67,15 @@ type
     actRemover: TAction;
     actBaixar: TAction;
     actAdicionar: TAction;
-    cdsBaixaReceitas: TClientDataSet;
-    cdsBaixaReceitasCOD_RECEITA: TIntegerField;
     changeTabDadosReceitas: TChangeTabAction;
     changeTabBaixarReceitas: TChangeTabAction;
+    lvwReceitasBaixa: TListView;
+    cdsBaixaReceitas: TClientDataSet;
+    cdsBaixaReceitasCOD_RECEITA: TIntegerField;
     cdsBaixaReceitasNUM_INICIAL: TIntegerField;
     cdsBaixaReceitasNUM_FINAL: TIntegerField;
     cdsBaixaReceitasNUM_BLOCO: TIntegerField;
+    lvwDadosReceitas: TListView;
     procedure FormCreate(Sender: TObject);
     procedure edtBuscaReceitaLancadaClick(Sender: TObject);
     procedure lvwDadosReceitasItemClick(const Sender: TObject;
@@ -74,11 +97,13 @@ implementation
 
 {$R *.fmx}
 
-uses U_SISVISA, Classes.Utils.Consts, U_dmSISVISA, U_CADASTROPADRAO;
+uses U_SISVISA, Classes.Utils.Consts, U_dmSISVISA, U_CADASTROPADRAO,
+  U_MensagemPadrao;
 
 procedure TfrmBaixarReceitas.actBaixarExecute(Sender: TObject);
 var
   campos, dt_baixa, responsavel: string;
+  RST: Boolean;
 begin
   dt_baixa := FormatDateTime('dd.mm.yyyy', dtedtDataBaixa.Date);
   responsavel := QuotedStr(edtResponsavelBaixa.Text);
@@ -87,6 +112,7 @@ begin
   begin
     cdsBaixaReceitas.First;
 
+    cdsBaixaReceitas.Open;
     while not cdsBaixaReceitas.Eof do
     begin
       Cod_Rec := cdsBaixaReceitasCOD_RECEITA.Value;
@@ -94,19 +120,20 @@ begin
       NumFinal := cdsBaixaReceitasNUM_FINAL.Value;
       Bloco := cdsBaixaReceitasNUM_BLOCO.Value;
 
-      campos := '(' + QuotedStr(IntToStr(Cod_Rec)) + ', ' + QuotedStr(dt_baixa)
-        + ', ' + QuotedStr(IntToStr(Bloco)) + ', ' +
-        QuotedStr(IntToStr(NumInicio)) + ', ' + QuotedStr(IntToStr(NumFinal)) +
-        ', ' + responsavel + ')';
+      campos := IntToStr(Cod_Rec) + ', ' + QuotedStr(dt_baixa)
+        + ', ' + IntToStr(Bloco) + ', ' +
+        IntToStr(NumInicio) + ', ' + IntToStr(NumFinal) +
+        ', ' + responsavel;
 
       FUtilsCAD.Incluir(TAB_BAIXA, FD_TAB_BAIXAREC, campos, qry);
       campos := '';
-      campos := ' set STATUS = ' + ST_BAIXADO;
+      campos := ' set STATUS = ' + QuotedStr(ST_BAIXADO) + ' where ' + TAB_REC_F1 + ' = ' +IntToStr(Cod_Rec);
       FUtilsCAD.Alterar(TAB_RECEITA, campos, qry);
 
       cdsBaixaReceitas.Next;
     end;
   end;
+  FUtilsCAD.fnc_ExibirMensagem(BAIXA, MSG_BAIXADO, tpBaixar);
 end;
 
 procedure TfrmBaixarReceitas.edtBuscaReceitaLancadaClick(Sender: TObject);
@@ -123,13 +150,22 @@ begin
   qry := dmSISVISA.FDqryCadastros;
   TabControl1.TabIndex := 0;
   TabControl1.TabPosition := TTabPosition.None;
+  cdsBaixaReceitas.CreateDataSet;
 end;
 
 procedure TfrmBaixarReceitas.lvwDadosReceitasItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
-  FUtilsCAD.PreencherReceita(lvwDadosReceitas, lvwReceitasBaixa, NumInicio,
-    NumFinal, Bloco, Cod_Rec, cdsBaixaReceitas);
+
+  FUtilsCAD.PreencherReceita(
+             lvwDadosReceitas,
+             lvwReceitasBaixa,
+             NumInicio,
+             NumFinal,
+             Bloco,
+             Cod_Rec,
+             cdsBaixaReceitas);
+
   changeTabBaixarReceitas.ExecuteTarget(Self);
 end;
 
