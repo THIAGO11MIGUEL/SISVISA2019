@@ -36,8 +36,6 @@ type
     Layout6: TLayout;
     Label5: TLabel;
     changeTabTipDenuncia: TChangeTabAction;
-    Panel2: TPanel;
-    btnVoltarChangeCad: TButton;
     actVoltarTabCad: TAction;
     ClientDataSet1: TClientDataSet;
     ClientDataSet1CODIGO: TIntegerField;
@@ -55,7 +53,6 @@ type
     procedure actVoltarTabCadExecute(Sender: TObject);
     procedure ListView2ItemClick(const Sender: TObject;
       const AItem: TListViewItem);
-    procedure actRemoverExecute(Sender: TObject);
     procedure actSalvarExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure actInserirExecute(Sender: TObject);
@@ -63,6 +60,7 @@ type
       const AItem: TListViewItem);
     procedure lvwDetalheDenunciaItemClick(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure actRemoverExecute(Sender: TObject);
   private
     { Private declarations }
     FIELDS, VALORES, ENDERECO, TIPO, Data, OBS: string;
@@ -91,10 +89,27 @@ end;
 
 procedure TfrmCadastroDenuncias.actRemoverExecute(Sender: TObject);
 var
-  tipo: Integer;
+  cod: Integer;
 begin
-  tipo := lbxTipDenuncia.ItemIndex;
-  lbxTipDenuncia.Items.Delete(tipo);
+  TIPO := QuotedStr
+    (copy(lbxTipDenuncia.Items[lbxTipDenuncia.ItemIndex], 1, 20));
+  COD_TIPO := FUtilsCAD.RetornaID(TAB_DEN_TIP, TIPO, TAB_TIP_F1,
+    TAB_TIP_F2, qry);
+
+  ClientDataSet1.Close;
+  clientdataSet1.Open;
+  ClientDataSet1.First;
+
+  while not ClientDataSet1.Eof do
+  begin
+    if ClientDataSet1CODIGO.Value = COD_TIPO then
+    begin
+      cod := lbxTipDenuncia.ItemIndex;
+      lbxTipDenuncia.Items.Delete(cod);
+      ClientDataSet1.Delete;
+    end;
+    ClientDataSet1.Next;
+  end;
 end;
 
 procedure TfrmCadastroDenuncias.actSalvarExecute(Sender: TObject);
@@ -111,8 +126,8 @@ begin
       begin
         lnIDDenuncia := FUtilsCAD.RetornaID(TAB_DEN, ENDERECO, TAB_DEN_F1,
           TAB_DEN_F2, qry);
-        FIELDS := ' set ' + TAB_DEN_F2 + ' = ' + ENDERECO + ' where ' + TAB_DEN_F1 +
-          ' = ' + IntToStr(lnIDDenuncia);
+        FIELDS := ' set ' + TAB_DEN_F2 + ' = ' + ENDERECO + ' where ' +
+          TAB_DEN_F1 + ' = ' + IntToStr(lnIDDenuncia);
         VALORES := FIELDS;
         FUtilsCAD.Alterar(TAB_DEN, VALORES, qry);
       end;
@@ -134,8 +149,8 @@ begin
             QuotedStr(FormatDateTime('DD.MM.YYYY', DT)) + ', ' + OBS;
           FUtilsCAD.Incluir(TAB_DEN_DET, FD_TAB_DET, VALORES, qry);
         end;
-      tpUpdate: //UPDATE
-      ;
+      tpUpdate: // UPDATE
+        ;
     end;
 
     ClientDataSet1.Next;
@@ -193,32 +208,31 @@ procedure TfrmCadastroDenuncias.lvwDadosDenunciaItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 begin
   LimparCampos;
-  ENDERECO := QuotedStr(lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.Index].Text);
+  ENDERECO := QuotedStr(lvwDadosDenuncia.Items[lvwDadosDenuncia.Selected.
+    Index].Text);
 
-  lnIDDenuncia := FUtilsCAD
-                      .RetornaID(TAB_VWDEN,
-                                 ENDERECO,
-                                 VW_DEN_F2,
-                                 VW_DEN_F3,
-                                 qry);
+  lnIDDenuncia := FUtilsCAD.RetornaID(TAB_VWDEN, ENDERECO, VW_DEN_F2,
+    VW_DEN_F3, qry);
 
-  FUtilsCAD.CDDenunciaDet(lvwDetalheDenuncia, qry, TAB_VWDEN, IntToStr(lnIDDenuncia));
+  FUtilsCAD.CDDenunciaDet(lvwDetalheDenuncia, qry, TAB_VWDEN,
+    IntToStr(lnIDDenuncia));
 
   lytHistDenuncias.Visible := True;
 end;
 
-procedure TfrmCadastroDenuncias.lvwDetalheDenunciaItemClick(
-  const Sender: TObject; const AItem: TListViewItem);
+procedure TfrmCadastroDenuncias.lvwDetalheDenunciaItemClick
+  (const Sender: TObject; const AItem: TListViewItem);
 begin
-  //LimparCampos;
-{
-  TIPO := QuotedStr(lvwDetalheDenuncia.Items[lvwDetalheDenuncia.Selected.Index].Text);
-  COD_TIPO := FUtilsCAD.RetornaID(TAB_VWDEN, TIPO, VW_HIST_F2, VW_HIST_F3, qry);
-  FIELDS := IntToStr(COD_TIPO) + ' and ' + VW_HIST_F4 + ' = ' + ENDERECO;
-  FUtilsCAD.CDDenunciaAtend(lvwHist_Denuncias, qry, TAB_VWHIST, FIELDS);
-  lytHistDenuncias.Visible := True;
- }
-  TIPO := QuotedStr(lvwDetalheDenuncia.Items[lvwDetalheDenuncia.Selected.Index].Text);
+  // LimparCampos;
+  {
+    TIPO := QuotedStr(lvwDetalheDenuncia.Items[lvwDetalheDenuncia.Selected.Index].Text);
+    COD_TIPO := FUtilsCAD.RetornaID(TAB_VWDEN, TIPO, VW_HIST_F2, VW_HIST_F3, qry);
+    FIELDS := IntToStr(COD_TIPO) + ' and ' + VW_HIST_F4 + ' = ' + ENDERECO;
+    FUtilsCAD.CDDenunciaAtend(lvwHist_Denuncias, qry, TAB_VWHIST, FIELDS);
+    lytHistDenuncias.Visible := True;
+  }
+  TIPO := QuotedStr(lvwDetalheDenuncia.Items[lvwDetalheDenuncia.Selected.
+    Index].Text);
   COD_TIPO := FUtilsCAD.RetornaID(TAB_VWDEN, TIPO, VW_HIST_F2, VW_HIST_F3, qry);
   FIELDS := IntToStr(COD_TIPO) + ' and ' + VW_HIST_F4 + ' = ' + ENDERECO;
   FUtilsCAD.CDDenunciaAtend(mmHistorico, qry, TAB_VWHIST, FIELDS);

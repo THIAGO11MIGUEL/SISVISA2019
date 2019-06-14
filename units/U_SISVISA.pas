@@ -58,6 +58,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
     procedure ListBoxGroupHeader6Click(Sender: TObject);
+    procedure ListBoxGroupHeader7Click(Sender: TObject);
   private
     FGestureOrigin: TPointF;
     FGestureInProgress: Boolean;
@@ -80,7 +81,7 @@ implementation
 
 uses U_CadastroDenuncias, U_CadastroReceitas, U_CadastroProcADM,
   U_Configuracoes, U_CadastroTipoDenuncia, U_AtenderDenuncia,
-  Classes.Utils.View;
+  Classes.Utils.View, U_BaixarReceitas;
 
 procedure TfrmSISVISA.FormKeyDown(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
@@ -111,6 +112,15 @@ begin
      FormAtender := TfrmAtenderDenuncias.Create(Self);
   Self.layoutPrincipal.RemoveObject(0);
   Self.layoutPrincipal.AddObject(FormAtender.Layout1);
+end;
+
+procedure TfrmSISVISA.ListBoxGroupHeader7Click(Sender: TObject);
+var FormBaixaRec: TfrmBaixarReceitas;
+begin
+   if not Assigned (FormBaixaRec) then
+      FormBaixaRec := TfrmBaixarReceitas.Create(Self);
+   Self.layoutPrincipal.RemoveObject(0);
+   Self.layoutPrincipal.AddObject(FormBaixaRec.Layout1);
 end;
 
 procedure TfrmSISVISA.ListBoxItem1Click(Sender: TObject);

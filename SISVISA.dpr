@@ -20,7 +20,8 @@ uses
   SISVISA.Model.Denuncias in 'classes\SISVISA.Model.Denuncias.pas',
   U_CadastroProcedDenuncia in 'units\U_CadastroProcedDenuncia.pas' {frmCadastroProcedDenuncia},
   Classes.Utils.Consts in 'classes\Classes.Utils.Consts.pas',
-  U_CadastroTipoReceita in 'units\U_CadastroTipoReceita.pas' {frmCadastroTipReceita};
+  U_CadastroTipoReceita in 'units\U_CadastroTipoReceita.pas' {frmCadastroTipReceita},
+  U_BaixarReceitas in 'units\U_BaixarReceitas.pas' {frmBaixarReceitas};
 
 {$R *.res}
 
@@ -28,5 +29,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmSISVISA, frmSISVISA);
   Application.CreateForm(TdmSISVISA, dmSISVISA);
+  Application.CreateForm(TfrmBaixarReceitas, frmBaixarReceitas);
   Application.Run;
 end.

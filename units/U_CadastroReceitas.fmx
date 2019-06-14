@@ -9,7 +9,6 @@ inherited frmCadastroReceitas: TfrmCadastroReceitas
     inherited TabControl1: TTabControl
       Size.Width = 908.000000000000000000
       Size.Height = 466.000000000000000000
-      TabIndex = 0
       Sizes = (
         908s
         417s
@@ -22,7 +21,6 @@ inherited frmCadastroReceitas: TfrmCadastroReceitas
       inherited tabDados: TTabItem
         TextSettings.Font.Size = 16.000000000000000000
         StyledSettings = [Family, Style, FontColor]
-        IsSelected = True
         Size.Width = 227.000000000000000000
         ExplicitSize.cx = 69.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
@@ -37,7 +35,6 @@ inherited frmCadastroReceitas: TfrmCadastroReceitas
             Size.Width = 908.000000000000000000
             inherited edtBuscaRegistro: TEdit
               Size.Width = 908.000000000000000000
-              Size.Height = 32.000000000000000000
             end
           end
           object lvwDadosReceitas: TListView
@@ -60,7 +57,6 @@ inherited frmCadastroReceitas: TfrmCadastroReceitas
       inherited tabCadastro: TTabItem
         TextSettings.Font.Size = 16.000000000000000000
         StyledSettings = [Family, Style, FontColor]
-        IsSelected = False
         Size.Width = 227.000000000000000000
         ExplicitSize.cx = 69.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
@@ -519,8 +515,8 @@ inherited frmCadastroReceitas: TfrmCadastroReceitas
     end
   end
   inherited ActionList1: TActionList
-    Left = 848
-    Top = 296
+    Left = 856
+    Top = 432
     object actLancar: TAction
       Text = 'Lan'#231'ar'
     end

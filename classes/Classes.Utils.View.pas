@@ -33,7 +33,7 @@ type
       Tabela, coddet: string); overload;
 
     procedure CDDenunciaAtend(mmMemo: TMemo; dsDenunciaAtend: TFDQuery;
-      Tabela, coddet: string);  overload;
+      Tabela, coddet: string); overload;
 
     procedure CDTipReceita(lv: TListView; dsTipReceita: TFDQuery;
       Tabela: string);
@@ -45,6 +45,9 @@ type
     function CalculaFolhaFinal(ValorInicio, qtd, CodTipo: Integer): Integer;
     function RetornaID(Tabela, value, campo1, campo2: string;
       ds: TFDQuery): Integer;
+    procedure PreencherReceita(lvd, lvb: TListView;
+      numinicio, numfinal, bloco, codReceita: Integer;
+      cdsReceita: TClientDataSet);
     function ValidarReceita: Boolean;
   end;
 
@@ -215,14 +218,14 @@ begin
       while not dsDenunciaAtend.Eof do
       begin
 
-        mmMemo.Lines.Add( dsDenunciaAtend.FieldByName ('codigo_atendimento').AsString);
-        mmMemo.Lines.Add( dsDenunciaAtend.FieldByName('DATA_ATEND').AsString);
-        mmMemo.Lines.Add( dsDenunciaAtend.FieldByName('PROCEDIMENTO').AsString);
-        mmMemo.Lines.Add( dsDenunciaAtend.FieldByName('PRAZO').AsString
-         + ' DIAS' + ' - ' + dsDenunciaAtend.FieldByName('DATA_RETORNO').AsString
-         );
+        mmMemo.Lines.Add(dsDenunciaAtend.FieldByName('codigo_atendimento')
+          .AsString);
+        mmMemo.Lines.Add(dsDenunciaAtend.FieldByName('DATA_ATEND').AsString);
+        mmMemo.Lines.Add(dsDenunciaAtend.FieldByName('PROCEDIMENTO').AsString);
+        mmMemo.Lines.Add(dsDenunciaAtend.FieldByName('PRAZO').AsString + ' DIAS'
+          + ' - ' + dsDenunciaAtend.FieldByName('DATA_RETORNO').AsString);
 
-         dsDenunciaAtend.Next;
+        dsDenunciaAtend.Next;
       end;
 
       mmMemo.EndUpdate;
@@ -750,6 +753,44 @@ begin
     end;
   end;
 
+end;
+
+procedure TUtilsView.PreencherReceita(lvd, lvb: TListView;
+  numinicio, numfinal, bloco, codReceita: Integer; cdsReceita: TClientDataSet);
+var
+  lvItem: TListViewItem;
+  Campos: string;
+  qry: TFDQuery;
+begin
+  qry := dmSISVisa.FDqryCadastros;
+  numinicio := StrToInt(Copy(lvd.Items[lvd.Selected.Index].Text, 16, 6));
+  numfinal := StrToInt(Copy(lvd.Items[lvd.Selected.Index].Text, 38, 6));
+  bloco := StrToInt(Copy(lvd.Items[lvd.Selected.Index].Data
+    [TMultiDetailAppearanceNames.Detail1].ToString, 46, 1));
+  Campos := VW_REC_F10 + ' = ' + IntToStr(numinicio) + ' AND ' + VW_REC_F11;
+  codReceita := RetornaID(TAB_VWRECEITA, IntToStr(numfinal), VW_REC_F6,
+    Campos, qry);
+
+  lvItem := lvb.Items.Add;
+  lvItem.Text := lvd.Items[lvd.Selected.Index].Text;
+  lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
+    lvd.Items[lvd.Selected.Index].Data
+    [TMultiDetailAppearanceNames.Detail1].ToString;
+  lvItem.Data[TMultiDetailAppearanceNames.Detail2] :=
+    lvd.Items[lvd.Selected.Index].Data
+    [TMultiDetailAppearanceNames.Detail2].ToString;
+  lvItem.Data[TMultiDetailAppearanceNames.Detail3] :=
+    lvd.Items[lvd.Selected.Index].Data
+    [TMultiDetailAppearanceNames.Detail3].ToString;
+
+  cdsReceita.Close;
+  cdsReceita.Open;
+  cdsReceita.Insert;
+  cdsReceita.FieldByName(VW_REC_F6).AsInteger := codReceita;
+  cdsReceita.FieldByName(VW_REC_F10).AsInteger := numinicio;
+  cdsReceita.FieldByName(VW_REC_F11).AsInteger := numfinal;
+  cdsReceita.FieldByName(VW_REC_F9).AsInteger := bloco;
+  cdsReceita.Post;
 end;
 
 procedure TUtilsView.fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);

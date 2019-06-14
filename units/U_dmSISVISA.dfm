@@ -4,7 +4,7 @@ object dmSISVISA: TdmSISVISA
   Width = 521
   object FD_ConnSISVISA: TFDConnection
     Params.Strings = (
-      'Database=C:\Projetos\SISVISA 2019\trunk\BD\SISVISA.FDB'
+      'Database=D:\SOFTWARES\SISVISA 2019\trunk\BD\SISVISA.FDB'
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')

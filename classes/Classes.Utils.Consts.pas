@@ -69,6 +69,11 @@ const
   VW_HIST_F7: string = 'DATA_RETORNO';
   VW_HIST_F8: string = 'PROCEDIMENTO';
   // -------------------------------------------------
+  VW_REC_F6: STRING = 'COD_RECEITA';
+  VW_REC_F9: string = 'NUM_BLOCO';
+  VW_REC_F10: string = 'NUM_INICIAL';
+  VW_REC_F11: string = 'NUM_FINAL';
+  // -------------------------------------------------
   // TABELA CAMINHOBD
   TAB_CAM_F1: string = 'COD_CAMINHOBD';
   TAB_CAM_F2: string = 'DESCRICAO';
@@ -106,6 +111,7 @@ const
   FD_TAB_CTRLREC
     : string =
     '(id_unidade, medico, id_tipo, qtd_blocos, num_bloco, num_inicial, num_final, data, status, responsavel)';
+  FD_TAB_BAIXAREC: string = '(id_controle, data, num_bloco, num_inicial, num_final, resp_devolucao)';
 
   // Mensagens
   MSG_ATEND: string = 'ATENDIMENTO A DENÚNCIAS';

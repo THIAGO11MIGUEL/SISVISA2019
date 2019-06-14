@@ -21,8 +21,6 @@ type
     panelButtonDados: TPanel;
     tabListaDenuncias: TTabItem;
     layoutCadastro: TLayout;
-    panelButtonsCad: TPanel;
-    btnVoltar: TButton;
     ToolBar1: TToolBar;
     lblTitulo: TLabel;
     btnAddDenuncia: TButton;

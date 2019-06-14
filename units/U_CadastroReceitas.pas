@@ -78,7 +78,7 @@ type
     procedure edtFolhaInicialChange(Sender: TObject);
   private
     { Private declarations }
-    lnIDTip, lnIDUnidade: integer;
+    lnIDTip, lnIDUnidade: Integer;
   public
     { Public declarations }
   end;
@@ -105,16 +105,18 @@ begin
     StrToInt(edtFolhaInicial.Text), StrToInt(edtFolhaFinal.Text),
     edtStatusReceita.Text, edtResponsavel.Text, TAB_RECEITA, qry);
   inherited;
-  FUtilsCAD.CDReceita(lvwDadosReceitas, QRY, TAB_RECEITA);
+  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_RECEITA);
 end;
 
 procedure TfrmCadastroReceitas.edtFolhaInicialChange(Sender: TObject);
-var qtd, vinicio: integer;
+var
+  qtd, vinicio: Integer;
 begin
 
   qtd := StrToInt(edtQTDBlocos.Text);
   vinicio := StrToInt(edtFolhaInicial.Text);
-  edtFolhaFinal.Text := IntToStr(FUtilsCAD.CalculaFolhaFinal(vinicio, qtd, lnIDTip));
+  edtFolhaFinal.Text := IntToStr(FUtilsCAD.CalculaFolhaFinal(vinicio, qtd,
+    lnIDTip));
 
 end;
 
@@ -138,15 +140,16 @@ end;
 
 procedure TfrmCadastroReceitas.lvwDadosReceitasItemClick(const Sender: TObject;
   const AItem: TListViewItem);
-  var status: string;
-  begin
-  status := (Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index]
-              .Data[TMultiDetailAppearanceNames.Detail3].ToString, 10, 10));
+var
+  status: string;
+begin
+  status := (Copy(lvwDadosReceitas.Items[lvwDadosReceitas.Selected.Index].Data
+    [TMultiDetailAppearanceNames.Detail3].ToString, 10, 10));
 
   if status = ST_ABERTO then
-     ShowMessage( 'aberto')
+    ShowMessage(ST_ABERTO)
   else
-      ShowMessage('baixado');
+    ShowMessage(ST_BAIXADO);
 
 end;
 

@@ -9,7 +9,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
     inherited TabControl1: TTabControl
       Size.Width = 823.000000000000000000
       Size.Height = 519.000000000000000000
-      TabIndex = 0
+      TabIndex = 1
       Sizes = (
         823s
         470s
@@ -18,7 +18,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
         823s
         470s)
       inherited tabDados: TTabItem
-        IsSelected = True
+        IsSelected = False
         Size.Width = 274.000000000000000000
         ExplicitSize.cx = 71.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
@@ -39,7 +39,6 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
             Size.Width = 823.000000000000000000
             inherited edtBuscaRegistro: TEdit
               Size.Width = 823.000000000000000000
-              Size.Height = 32.000000000000000000
             end
           end
           object lytDadosDenuncias: TLayout
@@ -94,8 +93,8 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   Size.Height = 415.000000000000000000
                   Size.PlatformDefault = False
                   TabOrder = 0
-                  Viewport.Width = 143.000000000000000000
-                  Viewport.Height = 415.000000000000000000
+                  Viewport.Width = 135.000000000000000000
+                  Viewport.Height = 407.000000000000000000
                 end
               end
             end
@@ -115,7 +114,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
         end
       end
       inherited tabCadastro: TTabItem
-        IsSelected = False
+        IsSelected = True
         Size.Width = 274.000000000000000000
         ExplicitSize.cx = 85.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
@@ -359,31 +358,11 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
             Align = Client
-            Size.Width = 743.000000000000000000
+            Size.Width = 823.000000000000000000
             Size.Height = 470.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             OnItemClick = ListView2ItemClick
-          end
-          object Panel2: TPanel
-            Align = Right
-            Position.X = 743.000000000000000000
-            Size.Width = 80.000000000000000000
-            Size.Height = 470.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 1
-            object btnVoltarChangeCad: TButton
-              Action = actVoltarTabCad
-              Align = Top
-              Enabled = True
-              StyledSettings = [Family, Style, FontColor]
-              ImageIndex = -1
-              Size.Width = 80.000000000000000000
-              Size.Height = 60.000000000000000000
-              Size.PlatformDefault = False
-              TabOrder = 0
-              TextSettings.Font.Size = 16.000000000000000000
-            end
           end
         end
       end
@@ -397,8 +376,8 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
     end
   end
   inherited ActionList1: TActionList
-    Left = 768
-    Top = 424
+    Left = 568
+    Top = 8
     object changeTabTipDenuncia: TChangeTabAction
       Category = 'Tab'
       Tab = tabTipDenuncia
@@ -419,8 +398,8 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
     Active = True
     Aggregates = <>
     Params = <>
-    Left = 768
-    Top = 480
+    Left = 480
+    Top = 8
     object ClientDataSet1CODIGO: TIntegerField
       FieldName = 'CODIGO'
     end

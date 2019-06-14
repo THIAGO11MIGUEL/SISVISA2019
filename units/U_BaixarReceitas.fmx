@@ -1,0 +1,359 @@
+object frmBaixarReceitas: TfrmBaixarReceitas
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 545
+  ClientWidth = 812
+  StyleBook = frmSISVISA.StyleBook1
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 812.000000000000000000
+    Size.Height = 545.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object TabControl1: TTabControl
+      Align = Client
+      Size.Width = 812.000000000000000000
+      Size.Height = 490.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 1
+      TabOrder = 0
+      TabPosition = PlatformDefault
+      Sizes = (
+        812s
+        441s
+        812s
+        441s)
+      object tabBaixar: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Size = 16.000000000000000000
+        StyledSettings = [Family, Style, FontColor]
+        IsSelected = False
+        Size.Width = 406.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabBaixar'
+        ExplicitSize.cx = 69.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        object layoutDados: TLayout
+          Align = Client
+          Size.Width = 812.000000000000000000
+          Size.Height = 441.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object panelButtonDados: TPanel
+            Align = Right
+            Position.X = 732.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 441.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object btnAddReceita: TButton
+              Action = actAdicionar
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 2
+              TextSettings.Font.Size = 16.000000000000000000
+              OnClick = edtBuscaReceitaLancadaClick
+            end
+            object btnRemoverReceita: TButton
+              Action = actRemover
+              Align = Top
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.Y = 60.000000000000000000
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+            object btnBaixarReceita: TButton
+              Action = actBaixar
+              Align = Bottom
+              Enabled = True
+              StyledSettings = [Family, Style, FontColor]
+              ImageIndex = -1
+              Position.Y = 381.000000000000000000
+              Size.Width = 80.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              TextSettings.Font.Size = 16.000000000000000000
+            end
+          end
+          object ListBox1: TListBox
+            Align = Client
+            Margins.Left = 5.000000000000000000
+            Margins.Top = 5.000000000000000000
+            Margins.Right = 5.000000000000000000
+            Margins.Bottom = 5.000000000000000000
+            Size.Width = 722.000000000000000000
+            Size.Height = 431.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            DisableFocusEffect = True
+            ItemHeight = 40.000000000000000000
+            DefaultItemStyles.ItemStyle = ''
+            DefaultItemStyles.GroupHeaderStyle = ''
+            DefaultItemStyles.GroupFooterStyle = ''
+            Viewport.Width = 722.000000000000000000
+            Viewport.Height = 431.000000000000000000
+            object ListBoxItem1: TListBoxItem
+              Size.Width = 722.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object Layout2: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                object Label1: TLabel
+                  Align = Client
+                  StyledSettings = [Family, Style]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 17.000000000000000000
+                  TextSettings.HorzAlign = Center
+                  Text = 'DATA BAIXA'
+                  TabOrder = 0
+                end
+              end
+              object dtedtDataBaixa: TDateEdit
+                Date = 43629.000000000000000000
+                Align = Client
+                Size.Width = 609.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+                TabOrder = 2
+                TextSettings.Font.Size = 16.000000000000000000
+                TextSettings.HorzAlign = Center
+              end
+            end
+            object ListBoxItem2: TListBoxItem
+              Position.Y = 40.000000000000000000
+              Size.Width = 722.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object Layout3: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                object Label2: TLabel
+                  Align = Client
+                  StyledSettings = [Family, Style]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 16.000000000000000000
+                  TextSettings.HorzAlign = Center
+                  Text = 'RESPONS'#193'VEL'
+                  TabOrder = 0
+                end
+              end
+              object edtResponsavelBaixa: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 2
+                TextSettings.Font.Size = 16.000000000000000000
+                TextSettings.HorzAlign = Center
+                Size.Width = 609.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+              end
+            end
+            object ListBoxItem3: TListBoxItem
+              Position.Y = 80.000000000000000000
+              Size.Width = 722.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 3
+              object Layout4: TLayout
+                Align = Left
+                Size.Width = 113.000000000000000000
+                Size.Height = 40.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                object Label3: TLabel
+                  Align = Client
+                  StyledSettings = [Family, Style]
+                  Size.Width = 113.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 17.000000000000000000
+                  TextSettings.HorzAlign = Center
+                  Text = 'RECEITA'
+                  TabOrder = 0
+                end
+              end
+              object edtBuscaReceitaLancada: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 2
+                TextSettings.Font.Size = 16.000000000000000000
+                TextSettings.HorzAlign = Center
+                Size.Width = 609.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Style, FontColor]
+                OnClick = edtBuscaReceitaLancadaClick
+              end
+            end
+            object ListBoxGroupHeader1: TListBoxGroupHeader
+              Position.Y = 120.000000000000000000
+              Size.Width = 722.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 2
+              Text = 'RECEITAS SELECIONADAS PARA BAIXA'
+            end
+            object lvwReceitasBaixa: TListView
+              ItemAppearanceClassName = 'TMultiDetailItemAppearance'
+              ItemEditAppearanceClassName = 'TMultiDetailShowCheckAppearance'
+              HeaderAppearanceClassName = 'TListHeaderObjects'
+              FooterAppearanceClassName = 'TListHeaderObjects'
+              Align = Bottom
+              Position.Y = 160.000000000000000000
+              Size.Width = 722.000000000000000000
+              Size.Height = 271.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              ItemAppearanceObjects.ItemObjects.MultiDetail1.Font.Size = 15.000000000000000000
+              ItemAppearanceObjects.ItemObjects.MultiDetail2.Font.Size = 15.000000000000000000
+              ItemAppearanceObjects.ItemObjects.MultiDetail3.Font.Size = 15.000000000000000000
+            end
+          end
+        end
+      end
+      object tabReceitas: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Size = 16.000000000000000000
+        StyledSettings = [Family, Style, FontColor]
+        IsSelected = True
+        Size.Width = 406.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'tabReceitas'
+        ExplicitSize.cx = 69.000000000000000000
+        ExplicitSize.cy = 23.000000000000000000
+        object layoutCadastro: TLayout
+          Align = Client
+          Size.Width = 812.000000000000000000
+          Size.Height = 441.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object lvwDadosReceitas: TListView
+            ItemAppearanceClassName = 'TMultiDetailItemAppearance'
+            ItemEditAppearanceClassName = 'TMultiDetailShowCheckAppearance'
+            HeaderAppearanceClassName = 'TListHeaderObjects'
+            FooterAppearanceClassName = 'TListHeaderObjects'
+            Align = Client
+            Size.Width = 812.000000000000000000
+            Size.Height = 441.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            ItemAppearanceObjects.ItemObjects.MultiDetail1.Font.Size = 14.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail2.Font.Size = 14.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail3.Font.Size = 14.000000000000000000
+            OnItemClick = lvwDadosReceitasItemClick
+          end
+        end
+      end
+    end
+    object ToolBar1: TToolBar
+      Size.Width = 812.000000000000000000
+      Size.Height = 55.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object lblTitulo: TLabel
+        Align = Client
+        StyledSettings = [Family, Style, FontColor]
+        Margins.Left = 15.000000000000000000
+        Size.Width = 797.000000000000000000
+        Size.Height = 55.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        Text = 'BAIXA DE RECEITAS'
+        TabOrder = 0
+      end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 676
+    Top = 8
+    object actRemover: TAction
+      Text = 'Remover'
+    end
+    object actBaixar: TAction
+      Text = 'Baixar'
+      OnExecute = actBaixarExecute
+    end
+    object actAdicionar: TAction
+      Text = 'Adicionar'
+    end
+    object changeTabDadosReceitas: TChangeTabAction
+      Category = 'Tab'
+      Tab = tabReceitas
+    end
+    object changeTabBaixarReceitas: TChangeTabAction
+      Category = 'Tab'
+      Tab = tabBaixar
+    end
+  end
+  object cdsBaixaReceitas: TClientDataSet
+    PersistDataPacket.Data = {
+      2E0000009619E0BD0100000018000000010000000000030000002E000B434F44
+      5F5245434549544104000100000000000000}
+    Active = True
+    Aggregates = <>
+    Params = <>
+    Left = 576
+    Top = 8
+    object cdsBaixaReceitasCOD_RECEITA: TIntegerField
+      FieldName = 'COD_RECEITA'
+    end
+    object cdsBaixaReceitasNUM_INICIAL: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'NUM_INICIAL'
+      Calculated = True
+    end
+    object cdsBaixaReceitasNUM_FINAL: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'NUM_FINAL'
+      Calculated = True
+    end
+    object cdsBaixaReceitasNUM_BLOCO: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'NUM_BLOCO'
+      Calculated = True
+    end
+  end
+end

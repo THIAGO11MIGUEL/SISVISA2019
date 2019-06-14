@@ -23,7 +23,7 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
       Size.Height = 462.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
-      TabIndex = 2
+      TabIndex = 1
       TabOrder = 0
       TabPosition = PlatformDefault
       Sizes = (
@@ -529,7 +529,7 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
         CustomIcon = <
           item
           end>
-        IsSelected = False
+        IsSelected = True
         Size.Width = 281.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
@@ -544,35 +544,12 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
           Size.Height = 413.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
-          object panelButtonsCad: TPanel
-            Align = Right
-            Position.X = 763.000000000000000000
-            Size.Width = 80.000000000000000000
+          object lytDadosDenuncias: TLayout
+            Align = Client
+            Size.Width = 843.000000000000000000
             Size.Height = 413.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            object btnVoltar: TButton
-              Action = actVoltar
-              Align = Bottom
-              Enabled = True
-              StyledSettings = [Family, Style, FontColor]
-              ImageIndex = -1
-              Position.X = 20.000000000000000000
-              Position.Y = 373.000000000000000000
-              Size.Width = 40.000000000000000000
-              Size.Height = 40.000000000000000000
-              Size.PlatformDefault = False
-              StyleLookup = 'arrowlefttoolbutton'
-              TabOrder = 0
-              TextSettings.Font.Size = 16.000000000000000000
-            end
-          end
-          object lytDadosDenuncias: TLayout
-            Align = Client
-            Size.Width = 763.000000000000000000
-            Size.Height = 413.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 3
             object lvwDenuncias: TListView
               ItemAppearanceClassName = 'TListItemAppearance'
               ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
@@ -587,7 +564,7 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
             end
             object lytHistoricoDenuncias: TLayout
               Align = Client
-              Size.Width = 458.000000000000000000
+              Size.Width = 538.000000000000000000
               Size.Height = 413.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
@@ -597,7 +574,7 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
                 HeaderAppearanceClassName = 'TListHeaderObjects'
                 FooterAppearanceClassName = 'TListHeaderObjects'
                 Align = Client
-                Size.Width = 458.000000000000000000
+                Size.Width = 538.000000000000000000
                 Size.Height = 413.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
@@ -619,7 +596,7 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
         CustomIcon = <
           item
           end>
-        IsSelected = True
+        IsSelected = False
         Size.Width = 281.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
