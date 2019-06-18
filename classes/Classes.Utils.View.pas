@@ -4,7 +4,7 @@ interface
 
 uses
   FireDAC.Comp.Client, FMX.ListBox, FMX.ListView, FMX.Forms, FMX.DateTimeCtrls,
-  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient, FMX.Memo;
+  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient, FMX.Memo, MultiDetailAppearanceU;
 
 type
   TUtilsView = class
@@ -55,7 +55,7 @@ implementation
 
 uses
   FMX.Dialogs, U_dmSISVISA, System.SysUtils, FMX.ListView.Appearances,
-  MultiDetailAppearanceU, U_SISVISA, Classes.Utils.Consts;
+  U_SISVISA, Classes.Utils.Consts;
 
 { TUtilsView }
 

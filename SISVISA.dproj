@@ -192,6 +192,10 @@
             <Form>frmBaixarReceitas</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="units\U_ImprimirDados.pas">
+            <Form>frmImprimirDados</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

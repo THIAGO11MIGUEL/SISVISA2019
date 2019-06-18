@@ -23,42 +23,41 @@ type
     ToolBar2: TToolBar;
     Label1: TLabel;
     ListBox1: TListBox;
-    ListBoxGroupHeader1: TListBoxGroupHeader;
-    ListBoxItem1: TListBoxItem;
-    ListBoxItem2: TListBoxItem;
-    ListBoxItem3: TListBoxItem;
-    ListBoxGroupHeader4: TListBoxGroupHeader;
-    ListBoxItem7: TListBoxItem;
-    ListBoxItem8: TListBoxItem;
+    lbxghControleGeral: TListBoxGroupHeader;
+    lbxitemReceitas: TListBoxItem;
+    lbxitemDenuncias: TListBoxItem;
+    lbxitemProcADM: TListBoxItem;
+    lbxghRelatorios: TListBoxGroupHeader;
     ListBoxItem9: TListBoxItem;
-    ListBoxGroupHeader5: TListBoxGroupHeader;
-    ListBoxGroupHeader3: TListBoxGroupHeader;
+    lbxghConfiguracoes: TListBoxGroupHeader;
+    lbxghEncerraSistema: TListBoxGroupHeader;
     Image1: TImage;
     layoutPrincipal: TLayout;
-    ListBoxGroupHeader2: TListBoxGroupHeader;
+    lbxghInicio: TListBoxGroupHeader;
     Timer1: TTimer;
     StatusBar1: TStatusBar;
     Label2: TLabel;
-    Label3: TLabel;
     layoutMensagem: TLayout;
     Timer2: TTimer;
-    ListBoxGroupHeader6: TListBoxGroupHeader;
-    ListBoxGroupHeader7: TListBoxGroupHeader;
+    Label3: TLabel;
+    lbxitemAtenderDenuncia: TListBoxItem;
+    lbxitemBaixarReceitas: TListBoxItem;
     procedure ToolbarCloseButtonClick(Sender: TObject);
     procedure FormGesture(Sender: TObject;
       const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
-    procedure ListBoxItem1Click(Sender: TObject);
-    procedure ListBoxItem2Click(Sender: TObject);
-    procedure ListBoxItem3Click(Sender: TObject);
-    procedure ListBoxGroupHeader2Click(Sender: TObject);
-    procedure ListBoxGroupHeader5Click(Sender: TObject);
+    procedure lbxitemReceitasClick(Sender: TObject);
+    procedure lbxitemDenunciasClick(Sender: TObject);
+    procedure lbxitemProcADMClick(Sender: TObject);
+    procedure lbxghInicioClick(Sender: TObject);
+    procedure lbxghConfiguracoesClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
-    procedure ListBoxGroupHeader6Click(Sender: TObject);
-    procedure ListBoxGroupHeader7Click(Sender: TObject);
+    procedure lbxghRelatoriosClick(Sender: TObject);
+    procedure lbxitemAtenderDenunciaClick(Sender: TObject);
+    procedure lbxitemBaixarReceitasClick(Sender: TObject);
   private
     FGestureOrigin: TPointF;
     FGestureInProgress: Boolean;
@@ -81,7 +80,7 @@ implementation
 
 uses U_CadastroDenuncias, U_CadastroReceitas, U_CadastroProcADM,
   U_Configuracoes, U_CadastroTipoDenuncia, U_AtenderDenuncia,
-  Classes.Utils.View, U_BaixarReceitas;
+  Classes.Utils.View, U_BaixarReceitas, U_ImprimirDados;
 
 procedure TfrmSISVISA.FormKeyDown(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
@@ -90,12 +89,21 @@ begin
     ShowToolbar(not ToolbarPopup.IsOpen);
 end;
 
-procedure TfrmSISVISA.ListBoxGroupHeader2Click(Sender: TObject);
+procedure TfrmSISVISA.lbxghInicioClick(Sender: TObject);
 begin
    Self.layoutPrincipal.RemoveObject(0);
 end;
 
-procedure TfrmSISVISA.ListBoxGroupHeader5Click(Sender: TObject);
+procedure TfrmSISVISA.lbxghRelatoriosClick(Sender: TObject);
+var FormImprimir: TfrmImprimirDados;
+begin
+  if not Assigned(FormImprimir) then
+     FormImprimir := TfrmImprimirDados.Create(Self);
+  Self.layoutPrincipal.RemoveObject(0);
+  self.layoutPrincipal.AddObject(FormImprimir.Layout1);
+end;
+
+procedure TfrmSISVISA.lbxghConfiguracoesClick(Sender: TObject);
 var
   FormConfig : TfrmConfiguracoesGerais;
 begin
@@ -105,25 +113,7 @@ begin
   Self.layoutPrincipal.AddObject(FormConfig.layoutMain);
 end;
 
-procedure TfrmSISVISA.ListBoxGroupHeader6Click(Sender: TObject);
-var FormAtender: TfrmAtenderDenuncias;
-begin
-  if not Assigned(FormAtender) then
-     FormAtender := TfrmAtenderDenuncias.Create(Self);
-  Self.layoutPrincipal.RemoveObject(0);
-  Self.layoutPrincipal.AddObject(FormAtender.Layout1);
-end;
-
-procedure TfrmSISVISA.ListBoxGroupHeader7Click(Sender: TObject);
-var FormBaixaRec: TfrmBaixarReceitas;
-begin
-   if not Assigned (FormBaixaRec) then
-      FormBaixaRec := TfrmBaixarReceitas.Create(Self);
-   Self.layoutPrincipal.RemoveObject(0);
-   Self.layoutPrincipal.AddObject(FormBaixaRec.Layout1);
-end;
-
-procedure TfrmSISVISA.ListBoxItem1Click(Sender: TObject);
+procedure TfrmSISVISA.lbxitemReceitasClick(Sender: TObject);
 var
   FormReceitas :  TfrmCadastroReceitas;
 begin
@@ -133,7 +123,7 @@ begin
    Self.layoutPrincipal.AddObject(FormReceitas.Layout1);
 end;
 
-procedure TfrmSISVISA.ListBoxItem2Click(Sender: TObject);
+procedure TfrmSISVISA.lbxitemDenunciasClick(Sender: TObject);
 var
   FormDenuncias :  TfrmCadastroDenuncias;
 begin
@@ -146,7 +136,7 @@ begin
 end;
 
 
-procedure TfrmSISVISA.ListBoxItem3Click(Sender: TObject);
+procedure TfrmSISVISA.lbxitemProcADMClick(Sender: TObject);
 var
  FormProcADM : TfrmCadastroProcADM;
 begin
@@ -154,6 +144,24 @@ begin
      FormProcADM := TfrmCadastroProcADM.Create(Self);
   Self.layoutPrincipal.RemoveObject(0);
   Self.layoutPrincipal.AddObject(FormProcADM.Layout1);
+end;
+
+procedure TfrmSISVISA.lbxitemAtenderDenunciaClick(Sender: TObject);
+var FormAtender: TfrmAtenderDenuncias;
+begin
+  if not Assigned(FormAtender) then
+     FormAtender := TfrmAtenderDenuncias.Create(Self);
+  Self.layoutPrincipal.RemoveObject(0);
+  Self.layoutPrincipal.AddObject(FormAtender.Layout1);
+end;
+
+procedure TfrmSISVISA.lbxitemBaixarReceitasClick(Sender: TObject);
+var FormBaixaRec: TfrmBaixarReceitas;
+begin
+   if not Assigned (FormBaixaRec) then
+      FormBaixaRec := TfrmBaixarReceitas.Create(Self);
+   Self.layoutPrincipal.RemoveObject(0);
+   Self.layoutPrincipal.AddObject(FormBaixaRec.Layout1);
 end;
 
 procedure TfrmSISVISA.Timer1Timer(Sender: TObject);

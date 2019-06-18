@@ -4,23 +4,19 @@ inherited frmCadastroProcADM: TfrmCadastroProcADM
   inherited Layout1: TLayout
     TabOrder = 1
     inherited TabControl1: TTabControl
+      TabIndex = 1
       Sizes = (
         820s
         405s
         820s
         405s)
       inherited tabDados: TTabItem
+        IsSelected = False
         ExplicitSize.cx = 71.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
-        inherited layoutDados: TLayout
-          inherited ToolBar2: TToolBar
-            inherited edtBuscaRegistro: TEdit
-              Size.Height = 32.000000000000000000
-            end
-          end
-        end
       end
       inherited tabCadastro: TTabItem
+        IsSelected = True
         ExplicitSize.cx = 85.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutCadastro: TLayout
@@ -155,7 +151,7 @@ inherited frmCadastroProcADM: TfrmCadastroProcADM
               Size.Height = 32.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
-              TextSettings.HorzAlign = Trailing
+              TextSettings.HorzAlign = Center
             end
           end
           object ListBoxItem5: TListBoxItem
@@ -191,7 +187,7 @@ inherited frmCadastroProcADM: TfrmCadastroProcADM
               Size.Height = 32.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
-              TextSettings.HorzAlign = Trailing
+              TextSettings.HorzAlign = Center
             end
           end
           object ListBoxItem6: TListBoxItem
@@ -295,6 +291,7 @@ inherited frmCadastroProcADM: TfrmCadastroProcADM
               Align = Client
               TabOrder = 0
               TextSettings.Font.Size = 16.000000000000000000
+              TextSettings.HorzAlign = Center
               Size.Width = 665.000000000000000000
               Size.Height = 32.000000000000000000
               Size.PlatformDefault = False

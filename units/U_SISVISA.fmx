@@ -18453,51 +18453,51 @@ object frmSISVISA: TfrmSISVISA
         DefaultItemStyles.ItemStyle = ''
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
-        Viewport.Width = 242.000000000000000000
+        Viewport.Width = 250.000000000000000000
         Viewport.Height = 441.000000000000000000
-        object ListBoxGroupHeader2: TListBoxGroupHeader
+        object lbxghInicio: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Size.Width = 242.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 10
+          TabOrder = 8
           Text = 'INICIO'
-          OnClick = ListBoxGroupHeader2Click
+          OnClick = lbxghInicioClick
         end
-        object ListBoxGroupHeader1: TListBoxGroupHeader
+        object lbxghControleGeral: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
           Position.Y = 35.000000000000000000
-          Size.Width = 242.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           Text = 'CONTROLE GERAL'
         end
-        object ListBoxItem1: TListBoxItem
+        object lbxitemReceitas: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 70.000000000000000000
-          Size.Width = 242.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
           Text = 'Receitas'
-          OnClick = ListBoxItem1Click
+          OnClick = lbxitemReceitasClick
         end
-        object ListBoxItem2: TListBoxItem
+        object lbxitemDenuncias: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 105.000000000000000000
-          Size.Width = 242.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
           Text = 'Den'#250'ncias'
-          OnClick = ListBoxItem2Click
+          OnClick = lbxitemDenunciasClick
         end
-        object ListBoxItem3: TListBoxItem
+        object lbxitemProcADM: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 140.000000000000000000
@@ -18506,86 +18506,69 @@ object frmSISVISA: TfrmSISVISA
           Size.PlatformDefault = False
           TabOrder = 3
           Text = 'Processos Administrativos'
-          OnClick = ListBoxItem3Click
+          Visible = False
+          OnClick = lbxitemProcADMClick
         end
-        object ListBoxGroupHeader6: TListBoxGroupHeader
+        object lbxitemAtenderDenuncia: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
-          StyledSettings = [Family, Other]
+          StyledSettings = [Family, Style, FontColor, Other]
+          Position.Y = 140.000000000000000000
+          Size.Width = 250.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 9
+          Text = 'Atendimento a Den'#250'ncia'
+          OnClick = lbxitemAtenderDenunciaClick
+        end
+        object lbxitemBaixarReceitas: TListBoxItem
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 175.000000000000000000
-          Size.Width = 242.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 11
-          Text = 'ATENDER DEN'#218'NCIA'
-          OnClick = ListBoxGroupHeader6Click
+          TabOrder = 10
+          Text = 'Baixar Receitas'
+          OnClick = lbxitemBaixarReceitasClick
         end
-        object ListBoxGroupHeader7: TListBoxGroupHeader
-          TextSettings.Font.Size = 15.000000000000000000
-          StyledSettings = [Family, Other]
-          Position.Y = 210.000000000000000000
-          Size.Width = 242.000000000000000000
-          Size.Height = 35.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 12
-          Text = 'BAIXAR RECEITAS'
-          OnClick = ListBoxGroupHeader7Click
-        end
-        object ListBoxGroupHeader4: TListBoxGroupHeader
+        object lbxghRelatorios: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 245.000000000000000000
-          Size.Width = 242.000000000000000000
+          Position.Y = 210.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 5
-          Text = 'RELAT'#211'RIOS   * '
-        end
-        object ListBoxItem7: TListBoxItem
-          TextSettings.Font.Size = 15.000000000000000000
-          StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 280.000000000000000000
-          Size.Width = 242.000000000000000000
-          Size.Height = 35.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 7
-          Text = 'Receitas  *'
-        end
-        object ListBoxItem8: TListBoxItem
-          TextSettings.Font.Size = 15.000000000000000000
-          StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 315.000000000000000000
-          Size.Width = 242.000000000000000000
-          Size.Height = 35.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 8
-          Text = 'Den'#250'ncias * '
+          Text = 'RELAT'#211'RIOS'
+          OnClick = lbxghRelatoriosClick
         end
         object ListBoxItem9: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 350.000000000000000000
-          Size.Width = 242.000000000000000000
+          Position.Y = 315.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 9
+          TabOrder = 7
           Text = ' Processos Administrativos   -** '
+          Visible = False
         end
-        object ListBoxGroupHeader5: TListBoxGroupHeader
+        object lbxghConfiguracoes: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 385.000000000000000000
-          Size.Width = 242.000000000000000000
+          Position.Y = 245.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 6
           Text = 'CONFIGURA'#199#213'ES'
-          OnClick = ListBoxGroupHeader5Click
+          OnClick = lbxghConfiguracoesClick
         end
-        object ListBoxGroupHeader3: TListBoxGroupHeader
+        object lbxghEncerraSistema: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 420.000000000000000000
-          Size.Width = 242.000000000000000000
+          Position.Y = 280.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 4
@@ -18593,17 +18576,17 @@ object frmSISVISA: TfrmSISVISA
           OnClick = ToolbarCloseButtonClick
         end
         object StatusBar1: TStatusBar
-          Position.Y = 422.000000000000000000
+          Position.Y = 424.000000000000000000
           ShowSizeGrip = True
-          Size.Width = 242.000000000000000000
-          Size.Height = 19.000000000000000000
+          Size.Width = 250.000000000000000000
+          Size.Height = 17.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 2
           object Label2: TLabel
             Align = Left
             StyledSettings = [Family, FontColor]
             Size.Width = 120.000000000000000000
-            Size.Height = 19.000000000000000000
+            Size.Height = 17.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 18.500000000000000000
             TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -18616,7 +18599,7 @@ object frmSISVISA: TfrmSISVISA
             StyledSettings = [Family, FontColor]
             Position.X = 120.000000000000000000
             Size.Width = 120.000000000000000000
-            Size.Height = 19.000000000000000000
+            Size.Height = 17.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 18.500000000000000000
             TextSettings.Font.StyleExt = {00070000000000000004000000}
