@@ -101,6 +101,9 @@ begin
      FormImprimir := TfrmImprimirDados.Create(Self);
   Self.layoutPrincipal.RemoveObject(0);
   self.layoutPrincipal.AddObject(FormImprimir.Layout1);
+  FormImprimir.ListBoxItem3.Visible := False;
+  FormImprimir.ListBoxItem4.Visible := False;
+  FormImprimir.panelButtonDados.Visible := False;
 end;
 
 procedure TfrmSISVISA.lbxghConfiguracoesClick(Sender: TObject);

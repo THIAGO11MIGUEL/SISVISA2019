@@ -138,6 +138,8 @@ const
   DEN: string = 'CADASTRO DE DENUNCIAS';
   PROC: string = 'CADASTRO DE PROCEDIMENTO EM DENÚNCIAS';
   REC: string = 'LANÇAMENTO DE RECEITAS';
+  IMPRIME_REC: string = ' - RECEITAS';
+  IMPRIME_DEN: string = ' - DENÚNCIAS';
   TIPDEN: string = 'TIPOS DE DENÚNCIAS';
   TIPREC: string = 'TIPOS DE RECEITAS';
   CADNOVO: string = ' -> INSERIR NOVO';
@@ -145,6 +147,7 @@ const
   ST_ABERTO: string = 'EM ABERTO';
   ST_BAIXADO: string = 'BAIXADO';
   BAIXA: string = 'BAIXA DE RECEITUÁRIO';
+  IMPRIMIR: string = 'IMPRESSÃO DE DADOS';
 
 implementation
 
