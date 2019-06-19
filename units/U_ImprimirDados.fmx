@@ -150,6 +150,8 @@
         StyleLookup = ''
         TabOrder = 0
         Text = 'tabImprimirReceitas'
+        ExplicitSize.cx = 156.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
         object lytImprimirReceitas: TLayout
           Align = Client
           Size.Width = 468.000000000000000000
@@ -310,6 +312,8 @@
         StyleLookup = ''
         TabOrder = 0
         Text = 'tabImprimirDen'#250'ncias'
+        ExplicitSize.cx = 156.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
       end
     end
   end

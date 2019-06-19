@@ -4,7 +4,8 @@ interface
 
 uses
   FireDAC.Comp.Client, FMX.ListBox, FMX.ListView, FMX.Forms, FMX.DateTimeCtrls,
-  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient, FMX.Memo, MultiDetailAppearanceU;
+  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient, FMX.Memo, MultiDetailAppearanceU,
+  FMX.Objects;
 
 type
   TUtilsView = class
@@ -38,7 +39,9 @@ type
     procedure CDTipReceita(lv: TListView; dsTipReceita: TFDQuery;
       Tabela: string);
     procedure CDUnidade(lv: TListView; dsUnidade: TFDQuery; Tabela: string);
-    procedure CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string);
+
+    procedure CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string; img1, img2: TImage);
+
     procedure LancarReceita(dtlanc: TDateEdit;
       unidade, tiporec, qtd, num_blocoinicial, folha_inicial,
       folha_final: Integer; status, respo, Tabela: string; dsReceita: TFDQuery);
@@ -55,7 +58,7 @@ implementation
 
 uses
   FMX.Dialogs, U_dmSISVISA, System.SysUtils, FMX.ListView.Appearances,
-  U_SISVISA, Classes.Utils.Consts;
+  U_SISVISA, Classes.Utils.Consts, FMX.ListView.Types, U_CadastroReceitas;
 
 { TUtilsView }
 
@@ -365,10 +368,14 @@ begin
 
 end;
 
-procedure TUtilsView.CDReceita(lv: TListView; dsReceitas: TFDQuery;
-  Tabela: string);
+procedure TUtilsView.CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string;
+  img1, img2: TImage);
 var
   lvItem: TListViewItem;
+
+  Item: TListViewItem;
+  txt: TListItemText;
+  Img: TListItemImage;
 begin
   dsReceitas := TFDQuery.Create(nil);
   dsReceitas.Close;
@@ -382,34 +389,48 @@ begin
 
     if dsReceitas.RecordCount > 0 then
     begin
-
       lv.Items.Clear;
       lv.BeginUpdate;
       while not dsReceitas.Eof do
       begin
-        lvItem := lv.Items.Add;
+       { lvItem := lv.Items.Add;
         lvItem.Detail := dsReceitas.FieldByName('cod_receita').AsString;
-        lvItem.Text := 'FOLHA INICIAL: ' + dsReceitas.FieldByName('num_inicial')
-          .AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName
-          ('num_final').AsString;
-        lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
-          'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString
-          + '     Nº BLOCO: ' + IntToStr(dsReceitas.FieldByName('num_bloco')
-          .AsInteger) + '   QTD BLOCOS: ' +
-          IntToStr(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
-        lvItem.Data[TMultiDetailAppearanceNames.Detail2] := 'UNIDADE DE SAÚDE: '
-          + dsReceitas.FieldByName('UNIDADE').AsString + '   TIPO DE RECEITA: '
-          + dsReceitas.FieldByName('TIPO_RECEITA').AsString;
-        lvItem.Data[TMultiDetailAppearanceNames.Detail3] := ' STATUS: ' +
-          dsReceitas.FieldByName('STATUS').AsString;
+        lvItem.Text := 'FOLHA INICIAL: ' + dsReceitas.FieldByName('num_inicial').AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName('num_final').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail1] := 'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString + '     Nº BLOCO: ' + IntToStr(dsReceitas.FieldByName('num_bloco').AsInteger) + '   QTD BLOCOS: ' + IntToStr(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
+        lvItem.Data[TMultiDetailAppearanceNames.Detail2] := 'UNIDADE DE SAÚDE: '   + dsReceitas.FieldByName('UNIDADE').AsString + '   TIPO DE RECEITA: ' + dsReceitas.FieldByName('TIPO_RECEITA').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail3] := ' STATUS: ' + dsReceitas.FieldByName('STATUS').AsString;
+        }
+
+        Item := lv.Items.Add;
+        with Item do
+        begin
+          txt := TListItemText(Objects.FindDrawable('Text1'));
+          txt.Text := 'FOLHA INICIAL: ' + dsReceitas.FieldByName('num_inicial').AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName('num_final').AsString;
+
+
+          txt := TListItemText(Objects.FindDrawable('Text2'));
+          txt.Text := 'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString + '     Nº BLOCO: ' + IntToStr(dsReceitas.FieldByName('num_bloco').AsInteger) + '   QTD BLOCOS: ' + IntToStr(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
+
+          txt := TListItemText(Objects.FindDrawable('Text3'));
+          txt.Text := 'UNIDADE DE SAÚDE: '   + dsReceitas.FieldByName('UNIDADE').AsString + '   TIPO DE RECEITA: ' + dsReceitas.FieldByName('TIPO_RECEITA').AsString;
+
+          txt := TListItemText(Objects.FindDrawable('Text4'));
+          txt.Text := ' STATUS: ' + dsReceitas.FieldByName('STATUS').AsString;
+
+          // status
+
+          Img := TListItemImage(Objects.FindDrawable('Image5'));
+          if dsReceitas.FieldByName('STATUS').AsString = 'BAIXADO' then
+            Img.Bitmap := img1.Bitmap
+          else
+            Img.Bitmap := img2.Bitmap;
+        end;
+
         dsReceitas.Next;
       end;
 
       lv.EndUpdate;
-
-
     end
-
   except
     on E: Exception do
       raise Exception.Create('Não há Dados para Listar!!!');

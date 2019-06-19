@@ -42,15 +42,198 @@ inherited frmCadastroReceitas: TfrmCadastroReceitas
             ItemEditAppearanceClassName = 'TMultiDetailShowCheckAppearance'
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
+            Position.Y = 47.000000000000000000
+            Size.Width = 41.000000000000000000
+            Size.Height = 362.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            ItemAppearance.ItemHeight = 100
+            ItemAppearanceObjects.ItemObjects.MultiDetail1.Font.Size = 14.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail1.Width = 753.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail1.Height = 20.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail1.PlaceOffset.Y = -38.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail2.Font.Size = 14.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail2.Width = 753.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail2.Height = 20.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail2.PlaceOffset.Y = -19.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail3.Font.Size = 14.000000000000000000
+            ItemAppearanceObjects.ItemObjects.MultiDetail3.Width = 383.000000000000000000
+            OnItemClick = lvwDadosReceitasItemClick
+          end
+          object lvPedido: TListView
+            ItemAppearanceClassName = 'TDynamicAppearance'
+            ItemEditAppearanceClassName = 'TDynamicAppearance'
+            HeaderAppearanceClassName = 'TListHeaderObjects'
+            FooterAppearanceClassName = 'TListHeaderObjects'
             Align = Client
             Size.Width = 828.000000000000000000
             Size.Height = 362.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            ItemAppearanceObjects.ItemObjects.MultiDetail1.Font.Size = 14.000000000000000000
-            ItemAppearanceObjects.ItemObjects.MultiDetail2.Font.Size = 14.000000000000000000
-            ItemAppearanceObjects.ItemObjects.MultiDetail3.Font.Size = 14.000000000000000000
-            OnItemClick = lvwDadosReceitasItemClick
+            ItemAppearance.ItemHeight = 80
+            ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+              item
+                AppearanceObjectName = 'Text1'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 14.000000000000000000
+                Appearance.Font.StyleExt = {00060000000000000004000000}
+                Appearance.TextAlign = Leading
+                Appearance.TextColor = xFF4D7EC3
+                Appearance.Width = 639.000000000000000000
+                Appearance.Height = 20.000000000000000000
+                Appearance.PlaceOffset.Y = 5.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'Text2'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.TextAlign = Leading
+                Appearance.TextColor = xFFA3A3A3
+                Appearance.Width = 807.000000000000000000
+                Appearance.Height = 22.000000000000000000
+                Appearance.PlaceOffset.Y = 30.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'Text3'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.Font.Size = 11.000000000000000000
+                Appearance.TextAlign = Leading
+                Appearance.TextColor = xFFA3A3A3
+                Appearance.Width = 527.000000000000000000
+                Appearance.Height = 20.000000000000000000
+                Appearance.PlaceOffset.Y = 53.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'Text4'
+                AppearanceClassName = 'TTextObjectAppearance'
+                Appearance.TextColor = xFFA3A3A3
+                Appearance.Width = 277.000000000000000000
+                Appearance.Height = 25.000000000000000000
+                Appearance.Align = Trailing
+                Appearance.PlaceOffset.X = -1.000000000000000000
+                Appearance.PlaceOffset.Y = 53.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'Image5'
+                AppearanceClassName = 'TImageObjectAppearance'
+                Appearance.Width = 46.000000000000000000
+                Appearance.Height = 27.000000000000000000
+                Appearance.Align = Trailing
+                Appearance.PlaceOffset.X = -18.000000000000000000
+                Appearance.PlaceOffset.Y = 1.000000000000000000
+              end
+              item
+                AppearanceObjectName = 'Image6'
+                AppearanceClassName = 'TImageObjectAppearance'
+                Appearance.Width = 77.000000000000000000
+                Appearance.Height = 25.000000000000000000
+                Appearance.Align = Trailing
+                Appearance.PlaceOffset.X = -88.000000000000000000
+                Appearance.PlaceOffset.Y = 3.000000000000000000
+              end>
+            ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+              item
+                AppearanceObjectName = 'Text1'
+                AppearanceClassName = 'TTextObjectAppearance'
+              end>
+            object img_sinc: TImage
+              MultiResBitmap.Height = 27
+              MultiResBitmap.Width = 72
+              MultiResBitmap = <
+                item
+                  Width = 72
+                  Height = 27
+                  PNG = {
+                    89504E470D0A1A0A0000000D49484452000000480000001B0806000000DFF7C9
+                    1E000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                    03E1494441545847D599CF6F555510C767E6DC1FF55153E92B2D550B24941F22
+                    FE2A2809A04D1744FD03887141625C7451FE0593FAFE0057DD28AC4CDC18376E
+                    58120594A440AD68CD3398DAC40824E4B5966AC0FBE3CC38371C8CC64052FBE6
+                    1A3F2FEFC799B9EFBC73BF993373CE7908FF21530B535B734FBB90799F088C00
+                    491F22E600B2484C37C5617BF899E6B516B6387CA5766A17E8C4ECC9664FCCFB
+                    C1B943C27E17096C557136A3A34D0C92A00746876B2AD21D10E9E81097549DAF
+                    1DF84BE2E5FAA983A78AD0552DD425104E5E998C5CFAC8287BFF220BBFE2418E
+                    44B98C40EA36856BFE410650C402CB3AC8AFB48B73887C31937861C7A78FADB5
+                    5AF54495BD40A2E2CC4D4625468F4711BD2DA5BC810EF604EF7AB8CD226722A2
+                    F7C9F1FC96A7B7DCA963EA517837E3F877D33147C99344F28E177E332FB31DC1
+                    B55E7A01F357D9F3BB45E10E77DA9DCDC16E8AAD401A3DFDF9CA2809BF2588E3
+                    65966F4B95E05D2F8EB2A4BF28F105A47232CFF8C0D46753BDC16786A940272E
+                    9DECF7501E04C4E34E706403E2DC23D52C24591FFC2EAF09D084EFA39DC16386
+                    A9408D04F722E011FDF89466BB9E7BD68DA11A5395D835791E63E497A765DAF4
+                    1E4C3B1790A320381E9A5D0573BF57451F5BBEBABC3D984C3013A85A0432F068
+                    EE740168814691086E2B980F048B096602951E766BEE19D6A4D308A6AE23E207
+                    C5C1A1D034C14C202EE539BD83FED034C11137B984FF670461444D64EC4A627E
+                    203EEA21C26668996097A4BD3CAA55260A2D2BE212F8815B956E602610550F21
+                    F3AD8CAEAF4C7FC32E07A1AC00A1EE37ED6097E748D5CEDF0EBB2986B02808A6
+                    8367895745A01D9A269809E4C02FE8BEE0562660767E83421D7D990B4D13CC04
+                    8A1BF10F82B284501D7A199049AE83BFAE096836584C30136866F78CE61F9C8F
+                    F5194CDDC5F12D15BF9DDE709783C504BB1CA4F842AE20E2052DF9BF6659D6D5
+                    C32D76749E092FCCBC3E93079309A602FDD618FC19902F6ABD3F9346C9AA4E0B
+                    09AE7F8D87ECAE7899D7E27E1693FC1B2D061BEEF361980AF4C9FE56EED6E45B
+                    2CE9037678B5405CDD482455E220244B5ADA3F16C02F4EEF3B7D33B8CC3015A8
+                    62F0E8E0EDA2B73187C2EF3927E75288EE06D7BA4189AF39C08FA2583E7CE297
+                    811F83D914FB437BA53AD4FA697EA5A99BCB319D1113CC7CCC15B0E761FF68FC
+                    492E3924658721FA5C077BD6217F39F4ECD0620B5B65B8C2945A04BA4F7586EC
+                    076827173C0E44CF23F3765D6D0F81E701AD4AC4E0897C8299AA9002AC6A76E9
+                    88C80D0D9DEF05E97C9573EA98567FA55681EE5345547512A8E5E725DD921C16
+                    0F630E21D52413EB0AB39AF685AEA1DA5A01E77484B3C3CB03975B13F544CCDF
+                    01F80368528B08FBEAAE4A0000000049454E44AE426082}
+                  FileName = 'C:\Projetos\App Mobile\Images\tela pedidos\icon-verde.png'
+                end>
+              Enabled = False
+              Position.X = 16.000000000000000000
+              Position.Y = 127.000000000000000000
+              Size.Width = 65.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+            end
+            object img_nsinc: TImage
+              MultiResBitmap.Height = 27
+              MultiResBitmap.Width = 72
+              MultiResBitmap = <
+                item
+                  Width = 72
+                  Height = 27
+                  PNG = {
+                    89504E470D0A1A0A0000000D49484452000000480000001B0806000000DFF7C9
+                    1E000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                    0374494441545847D5996D4B936114C7DD736643D35856F800B9ED6E0C5A5A09
+                    59CA5E087D81E86D44F421FA067D837AD56B3F802F85CA12CC2DD3861B8D1061
+                    2688861938F7DCEF785F42BD4864DBB9A33F5C9C876BF7B59DFF75EE733DCCD5
+                    F10F91C964FA5D2E57D8ED76C71A8DC6007A377A19FD2BFA16321B8D46BFA0D7
+                    CD238EC37182D6D6D6FA10718818878030C1F7D76AB5F3D85DF8FD868C7DFA0E
+                    903BD8EBF47FA2FF8365599BD815FC8EC129825CA954CA1B0C0647D06FD5EBF5
+                    49029E90ACC11662FE06216397CF7D849837E80BC56231934824F60D91EA5027
+                    88E05CE974DADBD9D979D9EBF53EC67E883B6AF79E1ED56AF507CFCF42CC8B9E
+                    9E9EE5502874E00449EA045167FC047605629E11D054A9541A0C00D37D6A4050
+                    8D71F6C8BE15CCE7B4742C16DB3DEA5484DB481548F6F8FDFE11E4A356C81140
+                    8E87E77B19E706AFE7535C63907FCEEED5832A41D96CB69799BF09410FCAE5F2
+                    40B3E41C83C75D8CD38D7A1FA2923E9FEFAADDA307558298690B722690D7C8A4
+                    33C6DD1220497EB314F66956B77B8CAF1B83915AB8EBF178A68CDE56904116C4
+                    8F6E6C6C0C19970AD408329B4059D66529D74017D933C8B23F666C15A811447D
+                    88B0E25C423D6B7BDA0F2620441B37A60AD408AA542AD711BDB6A5863EEAD0FF
+                    9941D41E3952B4A5309F00195FBE470D9A453A48FA7B8DAE051FDF71D251A565
+                    A811C40A73B45134A61AB4BF438D200AF47744C9B6D4506622F68DAE02CD0C92
+                    3B1DD51FCF24EC21B2B6A503CD229D21FDB7696AF7374CC00E139136A60A345F
+                    B13C625D82B03D6D4799B13739C42E1A5B056A0445229112012C9341CBC6D556
+                    3001DB882CFBA025DBA3033582049CBC5390348FFAB3542AB5F5720BE2DFD2E6
+                    C3E170D9B854A04A10F5A100410B0432CB697E0F921AA6AB6954ABD5A2642563
+                    CF215719BFE5314F822A41F178BC0C299F515F12C84A201010929ACE242187E2
+                    2F756D0672DEC562B12DD3A506273672EE5C2E2727EF49027B429BC6DDD4EE97
+                    BAB302413364E3ABE1E161F9C7A36ABAD4A04E904048CAE7F372B01CC54C1A92
+                    E4E2FE3444498D9195F035E3CC21DF5B96257B2C7572048E10740CB943966B52
+                    32618A0013B42182BE48BB00796E966C79E5E55AB52E350B7D87BE6FB41C9F95
+                    A2BCEAC46BF53B1C25E81804EA969BC0C3C3C3DB9877204C322B00093E7437AF
+                    510599954D20FA62A150584A26938E64CC9FE8E8F805890F810F69F24E3C0000
+                    000049454E44AE426082}
+                  FileName = 'C:\Projetos\App Mobile\Images\tela pedidos\icon-cinza.png'
+                end>
+              Enabled = False
+              Position.X = 88.000000000000000000
+              Position.Y = 127.000000000000000000
+              Size.Width = 65.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+            end
           end
         end
       end

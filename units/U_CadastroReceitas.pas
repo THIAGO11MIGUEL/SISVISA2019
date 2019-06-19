@@ -10,7 +10,7 @@ uses
   FMX.Layouts, FMX.ListBox, FMX.Edit, FMX.SearchBox, FMX.TabControl,
   FMX.DateTimeCtrls, FMX.EditBox, FMX.NumberBox, FMX.ListView.Types,
   FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
-  MultiDetailAppearanceU;
+  MultiDetailAppearanceU, FMX.Objects;
 
 type
   TfrmCadastroReceitas = class(TfrmCadastroPadrao)
@@ -64,6 +64,9 @@ type
     lvwDadosTipReceita: TListView;
     lvwDadosUnidade: TListView;
     lvwDadosReceitas: TListView;
+    lvPedido: TListView;
+    img_sinc: TImage;
+    img_nsinc: TImage;
     procedure actInserirExecute(Sender: TObject);
     procedure edtUnidadeReceitaClick(Sender: TObject);
     procedure edtTipoReceitaClick(Sender: TObject);
@@ -105,7 +108,7 @@ begin
     StrToInt(edtFolhaInicial.Text), StrToInt(edtFolhaFinal.Text),
     edtStatusReceita.Text, edtResponsavel.Text, TAB_RECEITA, qry);
   inherited;
-  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_RECEITA);
+  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_RECEITA, nil, nil);
 end;
 
 procedure TfrmCadastroReceitas.edtFolhaInicialChange(Sender: TObject);
@@ -135,7 +138,10 @@ end;
 procedure TfrmCadastroReceitas.FormCreate(Sender: TObject);
 begin
   inherited;
-  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA);
+//  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA);
+  img_sinc.Visible := False;
+  img_nsinc.Visible := False;
+  FUtilsCAD.CDReceita(lvPedido, qry, TAB_VWRECEITA, img_sinc, img_nsinc);
 end;
 
 procedure TfrmCadastroReceitas.lvwDadosReceitasItemClick(const Sender: TObject;
