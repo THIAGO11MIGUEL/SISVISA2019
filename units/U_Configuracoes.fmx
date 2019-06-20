@@ -3,7 +3,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
   Top = 0
   Caption = 'Form1'
   ClientHeight = 525
-  ClientWidth = 740
+  ClientWidth = 720
   StyleBook = frmSISVISA.StyleBook1
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -11,13 +11,13 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
   DesignerMasterStyle = 0
   object layoutMain: TLayout
     Align = Client
-    Size.Width = 740.000000000000000000
+    Size.Width = 720.000000000000000000
     Size.Height = 525.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object layoutClient: TLayout
       Align = Client
-      Size.Width = 515.000000000000000000
+      Size.Width = 495.000000000000000000
       Size.Height = 470.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -118,7 +118,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
       end
     end
     object ToolBar1: TToolBar
-      Size.Width = 740.000000000000000000
+      Size.Width = 720.000000000000000000
       Size.Height = 55.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
@@ -126,7 +126,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
         Align = Client
         StyledSettings = [Family, Style, FontColor]
         Margins.Left = 15.000000000000000000
-        Size.Width = 725.000000000000000000
+        Size.Width = 705.000000000000000000
         Size.Height = 55.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 20.000000000000000000

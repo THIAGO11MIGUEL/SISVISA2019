@@ -24,7 +24,7 @@ object frmCadastroPadrao: TfrmCadastroPadrao
       Size.Height = 454.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 0
       TabPosition = PlatformDefault
       Sizes = (
@@ -36,7 +36,7 @@ object frmCadastroPadrao: TfrmCadastroPadrao
         CustomIcon = <
           item
           end>
-        IsSelected = True
+        IsSelected = False
         Size.Width = 410.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
@@ -131,7 +131,7 @@ object frmCadastroPadrao: TfrmCadastroPadrao
         CustomIcon = <
           item
           end>
-        IsSelected = False
+        IsSelected = True
         Size.Width = 410.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False

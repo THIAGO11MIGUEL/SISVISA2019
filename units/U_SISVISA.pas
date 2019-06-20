@@ -99,6 +99,7 @@ var FormImprimir: TfrmImprimirDados;
 begin
   if not Assigned(FormImprimir) then
      FormImprimir := TfrmImprimirDados.Create(Self);
+
   Self.layoutPrincipal.RemoveObject(0);
   self.layoutPrincipal.AddObject(FormImprimir.Layout1);
   FormImprimir.ListBoxItem3.Visible := False;

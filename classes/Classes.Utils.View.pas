@@ -4,25 +4,28 @@ interface
 
 uses
   FireDAC.Comp.Client, FMX.ListBox, FMX.ListView, FMX.Forms, FMX.DateTimeCtrls,
-  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient, FMX.Memo, MultiDetailAppearanceU,
+  U_MensagemPadrao, FMX.Edit, Datasnap.DBClient, FMX.Memo,
+  MultiDetailAppearanceU,
   FMX.Objects;
 
 type
   TUtilsView = class
   private
 
-  published
-
   public
     procedure fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);
     procedure AddDenuncia(lv: TListView; lb: TListBox; cds: TClientDataSet;
       ds: TFDQuery);
+
     function VerificaProced(valor, prazo, infracao: TEdit): Boolean;
+
     procedure Incluir(Tabela, Campos, Valores: string; ds: TFDQuery);
     procedure Alterar(Tabela, Campos: string; ds: TFDQuery);
     procedure Deletar(Tabela, Campos: string; ds: TFDQuery);
+
     procedure CDCaminho(lv: TListView; dsCaminho: TFDQuery; Tabela: string);
     procedure CDArtigo(lv: TListView; dsArtigo: TFDQuery; Tabela: string);
+
     procedure CDTipDenuncia(lv: TListView; dsTipDenuncia: TFDQuery;
       Tabela: string);
     procedure CDProcedDenuncia(lv: TListView; dsProcedDenuncia: TFDQuery;
@@ -32,27 +35,29 @@ type
       Tabela, codden: string);
     procedure CDDenunciaAtend(lv: TListView; dsDenunciaAtend: TFDQuery;
       Tabela, coddet: string); overload;
-
     procedure CDDenunciaAtend(mmMemo: TMemo; dsDenunciaAtend: TFDQuery;
       Tabela, coddet: string); overload;
 
     procedure CDTipReceita(lv: TListView; dsTipReceita: TFDQuery;
       Tabela: string);
     procedure CDUnidade(lv: TListView; dsUnidade: TFDQuery; Tabela: string);
-
-    procedure CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string; img1, img2: TImage);  overload;
-
-    procedure CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string); overload;
-
+    procedure CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string;
+      img1, img2: TImage); overload;
+    procedure CDReceita(lv: TListView; dsReceitas: TFDQuery;
+      Tabela: string); overload;
     procedure LancarReceita(dtlanc: TDateEdit;
       unidade, tiporec, qtd, num_blocoinicial, folha_inicial,
       folha_final: Integer; status, respo, Tabela: string; dsReceita: TFDQuery);
+
     function CalculaFolhaFinal(ValorInicio, qtd, CodTipo: Integer): Integer;
+
     function RetornaID(Tabela, value, campo1, campo2: string;
       ds: TFDQuery): Integer;
+
     procedure PreencherReceita(lvd, lvb: TListView;
       numinicio, numfinal, bloco, codReceita: Integer;
       cdsReceita: TClientDataSet);
+
     function ValidarReceita: Boolean;
   end;
 
@@ -138,7 +143,6 @@ begin
   dsCaminho.Open;
 
   try
-
     if dsCaminho.RecordCount > 0 then
     begin
 
@@ -372,7 +376,8 @@ end;
 
 procedure TUtilsView.CDReceita(lv: TListView; dsReceitas: TFDQuery;
   Tabela: string);
-var lvItem: TListViewItem;
+var
+  lvItem: TListViewItem;
 begin
   dsReceitas := TFDQuery.Create(nil);
   dsReceitas.Close;
@@ -389,33 +394,39 @@ begin
       lv.Items.Clear;
       lv.BeginUpdate;
 
-
       while not dsReceitas.Eof do
       begin
         lvItem := lv.Items.Add;
         lvItem.Detail := dsReceitas.FieldByName('cod_receita').AsString;
-        lvItem.Text := 'FOLHA INICIAL: ' + dsReceitas.FieldByName('num_inicial').AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName('num_final').AsString;
-        lvItem.Data[TMultiDetailAppearanceNames.Detail1] := 'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString + '     Nº BLOCO: ' + IntToStr(dsReceitas.FieldByName('num_bloco').AsInteger) + '   QTD BLOCOS: ' + IntToStr(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
-        lvItem.Data[TMultiDetailAppearanceNames.Detail2] := 'UNIDADE DE SAÚDE: '   + dsReceitas.FieldByName('UNIDADE').AsString + '   TIPO DE RECEITA: ' + dsReceitas.FieldByName('TIPO_RECEITA').AsString;
-        lvItem.Data[TMultiDetailAppearanceNames.Detail3] := ' STATUS: ' + dsReceitas.FieldByName('STATUS').AsString;
+        lvItem.Text := 'FOLHA INICIAL: ' + dsReceitas.FieldByName('num_inicial')
+          .AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName
+          ('num_final').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail1] :=
+          'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString
+          + '     Nº BLOCO: ' + IntToStr(dsReceitas.FieldByName('num_bloco')
+          .AsInteger) + '   QTD BLOCOS: ' +
+          IntToStr(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
+        lvItem.Data[TMultiDetailAppearanceNames.Detail2] := 'UNIDADE DE SAÚDE: '
+          + dsReceitas.FieldByName('UNIDADE').AsString + '   TIPO DE RECEITA: '
+          + dsReceitas.FieldByName('TIPO_RECEITA').AsString;
+        lvItem.Data[TMultiDetailAppearanceNames.Detail3] := ' STATUS: ' +
+          dsReceitas.FieldByName('STATUS').AsString;
 
         dsReceitas.Next;
       end;
 
     end;
 
-      lv.EndUpdate;
+    lv.EndUpdate;
   except
     on E: Exception do
       raise Exception.Create('Não há Dados para Listar!!!');
   end;
 end;
 
-procedure TUtilsView.CDReceita(lv: TListView; dsReceitas: TFDQuery; Tabela: string;
-  img1, img2: TImage);
+procedure TUtilsView.CDReceita(lv: TListView; dsReceitas: TFDQuery;
+  Tabela: string; img1, img2: TImage);
 var
-  lvItem: TListViewItem;
-
   Item: TListViewItem;
   txt: TListItemText;
   Img: TListItemImage;
@@ -435,28 +446,31 @@ begin
       lv.Items.Clear;
       lv.BeginUpdate;
 
-
       while not dsReceitas.Eof do
       begin
-
 
         Item := lv.Items.Add;
         with Item do
         begin
           txt := TListItemText(Objects.FindDrawable('Text1'));
-          txt.Text := 'FOLHA INICIAL: ' + dsReceitas.FieldByName('num_inicial').AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName('num_final').AsString;
-
+          txt.Text := 'FOLHA INICIAL: ' + dsReceitas.FieldByName('num_inicial')
+            .AsString + ' a ' + 'FOLHA FINAL: ' + dsReceitas.FieldByName
+            ('num_final').AsString;
 
           txt := TListItemText(Objects.FindDrawable('Text2'));
-          txt.Text := 'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName('data_lanc').AsString + '     Nº BLOCO: ' + IntToStr(dsReceitas.FieldByName('num_bloco').AsInteger) + '   QTD BLOCOS: ' + IntToStr(dsReceitas.FieldByName('QUANTIDADE').AsInteger);
+          txt.Text := 'DATA DE LANÇAMENTO: ' + dsReceitas.FieldByName
+            ('data_lanc').AsString + '     Nº BLOCO: ' +
+            IntToStr(dsReceitas.FieldByName('num_bloco').AsInteger) +
+            '   QTD BLOCOS: ' + IntToStr(dsReceitas.FieldByName('QUANTIDADE')
+            .AsInteger);
 
           txt := TListItemText(Objects.FindDrawable('Text3'));
-          txt.Text := 'UNIDADE DE SAÚDE: '   + dsReceitas.FieldByName('UNIDADE').AsString + '   TIPO DE RECEITA: ' + dsReceitas.FieldByName('TIPO_RECEITA').AsString;
+          txt.Text := 'UNIDADE DE SAÚDE: ' + dsReceitas.FieldByName('UNIDADE')
+            .AsString + '   TIPO DE RECEITA: ' + dsReceitas.FieldByName
+            ('TIPO_RECEITA').AsString;
 
           txt := TListItemText(Objects.FindDrawable('Text4'));
           txt.Text := ' STATUS: ' + dsReceitas.FieldByName('STATUS').AsString;
-
-          // status
 
           Img := TListItemImage(Objects.FindDrawable('Image5'));
           if dsReceitas.FieldByName('STATUS').AsString = 'BAIXADO' then
@@ -594,8 +608,10 @@ end;
 function TUtilsView.CalculaFolhaFinal(ValorInicio, qtd,
   CodTipo: Integer): Integer;
 var
-  valorfinal: Integer;
+  valorfinal : Integer;
 begin
+
+  valorfinal := 0;
 
   case CodTipo of
     1:
@@ -767,6 +783,7 @@ begin
 
   fatual := finicial;
   blocoatual := 0;
+  ffinal := 0;
 
   for I := 1 to totalblocos do
   begin
@@ -886,13 +903,12 @@ function TUtilsView.VerificaProced(valor, prazo, infracao: TEdit): Boolean;
 var
   vlr: string;
 begin
+  Result := false;
+
   vlr := valor.Text;
   if (vlr = NOTIFICACAO) or (vlr = AUTOINFRACAO) then
     if not(prazo.Text = '') then
-    begin
-      Result := False;
-      infracao.Text := IntToStr(0);
-    end
+      infracao.Text := IntToStr(0)
     else
       Result := true;
 end;
