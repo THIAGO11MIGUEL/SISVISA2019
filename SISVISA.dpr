@@ -22,7 +22,9 @@ uses
   Classes.Utils.Consts in 'classes\Classes.Utils.Consts.pas',
   U_CadastroTipoReceita in 'units\U_CadastroTipoReceita.pas' {frmCadastroTipReceita},
   U_BaixarReceitas in 'units\U_BaixarReceitas.pas' {frmBaixarReceitas},
-  U_ImprimirDados in 'units\U_ImprimirDados.pas' {frmImprimirDados};
+  U_ImprimirDados in 'units\U_ImprimirDados.pas' {frmImprimirDados},
+  U_dmRelReceitas in 'units\U_dmRelReceitas.pas' {dmRelReceitas: TDataModule},
+  U_dmRelDenuncias in 'units\U_dmRelDenuncias.pas' {dmRelDenuncias: TDataModule};
 
 {$R *.res}
 
@@ -30,5 +32,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmSISVISA, frmSISVISA);
   Application.CreateForm(TdmSISVISA, dmSISVISA);
+  Application.CreateForm(TdmRelReceitas, dmRelReceitas);
+  Application.CreateForm(TdmRelDenuncias, dmRelDenuncias);
   Application.Run;
 end.

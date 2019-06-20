@@ -140,7 +140,7 @@ procedure TfrmBaixarReceitas.edtBuscaReceitaLancadaClick(Sender: TObject);
 var campo: string;
 begin
   campo := TAB_VWRECEITA + ' where STATUS = ' + QuotedStr(ST_ABERTO);
-  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, campo, nil, nil);
+  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, campo);//, nil, nil);
   changeTabDadosReceitas.ExecuteTarget(Self);
 end;
 

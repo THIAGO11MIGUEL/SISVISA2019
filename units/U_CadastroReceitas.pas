@@ -64,7 +64,6 @@ type
     lvwDadosTipReceita: TListView;
     lvwDadosUnidade: TListView;
     lvwDadosReceitas: TListView;
-    lvPedido: TListView;
     img_sinc: TImage;
     img_nsinc: TImage;
     procedure actInserirExecute(Sender: TObject);
@@ -141,7 +140,7 @@ begin
 //  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA);
   img_sinc.Visible := False;
   img_nsinc.Visible := False;
-  FUtilsCAD.CDReceita(lvPedido, qry, TAB_VWRECEITA, img_sinc, img_nsinc);
+  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA, img_sinc, img_nsinc);
 end;
 
 procedure TfrmCadastroReceitas.lvwDadosReceitasItemClick(const Sender: TObject;

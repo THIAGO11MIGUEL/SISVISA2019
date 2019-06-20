@@ -22,7 +22,7 @@ object frmBaixarReceitas: TfrmBaixarReceitas
       Size.Height = 490.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 0
       TabPosition = PlatformDefault
       Sizes = (
@@ -36,7 +36,7 @@ object frmBaixarReceitas: TfrmBaixarReceitas
           end>
         TextSettings.Font.Size = 16.000000000000000000
         StyledSettings = [Family, Style, FontColor]
-        IsSelected = False
+        IsSelected = True
         Size.Width = 406.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
@@ -257,7 +257,7 @@ object frmBaixarReceitas: TfrmBaixarReceitas
           end>
         TextSettings.Font.Size = 16.000000000000000000
         StyledSettings = [Family, Style, FontColor]
-        IsSelected = True
+        IsSelected = False
         Size.Width = 406.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False

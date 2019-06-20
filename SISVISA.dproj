@@ -196,6 +196,16 @@
             <Form>frmImprimirDados</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="units\U_dmRelReceitas.pas">
+            <Form>dmRelReceitas</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="units\U_dmRelDenuncias.pas">
+            <Form>dmRelDenuncias</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

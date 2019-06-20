@@ -29,48 +29,6 @@ type
     Layout2: TLayout;
     ActionList1: TActionList;
     actImprimir: TAction;
-    ClientDataSet1: TClientDataSet;
-    DataSetProvider1: TDataSetProvider;
-    DataSource1: TDataSource;
-    frxDBDataset1: TfrxDBDataset;
-    FDQuery1: TFDQuery;
-    ClientDataSet1COD_BAIXA: TIntegerField;
-    ClientDataSet1DATA_BAIXA: TDateField;
-    ClientDataSet1NUM_BLOCO_BAIXA: TIntegerField;
-    ClientDataSet1NUM_INICIAL_BAIXA: TIntegerField;
-    ClientDataSet1NUM_FINAL_BAIXA: TIntegerField;
-    ClientDataSet1COD_RECEITA: TIntegerField;
-    ClientDataSet1DATA_LANC: TDateField;
-    ClientDataSet1QUANTIDADE: TIntegerField;
-    ClientDataSet1NUM_BLOCO: TIntegerField;
-    ClientDataSet1NUM_INICIAL: TIntegerField;
-    ClientDataSet1NUM_FINAL: TIntegerField;
-    ClientDataSet1COD_UNIDADE: TIntegerField;
-    ClientDataSet1UNIDADE: TStringField;
-    ClientDataSet1COD_TIP: TIntegerField;
-    ClientDataSet1TIPO_RECEITA: TStringField;
-    ClientDataSet1MEDICO: TStringField;
-    ClientDataSet1SOLICITANTE: TStringField;
-    ClientDataSet1STATUS: TStringField;
-    FDQuery1COD_BAIXA: TIntegerField;
-    FDQuery1DATA_BAIXA: TDateField;
-    FDQuery1NUM_BLOCO_BAIXA: TIntegerField;
-    FDQuery1NUM_INICIAL_BAIXA: TIntegerField;
-    FDQuery1NUM_FINAL_BAIXA: TIntegerField;
-    FDQuery1COD_RECEITA: TIntegerField;
-    FDQuery1DATA_LANC: TDateField;
-    FDQuery1QUANTIDADE: TIntegerField;
-    FDQuery1NUM_BLOCO: TIntegerField;
-    FDQuery1NUM_INICIAL: TIntegerField;
-    FDQuery1NUM_FINAL: TIntegerField;
-    FDQuery1COD_UNIDADE: TIntegerField;
-    FDQuery1UNIDADE: TStringField;
-    FDQuery1COD_TIP: TIntegerField;
-    FDQuery1TIPO_RECEITA: TStringField;
-    FDQuery1MEDICO: TStringField;
-    FDQuery1SOLICITANTE: TStringField;
-    FDQuery1STATUS: TStringField;
-    frxReport1: TfrxReport;
     tabImprimirReceitas: TTabItem;
     tabImprimirDenuncias: TTabItem;
     lytImprimirReceitas: TLayout;
@@ -97,6 +55,33 @@ type
     lbxitemImprimirReceitas: TListBoxItem;
     Button1: TButton;
     actVoltar: TAction;
+    ListBox3: TListBox;
+    ListBoxItem5: TListBoxItem;
+    ListBoxItem6: TListBoxItem;
+    ListBoxItem7: TListBoxItem;
+    ListBoxItem8: TListBoxItem;
+    Layout7: TLayout;
+    Layout8: TLayout;
+    Layout9: TLayout;
+    Layout10: TLayout;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    RadioButton3: TRadioButton;
+    Label5: TLabel;
+    Layout11: TLayout;
+    Label6: TLabel;
+    Layout12: TLayout;
+    Label7: TLabel;
+    Layout13: TLayout;
+    Label8: TLabel;
+    DateEdit3: TDateEdit;
+    DateEdit4: TDateEdit;
+    Layout14: TLayout;
+    Label9: TLabel;
+    Layout15: TLayout;
+    RadioButton4: TRadioButton;
+    Layout16: TLayout;
+    RadioButton5: TRadioButton;
     procedure actImprimirExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lbxitemImprimirReceitasClick(Sender: TObject);
@@ -119,16 +104,28 @@ implementation
 
 {$R *.fmx}
 
-uses U_SISVISA, U_dmSISVISA, Classes.Utils.Consts;
+uses U_SISVISA, U_dmSISVISA, Classes.Utils.Consts, U_dmRelReceitas,
+  U_dmRelDenuncias;
 
 procedure TfrmImprimirDados.actImprimirExecute(Sender: TObject);
 begin
-  case Impressao of
-    Denuncias: ShowMessage('FAÇA O RELATÓRIO DE DENÚNCIAS PRIMEIRO!!!');
-    Receitas: frxReport1.SHOWREPORT;
+
+    case Impressao of
+      Denuncias:
+      begin
+        with dmRelDenuncias do
+        begin
+           frxRelDenuncias.ShowReport;
+        end;
+      end;
+      Receitas:
+      begin
+       with dmRelReceitas do
+       begin
+         frxRelReceitas.ShowReport;
+       end;
+      end;
   end;
-
-
 end;
 
 procedure TfrmImprimirDados.actVoltarExecute(Sender: TObject);
