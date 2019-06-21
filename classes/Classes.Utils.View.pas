@@ -134,6 +134,7 @@ var
   lvItem: TListViewItem;
 begin
   dsCaminho := TFDQuery.Create(nil);
+  dmSISVISA := TdmSISVISA.Create(nil);
 
   dsCaminho.Close;
   dsCaminho.sql.Clear;
@@ -738,11 +739,10 @@ begin
   // query é criada, fechada, limpa, conectada
   ds := TFDQuery.Create(nil);
   try
-
     ds.Close;
     ds.sql.Clear;
     ds.Connection := dmSISVisa.FD_ConnSISVISA;
-    dmSISVisa.FDtrs_SVisa.StartTransaction;
+    dmSISVISA.FDtrs_SVisa.StartTransaction;
     ds.sql.Add(sql);
     ds.Prepared := true; // prepara a ds
 

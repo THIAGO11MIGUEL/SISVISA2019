@@ -24,7 +24,8 @@ uses
   U_BaixarReceitas in 'units\U_BaixarReceitas.pas' {frmBaixarReceitas},
   U_ImprimirDados in 'units\U_ImprimirDados.pas' {frmImprimirDados},
   U_dmRelReceitas in 'units\U_dmRelReceitas.pas' {dmRelReceitas: TDataModule},
-  U_dmRelDenuncias in 'units\U_dmRelDenuncias.pas' {dmRelDenuncias: TDataModule};
+  U_dmRelDenuncias in 'units\U_dmRelDenuncias.pas' {dmRelDenuncias: TDataModule},
+  SISVISA.Model.CaminhoBD.interfaces in 'classes\SISVISA.Model.CaminhoBD.interfaces.pas';
 
 {$R *.res}
 
@@ -32,7 +33,5 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmSISVISA, frmSISVISA);
   Application.CreateForm(TdmSISVISA, dmSISVISA);
-  Application.CreateForm(TdmRelReceitas, dmRelReceitas);
-  Application.CreateForm(TdmRelDenuncias, dmRelDenuncias);
   Application.Run;
 end.

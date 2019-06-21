@@ -80,7 +80,7 @@ implementation
 
 uses U_CadastroDenuncias, U_CadastroReceitas, U_CadastroProcADM,
   U_Configuracoes, U_CadastroTipoDenuncia, U_AtenderDenuncia,
-  Classes.Utils.View, U_BaixarReceitas, U_ImprimirDados;
+  Classes.Utils.View, U_BaixarReceitas, U_ImprimirDados, U_dmSISVISA;
 
 procedure TfrmSISVISA.FormKeyDown(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
@@ -173,7 +173,7 @@ begin
    if layoutMensagem.Visible then
       layoutMensagem.Visible := False;
 
-   Timer1.Enabled := False;
+  Timer1.Enabled := False;
 end;
 
 procedure TfrmSISVISA.Timer2Timer(Sender: TObject);

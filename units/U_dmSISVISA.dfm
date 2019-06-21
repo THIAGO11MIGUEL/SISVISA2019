@@ -1,12 +1,12 @@
 object dmSISVISA: TdmSISVISA
   OldCreateOrder = False
-  Height = 268
-  Width = 521
+  Height = 200
+  Width = 246
   object FD_ConnSISVISA: TFDConnection
     Params.Strings = (
-      'Database=C:\Projetos\SISVISA 2019\trunk\BD\SISVISA.FDB'
       'User_Name=sysdba'
       'Password=masterkey'
+      'Database=D:\SOFTWARES\SISVISA 2019\trunk\BD\SISVISA.FDB'
       'DriverID=FB')
     LoginPrompt = False
     Left = 56
@@ -14,21 +14,21 @@ object dmSISVISA: TdmSISVISA
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'FMX'
-    Left = 408
-    Top = 192
+    Left = 168
+    Top = 144
   end
   object FDPhysIBDriverLink1: TFDPhysIBDriverLink
-    Left = 408
-    Top = 72
+    Left = 168
+    Top = 24
   end
   object FDtrs_SVisa: TFDTransaction
     Connection = FD_ConnSISVISA
-    Left = 56
-    Top = 72
+    Left = 64
+    Top = 112
   end
   object FDqryCadastros: TFDQuery
     Connection = FD_ConnSISVISA
-    Left = 408
-    Top = 128
+    Left = 168
+    Top = 80
   end
 end

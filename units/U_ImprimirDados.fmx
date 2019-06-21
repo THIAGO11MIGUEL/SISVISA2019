@@ -73,7 +73,7 @@
       Size.Height = 353.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
-      TabIndex = 0
+      TabIndex = 2
       TabOrder = 2
       TabPosition = PlatformDefault
       Sizes = (
@@ -89,7 +89,7 @@
           end>
         TextSettings.Font.Size = 14.000000000000000000
         StyledSettings = [Family, Style, FontColor]
-        IsSelected = True
+        IsSelected = False
         Size.Width = 241.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
@@ -305,7 +305,7 @@
           end>
         TextSettings.Font.Size = 14.000000000000000000
         StyledSettings = [Family, Style, FontColor]
-        IsSelected = False
+        IsSelected = True
         Size.Width = 243.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False

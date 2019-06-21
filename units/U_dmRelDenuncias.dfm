@@ -168,25 +168,6 @@ object dmRelDenuncias: TdmRelDenuncias
           ShowHint = False
           Diagonal = True
         end
-        object Memo3: TfrxMemoView
-          Align = baLeft
-          Top = 64.252010000000010000
-          Width = 283.464750000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          Memo.UTF8W = (
-            'DENUNCIA: TIPO DA DENUNCIA')
-        end
-        object Memo4: TfrxMemoView
-          Align = baRight
-          Left = 423.307360000000000000
-          Top = 60.472479999999990000
-          Width = 294.803340000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          Memo.UTF8W = (
-            'DATA DEN'#218'NCIA: DATA')
-        end
         object Memo5: TfrxMemoView
           Top = 86.929190000000030000
           Width = 718.110700000000000000
@@ -208,25 +189,6 @@ object dmRelDenuncias: TdmRelDenuncias
           Width = 710.551640000000000000
           ShowHint = False
           Diagonal = True
-        end
-        object Memo6: TfrxMemoView
-          Align = baRight
-          Left = 423.307360000000000000
-          Top = 120.944960000000000000
-          Width = 294.803340000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          Memo.UTF8W = (
-            'DATA DEN'#218'NCIA: DATA')
-        end
-        object Memo7: TfrxMemoView
-          Align = baLeft
-          Top = 120.944960000000000000
-          Width = 283.464750000000000000
-          Height = 18.897650000000000000
-          ShowHint = False
-          Memo.UTF8W = (
-            'DENUNCIA: TIPO DA DENUNCIA')
         end
       end
     end
