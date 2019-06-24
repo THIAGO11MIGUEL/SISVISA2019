@@ -25,7 +25,10 @@ uses
   U_ImprimirDados in 'units\U_ImprimirDados.pas' {frmImprimirDados},
   U_dmRelReceitas in 'units\U_dmRelReceitas.pas' {dmRelReceitas: TDataModule},
   U_dmRelDenuncias in 'units\U_dmRelDenuncias.pas' {dmRelDenuncias: TDataModule},
-  SISVISA.Model.CaminhoBD.interfaces in 'classes\SISVISA.Model.CaminhoBD.interfaces.pas';
+  SISVISA.Model.CaminhoBD.interfaces in 'classes\SISVISA.Model.CaminhoBD.interfaces.pas',
+  SISVISA.Model.interfaces in 'classes\SISVISA.Model.interfaces.pas',
+  Sisvisa.Model.CaminhoBanco.interfaces in 'Model\Sisvisa.Model.CaminhoBanco.interfaces.pas',
+  SISVISA.Model.Arquivo.Ini in 'classes\SISVISA.Model.Arquivo.Ini.pas';
 
 {$R *.res}
 
