@@ -3,9 +3,10 @@ unit U_SISVISA;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.Ani, FMX.Layouts, FMX.Gestures,
-  FMX.ListBox, FMX.StdCtrls, FMX.MultiView, FMX.Controls.Presentation,
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.Ani, FMX.Layouts,
+  FMX.Gestures, FMX.ListBox, FMX.StdCtrls, FMX.MultiView, FMX.Controls.Presentation,
   FMX.Objects;
 
 type
@@ -43,8 +44,8 @@ type
     lbxitemAtenderDenuncia: TListBoxItem;
     lbxitemBaixarReceitas: TListBoxItem;
     procedure ToolbarCloseButtonClick(Sender: TObject);
-    procedure FormGesture(Sender: TObject;
-      const EventInfo: TGestureEventInfo; var Handled: Boolean);
+    procedure FormGesture(Sender: TObject; const EventInfo: TGestureEventInfo;
+      var Handled: Boolean);
     procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
     procedure lbxitemReceitasClick(Sender: TObject);
@@ -67,7 +68,7 @@ type
   public
     { Public declarations }
   published
-    property FormAtual : TCommonCustomForm read FFormAtual write FFormAtual;
+    property FormAtual: TCommonCustomForm read FFormAtual write FFormAtual;
     procedure ExibirMensagem(Layout: TLayout);
   end;
 
@@ -91,17 +92,18 @@ end;
 
 procedure TfrmSISVISA.lbxghInicioClick(Sender: TObject);
 begin
-   Self.layoutPrincipal.RemoveObject(0);
+  Self.layoutPrincipal.RemoveObject(0);
 end;
 
 procedure TfrmSISVISA.lbxghRelatoriosClick(Sender: TObject);
-var FormImprimir: TfrmImprimirDados;
+var
+  FormImprimir: TfrmImprimirDados;
 begin
   if not Assigned(FormImprimir) then
-     FormImprimir := TfrmImprimirDados.Create(Self);
+    FormImprimir := TfrmImprimirDados.Create(Self);
 
   Self.layoutPrincipal.RemoveObject(0);
-  self.layoutPrincipal.AddObject(FormImprimir.Layout1);
+  Self.layoutPrincipal.AddObject(FormImprimir.Layout1);
   FormImprimir.ListBoxItem3.Visible := False;
   FormImprimir.ListBoxItem4.Visible := False;
   FormImprimir.panelButtonDados.Visible := False;
@@ -109,77 +111,78 @@ end;
 
 procedure TfrmSISVISA.lbxghConfiguracoesClick(Sender: TObject);
 var
-  FormConfig : TfrmConfiguracoesGerais;
+  FormConfig: TfrmConfiguracoesGerais;
 begin
   if not Assigned(FormConfig) then
-     FormConfig := TfrmConfiguracoesGerais.Create(Self);
+    FormConfig := TfrmConfiguracoesGerais.Create(Self);
   Self.layoutPrincipal.RemoveObject(0);
   Self.layoutPrincipal.AddObject(FormConfig.layoutMain);
 end;
 
 procedure TfrmSISVISA.lbxitemReceitasClick(Sender: TObject);
 var
-  FormReceitas :  TfrmCadastroReceitas;
+  FormReceitas: TfrmCadastroReceitas;
 begin
-   if not Assigned(FormReceitas) then
-      FormReceitas := TfrmCadastroReceitas.Create(Self);
-   Self.layoutPrincipal.RemoveObject(0);
-   Self.layoutPrincipal.AddObject(FormReceitas.Layout1);
+  if not Assigned(FormReceitas) then
+    FormReceitas := TfrmCadastroReceitas.Create(Self);
+  Self.layoutPrincipal.RemoveObject(0);
+  Self.layoutPrincipal.AddObject(FormReceitas.Layout1);
 end;
 
 procedure TfrmSISVISA.lbxitemDenunciasClick(Sender: TObject);
 var
-  FormDenuncias :  TfrmCadastroDenuncias;
+  FormDenuncias: TfrmCadastroDenuncias;
 begin
-   if not Assigned(FormDenuncias) then
-      FormDenuncias := TfrmCadastroDenuncias.Create(Self);
+  if not Assigned(FormDenuncias) then
+    FormDenuncias := TfrmCadastroDenuncias.Create(Self);
 
-   Self.layoutPrincipal.RemoveObject(0);
-   Self.layoutPrincipal.AddObject(FormDenuncias.Layout1);
-   FormDenuncias.lytHistDenuncias.Visible := False;
+  Self.layoutPrincipal.RemoveObject(0);
+  Self.layoutPrincipal.AddObject(FormDenuncias.Layout1);
+  FormDenuncias.lytHistDenuncias.Visible := False;
 end;
-
 
 procedure TfrmSISVISA.lbxitemProcADMClick(Sender: TObject);
 var
- FormProcADM : TfrmCadastroProcADM;
+  FormProcADM: TfrmCadastroProcADM;
 begin
   if not Assigned(FormProcADM) then
-     FormProcADM := TfrmCadastroProcADM.Create(Self);
+    FormProcADM := TfrmCadastroProcADM.Create(Self);
   Self.layoutPrincipal.RemoveObject(0);
   Self.layoutPrincipal.AddObject(FormProcADM.Layout1);
 end;
 
 procedure TfrmSISVISA.lbxitemAtenderDenunciaClick(Sender: TObject);
-var FormAtender: TfrmAtenderDenuncias;
+var
+  FormAtender: TfrmAtenderDenuncias;
 begin
   if not Assigned(FormAtender) then
-     FormAtender := TfrmAtenderDenuncias.Create(Self);
+    FormAtender := TfrmAtenderDenuncias.Create(Self);
   Self.layoutPrincipal.RemoveObject(0);
   Self.layoutPrincipal.AddObject(FormAtender.Layout1);
 end;
 
 procedure TfrmSISVISA.lbxitemBaixarReceitasClick(Sender: TObject);
-var FormBaixaRec: TfrmBaixarReceitas;
+var
+  FormBaixaRec: TfrmBaixarReceitas;
 begin
-   if not Assigned (FormBaixaRec) then
-      FormBaixaRec := TfrmBaixarReceitas.Create(Self);
-   Self.layoutPrincipal.RemoveObject(0);
-   Self.layoutPrincipal.AddObject(FormBaixaRec.Layout1);
+  if not Assigned(FormBaixaRec) then
+    FormBaixaRec := TfrmBaixarReceitas.Create(Self);
+  Self.layoutPrincipal.RemoveObject(0);
+  Self.layoutPrincipal.AddObject(FormBaixaRec.Layout1);
 end;
 
 procedure TfrmSISVISA.Timer1Timer(Sender: TObject);
 begin
-   if layoutMensagem.Visible then
-      layoutMensagem.Visible := False;
+  if layoutMensagem.Visible then
+    layoutMensagem.Visible := False;
 
   Timer1.Enabled := False;
 end;
 
 procedure TfrmSISVISA.Timer2Timer(Sender: TObject);
 begin
-   Label2.Text := FormatDateTime('dd/mmmm/yy', Now);
-   Label3.Text := TimeToStr(Now);
+  Label2.Text := FormatDateTime('dd/mmmm/yy', Now);
+  Label3.Text := TimeToStr(Now);
 end;
 
 procedure TfrmSISVISA.ToolbarCloseButtonClick(Sender: TObject);
@@ -189,7 +192,7 @@ end;
 
 procedure TfrmSISVISA.ExibirMensagem(Layout: TLayout);
 begin
-  timer1.Enabled := True;
+  Timer1.Enabled := True;
   frmSISVISA.layoutMensagem.Visible := True;
   frmSISVISA.layoutMensagem.RemoveObject(0);
   frmSISVISA.layoutMensagem.AddObject(Layout);
@@ -197,25 +200,26 @@ end;
 
 procedure TfrmSISVISA.FormCreate(Sender: TObject);
 begin
-  layoutMensagem.Visible := false;
+  layoutMensagem.Visible := False;
 end;
 
 procedure TfrmSISVISA.FormGesture(Sender: TObject;
   const EventInfo: TGestureEventInfo; var Handled: Boolean);
 var
-  DX, DY : Single;
+  DX, DY: Single;
 begin
   if EventInfo.GestureID = igiPan then
   begin
-    if (TInteractiveGestureFlag.gfBegin in EventInfo.Flags)
-      and ((Sender = ToolbarPopup)
-        or (EventInfo.Location.Y > (ClientHeight - 70))) then
+    if (TInteractiveGestureFlag.gfBegin in EventInfo.Flags) and
+      ((Sender = ToolbarPopup) or (EventInfo.Location.Y > (ClientHeight - 70)))
+    then
     begin
       FGestureOrigin := EventInfo.Location;
       FGestureInProgress := True;
     end;
 
-    if FGestureInProgress and (TInteractiveGestureFlag.gfEnd in EventInfo.Flags) then
+    if FGestureInProgress and (TInteractiveGestureFlag.gfEnd in EventInfo.Flags)
+    then
     begin
       FGestureInProgress := False;
       DX := EventInfo.Location.X - FGestureOrigin.X;
@@ -229,7 +233,9 @@ end;
 procedure TfrmSISVISA.ShowToolbar(AShow: Boolean);
 begin
   ToolbarPopup.Width := ClientWidth;
-  ToolbarPopup.PlacementRectangle.Rect := TRectF.Create(0, ClientHeight-ToolbarPopup.Height, ClientWidth-1, ClientHeight-1);
+  ToolbarPopup.PlacementRectangle.Rect :=
+    TRectF.Create(0, ClientHeight - ToolbarPopup.Height, ClientWidth - 1,
+    ClientHeight - 1);
   ToolbarPopupAnimation.StartValue := ToolbarPopup.Height;
   ToolbarPopupAnimation.StopValue := 0;
 
