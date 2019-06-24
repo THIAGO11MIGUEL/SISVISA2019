@@ -18,6 +18,8 @@ type
     FDPhysIBDriverLink1: TFDPhysIBDriverLink;
     FDtrs_SVisa: TFDTransaction;
     FDqryCadastros: TFDQuery;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,8 +31,29 @@ var
 
 implementation
 
+uses
+  SISVISA.Model.Arquivo.Ini;
+
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdmSISVISA.DataModuleCreate(Sender: TObject);
+begin
+  FD_ConnSISVISA.Connected := false;
+  FD_ConnSISVISA.Params.Database :=
+                  TModelArquivoIni
+                      .New
+                        .ReadIni(TModelArquivoIni
+                                       .New
+                                          .IniFile,
+                                  'BANCO', 'CAMINHO');
+  FD_ConnSISVISA.Connected := true;
+end;
+
+procedure TdmSISVISA.DataModuleDestroy(Sender: TObject);
+begin
+  FD_ConnSISVISA.Connected := false;
+end;
 
 end.

@@ -1,7 +1,17 @@
 object dmSISVISA: TdmSISVISA
   OldCreateOrder = False
+<<<<<<< .mine
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 268
+  Width = 521
+||||||| .r45
+  Height = 268
+  Width = 521
+=======
   Height = 200
   Width = 246
+>>>>>>> .r46
   object FD_ConnSISVISA: TFDConnection
     Params.Strings = (
       'User_Name=sysdba'
