@@ -98,14 +98,6 @@ begin
         .DataSet
           .deletaCaminhoDoBanco;
 
-  { lnIDCaminho := FUtilsCAD.RetornaID(TAB_CAMINHO, DESC, TAB_CAM_F1,
-    TAB_CAM_F2, qry);
-
-
-    VALORES := ' WHERE ' + TAB_CAM_F1 + ' = ' + IntToStr(lnIDCaminho);
-    FUtilsCAD.Deletar(TAB_CAMINHO, VALORES, qry);
-  }
-
   inherited;
   FUtilsCAD
        .CDCaminho(
