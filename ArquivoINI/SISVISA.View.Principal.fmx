@@ -1,0 +1,262 @@
+object frm_Principal: Tfrm_Principal
+  Left = 0
+  Top = 0
+  BorderStyle = None
+  Caption = 'Form1'
+  ClientHeight = 265
+  ClientWidth = 566
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object layHead: TLayout
+    Align = Top
+    Size.Width = 566.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object rectHead: TRectangle
+      Align = Client
+      Size.Width = 566.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+    end
+    object Label1: TLabel
+      Align = Center
+      StyledSettings = [Family, FontColor]
+      Size.Width = 256.000000000000000000
+      Size.Height = 39.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      Text = 'Configura'#231#227'o arquivo  INI'
+      TabOrder = 1
+    end
+  end
+  object Layout2: TLayout
+    Align = Client
+    Size.Width = 566.000000000000000000
+    Size.Height = 215.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ListBox1: TListBox
+      Align = Client
+      Size.Width = 566.000000000000000000
+      Size.Height = 215.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      DisableFocusEffect = True
+      ItemHeight = 70.000000000000000000
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      Viewport.Width = 562.000000000000000000
+      Viewport.Height = 211.000000000000000000
+      object ListBoxItem1: TListBoxItem
+        Size.Width = 562.000000000000000000
+        Size.Height = 70.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object Layout4: TLayout
+          Align = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 15.000000000000000000
+          Margins.Bottom = 15.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 76.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          object lfdDescricao: TLabel
+            Align = Client
+            StyledSettings = [Family, FontColor]
+            Size.Width = 76.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            Text = 'Descri'#231#227'o'
+            TabOrder = 0
+          end
+        end
+        object Layout5: TLayout
+          Align = Client
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 15.000000000000000000
+          Margins.Bottom = 15.000000000000000000
+          Size.Width = 476.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object edtDescricao: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 0
+            TextSettings.Font.Size = 16.000000000000000000
+            Margins.Right = 10.000000000000000000
+            Size.Width = 466.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Descri'#231#227'o do us'#225'rio'
+            StyledSettings = [Family, Style, FontColor]
+          end
+        end
+      end
+      object ListBoxItem2: TListBoxItem
+        Position.Y = 70.000000000000000000
+        Size.Width = 562.000000000000000000
+        Size.Height = 70.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object btnCarregarBD: TButton
+          Align = Right
+          Hint = 'localizar caminho do Banco de dados '
+          Margins.Top = 15.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 15.000000000000000000
+          Position.X = 493.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 59.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'searchtoolbuttonbordered'
+          TabOrder = 1
+          Text = 'btnCarregarBD'
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnCarregarBDClick
+        end
+        object Layout6: TLayout
+          Align = Left
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 15.000000000000000000
+          Margins.Bottom = 15.000000000000000000
+          Position.X = 5.000000000000000000
+          Position.Y = 15.000000000000000000
+          Size.Width = 76.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          object lfdCaminho: TLabel
+            Align = Client
+            StyledSettings = [Family, FontColor]
+            Size.Width = 76.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Size = 14.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            Text = 'Caminho'
+            TabOrder = 0
+          end
+        end
+        object Layout7: TLayout
+          Align = Client
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 15.000000000000000000
+          Margins.Bottom = 15.000000000000000000
+          Size.Width = 407.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object edtCaminho: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = Client
+            TabOrder = 0
+            TextSettings.Font.Size = 16.000000000000000000
+            Enabled = False
+            Margins.Right = 10.000000000000000000
+            Size.Width = 397.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TextPrompt = 'Caminho do Banco de dados '
+            StyledSettings = [Family, Style, FontColor]
+          end
+        end
+      end
+      object Layout3: TLayout
+        Align = Bottom
+        Position.Y = 161.000000000000000000
+        Size.Width = 562.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object btnSair: TButton
+          Align = Right
+          Hint = 'Sair da Aplica'#231#227'o '
+          Margins.Left = 8.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 472.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'escapetoolbuttonbordered'
+          TabOrder = 0
+          Text = 'Sair'
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnSairClick
+        end
+        object btnSalvar: TButton
+          Align = Right
+          Enabled = False
+          Hint = 'Gravar o caminho do Banco'
+          Margins.Left = 8.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 384.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'pagecurltoolbutton'
+          TabOrder = 1
+          Text = 'Salvar'
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnSalvarClick
+        end
+        object edtCarregar: TButton
+          Align = Right
+          Hint = 'Carregar caminho do Banco'
+          Margins.Left = 8.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 296.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 80.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'refreshtoolbuttonbordered'
+          TabOrder = 2
+          Text = 'Carragar'
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = edtCarregarClick
+        end
+      end
+      object lfdStatus: TLabel
+        Align = Bottom
+        StyledSettings = [Family]
+        Position.Y = 144.000000000000000000
+        Size.Width = 562.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00040000000100000004000000}
+        TextSettings.FontColor = xFFF82E04
+        TextSettings.HorzAlign = Center
+        TabOrder = 1
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 242
+    Top = 212
+  end
+end
