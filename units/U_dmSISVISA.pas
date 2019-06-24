@@ -3,11 +3,14 @@ unit U_dmSISVISA;
 interface
 
 uses
-  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.FMXUI.Wait,
-  FireDAC.Phys.IBDef, FireDAC.Phys.IBBase, FireDAC.Phys.IB, FireDAC.Comp.UI,
-  Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
+  System.SysUtils, System.Classes,
+
+  FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.FMXUI.Wait, FireDAC.Phys.IBDef, FireDAC.Phys.IBBase, FireDAC.Phys.IB,
+  FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
+  FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef;
 
@@ -35,19 +38,16 @@ uses
   SISVISA.Model.Arquivo.Ini;
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
-
 {$R *.dfm}
 
 procedure TdmSISVISA.DataModuleCreate(Sender: TObject);
 begin
   FD_ConnSISVISA.Connected := false;
-  FD_ConnSISVISA.Params.Database :=
-                  TModelArquivoIni
-                      .New
-                        .ReadIni(TModelArquivoIni
-                                       .New
-                                          .IniFile,
-                                  'BANCO', 'CAMINHO');
+  FD_ConnSISVISA.Params.Database := TModelArquivoIni
+                        .New.ReadIni (
+                              TModelArquivoIni
+                                   .New
+                                   .IniFile, 'BANCO', 'CAMINHO');
   FD_ConnSISVISA.Connected := true;
 end;
 
