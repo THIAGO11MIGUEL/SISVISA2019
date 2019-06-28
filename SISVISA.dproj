@@ -142,11 +142,6 @@
             <Form>frmCadastroReceitas</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="units\U_dmSISVISA.pas">
-            <Form>dmSISVISA</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="units\U_CadastroProcADM.pas">
             <Form>frmCadastroProcADM</Form>
             <FormType>fmx</FormType>
@@ -162,10 +157,6 @@
         </DCCReference>
         <DCCReference Include="units\U_Configuracoes.pas">
             <Form>frmConfiguracoesGerais</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
-        <DCCReference Include="units\U_CadastroBD.pas">
-            <Form>frmCadastroBD</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="classes\SISVISA.Model.CaminhoBD.pas"/>
@@ -210,6 +201,7 @@
         <DCCReference Include="classes\SISVISA.Model.interfaces.pas"/>
         <DCCReference Include="Model\Sisvisa.Model.CaminhoBanco.interfaces.pas"/>
         <DCCReference Include="classes\SISVISA.Model.Arquivo.Ini.pas"/>
+        <DCCReference Include="units\U_dmSISVISA.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

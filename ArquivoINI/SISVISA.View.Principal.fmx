@@ -257,6 +257,6 @@ object frm_Principal: Tfrm_Principal
   end
   object OpenDialog1: TOpenDialog
     Left = 242
-    Top = 212
+    Top = 204
   end
 end

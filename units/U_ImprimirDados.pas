@@ -12,10 +12,14 @@ uses
   FMX.ActnList, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  FMX.frxDBSet, Data.DB, Datasnap.Provider, Datasnap.DBClient, FMX.DateTimeCtrls;
+  FMX.frxDBSet, Data.DB, Datasnap.Provider, Datasnap.DBClient,
+  FMX.DateTimeCtrls, FMX.Edit, Classes.Utils.View;
 
 type
   tpImprimir = (Denuncias, Receitas);
+
+type
+  tpDadosDenuncia = (Relatorio, Lista);
 
 type
   TfrmImprimirDados = class(TForm)
@@ -36,11 +40,11 @@ type
     ListBoxItem1: TListBoxItem;
     Layout3: TLayout;
     Label1: TLabel;
-    DateEdit1: TDateEdit;
+    dtedtInicial: TDateEdit;
     ListBoxItem2: TListBoxItem;
     Layout4: TLayout;
     Label2: TLabel;
-    DateEdit2: TDateEdit;
+    dtedtFinal: TDateEdit;
     ListBoxItem3: TListBoxItem;
     Layout5: TLayout;
     Label3: TLabel;
@@ -74,27 +78,40 @@ type
     Label7: TLabel;
     Layout13: TLayout;
     Label8: TLabel;
-    DateEdit3: TDateEdit;
-    DateEdit4: TDateEdit;
+    dtedtFim: TDateEdit;
+    dtedtInicio: TDateEdit;
     Layout14: TLayout;
     Label9: TLabel;
     Layout15: TLayout;
-    RadioButton4: TRadioButton;
+    rbtnListaDenuncias: TRadioButton;
     Layout16: TLayout;
-    RadioButton5: TRadioButton;
+    rbtnRelDenuncias: TRadioButton;
+    lbxitUsuario: TListBoxItem;
+    Edit1: TEdit;
+    ListBoxItem9: TListBoxItem;
+    Edit2: TEdit;
     procedure actImprimirExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure lbxitemImprimirReceitasClick(Sender: TObject);
     procedure actVoltarExecute(Sender: TObject);
     procedure lbxitemImprimirDenunciasClick(Sender: TObject);
+    procedure rbtnRelDenunciasClick(Sender: TObject);
+    procedure rbtnListaDenunciasClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     FImpressao: tpImprimir;
+    FDados: tpDadosDenuncia;
+    FUtils: TUtilsView;
     procedure SetImpressao(const Value: tpImprimir);
+    procedure SetDados(const Value: tpDadosDenuncia);
+
     { Private declarations }
   public
     { Public declarations }
+    qryDen, qryRec: TFDQuery;
   published
     property Impressao: tpImprimir read FImpressao write SetImpressao;
+    property Dados: tpDadosDenuncia read FDados write SetDados;
   end;
 
 var
@@ -109,21 +126,33 @@ uses U_SISVISA, U_dmSISVISA, Classes.Utils.Consts, U_dmRelReceitas,
 
 procedure TfrmImprimirDados.actImprimirExecute(Sender: TObject);
 begin
-
-    case Impressao of
-      Denuncias:
+  case Impressao of
+    Denuncias:
       begin
         with dmRelDenuncias do
         begin
-           frxRelDenuncias.ShowReport;
+          FUtils.ImprimirRelatorio(TAB_VWDEN, VW_DEN_F6, 'Denuncias',
+            dtedtInicio, dtedtFim, qryDen);
+          case Dados of
+            Relatorio:
+              begin
+                ppRelDenuncias.Print;
+              end;
+            Lista:
+              begin
+                ppListaDenuncias.Print;
+              end;
+          end;
         end;
       end;
-      Receitas:
+    Receitas:
       begin
-       with dmRelReceitas do
-       begin
-         frxRelReceitas.ShowReport;
-       end;
+        with dmRelReceitas do
+        begin
+          FUtils.ImprimirRelatorio(TAB_VWRECEITA, VW_REC_F7, 'Receitas',
+            dtedtInicial, dtedtFinal, qryRec);
+          ppRelReceitas.Print;
+        end;
       end;
   end;
 end;
@@ -137,8 +166,16 @@ end;
 
 procedure TfrmImprimirDados.FormCreate(Sender: TObject);
 begin
+  FUtils := TUtilsView.Create;
+  qryDen := dmRelDenuncias.FDqryRelDenuncias;
+  qryRec := dmRelReceitas.FDqryRelReceitas;
   TabControl1.TabIndex := 0;
   TabControl1.TabPosition := TTabPosition.None;
+end;
+
+procedure TfrmImprimirDados.FormDestroy(Sender: TObject);
+begin
+  FUtils.Destroy;
 end;
 
 procedure TfrmImprimirDados.lbxitemImprimirDenunciasClick(Sender: TObject);
@@ -157,6 +194,20 @@ begin
   lblTitulo.Text := lblTitulo.Text + IMPRIME_REC;
 end;
 
+procedure TfrmImprimirDados.rbtnListaDenunciasClick(Sender: TObject);
+begin
+  Dados := Lista;
+end;
+
+procedure TfrmImprimirDados.rbtnRelDenunciasClick(Sender: TObject);
+begin
+  Dados := Relatorio;
+end;
+
+procedure TfrmImprimirDados.SetDados(const Value: tpDadosDenuncia);
+begin
+  FDados := Value;
+end;
 
 procedure TfrmImprimirDados.SetImpressao(const Value: tpImprimir);
 begin

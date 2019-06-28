@@ -13,26 +13,17 @@ Coordinates=451,301,97,33
 [Label2]
 Coordinates=136,10,46,51
 
-[ListBoxGroupHeader5]
-Coordinates=318,301,123,33
-
 [ToolbarPopupAnimation]
 Coordinates=351,157,134,33
 
 [MultiView1]
 Coordinates=241,301,67,33
 
-[ListBoxGroupHeader3]
-Coordinates=108,301,123,33
-
 [Image1]
 Coordinates=494,10,49,51
 
 [layoutPrincipal]
 Coordinates=10,301,88,33
-
-[ListBoxItem3]
-Coordinates=540,258,79,33
 
 [StyleBook1]
 Coordinates=164,305,70,33
@@ -49,14 +40,8 @@ Coordinates=394,258,58,33
 [ToolbarPopup]
 Coordinates=300,258,84,33
 
-[ListBoxItem1]
-Coordinates=211,258,79,33
-
 [Label1]
 Coordinates=315,10,46,51
-
-[ListBoxGroupHeader1]
-Coordinates=78,258,123,33
 
 [ToolBar1]
 Coordinates=10,258,58,33
@@ -64,33 +49,39 @@ Coordinates=10,258,58,33
 [Timer1]
 Coordinates=523,157,48,33
 
-[ListBoxGroupHeader4]
-Coordinates=555,197,123,33
-
-[ListBoxItem7]
-Coordinates=466,197,79,33
-
 [Timer2]
 Coordinates=523,313,48,33
-
-[ListBoxGroupHeader2]
-Coordinates=333,197,123,33
-
-[ListBoxItem9]
-Coordinates=244,197,79,33
 
 [ListBox1]
 Coordinates=10,10,116,177
 
-[ListBoxItem2]
-Coordinates=155,197,79,33
-
 [ToolbarAddButton]
 Coordinates=553,10,105,51
 
-[ListBoxItem8]
-Coordinates=66,197,79,33
+[]
+Coordinates=244,197,79,33
 
-[Label3]
-Coordinates=10,197,46,51
+[lbxghInicio]
+Coordinates=333,197,123,33
+
+[lbxghControleGeral]
+Coordinates=78,258,123,33
+
+[lbxitemReceitas]
+Coordinates=211,258,79,33
+
+[lbxitemDenuncias]
+Coordinates=155,197,79,33
+
+[lbxghRelatorios]
+Coordinates=555,197,123,33
+
+[lbxghConfiguracoes]
+Coordinates=318,301,123,33
+
+[lbxghEncerraSistema]
+Coordinates=108,301,123,33
+
+[lbxitemProcADM]
+Coordinates=540,258,79,33
 

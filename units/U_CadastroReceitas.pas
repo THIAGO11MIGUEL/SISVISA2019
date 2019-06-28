@@ -78,9 +78,11 @@ type
     procedure lvwDadosReceitasItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure edtFolhaInicialChange(Sender: TObject);
+    procedure actVoltarExecute(Sender: TObject);
   private
     { Private declarations }
     lnIDTip, lnIDUnidade: Integer;
+    procedure LimparCampos;
   public
     { Public declarations }
   end;
@@ -98,6 +100,7 @@ procedure TfrmCadastroReceitas.actInserirExecute(Sender: TObject);
 begin
   inherited;
   edtStatusReceita.Text := ST_ABERTO;
+  dtedtLancamentoReceitas.Date := Now;
 end;
 
 procedure TfrmCadastroReceitas.actSalvarExecute(Sender: TObject);
@@ -108,6 +111,13 @@ begin
     edtStatusReceita.Text, edtResponsavel.Text, TAB_RECEITA, qry);
   inherited;
   FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_RECEITA, nil, nil);
+  LimparCampos;
+end;
+
+procedure TfrmCadastroReceitas.actVoltarExecute(Sender: TObject);
+begin
+  inherited;
+  LimparCampos;
 end;
 
 procedure TfrmCadastroReceitas.edtFolhaInicialChange(Sender: TObject);
@@ -137,10 +147,25 @@ end;
 procedure TfrmCadastroReceitas.FormCreate(Sender: TObject);
 begin
   inherited;
-//  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA);
+  // FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA);
   img_sinc.Visible := False;
   img_nsinc.Visible := False;
-  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA, img_sinc, img_nsinc);
+  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA, img_sinc,
+    img_nsinc);
+end;
+
+procedure TfrmCadastroReceitas.LimparCampos;
+begin
+  edtUnidadeReceita.Text := '';
+  edtTipoReceita.Text := '';
+  edtQTDBlocos.Text := '';
+  edtNumBlocoInicial.Text := '';
+  edtFolhaInicial.Text := '';
+  edtFolhaFinal.Text := '';
+  lnIDTip := 0;
+  lnIDUnidade := 0;
+  edtResponsavel.Text := '';
+  dtedtLancamentoReceitas.Date := Now;
 end;
 
 procedure TfrmCadastroReceitas.lvwDadosReceitasItemClick(const Sender: TObject;

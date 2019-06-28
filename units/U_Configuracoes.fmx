@@ -8,6 +8,7 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object layoutMain: TLayout
     Align = Client
@@ -43,17 +44,17 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
         DefaultItemStyles.GroupFooterStyle = ''
         Viewport.Width = 225.000000000000000000
         Viewport.Height = 438.000000000000000000
-        object lbxitBD: TListBoxItem
+        object lbxitArtigos: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Size.Width = 225.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
-          Text = 'BANCO DE DADOS'
-          OnClick = lbxitBDClick
+          Text = 'ARTIGOS'
+          OnClick = lbxitArtigosClick
         end
-        object lbxitArtigos: TListBoxItem
+        object lbxitTipDenuncias: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 35.000000000000000000
@@ -61,32 +62,32 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
-          Text = 'ARTIGOS'
-          OnClick = lbxitArtigosClick
-        end
-        object lbxitTipDenuncias: TListBoxItem
-          TextSettings.Font.Size = 15.000000000000000000
-          StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 70.000000000000000000
-          Size.Width = 225.000000000000000000
-          Size.Height = 35.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 2
           Text = 'TIPOS DE DEN'#218'NCIAS'
           OnClick = lbxitTipDenunciasClick
         end
         object ListBoxItem1: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 105.000000000000000000
+          Position.Y = 70.000000000000000000
           Size.Width = 225.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 5
+          TabOrder = 4
           Text = 'PROCEDIMENTO DE DEN'#218'NCIAS'
           OnClick = ListBoxItem1Click
         end
         object lbxitTipReceitas: TListBoxItem
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
+          Position.Y = 105.000000000000000000
+          Size.Width = 225.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = 'TIPOS DE RECEITAS'
+          OnClick = lbxitTipReceitasClick
+        end
+        object lbxitUnidades: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 140.000000000000000000
@@ -94,17 +95,6 @@ object frmConfiguracoesGerais: TfrmConfiguracoesGerais
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
-          Text = 'TIPOS DE RECEITAS'
-          OnClick = lbxitTipReceitasClick
-        end
-        object lbxitUnidades: TListBoxItem
-          TextSettings.Font.Size = 15.000000000000000000
-          StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 175.000000000000000000
-          Size.Width = 225.000000000000000000
-          Size.Height = 35.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 4
           Text = 'UNIDADES'
         end
         object SearchBox1: TSearchBox

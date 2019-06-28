@@ -6,13 +6,11 @@ uses
   U_CadastroDenuncias in 'units\U_CadastroDenuncias.pas',
   U_CADASTROPADRAO in 'units\U_CADASTROPADRAO.pas' {frmCadastroPadrao},
   U_CadastroReceitas in 'units\U_CadastroReceitas.pas' {frmCadastroReceitas},
-  U_dmSISVISA in 'units\U_dmSISVISA.pas' {dmSISVISA: TDataModule},
   U_CadastroProcADM in 'units\U_CadastroProcADM.pas' {frmCadastroProcADM},
   U_MensagemPadrao in 'units\U_MensagemPadrao.pas' {frmMensagemPadrao},
   Classes.Utils.View in 'classes\Classes.Utils.View.pas',
   U_CadastroArtigos in 'units\U_CadastroArtigos.pas' {frmCadastroArtigos},
   U_Configuracoes in 'units\U_Configuracoes.pas' {frmConfiguracoesGerais},
-  U_CadastroBD in 'units\U_CadastroBD.pas' {frmCadastroBD},
   SISVISA.Model.CaminhoBD in 'classes\SISVISA.Model.CaminhoBD.pas',
   SISVISA.Model.Artigos in 'classes\SISVISA.Model.Artigos.pas',
   U_CadastroTipoDenuncia in 'units\U_CadastroTipoDenuncia.pas' {frmCadastroTipoDenuncia},
@@ -28,7 +26,8 @@ uses
   SISVISA.Model.CaminhoBD.interfaces in 'classes\SISVISA.Model.CaminhoBD.interfaces.pas',
   SISVISA.Model.interfaces in 'classes\SISVISA.Model.interfaces.pas',
   Sisvisa.Model.CaminhoBanco.interfaces in 'Model\Sisvisa.Model.CaminhoBanco.interfaces.pas',
-  SISVISA.Model.Arquivo.Ini in 'classes\SISVISA.Model.Arquivo.Ini.pas';
+  SISVISA.Model.Arquivo.Ini in 'classes\SISVISA.Model.Arquivo.Ini.pas',
+  U_dmSISVISA in 'units\U_dmSISVISA.pas';
 
 {$R *.res}
 
@@ -36,5 +35,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmSISVISA, frmSISVISA);
   Application.CreateForm(TdmSISVISA, dmSISVISA);
+  Application.CreateForm(TdmRelReceitas, dmRelReceitas);
+  Application.CreateForm(TdmRelDenuncias, dmRelDenuncias);
   Application.Run;
 end.

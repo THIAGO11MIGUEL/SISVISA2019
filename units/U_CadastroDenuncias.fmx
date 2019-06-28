@@ -1,21 +1,21 @@
 inherited frmCadastroDenuncias: TfrmCadastroDenuncias
   Caption = 'Cadastro de Denuncias - SISVISA'
   ClientHeight = 574
-  ClientWidth = 823
+  ClientWidth = 822
   DesignerMasterStyle = 0
   inherited Layout1: TLayout
-    Size.Width = 823.000000000000000000
+    Size.Width = 822.000000000000000000
     Size.Height = 574.000000000000000000
     inherited TabControl1: TTabControl
-      Size.Width = 823.000000000000000000
+      Size.Width = 822.000000000000000000
       Size.Height = 519.000000000000000000
-      TabIndex = 1
+      TabIndex = 2
       Sizes = (
-        823s
+        822s
         470s
-        823s
+        822s
         470s
-        823s
+        822s
         470s)
       inherited tabDados: TTabItem
         IsSelected = False
@@ -23,10 +23,10 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
         ExplicitSize.cx = 71.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutDados: TLayout
-          Size.Width = 823.000000000000000000
+          Size.Width = 822.000000000000000000
           Size.Height = 470.000000000000000000
           inherited panelButtonDados: TPanel
-            Position.X = 743.000000000000000000
+            Position.X = 742.000000000000000000
             Size.Height = 415.000000000000000000
             inherited btnAlterar: TButton
               Enabled = False
@@ -34,22 +34,25 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
             inherited btnExcluir: TButton
               Enabled = False
             end
+            inherited btnImprimir: TButton
+              Enabled = False
+            end
           end
           inherited ToolBar2: TToolBar
-            Size.Width = 823.000000000000000000
+            Size.Width = 822.000000000000000000
             inherited edtBuscaRegistro: TEdit
-              Size.Width = 823.000000000000000000
+              Size.Width = 822.000000000000000000
             end
           end
           object lytDadosDenuncias: TLayout
             Align = Client
-            Size.Width = 743.000000000000000000
+            Size.Width = 742.000000000000000000
             Size.Height = 415.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
             object lytHistDenuncias: TLayout
               Align = Client
-              Size.Width = 374.000000000000000000
+              Size.Width = 373.000000000000000000
               Size.Height = 415.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
@@ -71,7 +74,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                 HeaderAppearanceClassName = 'TListHeaderObjects'
                 FooterAppearanceClassName = 'TListHeaderObjects'
                 Align = Client
-                Size.Width = 143.000000000000000000
+                Size.Width = 142.000000000000000000
                 Size.Height = 415.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 1
@@ -89,12 +92,12 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
                   DataDetectorTypes = []
                   Align = Client
-                  Size.Width = 143.000000000000000000
+                  Size.Width = 142.000000000000000000
                   Size.Height = 415.000000000000000000
                   Size.PlatformDefault = False
                   TabOrder = 0
-                  Viewport.Width = 135.000000000000000000
-                  Viewport.Height = 407.000000000000000000
+                  Viewport.Width = 142.000000000000000000
+                  Viewport.Height = 415.000000000000000000
                 end
               end
             end
@@ -114,15 +117,14 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
         end
       end
       inherited tabCadastro: TTabItem
-        IsSelected = True
         Size.Width = 274.000000000000000000
         ExplicitSize.cx = 85.000000000000000000
         ExplicitSize.cy = 23.000000000000000000
         inherited layoutCadastro: TLayout
-          Size.Width = 823.000000000000000000
+          Size.Width = 822.000000000000000000
           Size.Height = 470.000000000000000000
           inherited panelButtonsCad: TPanel
-            Position.X = 743.000000000000000000
+            Position.X = 742.000000000000000000
             Size.Height = 470.000000000000000000
             inherited btnVoltar: TButton
               Position.Y = 410.000000000000000000
@@ -143,7 +145,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
           end
           object Layout2: TLayout
             Align = Client
-            Size.Width = 743.000000000000000000
+            Size.Width = 742.000000000000000000
             Size.Height = 470.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 3
@@ -153,7 +155,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
               Margins.Top = 5.000000000000000000
               Margins.Right = 5.000000000000000000
               Margins.Bottom = 5.000000000000000000
-              Size.Width = 733.000000000000000000
+              Size.Width = 732.000000000000000000
               Size.Height = 460.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 8
@@ -162,11 +164,11 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
               DefaultItemStyles.ItemStyle = ''
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
-              Viewport.Width = 733.000000000000000000
+              Viewport.Width = 732.000000000000000000
               Viewport.Height = 460.000000000000000000
               object ListBoxItem2: TListBoxItem
                 Padding.Top = 1.000000000000000000
-                Size.Width = 733.000000000000000000
+                Size.Width = 732.000000000000000000
                 Size.Height = 50.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
@@ -192,7 +194,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                 object dtedtDataDenuncia: TDateEdit
                   Date = 43616.000000000000000000
                   Align = Client
-                  Size.Width = 588.000000000000000000
+                  Size.Width = 587.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'dateeditstyle'
@@ -203,7 +205,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
               object ListBoxItem3: TListBoxItem
                 Padding.Top = 1.000000000000000000
                 Position.Y = 50.000000000000000000
-                Size.Width = 733.000000000000000000
+                Size.Width = 732.000000000000000000
                 Size.Height = 50.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 1
@@ -231,7 +233,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   Align = Client
                   TabOrder = 0
                   TextSettings.HorzAlign = Center
-                  Size.Width = 588.000000000000000000
+                  Size.Width = 587.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                 end
@@ -239,7 +241,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
               object ListBoxItem4: TListBoxItem
                 Padding.Top = 1.000000000000000000
                 Position.Y = 100.000000000000000000
-                Size.Width = 733.000000000000000000
+                Size.Width = 732.000000000000000000
                 Size.Height = 50.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 2
@@ -267,7 +269,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   Align = Client
                   TabOrder = 2
                   ReadOnly = True
-                  Size.Width = 588.000000000000000000
+                  Size.Width = 587.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                   OnClick = edtTipDenunciaClick
@@ -275,7 +277,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
               end
               object ListBoxItem1: TListBoxItem
                 Position.Y = 150.000000000000000000
-                Size.Width = 733.000000000000000000
+                Size.Width = 732.000000000000000000
                 Size.Height = 50.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 3
@@ -284,7 +286,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   Align = Client
                   TabOrder = 1
                   TextSettings.HorzAlign = Center
-                  Size.Width = 588.000000000000000000
+                  Size.Width = 587.000000000000000000
                   Size.Height = 32.000000000000000000
                   Size.PlatformDefault = False
                 end
@@ -310,13 +312,13 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
               object Layout8: TLayout
                 Align = Bottom
                 Position.Y = 363.000000000000000000
-                Size.Width = 733.000000000000000000
+                Size.Width = 732.000000000000000000
                 Size.Height = 97.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
                 object lbxTipDenuncia: TListBox
                   Align = Client
-                  Size.Width = 733.000000000000000000
+                  Size.Width = 732.000000000000000000
                   Size.Height = 97.000000000000000000
                   Size.PlatformDefault = False
                   TabOrder = 0
@@ -325,7 +327,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
                   DefaultItemStyles.ItemStyle = ''
                   DefaultItemStyles.GroupHeaderStyle = ''
                   DefaultItemStyles.GroupFooterStyle = ''
-                  Viewport.Width = 733.000000000000000000
+                  Viewport.Width = 732.000000000000000000
                   Viewport.Height = 97.000000000000000000
                 end
               end
@@ -337,8 +339,8 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
         CustomIcon = <
           item
           end>
-        IsSelected = False
-        Size.Width = 275.000000000000000000
+        IsSelected = True
+        Size.Width = 274.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -348,7 +350,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
         ExplicitSize.cy = 49.000000000000000000
         object Layout7: TLayout
           Align = Client
-          Size.Width = 823.000000000000000000
+          Size.Width = 822.000000000000000000
           Size.Height = 470.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -358,7 +360,7 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
             HeaderAppearanceClassName = 'TListHeaderObjects'
             FooterAppearanceClassName = 'TListHeaderObjects'
             Align = Client
-            Size.Width = 823.000000000000000000
+            Size.Width = 822.000000000000000000
             Size.Height = 470.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
@@ -368,9 +370,9 @@ inherited frmCadastroDenuncias: TfrmCadastroDenuncias
       end
     end
     inherited ToolBar1: TToolBar
-      Size.Width = 823.000000000000000000
+      Size.Width = 822.000000000000000000
       inherited lblTitulo: TLabel
-        Size.Width = 808.000000000000000000
+        Size.Width = 807.000000000000000000
         Text = 'CADASTRO DE DEN'#218'NCIAS'
       end
     end

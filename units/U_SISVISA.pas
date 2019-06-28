@@ -29,7 +29,6 @@ type
     lbxitemDenuncias: TListBoxItem;
     lbxitemProcADM: TListBoxItem;
     lbxghRelatorios: TListBoxGroupHeader;
-    ListBoxItem9: TListBoxItem;
     lbxghConfiguracoes: TListBoxGroupHeader;
     lbxghEncerraSistema: TListBoxGroupHeader;
     Image1: TImage;
@@ -201,6 +200,7 @@ end;
 procedure TfrmSISVISA.FormCreate(Sender: TObject);
 begin
   layoutMensagem.Visible := False;
+  lbxitemProcADM.Visible := False;
 end;
 
 procedure TfrmSISVISA.FormGesture(Sender: TObject;

@@ -4,20 +4,20 @@ object dmRelReceitas: TdmRelReceitas
   Width = 382
   object dsRelReceitas: TDataSource
     DataSet = cdsRelReceitas
-    Left = 96
-    Top = 139
+    Left = 200
+    Top = 67
   end
   object dspRelReceitas: TDataSetProvider
     DataSet = FDqryRelReceitas
-    Left = 192
-    Top = 131
+    Left = 288
+    Top = 67
   end
   object FDqryRelReceitas: TFDQuery
     Connection = dmSISVISA.FD_ConnSISVISA
     SQL.Strings = (
       'select * from vw_receitas')
-    Left = 292
-    Top = 139
+    Left = 284
+    Top = 19
     object FDqryRelReceitasCOD_BAIXA: TIntegerField
       FieldName = 'COD_BAIXA'
       Origin = 'COD_BAIXA'
@@ -101,16 +101,16 @@ object dmRelReceitas: TdmRelReceitas
     CloseDataSource = False
     DataSet = cdsRelReceitas
     BCDToCurrency = False
-    Left = 260
-    Top = 35
+    Left = 196
+    Top = 11
   end
   object cdsRelReceitas: TClientDataSet
     Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspRelReceitas'
-    Left = 160
-    Top = 27
+    Left = 112
+    Top = 3
     object cdsRelReceitasCOD_BAIXA: TIntegerField
       FieldName = 'COD_BAIXA'
       Origin = 'COD_BAIXA'
@@ -204,8 +204,8 @@ object dmRelReceitas: TdmRelReceitas
       'begin'
       ''
       'end.')
-    Left = 80
-    Top = 35
+    Left = 24
+    Top = 3
     Datasets = <
       item
         DataSet = frxdsRelReceitas
@@ -242,7 +242,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."DATA_LANC"]')
+            '[frxdsRelReceitas."DATA_LANC"]')
         end
         object Memo1: TfrxMemoView
           Left = 11.338590000000000000
@@ -269,7 +269,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."NUM_BLOCO"]')
+            '[frxdsRelReceitas."NUM_BLOCO"]')
         end
         object Memo2: TfrxMemoView
           Left = 230.551330000000000000
@@ -296,7 +296,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."QUANTIDADE"]')
+            '[frxdsRelReceitas."QUANTIDADE"]')
         end
         object Memo3: TfrxMemoView
           Left = 11.338590000000000000
@@ -323,7 +323,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."NUM_INICIAL"]')
+            '[frxdsRelReceitas."NUM_INICIAL"]')
         end
         object Memo4: TfrxMemoView
           Left = 11.338590000000000000
@@ -350,7 +350,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."NUM_FINAL"]')
+            '[frxdsRelReceitas."NUM_FINAL"]')
         end
         object Memo5: TfrxMemoView
           Left = 302.362400000000000000
@@ -377,7 +377,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."UNIDADE"]')
+            '[frxdsRelReceitas."UNIDADE"]')
         end
         object Memo6: TfrxMemoView
           Left = 313.700990000000000000
@@ -404,7 +404,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."TIPO_RECEITA"]')
+            '[frxdsRelReceitas."TIPO_RECEITA"]')
         end
         object Memo7: TfrxMemoView
           Left = 445.984540000000000000
@@ -431,7 +431,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."STATUS"]')
+            '[frxdsRelReceitas."STATUS"]')
         end
         object Memo8: TfrxMemoView
           Left = 11.338590000000000000
@@ -458,7 +458,7 @@ object dmRelReceitas: TdmRelReceitas
           DataSet = frxdsRelReceitas
           DataSetName = 'frxdsRelReceitas'
           Memo.UTF8W = (
-            '[frxDBDataset1."DATA_BAIXA"]')
+            '[frxdsRelReceitas."DATA_BAIXA"]')
         end
         object Memo9: TfrxMemoView
           Left = 302.362400000000000000
@@ -571,6 +571,701 @@ object dmRelReceitas: TdmRelReceitas
             'RELAT'#211'RIO EMITIDO '#192'S 13:27 18/06/2019')
         end
       end
+    end
+  end
+  object ppRelReceitas: TppReport
+    AutoStop = False
+    DataPipeline = ppDBPipeline1
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.SaveDeviceSettings = False
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+    DeviceType = 'Screen'
+    DefaultFileDeviceType = 'PDF'
+    EmailSettings.ReportFormat = 'PDF'
+    LanguageID = 'Default'
+    OpenFile = False
+    OutlineSettings.CreateNode = True
+    OutlineSettings.CreatePageNodes = True
+    OutlineSettings.Enabled = True
+    OutlineSettings.Visible = True
+    ThumbnailSettings.Enabled = True
+    ThumbnailSettings.Visible = True
+    ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    PDFSettings.EmbedFontOptions = [efUseSubset]
+    PDFSettings.EncryptSettings.AllowCopy = True
+    PDFSettings.EncryptSettings.AllowInteract = True
+    PDFSettings.EncryptSettings.AllowModify = True
+    PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
+    PDFSettings.EncryptSettings.Enabled = False
+    PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.FontEncoding = feAnsi
+    PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+    RTFSettings.DefaultFont.Color = clWindowText
+    RTFSettings.DefaultFont.Height = -13
+    RTFSettings.DefaultFont.Name = 'Arial'
+    RTFSettings.DefaultFont.Style = []
+    TextFileName = '($MyDocuments)\Report.pdf'
+    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.Enabled = True
+    XLSSettings.AppName = 'ReportBuilder'
+    XLSSettings.Author = 'ReportBuilder'
+    XLSSettings.Subject = 'Report'
+    XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    Left = 24
+    Top = 72
+    Version = '19.04'
+    mmColumnWidth = 0
+    DataPipelineName = 'ppDBPipeline1'
+    object ppTitleBand1: TppTitleBand
+      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 11906
+      mmPrintPosition = 0
+      object ppLabel1: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label1'
+        Border.mmPadding = 0
+        Caption = 'CONTROLE DE RECEITAS'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 20
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 8467
+        mmLeft = 48154
+        mmTop = 794
+        mmWidth = 92075
+        BandType = 1
+        LayerName = Foreground
+      end
+    end
+    object ppHeaderBand1: TppHeaderBand
+      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 9790
+      mmPrintPosition = 0
+      object pplblPeriodo: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'PER'#205'ODO'
+        Border.mmPadding = 0
+        Caption = 'PER'#205'ODO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 16
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 6350
+        mmLeft = 73819
+        mmTop = 1588
+        mmWidth = 123031
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLine1: TppLine
+        DesignLayer = ppDesignLayer1
+        UserName = 'Line1'
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 259
+        mmLeft = 1058
+        mmTop = 8728
+        mmWidth = 195839
+        BandType = 0
+        LayerName = Foreground
+      end
+    end
+    object ppDetailBand1: TppDetailBand
+      Background1.Brush.Style = bsClear
+      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 43392
+      mmPrintPosition = 0
+      object ppLabel2: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label2'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'DATA LANC.:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 0
+        mmTop = 2117
+        mmWidth = 28046
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText1: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText1'
+        Border.mmPadding = 0
+        DataField = 'DATA_LANC'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4763
+        mmLeft = 29104
+        mmTop = 2117
+        mmWidth = 32808
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel3: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label3'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'UNIDADE'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 63236
+        mmTop = 2117
+        mmWidth = 19844
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText2: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText2'
+        Border.mmPadding = 0
+        DataField = 'UNIDADE'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4763
+        mmLeft = 83608
+        mmTop = 2117
+        mmWidth = 111654
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel4: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label4'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'TIPO RECEITA:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 0
+        mmTop = 8731
+        mmWidth = 30692
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText3: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText3'
+        Border.mmPadding = 0
+        DataField = 'TIPO_RECEITA'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4763
+        mmLeft = 31750
+        mmTop = 8731
+        mmWidth = 60854
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel5: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label5'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'N'#186' BLOCO:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 98954
+        mmTop = 8731
+        mmWidth = 27517
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText4: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText4'
+        Border.mmPadding = 0
+        DataField = 'NUM_BLOCO'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4763
+        mmLeft = 127529
+        mmTop = 8731
+        mmWidth = 32808
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel6: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label6'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'N'#186' FOLHA INICIAL:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 0
+        mmTop = 15081
+        mmWidth = 37042
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText5: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText5'
+        Border.mmPadding = 0
+        DataField = 'NUM_INICIAL'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4763
+        mmLeft = 38894
+        mmTop = 15081
+        mmWidth = 32808
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel7: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label7'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'N'#186' FOLHA FINAL:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 83608
+        mmTop = 15081
+        mmWidth = 36513
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText6: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText6'
+        Border.mmPadding = 0
+        DataField = 'NUM_FINAL'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4763
+        mmLeft = 120121
+        mmTop = 15081
+        mmWidth = 32808
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel8: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label8'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'STATUS'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 0
+        mmTop = 21960
+        mmWidth = 17463
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText7: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText7'
+        Border.mmPadding = 0
+        DataField = 'STATUS'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4763
+        mmLeft = 18521
+        mmTop = 21960
+        mmWidth = 73025
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel9: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label9'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'DATA BAIXA:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 102394
+        mmTop = 21960
+        mmWidth = 27252
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText8: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText8'
+        Border.mmPadding = 0
+        DataField = 'DATA_BAIXA'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4763
+        mmLeft = 130704
+        mmTop = 21960
+        mmWidth = 32808
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLine2: TppLine
+        DesignLayer = ppDesignLayer1
+        UserName = 'Line2'
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 259
+        mmLeft = 1058
+        mmTop = 27560
+        mmWidth = 195839
+        BandType = 4
+        LayerName = Foreground
+      end
+    end
+    object ppFooterBand1: TppFooterBand
+      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 9525
+      mmPrintPosition = 0
+      object pplblTextoRodape: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'TEXTORODAP'#201
+        Border.mmPadding = 0
+        Caption = 'TEXTO RODAP'#201
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 16
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 6350
+        mmLeft = 0
+        mmTop = 1323
+        mmWidth = 43656
+        BandType = 8
+        LayerName = Foreground
+      end
+      object ppSystemVariable1: TppSystemVariable
+        DesignLayer = ppDesignLayer1
+        UserName = 'SystemVariable1'
+        Border.mmPadding = 0
+        VarType = vtPageCount
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 16
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 6350
+        mmLeft = 193675
+        mmTop = 1323
+        mmWidth = 3175
+        BandType = 8
+        LayerName = Foreground
+      end
+    end
+    object ppDesignLayers1: TppDesignLayers
+      object ppDesignLayer1: TppDesignLayer
+        UserName = 'Foreground'
+        LayerType = ltBanded
+        Index = 0
+      end
+    end
+    object ppParameterList1: TppParameterList
+    end
+  end
+  object ppDBPipeline1: TppDBPipeline
+    DataSource = dsRelReceitas
+    UserName = 'DBPipeline1'
+    Left = 104
+    Top = 72
+    object ppDBPipeline1ppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'COD_BAIXA'
+      FieldName = 'COD_BAIXA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 0
+    end
+    object ppDBPipeline1ppField2: TppField
+      FieldAlias = 'DATA_BAIXA'
+      FieldName = 'DATA_BAIXA'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 1
+    end
+    object ppDBPipeline1ppField3: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'NUM_BLOCO_BAIXA'
+      FieldName = 'NUM_BLOCO_BAIXA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 2
+    end
+    object ppDBPipeline1ppField4: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'NUM_INICIAL_BAIXA'
+      FieldName = 'NUM_INICIAL_BAIXA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 3
+    end
+    object ppDBPipeline1ppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'NUM_FINAL_BAIXA'
+      FieldName = 'NUM_FINAL_BAIXA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 4
+    end
+    object ppDBPipeline1ppField6: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'COD_RECEITA'
+      FieldName = 'COD_RECEITA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 5
+    end
+    object ppDBPipeline1ppField7: TppField
+      FieldAlias = 'DATA_LANC'
+      FieldName = 'DATA_LANC'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 6
+    end
+    object ppDBPipeline1ppField8: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'QUANTIDADE'
+      FieldName = 'QUANTIDADE'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 7
+    end
+    object ppDBPipeline1ppField9: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'NUM_BLOCO'
+      FieldName = 'NUM_BLOCO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 8
+    end
+    object ppDBPipeline1ppField10: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'NUM_INICIAL'
+      FieldName = 'NUM_INICIAL'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 9
+    end
+    object ppDBPipeline1ppField11: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'NUM_FINAL'
+      FieldName = 'NUM_FINAL'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 10
+    end
+    object ppDBPipeline1ppField12: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'COD_UNIDADE'
+      FieldName = 'COD_UNIDADE'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 11
+    end
+    object ppDBPipeline1ppField13: TppField
+      FieldAlias = 'UNIDADE'
+      FieldName = 'UNIDADE'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 12
+    end
+    object ppDBPipeline1ppField14: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'COD_TIP'
+      FieldName = 'COD_TIP'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 13
+    end
+    object ppDBPipeline1ppField15: TppField
+      FieldAlias = 'TIPO_RECEITA'
+      FieldName = 'TIPO_RECEITA'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 14
+    end
+    object ppDBPipeline1ppField16: TppField
+      FieldAlias = 'MEDICO'
+      FieldName = 'MEDICO'
+      FieldLength = 75
+      DisplayWidth = 75
+      Position = 15
+    end
+    object ppDBPipeline1ppField17: TppField
+      FieldAlias = 'SOLICITANTE'
+      FieldName = 'SOLICITANTE'
+      FieldLength = 75
+      DisplayWidth = 75
+      Position = 16
+    end
+    object ppDBPipeline1ppField18: TppField
+      FieldAlias = 'STATUS'
+      FieldName = 'STATUS'
+      FieldLength = 45
+      DisplayWidth = 45
+      Position = 17
     end
   end
 end

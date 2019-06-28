@@ -9,6 +9,7 @@
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   DesignerMasterStyle = 0
   object Layout1: TLayout
     Align = Client
@@ -195,7 +196,7 @@
                   TabOrder = 0
                 end
               end
-              object DateEdit1: TDateEdit
+              object dtedtInicial: TDateEdit
                 Date = 43634.000000000000000000
                 Align = Client
                 Size.Width = 636.000000000000000000
@@ -232,7 +233,7 @@
                   TabOrder = 0
                 end
               end
-              object DateEdit2: TDateEdit
+              object dtedtFinal: TDateEdit
                 Date = 43634.000000000000000000
                 Align = Client
                 Size.Width = 636.000000000000000000
@@ -296,6 +297,26 @@
                 end
               end
             end
+            object ListBoxItem9: TListBoxItem
+              Position.Y = 160.000000000000000000
+              Size.Width = 725.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 4
+              object Edit2: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                TabOrder = 0
+                ReadOnly = True
+                Text = 'USU'#193'RIO'
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+                TextSettings.HorzAlign = Center
+                Size.Width = 725.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                StyledSettings = [Family, Size, FontColor]
+              end
+            end
           end
         end
       end
@@ -351,7 +372,7 @@
                 TabOrder = 0
               end
             end
-            object DateEdit4: TDateEdit
+            object dtedtInicio: TDateEdit
               Date = 43634.000000000000000000
               Align = Client
               Size.Width = 636.000000000000000000
@@ -388,7 +409,7 @@
                 TabOrder = 0
               end
             end
-            object DateEdit3: TDateEdit
+            object dtedtFim: TDateEdit
               Date = 43634.000000000000000000
               Align = Client
               Size.Width = 636.000000000000000000
@@ -535,7 +556,7 @@
               Size.Height = 40.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
-              object RadioButton4: TRadioButton
+              object rbtnListaDenuncias: TRadioButton
                 Align = Client
                 StyledSettings = [Family, Style]
                 Size.Width = 100.000000000000000000
@@ -545,6 +566,7 @@
                 Text = 'LISTA'
                 TextSettings.Font.Size = 13.000000000000000000
                 TextSettings.HorzAlign = Center
+                OnClick = rbtnListaDenunciasClick
               end
             end
             object Layout16: TLayout
@@ -554,7 +576,7 @@
               Size.Height = 40.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 3
-              object RadioButton5: TRadioButton
+              object rbtnRelDenuncias: TRadioButton
                 Align = Client
                 StyledSettings = [Family, Style]
                 Size.Width = 100.000000000000000000
@@ -564,7 +586,31 @@
                 Text = 'RELAT'#211'RIO'
                 TextSettings.Font.Size = 13.000000000000000000
                 TextSettings.HorzAlign = Center
+                OnClick = rbtnRelDenunciasClick
               end
+            end
+          end
+          object lbxitUsuario: TListBoxItem
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.HorzAlign = Center
+            StyledSettings = [Family, Size, FontColor]
+            Position.Y = 160.000000000000000000
+            Size.Width = 725.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 4
+            object Edit1: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Align = Client
+              TabOrder = 1
+              ReadOnly = True
+              Text = 'USU'#193'RIO'
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.HorzAlign = Center
+              Size.Width = 725.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Size, FontColor]
             end
           end
         end

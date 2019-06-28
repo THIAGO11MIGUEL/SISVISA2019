@@ -7,7 +7,9 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FMX.frxClass,
   Datasnap.DBClient, FMX.frxDBSet, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Datasnap.Provider;
+  FireDAC.Comp.Client, Datasnap.Provider, ppCtrls, ppVar, ppPrnabl, ppClass,
+  ppBands, ppDB, ppCache, ppDesignLayer, ppParameter, ppDBPipe, ppComm,
+  ppRelatv, ppProd, ppReport;
 
 type
   TdmRelReceitas = class(TDataModule)
@@ -53,6 +55,37 @@ type
     cdsRelReceitasSOLICITANTE: TStringField;
     cdsRelReceitasSTATUS: TStringField;
     frxRelReceitas: TfrxReport;
+    ppRelReceitas: TppReport;
+    ppDBPipeline1: TppDBPipeline;
+    ppParameterList1: TppParameterList;
+    ppDesignLayers1: TppDesignLayers;
+    ppDesignLayer1: TppDesignLayer;
+    ppHeaderBand1: TppHeaderBand;
+    ppDetailBand1: TppDetailBand;
+    ppFooterBand1: TppFooterBand;
+    ppTitleBand1: TppTitleBand;
+    ppLabel1: TppLabel;
+    pplblPeriodo: TppLabel;
+    ppLine1: TppLine;
+    pplblTextoRodape: TppLabel;
+    ppSystemVariable1: TppSystemVariable;
+    ppLabel2: TppLabel;
+    ppDBText1: TppDBText;
+    ppLabel3: TppLabel;
+    ppDBText2: TppDBText;
+    ppLabel4: TppLabel;
+    ppDBText3: TppDBText;
+    ppLabel5: TppLabel;
+    ppDBText4: TppDBText;
+    ppLabel6: TppLabel;
+    ppDBText5: TppDBText;
+    ppLabel7: TppLabel;
+    ppDBText6: TppDBText;
+    ppLabel8: TppLabel;
+    ppDBText7: TppDBText;
+    ppLabel9: TppLabel;
+    ppDBText8: TppDBText;
+    ppLine2: TppLine;
   private
     { Private declarations }
   public

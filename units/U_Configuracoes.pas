@@ -17,17 +17,16 @@ type
     ToolBar1: TToolBar;
     lblTitulo: TLabel;
     SearchBox1: TSearchBox;
-    lbxitBD: TListBoxItem;
     lbxitArtigos: TListBoxItem;
     lbxitTipDenuncias: TListBoxItem;
     lbxitTipReceitas: TListBoxItem;
     lbxitUnidades: TListBoxItem;
     ListBoxItem1: TListBoxItem;
     procedure lbxitArtigosClick(Sender: TObject);
-    procedure lbxitBDClick(Sender: TObject);
     procedure lbxitTipDenunciasClick(Sender: TObject);
     procedure ListBoxItem1Click(Sender: TObject);
     procedure lbxitTipReceitasClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     const
@@ -44,22 +43,10 @@ var
 implementation
 
 uses
-  U_CadastroArtigos, U_SISVISA, U_CadastroBD, U_CadastroTipoDenuncia,
+  U_CadastroArtigos, U_SISVISA, U_CadastroTipoDenuncia,
   U_CadastroProcedDenuncia, U_CadastroTipoReceita;
 
 {$R *.fmx}
-
-procedure TfrmConfiguracoesGerais.lbxitBDClick(Sender: TObject);
-var
-  FormBD :  TfrmCadastroBD;
-begin
-   if not Assigned(FormBD) then
-      FormBD := TfrmCadastroBD.Create(Self);
-
-   Self.layoutClient.RemoveObject(0);
-   Self.layoutClient.AddObject(FormBD.Layout1);
-   FormBD.lblTitulo.Text := BANCO;
-end;
 
 procedure TfrmConfiguracoesGerais.lbxitTipDenunciasClick(Sender: TObject);
 var FormTipDen: TfrmCadastroTipoDenuncia;
@@ -90,6 +77,12 @@ begin
 
      layoutClient.RemoveObject(0);
      layoutClient.AddObject(FormProcedDen.Layout1);
+end;
+
+procedure TfrmConfiguracoesGerais.FormCreate(Sender: TObject);
+begin
+  lbxitArtigos.Visible := False;
+  lbxitUnidades.Visible := False;
 end;
 
 procedure TfrmConfiguracoesGerais.lbxitArtigosClick(Sender: TObject);

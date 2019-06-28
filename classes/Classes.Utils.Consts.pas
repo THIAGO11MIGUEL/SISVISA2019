@@ -56,7 +56,7 @@ const
   VW_DEN_F3: string = 'ENDERECO';
   VW_DEN_F4: string = 'CODIGO_TIPODENUNCIA';
   VW_DEN_F5: string = 'TIPDENUNCIA';
-  VW_DEN_F6: string = 'DATA_LANC';
+  VW_DEN_F6: string = 'DATALANC';
   VW_DEN_F7: string = 'OBS';
   // -------------------------------------------------
   // VIEW VW_HISTORICO_DENUNCIA
@@ -69,7 +69,8 @@ const
   VW_HIST_F7: string = 'DATA_RETORNO';
   VW_HIST_F8: string = 'PROCEDIMENTO';
   // -------------------------------------------------
-  VW_REC_F6: STRING = 'COD_RECEITA';
+  VW_REC_F6: string = 'COD_RECEITA';
+  VW_REC_F7: string = 'DATA_LANC';
   VW_REC_F9: string = 'NUM_BLOCO';
   VW_REC_F10: string = 'NUM_INICIAL';
   VW_REC_F11: string = 'NUM_FINAL';

@@ -18461,7 +18461,7 @@ object frmSISVISA: TfrmSISVISA
           Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 8
+          TabOrder = 7
           Text = 'INICIO'
           OnClick = lbxghInicioClick
         end
@@ -18501,40 +18501,39 @@ object frmSISVISA: TfrmSISVISA
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 140.000000000000000000
-          Size.Width = 242.000000000000000000
+          Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 3
           Text = 'Processos Administrativos'
-          Visible = False
           OnClick = lbxitemProcADMClick
         end
         object lbxitemAtenderDenuncia: TListBoxItem
-          TextSettings.Font.Size = 15.000000000000000000
-          StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 140.000000000000000000
-          Size.Width = 250.000000000000000000
-          Size.Height = 35.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 9
-          Text = 'Atendimento a Den'#250'ncia'
-          OnClick = lbxitemAtenderDenunciaClick
-        end
-        object lbxitemBaixarReceitas: TListBoxItem
           TextSettings.Font.Size = 15.000000000000000000
           StyledSettings = [Family, Style, FontColor, Other]
           Position.Y = 175.000000000000000000
           Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 10
+          TabOrder = 8
+          Text = 'Atendimento a Den'#250'ncia'
+          OnClick = lbxitemAtenderDenunciaClick
+        end
+        object lbxitemBaixarReceitas: TListBoxItem
+          TextSettings.Font.Size = 15.000000000000000000
+          StyledSettings = [Family, Style, FontColor, Other]
+          Position.Y = 210.000000000000000000
+          Size.Width = 250.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 9
           Text = 'Baixar Receitas'
           OnClick = lbxitemBaixarReceitasClick
         end
         object lbxghRelatorios: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 210.000000000000000000
+          Position.Y = 245.000000000000000000
           Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
@@ -18542,21 +18541,10 @@ object frmSISVISA: TfrmSISVISA
           Text = 'RELAT'#211'RIOS'
           OnClick = lbxghRelatoriosClick
         end
-        object ListBoxItem9: TListBoxItem
-          TextSettings.Font.Size = 15.000000000000000000
-          StyledSettings = [Family, Style, FontColor, Other]
-          Position.Y = 315.000000000000000000
-          Size.Width = 250.000000000000000000
-          Size.Height = 35.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 7
-          Text = ' Processos Administrativos   -** '
-          Visible = False
-        end
         object lbxghConfiguracoes: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 245.000000000000000000
+          Position.Y = 280.000000000000000000
           Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False
@@ -18567,7 +18555,7 @@ object frmSISVISA: TfrmSISVISA
         object lbxghEncerraSistema: TListBoxGroupHeader
           TextSettings.Font.Size = 16.000000000000000000
           StyledSettings = [Family, Style, Other]
-          Position.Y = 280.000000000000000000
+          Position.Y = 315.000000000000000000
           Size.Width = 250.000000000000000000
           Size.Height = 35.000000000000000000
           Size.PlatformDefault = False

@@ -1,0 +1,158 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 204
+  ClientWidth = 582
+  Position = DesktopCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Bottom
+    Position.Y = 172.000000000000000000
+    Size.Width = 582.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object edtCaminhoBDConectar: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 0
+      ReadOnly = True
+      TextSettings.HorzAlign = Center
+      Size.Width = 462.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Button1: TButton
+      Align = Right
+      Position.X = 462.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'CONECTAR'
+      OnClick = Button1Click
+    end
+  end
+  object opdlgAbrirBD: TOpenDialog
+    InitialDir = 'D:\SISVISA2019\BD'
+    Left = 292
+    Top = 113
+  end
+  object ListBox5: TListBox
+    Align = Client
+    Margins.Left = 5.000000000000000000
+    Margins.Top = 5.000000000000000000
+    Margins.Right = 5.000000000000000000
+    Margins.Bottom = 5.000000000000000000
+    Size.Width = 572.000000000000000000
+    Size.Height = 162.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    DisableFocusEffect = True
+    ItemHeight = 50.000000000000000000
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 568.000000000000000000
+    Viewport.Height = 158.000000000000000000
+    object ListBoxItem13: TListBoxItem
+      Padding.Left = 5.000000000000000000
+      Padding.Top = 5.000000000000000000
+      Padding.Right = 5.000000000000000000
+      Padding.Bottom = 5.000000000000000000
+      Size.Width = 568.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Layout6: TLayout
+        Align = Left
+        Position.X = 5.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 145.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object Label5: TLabel
+          Align = Client
+          StyledSettings = [Family, Style]
+          Margins.Left = 10.000000000000000000
+          Size.Width = 135.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 13.000000000000000000
+          TextSettings.HorzAlign = Center
+          Text = 'DESCRI'#199#195'O'
+          TabOrder = 0
+        end
+      end
+      object edtDescricaoBanco: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 1
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 403.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object ListBoxItem14: TListBoxItem
+      Padding.Left = 5.000000000000000000
+      Padding.Top = 5.000000000000000000
+      Padding.Right = 5.000000000000000000
+      Padding.Bottom = 5.000000000000000000
+      Position.Y = 50.000000000000000000
+      Size.Width = 568.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object Layout7: TLayout
+        Align = Left
+        Position.X = 5.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 145.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object Label6: TLabel
+          Align = Client
+          StyledSettings = [Family, Style]
+          Margins.Left = 10.000000000000000000
+          Size.Width = 135.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 13.000000000000000000
+          TextSettings.HorzAlign = Center
+          Text = 'CAMINHO BANCO'
+          TabOrder = 0
+        end
+      end
+      object btnBuscarCaminho: TButton
+        Align = Right
+        StyledSettings = [Family, Size, Style]
+        Position.X = 526.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 37.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = '...'
+        OnClick = btnBuscarCaminhoClick
+      end
+      object edtCaminhoBanco: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 3
+        Size.Width = 376.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+  end
+end

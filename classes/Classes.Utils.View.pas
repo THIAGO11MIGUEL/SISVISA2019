@@ -9,8 +9,13 @@ uses
   FMX.Objects;
 
 type
+  tpRelatorio = (Denuncias, Receitas);
+
+type
   TUtilsView = class
   private
+    FImprimirRel: tpRelatorio;
+    procedure SetImprimirRel(const Value: tpRelatorio);
 
   public
     procedure fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);
@@ -51,7 +56,7 @@ type
 
     function CalculaFolhaFinal(ValorInicio, qtd, CodTipo: Integer): Integer;
 
-    function RetornaID(Tabela, value, campo1, campo2: string;
+    function RetornaID(Tabela, Value, campo1, campo2: string;
       ds: TFDQuery): Integer;
 
     procedure PreencherReceita(lvd, lvb: TListView;
@@ -59,13 +64,21 @@ type
       cdsReceita: TClientDataSet);
 
     function ValidarReceita: Boolean;
+
+    procedure ImprimirRelatorio(Tabela, Field, Relatorio: String;
+      Data1, Data2: TDateEdit; dsRelatorio: TFDQuery);
+
+    function PreencherRelatorio(Data1, Data2: TDateEdit; User: string): string;
+
+    property ImprimirRel: tpRelatorio read FImprimirRel write SetImprimirRel;
   end;
 
 implementation
 
 uses
   FMX.Dialogs, U_dmSISVISA, System.SysUtils, FMX.ListView.Appearances,
-  U_SISVISA, Classes.Utils.Consts, FMX.ListView.Types, U_CadastroReceitas;
+  U_SISVISA, Classes.Utils.Consts, FMX.ListView.Types, U_CadastroReceitas,
+  U_dmRelDenuncias, U_dmRelReceitas;
 
 { TUtilsView }
 
@@ -134,7 +147,7 @@ var
   lvItem: TListViewItem;
 begin
   dsCaminho := TFDQuery.Create(nil);
-  dmSISVISA := TdmSISVISA.Create(nil);
+  dmSISVisa := TdmSISVISA.Create(nil);
 
   dsCaminho.Close;
   dsCaminho.sql.Clear;
@@ -609,7 +622,7 @@ end;
 function TUtilsView.CalculaFolhaFinal(ValorInicio, qtd,
   CodTipo: Integer): Integer;
 var
-  valorfinal : Integer;
+  valorfinal: Integer;
 begin
 
   valorfinal := 0;
@@ -725,6 +738,95 @@ begin
   end;
 end;
 
+procedure TUtilsView.ImprimirRelatorio(Tabela, Field, Relatorio: String;
+  Data1, Data2: TDateEdit; dsRelatorio: TFDQuery);
+var
+  sql: string;
+begin
+
+  // variavel sql recebe seu texto
+  sql := '';
+  sql := sql + 'select * from ' + Tabela;
+  sql := sql + ' where ' + Field + ' between ' +
+    QuotedStr(FormatDateTime('dd.mm.yyyy', Data1.Date)) + ' and ' +
+    QuotedStr(FormatDateTime('dd.mm.yyyy', Data2.Date));
+
+  // query é criada, fechada, limpa, conectada
+  dsRelatorio := TFDQuery.Create(nil);
+  try
+
+    dsRelatorio.Close;
+    dsRelatorio.sql.Clear;
+    dsRelatorio.Connection := dmSISVisa.FD_ConnSISVISA;
+    dmSISVisa.FDtrs_SVisa.StartTransaction;
+    dsRelatorio.sql.Add(sql);
+    dsRelatorio.Open();
+
+    if dsRelatorio.RecordCount > 0 then
+    begin
+
+      try
+        if Relatorio = 'Denuncias' then
+        begin
+          with dmRelDenuncias do
+          begin
+            FDqryRelDenuncias.Close;
+            FDqryRelDenuncias.sql.Clear;
+            FDqryRelDenuncias.sql.Add(dsRelatorio.sql.Text);
+            FDqryRelDenuncias.Prepared := true;
+            FDqryRelDenuncias.Open;
+
+            cdsRelDenuncias.Close;
+            cdsRelDenuncias.Open;
+
+            pplblPeriodo.Text := 'PERIODO: ' + DateToStr(Data1.Date) + ' à ' +
+              DateToStr(Data2.Date);
+            pplblTextoRodape.Text := 'RELATÓRIO EMITIDO POR USUÁRIO EM ' +
+              DateTimeToStr(Now);
+            ppDadosRodapé1.Text := pplblTextoRodape.Text;
+            pplblPeriodo1.Text := pplblPeriodo.Text;
+          end;
+        end
+        else
+        begin
+          with dmRelReceitas do
+          begin
+             FDqryRelReceitas.Close;
+            FDqryRelReceitas.sql.Clear;
+            FDqryRelReceitas.sql.Add(dsRelatorio.sql.Text);
+            FDqryRelReceitas.Prepared := true;
+            FDqryRelReceitas.Open;
+
+            cdsRelReceitas.Close;
+            cdsRelReceitas.Open;
+
+            pplblPeriodo.Text := 'PERIODO: ' + DateToStr(Data1.Date) + ' à ' +
+              DateToStr(Data2.Date);
+            pplblTextoRodape.Text := 'RELATÓRIO EMITIDO POR USUÁRIO EM ' +
+              DateTimeToStr(Now);
+          end;
+        end;
+
+      except
+        on E: Exception do
+          raise Exception.Create
+            ('Houve um erro ao Imprimir dados de (' + Tabela + '). " ' +
+            E.Message + #13 + UnitName + '.ImprimirDados."');
+      end;
+
+    end
+    else
+    begin
+       fnc_ExibirMensagem('GERAÇÃO DE LISTA/RELATÓRIO', 'NÃO FORAM ENCOTRADOS DADOS!!!', tpExcluir);
+       Abort;
+    end;
+  finally
+    // finaliza a query
+    FreeAndNil(dsRelatorio);
+
+  end;
+end;
+
 procedure TUtilsView.Incluir(Tabela, Campos, Valores: string; ds: TFDQuery);
 var
   sql: string;
@@ -742,7 +844,7 @@ begin
     ds.Close;
     ds.sql.Clear;
     ds.Connection := dmSISVisa.FD_ConnSISVISA;
-    dmSISVISA.FDtrs_SVisa.StartTransaction;
+    dmSISVisa.FDtrs_SVisa.StartTransaction;
     ds.sql.Add(sql);
     ds.Prepared := true; // prepara a ds
 
@@ -870,6 +972,20 @@ begin
   cdsReceita.Post;
 end;
 
+function TUtilsView.PreencherRelatorio(Data1, Data2: TDateEdit;
+  User: string): string;
+begin
+  with dmRelDenuncias do
+  begin
+    Result := 'PERIODO: ' + DateToStr(Data1.Date) + ' à ' +
+      DateToStr(Data2.Date);
+    pplblTextoRodape.Text := 'RELATÓRIO EMITIDO POR ' + User + ' ÀS ' +
+      DateTimeToStr(Now);
+    ppDadosRodapé1.Text := pplblTextoRodape.Text;
+  end;
+
+end;
+
 procedure TUtilsView.fnc_ExibirMensagem(Tit, MSG: String; tpMSG: TTipMensagem);
 var
   FormMensagem: TfrmMensagemPadrao;
@@ -879,7 +995,7 @@ begin
   frmSISVISA.ExibirMensagem(FormMensagem.layoutMSG);;
 end;
 
-function TUtilsView.RetornaID(Tabela, value, campo1, campo2: string;
+function TUtilsView.RetornaID(Tabela, Value, campo1, campo2: string;
   ds: TFDQuery): Integer;
 begin
   ds := TFDQuery.Create(nil);
@@ -887,11 +1003,16 @@ begin
   ds.sql.Clear;
   ds.Connection := dmSISVisa.FD_ConnSISVISA;
   ds.sql.Add('select ' + campo1 + ' from ' + Tabela + ' where ' + campo2 +
-    ' = ' + value);
+    ' = ' + Value);
   ds.Prepared := true;
   ds.Open;
 
   Result := ds.FieldByName(campo1).AsInteger;
+end;
+
+procedure TUtilsView.SetImprimirRel(const Value: tpRelatorio);
+begin
+  FImprimirRel := Value;
 end;
 
 function TUtilsView.ValidarReceita: Boolean;
