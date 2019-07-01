@@ -9,7 +9,8 @@ uses
   Datasnap.Provider, Datasnap.DBClient, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, FMX.frxClass, FMX.frxDBSet, ppCtrls, ppDB, ppDBPipe,
   ppVar, ppPrnabl, ppClass, ppBands, ppCache, ppDesignLayer, ppParameter,
-  ppComm, ppRelatv, ppProd, ppReport;
+  ppComm, ppRelatv, ppProd, ppReport, daDataView, daQueryDataView, daFireDAC,
+  ppModule, daDataModule;
 
 type
   TdmRelDenuncias = class(TDataModule)
@@ -34,11 +35,8 @@ type
     ppLabel3: TppLabel;
     ppLabel4: TppLabel;
     ppLabel5: TppLabel;
-    ppLine4: TppLine;
     ppLabel6: TppLabel;
     ppdbListaDenuncias: TppDBPipeline;
-    ppLabel2: TppLabel;
-    ppDBText1: TppDBText;
     ppDBText2: TppDBText;
     ppDBText3: TppDBText;
     ppListaDenuncias: TppReport;
@@ -59,10 +57,25 @@ type
     ppSystemVariable2: TppSystemVariable;
     ppLine5: TppLine;
     ppDBText7: TppDBText;
-    FDqryRelDenuncias: TFDQuery;
     cdsRelDenuncias: TClientDataSet;
     dspRelDenuncias: TDataSetProvider;
     dsRelDenuncias: TDataSource;
+    ppGroup1: TppGroup;
+    ppGroupHeaderBand1: TppGroupHeaderBand;
+    ppGroupFooterBand1: TppGroupFooterBand;
+    ppShape1: TppShape;
+    ppLabel2: TppLabel;
+    ppDBText1: TppDBText;
+    FDqryRelDenuncias: TFDQuery;
+    ppLabel8: TppLabel;
+    ppDBText8: TppDBText;
+    ppLabel9: TppLabel;
+    ppDBText9: TppDBText;
+    ppLabel10: TppLabel;
+    ppLabel11: TppLabel;
+    ppDBText10: TppDBText;
+    ppLabel12: TppLabel;
+    ppDBText11: TppDBText;
   private
     { Private declarations }
   public

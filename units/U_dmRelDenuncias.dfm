@@ -1,7 +1,7 @@
 ﻿object dmRelDenuncias: TdmRelDenuncias
   OldCreateOrder = False
-  Height = 434
-  Width = 413
+  Height = 292
+  Width = 335
   object frxRelDenuncias: TfrxReport
     Version = '2.6.14'
     DotMatrixReport = False
@@ -265,7 +265,7 @@
     XLSSettings.Title = 'Report'
     XLSSettings.WorksheetName = 'Report'
     Left = 32
-    Top = 216
+    Top = 112
     Version = '19.04'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline1'
@@ -355,7 +355,7 @@
       Background2.Brush.Style = bsClear
       Border.mmPadding = 0
       mmBottomOffset = 0
-      mmHeight = 40481
+      mmHeight = 45508
       mmPrintPosition = 0
       object ppLabel3: TppLabel
         DesignLayer = ppDesignLayer1
@@ -420,18 +420,6 @@
         BandType = 4
         LayerName = Foreground
       end
-      object ppLine4: TppLine
-        DesignLayer = ppDesignLayer1
-        UserName = 'Line4'
-        Border.mmPadding = 0
-        Weight = 0.750000000000000000
-        mmHeight = 264
-        mmLeft = 265
-        mmTop = 35497
-        mmWidth = 196850
-        BandType = 4
-        LayerName = Foreground
-      end
       object ppLabel6: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label6'
@@ -449,48 +437,6 @@
         mmLeft = 80963
         mmTop = 24077
         mmWidth = 34131
-        BandType = 4
-        LayerName = Foreground
-      end
-      object ppLabel2: TppLabel
-        DesignLayer = ppDesignLayer1
-        UserName = 'Label2'
-        AutoSize = False
-        Border.mmPadding = 0
-        Caption = 'ENDERECO'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'Arial'
-        Font.Size = 12
-        Font.Style = []
-        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-        FormFieldSettings.FormFieldType = fftNone
-        Transparent = True
-        mmHeight = 4763
-        mmLeft = 265
-        mmTop = 1058
-        mmWidth = 25135
-        BandType = 4
-        LayerName = Foreground
-      end
-      object ppDBText1: TppDBText
-        DesignLayer = ppDesignLayer1
-        UserName = 'DBText1'
-        Border.mmPadding = 0
-        DataField = 'ENDERECO'
-        DataPipeline = ppdbListaDenuncias
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'Arial'
-        Font.Size = 12
-        Font.Style = []
-        ParentDataPipeline = False
-        Transparent = True
-        DataPipelineName = 'ppdbListaDenuncias'
-        mmHeight = 4763
-        mmLeft = 26458
-        mmTop = 1058
-        mmWidth = 170657
         BandType = 4
         LayerName = Foreground
       end
@@ -533,6 +479,190 @@
         mmLeft = 24871
         mmTop = 17463
         mmWidth = 67733
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel8: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label8'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'DATA_ATEND'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 265
+        mmTop = 30429
+        mmWidth = 29104
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText8: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText8'
+        Border.mmPadding = 0
+        DataField = 'DATA_ATEND'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4498
+        mmLeft = 30427
+        mmTop = 30429
+        mmWidth = 32808
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel9: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label9'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'PRAZO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 265
+        mmTop = 36779
+        mmWidth = 15346
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText9: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText9'
+        Border.mmPadding = 0
+        DataField = 'PRAZO'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4498
+        mmLeft = 16669
+        mmTop = 36779
+        mmWidth = 10054
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel10: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label10'
+        Border.mmPadding = 0
+        Caption = 'DIAS'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4497
+        mmLeft = 27252
+        mmTop = 36779
+        mmWidth = 9790
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel11: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label11'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'DATA_RETORNO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 57415
+        mmTop = 36779
+        mmWidth = 35190
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText10: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText10'
+        Border.mmPadding = 0
+        DataField = 'DATA_RETORNO'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4498
+        mmLeft = 93663
+        mmTop = 36779
+        mmWidth = 32808
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppLabel12: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label12'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'PROCEDIMENTO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 70115
+        mmTop = 30429
+        mmWidth = 34925
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText11: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText11'
+        Border.mmPadding = 0
+        DataField = 'PROCEDIMENTO'
+        DataPipeline = ppDBPipeline1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBPipeline1'
+        mmHeight = 4498
+        mmLeft = 106098
+        mmTop = 30427
+        mmWidth = 89959
         BandType = 4
         LayerName = Foreground
       end
@@ -583,6 +713,90 @@
         LayerName = Foreground
       end
     end
+    object ppGroup1: TppGroup
+      BreakName = 'ENDERECO'
+      DataPipeline = ppDBPipeline1
+      GroupFileSettings.NewFile = False
+      GroupFileSettings.EmailFile = False
+      KeepTogether = True
+      OutlineSettings.CreateNode = True
+      StartOnOddPage = False
+      UserName = 'Group1'
+      mmNewColumnThreshold = 0
+      mmNewPageThreshold = 0
+      DataPipelineName = 'ppDBPipeline1'
+      NewFile = False
+      object ppGroupHeaderBand1: TppGroupHeaderBand
+        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
+        mmBottomOffset = 0
+        mmHeight = 12700
+        mmPrintPosition = 0
+        object ppShape1: TppShape
+          DesignLayer = ppDesignLayer1
+          UserName = 'Shape1'
+          mmHeight = 9525
+          mmLeft = 265
+          mmTop = 1852
+          mmWidth = 196850
+          BandType = 3
+          GroupNo = 0
+          LayerName = Foreground
+        end
+        object ppLabel2: TppLabel
+          DesignLayer = ppDesignLayer1
+          UserName = 'Label2'
+          AutoSize = False
+          Border.mmPadding = 0
+          Caption = 'ENDERE'#199'O'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Name = 'Arial'
+          Font.Size = 12
+          Font.Style = [fsBold]
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
+          Transparent = True
+          mmHeight = 4763
+          mmLeft = 2646
+          mmTop = 3175
+          mmWidth = 25665
+          BandType = 3
+          GroupNo = 0
+          LayerName = Foreground
+        end
+        object ppDBText1: TppDBText
+          DesignLayer = ppDesignLayer1
+          UserName = 'DBText1'
+          Border.mmPadding = 0
+          DataField = 'ENDERECO'
+          DataPipeline = ppdbListaDenuncias
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Name = 'Arial'
+          Font.Size = 12
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'ppdbListaDenuncias'
+          mmHeight = 4763
+          mmLeft = 29633
+          mmTop = 3175
+          mmWidth = 167482
+          BandType = 3
+          GroupNo = 0
+          LayerName = Foreground
+        end
+      end
+      object ppGroupFooterBand1: TppGroupFooterBand
+        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
+        HideWhenOneDetail = False
+        mmBottomOffset = 0
+        mmHeight = 7144
+        mmPrintPosition = 0
+      end
+    end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
         UserName = 'Foreground'
@@ -597,68 +811,224 @@
     DataSource = dsRelDenuncias
     UserName = 'DBPipeline1'
     Left = 112
-    Top = 216
-  end
-  object ppdbListaDenuncias: TppDBPipeline
-    DataSource = dsRelDenuncias
-    UserName = 'dbListaDenuncias'
-    Left = 104
-    Top = 320
-    object ppdbListaDenunciasppField1: TppField
+    Top = 112
+    object ppDBPipeline1ppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CODIGO_ATEND'
+      FieldName = 'CODIGO_ATEND'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 0
+    end
+    object ppDBPipeline1ppField2: TppField
+      FieldAlias = 'DATA_ATEND'
+      FieldName = 'DATA_ATEND'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 1
+    end
+    object ppDBPipeline1ppField3: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'PRAZO'
+      FieldName = 'PRAZO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 2
+    end
+    object ppDBPipeline1ppField4: TppField
+      FieldAlias = 'DATA_RETORNO'
+      FieldName = 'DATA_RETORNO'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 3
+    end
+    object ppDBPipeline1ppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CODIGO_PROCED'
+      FieldName = 'CODIGO_PROCED'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 4
+    end
+    object ppDBPipeline1ppField6: TppField
+      FieldAlias = 'PROCEDIMENTO'
+      FieldName = 'PROCEDIMENTO'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 5
+    end
+    object ppDBPipeline1ppField7: TppField
       Alignment = taRightJustify
       FieldAlias = 'CODIGO_DETALHE'
       FieldName = 'CODIGO_DETALHE'
       FieldLength = 0
       DataType = dtInteger
-      DisplayWidth = 0
-      Position = 0
+      DisplayWidth = 10
+      Position = 6
     end
-    object ppdbListaDenunciasppField2: TppField
+    object ppDBPipeline1ppField8: TppField
       Alignment = taRightJustify
       FieldAlias = 'CODIGO_DENUNCIA'
       FieldName = 'CODIGO_DENUNCIA'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 1
+      Position = 7
     end
-    object ppdbListaDenunciasppField3: TppField
+    object ppDBPipeline1ppField9: TppField
       FieldAlias = 'ENDERECO'
       FieldName = 'ENDERECO'
       FieldLength = 100
       DisplayWidth = 100
-      Position = 2
+      Position = 8
     end
-    object ppdbListaDenunciasppField4: TppField
+    object ppDBPipeline1ppField10: TppField
       Alignment = taRightJustify
       FieldAlias = 'CODIGO_TIPODENUNCIA'
       FieldName = 'CODIGO_TIPODENUNCIA'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 3
+      Position = 9
     end
-    object ppdbListaDenunciasppField5: TppField
+    object ppDBPipeline1ppField11: TppField
       FieldAlias = 'TIPDENUNCIA'
       FieldName = 'TIPDENUNCIA'
       FieldLength = 100
       DisplayWidth = 100
-      Position = 4
+      Position = 10
     end
-    object ppdbListaDenunciasppField6: TppField
+    object ppDBPipeline1ppField12: TppField
       FieldAlias = 'DATALANC'
       FieldName = 'DATALANC'
       FieldLength = 0
       DataType = dtDate
       DisplayWidth = 10
-      Position = 5
+      Position = 11
     end
-    object ppdbListaDenunciasppField7: TppField
+    object ppDBPipeline1ppField13: TppField
       FieldAlias = 'OBS'
       FieldName = 'OBS'
       FieldLength = 150
       DisplayWidth = 150
+      Position = 12
+    end
+  end
+  object ppdbListaDenuncias: TppDBPipeline
+    DataSource = dsRelDenuncias
+    UserName = 'dbListaDenuncias'
+    Left = 104
+    Top = 216
+    object ppdbListaDenunciasppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CODIGO_ATEND'
+      FieldName = 'CODIGO_ATEND'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 0
+    end
+    object ppdbListaDenunciasppField2: TppField
+      FieldAlias = 'DATA_ATEND'
+      FieldName = 'DATA_ATEND'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 1
+    end
+    object ppdbListaDenunciasppField3: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'PRAZO'
+      FieldName = 'PRAZO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 2
+    end
+    object ppdbListaDenunciasppField4: TppField
+      FieldAlias = 'DATA_RETORNO'
+      FieldName = 'DATA_RETORNO'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 3
+    end
+    object ppdbListaDenunciasppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CODIGO_PROCED'
+      FieldName = 'CODIGO_PROCED'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 4
+    end
+    object ppdbListaDenunciasppField6: TppField
+      FieldAlias = 'PROCEDIMENTO'
+      FieldName = 'PROCEDIMENTO'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 5
+    end
+    object ppdbListaDenunciasppField7: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CODIGO_DETALHE'
+      FieldName = 'CODIGO_DETALHE'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
       Position = 6
+    end
+    object ppdbListaDenunciasppField8: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CODIGO_DENUNCIA'
+      FieldName = 'CODIGO_DENUNCIA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 7
+    end
+    object ppdbListaDenunciasppField9: TppField
+      FieldAlias = 'ENDERECO'
+      FieldName = 'ENDERECO'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 8
+    end
+    object ppdbListaDenunciasppField10: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CODIGO_TIPODENUNCIA'
+      FieldName = 'CODIGO_TIPODENUNCIA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 9
+    end
+    object ppdbListaDenunciasppField11: TppField
+      FieldAlias = 'TIPDENUNCIA'
+      FieldName = 'TIPDENUNCIA'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 10
+    end
+    object ppdbListaDenunciasppField12: TppField
+      FieldAlias = 'DATALANC'
+      FieldName = 'DATALANC'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 11
+    end
+    object ppdbListaDenunciasppField13: TppField
+      FieldAlias = 'OBS'
+      FieldName = 'OBS'
+      FieldLength = 150
+      DisplayWidth = 150
+      Position = 12
     end
   end
   object ppListaDenuncias: TppReport
@@ -719,7 +1089,7 @@
     XLSSettings.Title = 'Report'
     XLSSettings.WorksheetName = 'Report'
     Left = 56
-    Top = 272
+    Top = 168
     Version = '19.04'
     mmColumnWidth = 0
     DataPipelineName = 'ppdbListaDenuncias'
@@ -954,29 +1324,29 @@
     object ppParameterList2: TppParameterList
     end
   end
-  object FDqryRelDenuncias: TFDQuery
-    Connection = dmSISVISA.FD_ConnSISVISA
-    SQL.Strings = (
-      'select * from vw_denuncias')
-    Left = 208
-    Top = 216
-  end
   object cdsRelDenuncias: TClientDataSet
     Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspRelDenuncias'
     Left = 144
-    Top = 272
+    Top = 168
   end
   object dspRelDenuncias: TDataSetProvider
     DataSet = FDqryRelDenuncias
     Left = 232
-    Top = 272
+    Top = 168
   end
   object dsRelDenuncias: TDataSource
     DataSet = cdsRelDenuncias
     Left = 208
-    Top = 320
+    Top = 216
+  end
+  object FDqryRelDenuncias: TFDQuery
+    Connection = dmSISVISA.FD_ConnSISVISA
+    SQL.Strings = (
+      'select * from vw_denuncias')
+    Left = 216
+    Top = 112
   end
 end

@@ -171,6 +171,7 @@ begin
   qryRec := dmRelReceitas.FDqryRelReceitas;
   TabControl1.TabIndex := 0;
   TabControl1.TabPosition := TTabPosition.None;
+  rbtnRelDenuncias.IsChecked := True;
 end;
 
 procedure TfrmImprimirDados.FormDestroy(Sender: TObject);

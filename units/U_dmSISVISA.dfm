@@ -10,6 +10,7 @@ object dmSISVISA: TdmSISVISA
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 24
