@@ -111,7 +111,7 @@ begin
     StrToInt(edtFolhaInicial.Text), StrToInt(edtFolhaFinal.Text),
     edtStatusReceita.Text, edtResponsavel.Text, TAB_RECEITA, qry);
   inherited;
-  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_RECEITA, nil, nil);
+  FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA, img_sinc, img_nsinc);
   LimparCampos;
 end;
 
