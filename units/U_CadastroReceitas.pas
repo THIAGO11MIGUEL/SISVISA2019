@@ -79,6 +79,7 @@ type
       const AItem: TListViewItem);
     procedure edtFolhaInicialChange(Sender: TObject);
     procedure actVoltarExecute(Sender: TObject);
+    procedure edtBuscaRegistroChange(Sender: TObject);
   private
     { Private declarations }
     lnIDTip, lnIDUnidade: Integer;
@@ -118,6 +119,20 @@ procedure TfrmCadastroReceitas.actVoltarExecute(Sender: TObject);
 begin
   inherited;
   LimparCampos;
+end;
+
+procedure TfrmCadastroReceitas.edtBuscaRegistroChange(Sender: TObject);
+var
+  Dados: string;
+begin
+  Dados := EmptyStr;
+  Dados := ' where num_inicial = ' + QuotedStr(edtBuscaRegistro.Text) +
+    ' or num_final = ' + QuotedStr(edtBuscaRegistro.Text);
+  if edtBuscaRegistro.Text <> EmptyStr then
+     FUtilsCAD.BuscarReceita(TAB_VWRECEITA, Dados, qry, lvwDadosReceitas,
+      img_sinc, img_nsinc)
+  else
+     FUtilsCAD.CDReceita(lvwDadosReceitas, qry, TAB_VWRECEITA, img_sinc, img_nsinc);
 end;
 
 procedure TfrmCadastroReceitas.edtFolhaInicialChange(Sender: TObject);

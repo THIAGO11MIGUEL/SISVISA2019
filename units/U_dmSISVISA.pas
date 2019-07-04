@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.IBDef, FireDAC.Phys.IBBase, FireDAC.Phys.IB, FireDAC.Comp.UI,
   Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Phys.FB,
-  FireDAC.Phys.FBDef;
+  FireDAC.Phys.FBDef, Datasnap.DBClient, Datasnap.Provider;
 
 type
   TdmSISVISA = class(TDataModule)
@@ -18,6 +18,9 @@ type
     FDPhysIBDriverLink1: TFDPhysIBDriverLink;
     FDtrs_SVisa: TFDTransaction;
     FDqryCadastros: TFDQuery;
+    dsCadastros: TDataSource;
+    dspCadastros: TDataSetProvider;
+    cdsCadastros: TClientDataSet;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private

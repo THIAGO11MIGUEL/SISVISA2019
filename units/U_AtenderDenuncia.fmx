@@ -349,6 +349,7 @@ object frmAtenderDenuncias: TfrmAtenderDenuncias
                 Size.Width = 72.000000000000000000
                 Size.Height = 32.000000000000000000
                 Size.PlatformDefault = False
+                OnChange = edtPrazoChange
               end
               object lytNumInfracao: TLayout
                 Align = Left

@@ -54,6 +54,9 @@ type
       unidade, tiporec, qtd, num_blocoinicial, folha_inicial,
       folha_final: Integer; status, respo, Tabela: string; dsReceita: TFDQuery);
 
+    procedure BuscarReceita(Tabela, Campos: string; dsReceitas: TFDQuery;
+      lv: TListView; img1, img2: TImage);
+
     function CalculaFolhaFinal(ValorInicio, qtd, CodTipo: Integer): Integer;
 
     function RetornaID(Tabela, Value, campo1, campo2: string;
@@ -141,6 +144,21 @@ begin
 
 end;
 
+procedure TUtilsView.BuscarReceita(Tabela, Campos: string; dsReceitas: TFDQuery;
+      lv: TListView; img1, img2: TImage);
+var
+  sql: string;
+begin
+
+  sql := EmptyStr;
+  sql := Tabela + Campos;
+
+  Tabela := sql;
+
+  CDReceita(lv, dsReceitas, tabela, img1, img2);
+
+end;
+
 procedure TUtilsView.CDCaminho(lv: TListView; dsCaminho: TFDQuery;
   Tabela: string);
 var
@@ -153,7 +171,7 @@ begin
   dsCaminho.sql.Clear;
   dsCaminho.Connection := dmSISVisa.FD_ConnSISVISA;
   dsCaminho.sql.Add('select * from ' + Tabela);
-  dsCaminho.Prepared := true;
+  dsCaminho.Prepared := True;
   dsCaminho.Open;
 
   try
@@ -192,7 +210,7 @@ begin
   dsDenuncia.sql.Clear;
   dsDenuncia.Connection := dmSISVisa.FD_ConnSISVISA;
   dsDenuncia.sql.Add('select * from ' + Tabela);
-  dsDenuncia.Prepared := true;
+  dsDenuncia.Prepared := True;
   dsDenuncia.Open;
 
   try
@@ -229,7 +247,7 @@ begin
   dsDenunciaAtend.Connection := dmSISVisa.FD_ConnSISVISA;
   dsDenunciaAtend.sql.Add('select * from ' + Tabela +
     ' where codigo_tipodenuncia = ' + coddet);
-  dsDenunciaAtend.Prepared := true;
+  dsDenunciaAtend.Prepared := True;
   dsDenunciaAtend.Open;
 
   try
@@ -274,7 +292,7 @@ begin
   dsDenunciaAtend.Connection := dmSISVisa.FD_ConnSISVISA;
   dsDenunciaAtend.sql.Add('select * from ' + Tabela +
     ' where codigo_tipodenuncia = ' + coddet);
-  dsDenunciaAtend.Prepared := true;
+  dsDenunciaAtend.Prepared := True;
   dsDenunciaAtend.Open;
 
   try
@@ -320,7 +338,7 @@ begin
   dsDenunciaDet.Connection := dmSISVisa.FD_ConnSISVISA;
   dsDenunciaDet.sql.Add('select * from ' + Tabela + ' where codigo_denuncia = '
     + codden);
-  dsDenunciaDet.Prepared := true;
+  dsDenunciaDet.Prepared := True;
   dsDenunciaDet.Open;
 
   try
@@ -360,7 +378,7 @@ begin
   dsProcedDenuncia.sql.Clear;
   dsProcedDenuncia.Connection := dmSISVisa.FD_ConnSISVISA;
   dsProcedDenuncia.sql.Add('select * from ' + Tabela);
-  dsProcedDenuncia.Prepared := true;
+  dsProcedDenuncia.Prepared := True;
   dsProcedDenuncia.Open;
 
   try
@@ -398,7 +416,7 @@ begin
   dsReceitas.sql.Clear;
   dsReceitas.Connection := dmSISVisa.FD_ConnSISVISA;
   dsReceitas.sql.Add('select * from ' + Tabela);
-  dsReceitas.Prepared := true;
+  dsReceitas.Prepared := True;
   dsReceitas.Open;
 
   try
@@ -450,7 +468,7 @@ begin
   dsReceitas.sql.Clear;
   dsReceitas.Connection := dmSISVisa.FD_ConnSISVISA;
   dsReceitas.sql.Add('select * from ' + Tabela);
-  dsReceitas.Prepared := true;
+  dsReceitas.Prepared := True;
   dsReceitas.Open;
 
   try
@@ -515,7 +533,7 @@ begin
   dsTipDenuncia.sql.Clear;
   dsTipDenuncia.Connection := dmSISVisa.FD_ConnSISVISA;
   dsTipDenuncia.sql.Add('select * from ' + Tabela);
-  dsTipDenuncia.Prepared := true;
+  dsTipDenuncia.Prepared := True;
   dsTipDenuncia.Open;
 
   try
@@ -553,7 +571,7 @@ begin
   dsTipReceita.sql.Clear;
   dsTipReceita.Connection := dmSISVisa.FD_ConnSISVISA;
   dsTipReceita.sql.Add('select * from ' + Tabela);
-  dsTipReceita.Prepared := true;
+  dsTipReceita.Prepared := True;
   dsTipReceita.Open;
 
   try
@@ -591,7 +609,7 @@ begin
   dsUnidade.sql.Clear;
   dsUnidade.Connection := dmSISVisa.FD_ConnSISVISA;
   dsUnidade.sql.Add('select * from ' + Tabela);
-  dsUnidade.Prepared := true;
+  dsUnidade.Prepared := True;
   dsUnidade.Open;
 
   try
@@ -652,6 +670,31 @@ begin
           valorfinal := (qtd * 49) + 9;
       end;
 
+    2:
+      case qtd of
+        1:
+          valorfinal := qtd * 99;
+        2:
+          valorfinal := (qtd * 99) + 1;
+        3:
+          valorfinal := (qtd * 99) + 2;
+        4:
+          valorfinal := (qtd * 99) + 3;
+        5:
+          valorfinal := (qtd * 99) + 4;
+        6:
+          valorfinal := (qtd * 99) + 5;
+        7:
+          valorfinal := (qtd * 99) + 6;
+        8:
+          valorfinal := (qtd * 99) + 7;
+        9:
+          valorfinal := (qtd * 99) + 8;
+        10:
+          valorfinal := (qtd * 99) + 9;
+
+      end;
+
   end;
 
   Result := valorfinal + ValorInicio;
@@ -668,7 +711,7 @@ begin
   dsArtigo.sql.Clear;
   dsArtigo.Connection := dmSISVisa.FD_ConnSISVISA;
   dsArtigo.sql.Add('select * from ' + Tabela);
-  dsArtigo.Prepared := true;
+  dsArtigo.Prepared := True;
   dsArtigo.Open;
 
   try
@@ -719,7 +762,7 @@ begin
     ds.Connection := dmSISVisa.FD_ConnSISVISA;
     dmSISVisa.FDtrs_SVisa.StartTransaction;
     ds.sql.Add(sql);
-    ds.Prepared := true; // prepara a ds
+    ds.Prepared := True; // prepara a ds
 
     try
       ds.ExecSQL; // executa o sql
@@ -773,7 +816,7 @@ begin
             FDqryRelDenuncias.Close;
             FDqryRelDenuncias.sql.Clear;
             FDqryRelDenuncias.sql.Add(dsRelatorio.sql.Text);
-            FDqryRelDenuncias.Prepared := true;
+            FDqryRelDenuncias.Prepared := True;
             FDqryRelDenuncias.Open;
 
             cdsRelDenuncias.Close;
@@ -791,10 +834,10 @@ begin
         begin
           with dmRelReceitas do
           begin
-             FDqryRelReceitas.Close;
+            FDqryRelReceitas.Close;
             FDqryRelReceitas.sql.Clear;
             FDqryRelReceitas.sql.Add(dsRelatorio.sql.Text);
-            FDqryRelReceitas.Prepared := true;
+            FDqryRelReceitas.Prepared := True;
             FDqryRelReceitas.Open;
 
             cdsRelReceitas.Close;
@@ -809,16 +852,16 @@ begin
 
       except
         on E: Exception do
-          raise Exception.Create
-            ('Houve um erro ao Imprimir dados de (' + Tabela + '). " ' +
-            E.Message + #13 + UnitName + '.ImprimirDados."');
+          raise Exception.Create('Houve um erro ao Imprimir dados de (' + Tabela
+            + '). " ' + E.Message + #13 + UnitName + '.ImprimirDados."');
       end;
 
     end
     else
     begin
-       fnc_ExibirMensagem('GERAÇÃO DE LISTA/RELATÓRIO', 'NÃO FORAM ENCOTRADOS DADOS!!!', tpExcluir);
-       Abort;
+      fnc_ExibirMensagem('GERAÇÃO DE LISTA/RELATÓRIO',
+        'NÃO FORAM ENCOTRADOS DADOS!!!', tpExcluir);
+      Abort;
     end;
   finally
     // finaliza a query
@@ -846,7 +889,7 @@ begin
     ds.Connection := dmSISVisa.FD_ConnSISVISA;
     dmSISVisa.FDtrs_SVisa.StartTransaction;
     ds.sql.Add(sql);
-    ds.Prepared := true; // prepara a ds
+    ds.Prepared := True; // prepara a ds
 
     try
       ds.ExecSQL; // executa o sql
@@ -918,7 +961,16 @@ begin
           end;
         2:
           begin
-            ffinal := fatual + 99;
+            if blocoatual = 1 then
+              ffinal := fatual + 99;
+
+            Campos := QuotedStr(IntToStr(unidade)) + ', ' + medico + ', ' +
+              QuotedStr(IntToStr(tiporec)) + ', ' +
+              QuotedStr(IntToStr(totalblocos)) + ', ' +
+              QuotedStr(IntToStr(bloco)) + ', ' + QuotedStr(IntToStr(finicial))
+              + ', ' + QuotedStr(IntToStr(ffinal)) + ', ' +
+              QuotedStr(FormatDateTime('dd.mm.yyyy', datalanc)) + ', ' + st +
+              ', ' + responsavel;
 
             case blocoatual of
               1, 2, 3, 4, 5, 6, 7, 8, 9, 10:
@@ -928,6 +980,19 @@ begin
                 end;
             end;
           end;
+
+        3:
+          begin
+            Campos := QuotedStr(IntToStr(unidade)) + ', ' + medico + ', ' +
+              QuotedStr(IntToStr(tiporec)) + ', ' +
+              QuotedStr(IntToStr(totalblocos)) + ', ' +
+              QuotedStr(IntToStr(bloco)) + ', ' + QuotedStr(IntToStr(finicial))
+              + ', ' + QuotedStr(IntToStr(folha_final)) + ', ' +
+              QuotedStr(FormatDateTime('dd.mm.yyyy', datalanc)) + ', ' + st +
+              ', ' + responsavel;
+
+          end;
+
       end;
       Incluir(Tabela, FD_TAB_CTRLREC, Campos, dsReceita);
       bloco := bloco + 1;
@@ -1004,7 +1069,7 @@ begin
   ds.Connection := dmSISVisa.FD_ConnSISVISA;
   ds.sql.Add('select ' + campo1 + ' from ' + Tabela + ' where ' + campo2 +
     ' = ' + Value);
-  ds.Prepared := true;
+  ds.Prepared := True;
   ds.Open;
 
   Result := ds.FieldByName(campo1).AsInteger;
@@ -1017,7 +1082,7 @@ end;
 
 function TUtilsView.ValidarReceita: Boolean;
 begin
-  Result := true;
+  Result := True;
 end;
 
 function TUtilsView.VerificaProced(valor, prazo, infracao: TEdit): Boolean;
@@ -1031,7 +1096,7 @@ begin
     if not(prazo.Text = '') then
       infracao.Text := IntToStr(0)
     else
-      Result := true;
+      Result := True;
 end;
 
 end.

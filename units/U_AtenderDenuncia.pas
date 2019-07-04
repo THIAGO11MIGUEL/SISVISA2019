@@ -94,6 +94,7 @@ type
     procedure lvwListaProcedItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure actAtendeDenunciaExecute(Sender: TObject);
+    procedure edtPrazoChange(Sender: TObject);
   private
     { Private declarations }
     FUtilsCAD: TutilsView;
@@ -162,6 +163,11 @@ procedure TfrmAtenderDenuncias.actVoltarExecute(Sender: TObject);
 begin
   changeTabAtender.ExecuteTarget(Self);
   lblTitulo.Text := ATENDERDENUNCIAS_ATEND;
+end;
+
+procedure TfrmAtenderDenuncias.edtPrazoChange(Sender: TObject);
+begin
+  dtedtFimPrazo.Date := dtedtDTAtend.Date + StrToInt(edtPrazo.Text);
 end;
 
 procedure TfrmAtenderDenuncias.edtProcedClick(Sender: TObject);

@@ -34,4 +34,21 @@ object dmSISVISA: TdmSISVISA
     Left = 344
     Top = 80
   end
+  object dsCadastros: TDataSource
+    DataSet = cdsCadastros
+    Left = 208
+    Top = 40
+  end
+  object dspCadastros: TDataSetProvider
+    DataSet = FDqryCadastros
+    Left = 224
+    Top = 112
+  end
+  object cdsCadastros: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspCadastros'
+    Left = 168
+    Top = 88
+  end
 end
